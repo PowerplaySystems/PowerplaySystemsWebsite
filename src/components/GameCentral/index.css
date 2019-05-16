@@ -1,0 +1,95 @@
+.do-scroll{
+    overflow: auto;
+    height: 390px;      
+    overflow-y: scroll;
+    margin-top:50px;
+    padding-top: 0px !important;
+  }
+  .game-arrow-wraper{
+    height: 40px;
+    width: auto;
+    opacity: 0.3;
+    width: 20px;
+  }
+  .game-arrow-wraper:hover{
+    opacity: 0.7;
+  }
+  .game-arrow{
+    height: 40px;
+    width: 20px;
+  }
+  .game-name-header{
+    height: 180px;
+    display: flex;
+    max-width: 400px;
+    width: 420px;
+    margin: auto auto;
+    align-items: center
+  }
+  .game-name{
+    max-width: 300px;
+    width:300px;
+    margin: 0px 20px !important
+  }
+  .teams-no-box{
+    background: white;
+    width: 50%;
+    height: 50px;
+    margin: 50px auto;
+    border-radius: 3px;
+    border: 3px solid #FF7B00;
+    
+    font-size: 15px;
+    text-align: center;
+    line-height: 44px;
+    font-size: 18px;
+    font-weight: 600
+  }
+  .subscription-icon{
+    height: 18px;
+    display: inline;
+  }
+.not-saved{
+  background: black;
+  animation: glow 2s steps(25, end) 0s infinite;; 
+}
+.m-balance{
+
+  color: #FF7B00;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+.m-balance  span{
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 30px;
+
+}
+.m-balance .balance-label-wraper{
+  line-height: 80px;
+}
+.m-balance  a >button{
+  display: inline;
+  background: #02698F;
+  color: white;
+  width: 300px;
+  border: none;
+  margin: 10px;
+}
+  @keyframes glow {
+    /* You could think of as "step 1" */
+    0% {
+      background: #D0D0D0;
+    }
+    35% {
+      background: #ffffff;
+    }
+    70% {
+      background: rgb(59, 59, 59);
+    }
+    /* You could think of as "step 2" */
+    100% {
+      background: #D0D0D0;
+    }
+  }

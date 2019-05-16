@@ -1,0 +1,2 @@
+let LEAGUE_ID_NHL = 14;
+let LEAGUE_ID_MLB = 15;

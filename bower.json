@@ -1,0 +1,24 @@
+{
+  "name": "powerplaygames",
+  "description": "ny",
+  "main": "index.js",
+  "authors": [
+    "Hamza Iqbal"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "a"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react-simpletabs": "^0.7.0"
+  }
+}

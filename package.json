@@ -1,0 +1,50 @@
+{
+  "name": "powerplaygames",
+  "version": "1.0.0",
+  "homepage": "http://localhost",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "react": "^16.8.6",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.8.6",
+    "react-modal": "^3.8.1",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "react-simpletabs": "^0.7.0",
+    "react-transition-group": "^1.2.1",
+    "redux": "^4.0.0",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.3.3",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.83.0",
+    "slick-carousel": "^1.8.1",
+    "universal-cookie": "^3.0.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "main": "index.js",
+  "author": "Hamza Iqbal",
+  "license": "MIT",
+  "description": ""
+}

@@ -1,0 +1,40 @@
+
+@media only screen and (min-width: 1170px) {
+    .left_box{
+        border-right: 2px solid black;
+        padding: 5px;
+       }
+       .vs{
+        font-weight: 700;
+        font-size: 25px;
+        
+        width: 75%;
+        margin: 0 auto !important;
+    }
+  }
+  @media only screen and (min-width: 770px) {
+       .vs{
+        font-weight: 700;
+        font-size: 25px;
+        padding-left: 18%;
+        width: 75%;
+        margin: 0 auto !important;
+    }
+  }
+  .vs{
+	font-weight: 700;
+    font-size: 25px;
+    
+}
+.div-disabled{
+  pointer-events:none;
+ 
+  opacity: 0.8;
+}
+.prize-row{
+  font-size: 18px;
+  max-width: 40%;
+}
+.prize-table{
+  width: 450px;
+}

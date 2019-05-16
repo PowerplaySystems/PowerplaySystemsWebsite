@@ -1,0 +1,33 @@
+.sub-spans{
+    font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+}
+.inventory-li{
+    text-align: left;
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	padding: 12px 0px 12px 20px !important;
+	color: #fefefe;
+	text-transform: uppercase;
+	font-size: 16px;
+	width: 100%;
+	font-weight: 400;
+	background-size: 35px !important;
+}
+.m-subs{
+	width: 80%;
+	padding: 12px 0px 12px 20px !important;
+}
+.m-subs  button{
+	background: #FF7B00;
+	padding: 0px 20px;
+	border:none;
+	border-radius: 5px;
+}
+.m-subs  button:hover{
+	color:#ff7c00;
+	background:#edefef;
+	
+}

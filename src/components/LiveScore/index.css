@@ -1,0 +1,190 @@
+@charset "utf-8";
+
+._faq_wrap{
+	position:relative;
+	background:#000;
+	font-family: 'Lato', sans-serif;
+}
+._faq_wrap  h1{
+    font-family: 'Atletico-RegularDemo';
+	padding:50px 0px;
+	font-weight:700;
+	text-decoration:underline;
+	text-align:center;
+	font-size:48px;
+	color:#FFF;
+	text-transform:uppercase;
+}
+._faq_cont{
+	position:relative;	
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.48);
+    margin: 30px 0px 60px 0px;
+    padding: 20px 30px;
+}
+._faq_cont h2{	
+    font-family: 'Atletico-RegularDemo';
+    color: #ff7c00;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 20px 0px;
+    text-decoration: underline;
+}
+._faq_cont h3{	
+    font-family: 'Atletico-RegularDemo';
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 15px 0px;
+}
+._faq_cont h3 .span1{
+	text-decoration:underline;
+}
+._faq_cont p{	
+	font-family: 'Lato', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 0px;
+	margin:0px;
+	line-height: 1.6;
+	margin-bottom:10px;
+}
+._faq_cont p .span1{    
+	color: #ff7c00;
+    padding: 0;
+    font-weight: 700;
+}
+._faq_cont p a{    
+    color: #ff7c00;
+    font-weight: 700;
+    text-decoration: underline;
+}
+._faq_cont p a:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+a{
+	transition:all 0.3s ease 0s;
+}
+._faq_cont ul{
+	margin:0px 0px 15px 20px;
+	padding:0px;
+	text-align:left;
+}
+._faq_cont li{
+	display:inline-block;
+	vertical-align:top;
+	width:100%;
+	color:#FFF;
+	font-size:14px;
+	font-weight:400;
+	position:relative;
+	padding:0px 0px 0px 20px;
+	font-family: 'Lato', sans-serif;
+}
+._faq_cont li:before{
+	content:"";
+	color:#FFF;
+	width:7px;
+	height:7px;
+	border-radius:50%;
+	position:absolute;
+	left:0px;
+	top:8px;
+	background:#FFF;
+	font-family: 'Lato', sans-serif;
+}
+._faq_cont li span{ 
+	font-family: 'Lato', sans-serif;
+	color: #ff7c00;
+    padding: 0;
+    font-weight: 700;
+	font-size:18px;
+}
+._faq_cont li .span1{
+	font-size:14px;
+	font-family: 'Lato', sans-serif;
+	font-weight:400;
+}
+._faq_cont li a{   
+	font-family: 'Lato', sans-serif; 
+    color: #ff7c00;
+    font-weight: 700;
+    text-decoration: underline;
+}
+._faq_cont li a:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+.livescore-header{
+	width: 95%;
+	display: flex;
+	margin: auto auto;
+    align-items: center;
+}
+.livescore-header-img{
+	width:100%;
+	max-width:1100px;
+	margin: 20px;
+}
+.collapsible {
+	height: 1.5rem;
+	transition: height 0.25s linear;
+	background: #333;
+	border-radius: 0.25rem
+  }
+  .collapsible.active {
+	height: 7rem
+  }
+  .div-disabled{
+	pointer-events:none;
+	opacity: 0.8;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+	filter: grayscale(100%);
+  }
+  .livescore-action-text{
+	  font-size: 15px;
+	  color: #000
+  }
+  .goalie-name{
+	  max-height: 30px;
+	  
+	  font-size: 15px !important;
+  }
+  
+  .match-details{
+	  font-size: 12px;
+	  
+  }
+  .team-details{
+	font-size: 18px;
+	color: #333
+}
+.action-undo{
+	height: 30px;
+	float: right;
+	margin: 4px;
+}
+.locked-text{
+	display: block;
+}
+.record-updatetion-title > input {
+	border: 1px solid #f2f2f2;
+	padding: 6px;
+	height: 40px;
+    color: #ff7c00;
+    font-size: 18px;
+}
+.arrow-disabled{
+	pointer-events:none;
+	cursor: default;
+	opacity: 0.3;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+	filter: grayscale(100%);
+}
+.arrow-disabled :hover{
+	pointer-events: none;
+  cursor: default;
+}

@@ -1,0 +1,21 @@
+.lotto-header {
+    width: 70%;
+    margin: 0 auto;
+}
+.lotto-section-2 {
+  padding: 50px 50px 100px 50px;
+  background: #fff;
+}
+.lotto-section-2 h1 {
+  text-transform: uppercase;
+  width: 70%;
+}
+.lotto-section-2 img {
+   margin: 20px 0px 20px 0px;
+   cursor: pointer;
+}
+.lotto-divider {
+  border-top: 4px solid #ff7b00;
+  width: 90px;
+  margin: 40px 0px 60px 0px;
+}
