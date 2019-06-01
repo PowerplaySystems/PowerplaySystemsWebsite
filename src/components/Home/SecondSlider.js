@@ -23,25 +23,25 @@ class SecondSlider extends Component {
                             <div className="right-arrow sports-right"><img src={require("./../../assets/images/sports-right.png")} className="img-responsive" /></div>
                             <div id="sports-slider">
                                 <div className="col-sm-3">
-                                    <a onClick={()=>this.props.history.push('select-games/0')}><img src={require("./../../assets/images/baseball-one.png")} className="img-responsive" /></a>
+                                    <a onClick={()=>this.props.history.push('select-games/3')}><img src={require("./../../assets/images/baseball-one.png")} className="img-responsive" /></a>
                                 </div>
                                 <div className="col-sm-3">
-                                    <a onClick={()=>this.props.history.push('select-games/1')}><img src={require("./../../assets/images/hockey-one.png")} className="img-responsive" /></a>
+                                    <a onClick={()=>this.props.history.push('select-games/0')}><img src={require("./../../assets/images/hockey-one.png")} className="img-responsive" /></a>
                                 </div>
                                 <div className="col-sm-3">
-                                    <a onClick={()=>this.props.history.push('select-games/3')}><img src={require("./../../assets/images/football-one.png")} className="img-responsive" /></a>
+                                    <a onClick={()=>this.props.history.push('select-games/1')}><img src={require("./../../assets/images/football-one.png")} className="img-responsive" /></a>
                                 </div>
                                 <div className="col-sm-3">
                                     <a onClick={()=>this.props.history.push('select-games/2')}><img src={require("./../../assets/images/basketball-one.png")} className="img-responsive" /></a>
                                 </div>
                                 <div className="col-sm-3">
-                                    <a onClick={()=>this.props.history.push('select-games/0')}><img src={require("./../../assets/images/baseball-one.png")} className="img-responsive" /></a>
+                                    <a onClick={()=>this.props.history.push('select-games/3')}><img src={require("./../../assets/images/baseball-one.png")} className="img-responsive" /></a>
                                 </div>
                                 <div className="col-sm-3">
-                                    <a onClick={()=>this.props.history.push('select-games/1')}><img src={require("./../../assets/images/hockey-one.png")} className="img-responsive" /></a>
+                                    <a onClick={()=>this.props.history.push('select-games/0')}><img src={require("./../../assets/images/hockey-one.png")} className="img-responsive" /></a>
                                 </div>
                                 <div className="col-sm-3">
-                                    <a onClick={()=>this.props.history.push('select-games/3')}><img src={require("./../../assets/images/football-one.png")} className="img-responsive" /></a>
+                                    <a onClick={()=>this.props.history.push('select-games/1')}><img src={require("./../../assets/images/football-one.png")} className="img-responsive" /></a>
                                 </div>
                                 <div className="col-sm-3">
                                     <a onClick={()=>this.props.history.push('select-games/2')}><img src={require("./../../assets/images/basketball-one.png")} className="img-responsive" /></a>

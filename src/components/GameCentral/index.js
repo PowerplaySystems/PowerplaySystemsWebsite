@@ -23,7 +23,7 @@ class GameCentral extends Component {
       isLoaded: false,
       show: false,
       games: [],
-      balance : 0,
+      balance: 0,
       liveScores: [],
       aciveFilters: ["", "", ""],
       prizeTable: [],
@@ -43,10 +43,10 @@ class GameCentral extends Component {
       show: false
     });
   }
- 
-  updateBalance = (ball) => {
-    this.setState({balance: ball});
-}
+
+  updateBalance = ball => {
+    this.setState({ balance: ball });
+  };
   handleShow() {
     this.setState({
       show: true
@@ -102,6 +102,7 @@ class GameCentral extends Component {
           activeGameIndex: activeGameIndex
         }
       });
+      activeGame = false;
     }
   }
   onEnterMoreClicked() {
@@ -123,7 +124,7 @@ class GameCentral extends Component {
         "&jwt=" +
         jwt +
         "&entry=" +
-        entry + 
+        entry +
         "&league=" +
         league
     )
@@ -175,6 +176,7 @@ class GameCentral extends Component {
     window.scrollTo(0, 0);
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
+    
     fetch(
       "https://mypowerplaygames.com/public_api/entry/readmygames.php?jwt=" + jwt
     )
@@ -335,7 +337,6 @@ class GameCentral extends Component {
                                   >
                                     Not Started
                                   </a>
-                               
                                 </li>
                                 <li>
                                   <a
@@ -347,7 +348,7 @@ class GameCentral extends Component {
                                   </a>
                                 </li>
                                 <li>
-                                <a
+                                  <a
                                     onClick={() =>
                                       this.onFilterApplied(1, "Archived")
                                     }
@@ -355,7 +356,6 @@ class GameCentral extends Component {
                                     Archived
                                   </a>
                                 </li>
-                               
                               </ul>
                             </div>
                           </th>
@@ -413,7 +413,7 @@ class GameCentral extends Component {
                           if (filters[1] != "" && data1.status != filters[1]) {
                             shouldShowGame = false;
                           }
-                          if (filters[1] == "" && data1.status == 'Archived') {
+                          if (filters[1] == "" && data1.status == "Archived") {
                             shouldShowGame = false;
                           }
                           if (filters[2] != "") {
@@ -565,7 +565,7 @@ class GameCentral extends Component {
                               </tr>
                               <tr>
                                 {(() => {
-                                  if (activeGame == []) {
+                                  if (activeGame == [] || activeGame == false) {
                                     return (
                                       <td
                                         colSpan="3"
@@ -573,6 +573,15 @@ class GameCentral extends Component {
                                       >
                                         Click The Game Name In the Table Above
                                         To see Your Picks
+                                      </td>
+                                    );
+                                  } else if (activeGame.entries == "#") {
+                                    return (
+                                      <td
+                                        colSpan="3"
+                                        style={{ padding: "60px" }}
+                                      >
+                                        <a>No Selections Made</a>
                                       </td>
                                     );
                                   } else {
@@ -605,7 +614,10 @@ class GameCentral extends Component {
                     </table>
                   </div>
                 </div>
-                <Invertory showMore={false} onBalanceUpdate = {this.updateBalance}/>
+                <Invertory
+                  showMore={false}
+                  onBalanceUpdate={this.updateBalance}
+                />
               </div>
             </div>
             <div className="container-fluid current_score_game">
@@ -641,7 +653,7 @@ class GameCentral extends Component {
                           "Congratulations!! You won " +
                           (activeGame.prize_type == "cash"
                             ? "$" + this.state.meta.prize
-                            :  this.state.meta.prize + " Points") +
+                            : this.state.meta.prize + " Points") +
                           "!. Your account balance has been updated";
                       } else {
                         text = "Sorry, you did not win this time.";
@@ -684,30 +696,27 @@ class GameCentral extends Component {
                 })()}
                 <div class="left-score">
                   <div class="m-balance row">
-                  <div className = "col-md-3"/>
-                  <div className = "col-md-3">
-                  <div className = "balance-label-wraper">
-                  <span>My $ Balance</span>
-                  </div>
-                 
-                  </div>
-                  <div className = "col-md-3">
-                  <a
-                      onClick={() =>
-                        this.props.history.push("/my-account/my-balance")
-                      }
-                    >
-                      <button>
-                        {"$" +
-                          (this.state.balance == null
-                            ? "0"
-                            : this.state.balance)}
-                      </button>
-                    </a>
-                </div>
-                <div className = "col-md-3"/>
-          
-
+                    <div className="col-md-3" />
+                    <div className="col-md-3">
+                      <div className="balance-label-wraper">
+                        <span>My $ Balance</span>
+                      </div>
+                    </div>
+                    <div className="col-md-3">
+                      <a
+                        onClick={() =>
+                          this.props.history.push("/my-account/my-balance")
+                        }
+                      >
+                        <button>
+                          {"$" +
+                            (this.state.balance == null
+                              ? "0"
+                              : this.state.balance)}
+                        </button>
+                      </a>
+                    </div>
+                    <div className="col-md-3" />
                   </div>
                 </div>
                 <div className="row">

@@ -8,6 +8,11 @@ import Button from "react-bootstrap/lib/Button";
 import ListGroup from "react-bootstrap/lib/ListGroup";
 import ListGroupItem from "react-bootstrap/lib/ListGroupItem";
 import Cookies from "universal-cookie";
+
+const pStyle = {
+  fontSize: "15px",
+  textAlign: "center"
+};
 var newTeams = [],
   newEntry;
 var counter = 0;
@@ -54,8 +59,11 @@ class LiveScore extends Component {
   }
 
   cronJob(mGameIndex) {
-    scrollKey = -1;
-    this.fetchGame(mGameIndex);
+    //check if the modal is open, if not, fectch updates
+    if (!this.state.showTeamModal) {
+      scrollKey = -1;
+      this.fetchGame(mGameIndex);
+    }
   }
 
   fetchGame(index) {
@@ -272,7 +280,16 @@ class LiveScore extends Component {
       return;
     }
     if (!hasSubscription) {
-      popupText = "You Don't have the subscription!";
+      popupText = (
+        <p style={pStyle}>
+          You Need A live Score Subscription To Access Powerplays On this Page.
+          <br /> Please{" "}
+          <a onClick={() => this.props.history.push("/powerplay-store")}>
+            CLICK HERE
+          </a>{" "}
+          to add!
+        </p>
+      );
       popupHeader = "Sorry!";
       this.handleShow();
       return;
@@ -464,7 +481,7 @@ class LiveScore extends Component {
         );
         xhr.send(data);
       } else {
-        popupText = "Powerplay Unavailable, Please Recharge";
+        popupText = "Powerplay has been fully used!";
         popupHeader = "Sorry!";
         this.handleShow();
         return;
@@ -501,8 +518,13 @@ class LiveScore extends Component {
   }
   sortMatchesOrder() {
     let rearranged = [];
-    let index = 0;
 
+    let bothMyteams = [];
+    let singleMyTeam = [];
+    let noneMyteam = [];
+
+    let index = 0;
+    let indexSingle = 0;
     this.state.allMatches.forEach(match => {
       var isHome = false;
       var isAway = false;
@@ -513,15 +535,18 @@ class LiveScore extends Component {
         isHome = true;
       }
       if (isHome && isAway) {
-        rearranged.unshift(match);
-        index++;
+        bothMyteams.push(match);
       } else if (isHome || isAway) {
-        rearranged.splice(index, 0, match);
+        singleMyTeam.push(match);
       } else {
-        rearranged.push(match);
+        noneMyteam.push(match);
       }
     });
 
+    bothMyteams.sort((a, b) => new Date(a.start_time)-new Date(b.start_time) );
+    singleMyTeam.sort((a, b) => new Date(a.start_time)-new Date(b.start_time) );
+    noneMyteam.sort((a, b) => new Date(a.start_time)-new Date(b.start_time) );
+    rearranged = bothMyteams.concat(singleMyTeam,noneMyteam)
     this.setState({
       allMatches: rearranged
     });
@@ -558,15 +583,14 @@ class LiveScore extends Component {
     }
   }
 
-  getInning(innings, half, intermission,status, time) {
+  getInning(innings, half, intermission, status, time) {
     var periodText = "";
     if (status == "LIVE") {
-      if (intermission != 0 && intermission !=  "" ) {
-        return "End of Inning " + intermission ;
-      }else{
+      if (intermission != 0 && intermission != "") {
+        return "End of Inning " + intermission;
+      } else {
         return half + " " + innings;
       }
-      
     } else if (status == "FINISHED") {
       return "Final";
     } else if (status == "UNPLAYED") {
@@ -577,6 +601,7 @@ class LiveScore extends Component {
       return "Final";
     }
   }
+
   tConv24(time24) {
     var ts = time24;
     var H = +ts.substr(0, 2);
@@ -586,6 +611,7 @@ class LiveScore extends Component {
     ts = h + ts.substr(2, 3) + ampm;
     return ts;
   }
+
   getGamesetStartTime() {
     if (this.state.allMatches.length != 0) {
       var newArray = this.state.allMatches.slice();
@@ -611,6 +637,7 @@ class LiveScore extends Component {
       return "";
     }
   }
+
   handleCloseTeams() {
     this.setState({ showTeamModal: false });
   }
@@ -642,10 +669,9 @@ class LiveScore extends Component {
       show: true
     });
   }
-  pageForNHL() {
+  pageForNHL() {}
 
-  }
-  pageForHo(){
+  pageForHo() {
     mTotlaScore = 0;
     let prize = this.state.prizeTable;
     let teamCount = this.state.meta.myPicksCount;
@@ -657,7 +683,7 @@ class LiveScore extends Component {
           <Modal.Header closeButton>
             <Modal.Title> {popupHeader} </Modal.Title>
           </Modal.Header>
-          <Modal.Body> {popupText}</Modal.Body>
+          <Modal.Body dangerouslySetInnerHTML={{ __html: popupText }} />
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
               Close
@@ -986,8 +1012,10 @@ class LiveScore extends Component {
                                           </span>
                                           /
                                           <span>
-                                            {(item.current_goalie_gaa_home_team ==
-                                            null || item.current_goalie_gaa_home_team == "")
+                                            {item.current_goalie_gaa_home_team ==
+                                              null ||
+                                            item.current_goalie_gaa_home_team ==
+                                              ""
                                               ? "--"
                                               : parseFloat(
                                                   item.current_goalie_gaa_home_team
@@ -1183,8 +1211,10 @@ class LiveScore extends Component {
                                           </span>
                                           /
                                           <span>
-                                            {(item.current_goalie_gaa_away_team ==
-                                            null || item.current_goalie_gaa_away_team == "")
+                                            {item.current_goalie_gaa_away_team ==
+                                              null ||
+                                            item.current_goalie_gaa_away_team ==
+                                              ""
                                               ? "--"
                                               : parseFloat(
                                                   item.current_goalie_gaa_away_team
@@ -1431,7 +1461,7 @@ class LiveScore extends Component {
                       }
                     })}
                   </ul>
-                  <button> View my Powerplays </button>
+                  {this.meta.hasSubscription ?'' : <button>Add Live Scores</button>}
                 </div>
               </div>
             </div>
@@ -1464,7 +1494,17 @@ class LiveScore extends Component {
             let currPrize = 0;
             if (this.state.meta.prize != null) {
               currPrize = this.state.meta.prize;
+            } else {
+              let obj = this.state.prizeTable.find(
+                obj => obj.no_of_team == this.state.meta.myPicksCount
+              );
+              console.log("PRize");
+              console.log(obj);
+              if (obj) {
+                currPrize = obj.prize;
+              }
             }
+
             return (
               <div className="container-fluid p-o">
                 <div className="container">
@@ -1819,9 +1859,13 @@ class LiveScore extends Component {
                                         <h1> {item.home_team} </h1>
                                         <h2> {item.home_score} </h2>
                                         <p className="goalie-name">
-                                          Pitching:
+                                          {item.status == "UNPLAYED"
+                                            ? "Starting: "
+                                            : "Pitching: "}
                                           <span>
-                                            {(item.current_pitcher_home == null || item.current_pitcher_home == "")
+                                            {item.current_pitcher_home ==
+                                              null ||
+                                            item.current_pitcher_home == ""
                                               ? "--"
                                               : item.current_pitcher_home.split(
                                                   " "
@@ -2015,9 +2059,13 @@ class LiveScore extends Component {
                                         <h1> {item.away_team} </h1>
                                         <h2> {item.away_score} </h2>
                                         <p className="goalie-name">
-                                          Pitching:
+                                          {item.status == "UNPLAYED"
+                                            ? "Starting: "
+                                            : "Pitching: "}
                                           <span>
-                                            {(item.current_pitcher_away == null || item.current_pitcher_away == "")
+                                            {item.current_pitcher_away ==
+                                              null ||
+                                            item.current_pitcher_away == ""
                                               ? "--"
                                               : item.current_pitcher_away.split(
                                                   " "
@@ -2278,7 +2326,9 @@ class LiveScore extends Component {
                       }
                     })}
                   </ul>
-                  <button> View my Powerplays </button>
+                  {this.state.meta.hasSubscription
+                                            ? ""
+                                            : <button>Add Live Scores</button>}
                 </div>
               </div>
             </div>
@@ -2311,6 +2361,15 @@ class LiveScore extends Component {
             let currPrize = 0;
             if (this.state.meta.prize != null) {
               currPrize = this.state.meta.prize;
+            } else {
+              let obj = this.state.prizeTable.find(
+                obj => obj.no_of_team == this.state.meta.myPicksCount
+              );
+              console.log("PRize");
+              console.log(obj);
+              if (obj) {
+                currPrize = obj.prize;
+              }
             }
             return (
               <div className="container-fluid p-o">
@@ -2350,8 +2409,8 @@ class LiveScore extends Component {
       if (activeGame.league_id == 15) {
         return this.pageForMLB();
       }
-    }else{
-      return <h2>Loading...</h2>
+    } else {
+      return <h2>Loading...</h2>;
     }
   }
 }

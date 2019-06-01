@@ -21,6 +21,17 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+    font-family: "FontAwesome";
+    font-weight: normal;
+    font-style : normal;
+           src : url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+           src : url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"),
+                 url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"),
+                 url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"),
+                 url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"),
+                 url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+}
 body {
 	background: #000;
 }
@@ -2424,23 +2435,39 @@ button.entries {
 th.active_rules {
 	background: #ff7b00;
 }
-.game_rules ul {
+.game_rules .tab-content{
+	background: #fafafa;
+	color: #444444;
+	line-height: 30px;
+	font-size: 19px;
+	padding: 20px;
+}
+.game_rules ul, ol {
 	margin: 0px;
 	padding: 10px 20px;
 	border: 10px solid #FFF;
 	background: #fafafa;
 	line-height: normal;
+	list-style: none;
+	padding: 0;
 }
 .game_rules li {
 	display: inline-block;
 	vertical-align: top;
+	padding-left: 2em;
 	width: 100%;
-	padding: 5px 0px;
 	color: #444444;
-	font-size: 400;
 	line-height: 30px;
 	font-size: 17px;
 }
+.game_rules li:before {
+	color: #0c9dc1;
+	content: "\f111"; /* FontAwesome Unicode */
+	font-family: FontAwesome;
+	display: inline-block;
+	margin-left: -1.3em; /* same as padding-left set on li */
+	width: 1.3em; /* same as padding-left set on li */
+  }
 .game_rules li span {
 	color: #0c9dc1;
 	display: inline-block;

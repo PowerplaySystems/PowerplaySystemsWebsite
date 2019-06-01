@@ -1,7 +1,3 @@
-.lotto-header {
-    width: 70%;
-    margin: 0 auto;
-}
 .lotto-section-2 {
   padding: 50px 50px 100px 50px;
   background: #fff;
@@ -11,11 +7,205 @@
   width: 70%;
 }
 .lotto-section-2 img {
-   margin: 20px 0px 20px 0px;
-   cursor: pointer;
+  margin: 20px 0px 20px 0px;
+  cursor: pointer;
+}
+.lotto-header {
+}
+.lotto-header > div {
+  margin: 0 auto;
+}
+.lotto-heading-main {
+  width: 420px;
+  height: 152px;
+  font-family: jibril;
+  font-size: 62px;
+  line-height: 1.23;
+  text-align: center;
+  color: #ffffff;
+  margin: 140px auto 0px auto !important;
+}
+.lotto-heading-sub {
+  width: 861px;
+  height: 45px;
+  font-family: Poppins;
+  font-size: 32px;
+  text-align: center;
+  color: #ffffff;
+  margin: 20px auto !important;
+}
+.lotto-header-button-wrapper {
+  margin: 30px auto !important;
+  width: 414px;
+  height: 69px;
+}
+.lotto-header-button {
+  width: 414px;
+  height: 69px;
+  border-radius: 34.5px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  border: none;
+  font-family: Poppins;
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-section-2-heading {
+  margin: 115px auto 30px auto;
+  width: 940px;
+  height: 90px;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
 }
 .lotto-divider {
-  border-top: 4px solid #ff7b00;
-  width: 90px;
-  margin: 40px 0px 60px 0px;
+  width: 185px;
+  height: 1px;
+  background: #ffffff;
+  margin: 0 auto;
+}
+.lotto-block-even {
+  height: 500px;
+  height:  760px;
+ 
+}
+.lotto-block-even > div {
+  float: left;
+  margin-top:130px;
+}
+.lotto-block-odd{
+  background: #1b1b1b;
+  height:  760px;
+  padding-right: 20px; 
+}
+.lotto-block-odd > div {
+  float: right;
+  margin-top:130px;
+
+}
+.lotto-even-image {
+  width: 366px;
+  height: 366px;
+}
+.lotto-even-details {
+  width: 650px;
+  margin: -15px 0px 20px 100px;
+}
+.lotto-even-details-header {
+  font-family: jibril;
+  font-size: 56px;
+  color: #ffffff;
+}
+.lotto-even-details-sub-heading {
+  font-family: Poppins;
+  font-size: 26px;
+  color: #ffffff;
+  margin-top: 25px;
+}
+.lotto-even-details-jackpot {
+  margin-top: 20px;
+  margin-bottom: -5px;
+  width: 64px;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  line-height: 15px;
+  color: #ffffff;
+}
+.lotto-even-details-amount {
+  width: 601px;
+  height: 63px;
+  font-family: Poppins;
+  font-size: 45px;
+  font-weight: bold;
+  color: #fb6e00;
+}
+.lotto-even-details-amount > div {
+  float: left;
+  line-height: 63px;
+}
+.lotto-even-details-amount span {
+  float: left;
+
+}
+.lotto-even-details-amount button {
+  width: 201px;
+  line-height: 48px;
+  margin-left:15px;
+  height: 48px;
+  border-radius: 24px;
+  border: solid 2px #ffffff;
+  font-family: Poppins;
+  font-size: 21px;
+  text-align: center;
+  color: #ffffff;
+  background: transparent;
+}
+.lotto-even-details-odds {
+  margin-top: 10px;
+  width: 129px;
+  height: 23px;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-even-details-odds-amount {
+  width: 264px;
+  height: 49px;
+  font-family: Poppins;
+  font-size: 35px;
+  color: #fb6e00;
+}
+.lotto-even-details-draw {
+  margin-top: 26px;
+  line-height: 30px;
+  width: 750px;
+  height: 162px;
+  font-size: 24px;
+  color: #ffffff;
+}
+.lotto-even-details-draw >div{
+float: left;
+}
+.lotto-even-details-draw > div > p {
+  font-family: Poppins;
+  font-size: 16px;
+  color: #ffffff;
+}
+.lotto-even-details_draw_box > div {
+  width: 39px;
+  height: 32px;
+  background-color: #595959;
+  float: left;
+  margin: 7px;
+  font-family: Poppins;
+  font-size: 13px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-even-details_draw_box p {
+  font-family: Poppins;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-even-details-draw button{
+  margin-top: 20px; 
+  margin-left: 30px;
+  width: 494px;
+  height: 69px;
+  border-radius: 34.5px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  border: none;
+  font-family: Poppins;
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+
 }

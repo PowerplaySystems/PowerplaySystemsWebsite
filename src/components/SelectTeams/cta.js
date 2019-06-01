@@ -59,8 +59,7 @@ class CTA extends Component {
       } else {
         popupText = "You can Only Select " + max + "Teams!";
         popupHader = "Sorry!";
-       this.handleShow()
-       
+        this.handleShow();
       }
     }
   }
@@ -89,9 +88,7 @@ class CTA extends Component {
     var minAllowed = this.state.gameData.min_teams_allowed;
     if (SelectedTeams < minAllowed) {
       popupText =
-        "Select at least " +
-        this.state.gameData.min_teams_allowed +
-        " Team(s)";
+        "Select at least " + this.state.gameData.min_teams_allowed + " Team(s)";
       popupHader = "Sorry!";
       this.handleShow();
     } else {
@@ -113,14 +110,14 @@ class CTA extends Component {
           if (~this.responseText.indexOf("Successful")) {
             popupText = "Submited";
             popupHader = "Done!";
-            alert("Updated")
+            alert("Updated");
             that.props.history.push({
               pathname: "/game-central"
             });
           } else {
             popupText = "Something Went Wrong, Please Try Again";
             popupHader = "Sorry!";
-            that.handleShow()
+            that.handleShow();
           }
         }
       });
@@ -146,8 +143,11 @@ class CTA extends Component {
     window.scrollTo(0, 0);
     fetch(
       "https://mypowerplaygames.com/public_api/schedule/getschedule.php?date=" +
-        this.props.location.state.date + "&gameset_id=" + this.state.gameData.gameset_id +
-        "&league_id=" + this.state.gameData.league_id 
+        this.props.location.state.date +
+        "&gameset_id=" +
+        this.state.gameData.gameset_id +
+        "&league_id=" +
+        this.state.gameData.league_id
     )
       .then(res => res.json())
       .then(
@@ -239,7 +239,7 @@ class CTA extends Component {
       return goalie + " - " + gaa;
     }
   }
-  getPitcherInfo(pitcher, era){
+  getPitcherInfo(pitcher, era) {
     if (pitcher == "" || pitcher == null) {
       return "TBA";
     } else {
@@ -252,9 +252,7 @@ class CTA extends Component {
     var minAllowed = this.state.gameData.min_teams_allowed;
     if (SelectedTeams < minAllowed) {
       prizeText =
-        "Select At least " +
-        minAllowed +
-        " Teams To Enter This Contest";
+        "Select At least " + minAllowed + " Teams To Enter This Contest";
     } else {
       prizeText =
         "You could win " +
@@ -314,62 +312,59 @@ class CTA extends Component {
       showPrize: true
     });
   }
-  pageforNHL(){
+  pageforNHL() {
     return (
       <>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title> {popupHader} </Modal.Title> 
-          </Modal.Header> 
-          <Modal.Body> {popupText}</Modal.Body> 
+            <Modal.Title> {popupHader} </Modal.Title>
+          </Modal.Header>
+          <Modal.Body> {popupText}</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
-              Close 
+              Close
             </Button>
-          </Modal.Footer> 
-        </Modal> 
+          </Modal.Footer>
+        </Modal>
         <Header />
         <div className="container-fluid game_zones">
           <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
-          <Modal.Header closeButton>
-            <Modal.Title>Prizes</Modal.Title> 
-          </Modal.Header> 
-            <Modal.Body className="grid-body" >
-               
+            <Modal.Header closeButton>
+              <Modal.Title>Prizes</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="grid-body">
               {
-                <table >
+                <table>
                   <thead>
-                    <tr >
-                      <th scope="col"> # of Teams </th> 
+                    <tr>
+                      <th scope="col"> # of Teams </th>
                       <th scope="col"> Prize </th>
-                    </tr> 
-                  </thead> 
+                    </tr>
+                  </thead>
                   <tbody>
-                     
                     {this.state.prizeTable.map((prize, key) => {
-                     if (
-                      prize.no_of_team >= this.state.gameData.min_teams_allowed &&
-                      prize.no_of_team <= this.state.gameData.max_teams_allowed
-                    )
+                      if (
+                        prize.no_of_team >=
+                          this.state.gameData.min_teams_allowed &&
+                        prize.no_of_team <=
+                          this.state.gameData.max_teams_allowed
+                      )
                         return (
-                          <tr  className = "prize-row" key={key}>
+                          <tr className="prize-row" key={key}>
                             <td>
-                               
                               <p> {prize.no_of_team} </p>
                             </td>
                             <td>
-                               
                               <p>
-                                 
                                 {this.state.gameData.prize_type == "cash"
                                   ? "$" + prize.prize
-                                  : prize.prize + " Points"} 
+                                  : prize.prize + " Points"}
                               </p>
                             </td>
                           </tr>
                         );
-                    })} 
-                  </tbody> 
+                    })}
+                  </tbody>
                 </table>
               }
             </Modal.Body>
@@ -382,18 +377,15 @@ class CTA extends Component {
                   className="img-responsive"
                 />
                 <h1>
-                   
                   <span> {this.state.gameData.name} </span>
-                </h1> 
+                </h1>
                 <br />
-                <h1> {this.state.gameData.header_text} </h1> 
-              </div> 
-            </div> 
+                <h1> {this.state.gameData.header_text} </h1>
+              </div>
+            </div>
             <div className="game_zones_main">
-               
               {this.state.gamesArraysInPair.map((data, index) => (
                 <div className="row game_zones_score">
-                   
                   {(() => {
                     if (data.length > 0) {
                       return (
@@ -426,8 +418,8 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Selected 
-                                      </div> 
+                                        Selected
+                                      </div>
                                     </div>
                                   );
                                 } else {
@@ -443,38 +435,34 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Click to <br className="hidden-xs" /> 
-                                        Select 
-                                      </div> 
+                                        Click to <br className="hidden-xs" />
+                                        Select
+                                      </div>
                                     </div>
                                   );
                                 }
-                              })()} 
+                              })()}
                               <div className="col-sm-9 zones-det">
                                 <div className="iner-zones">
                                   <p>
-                                     
                                     {data[0].home_team} <br />
                                     <span className="span1">
-                                       
-                                      Starting Goalie 
+                                      Starting Goalie
                                     </span>
-                                    <br /> 
+                                    <br />
                                     <span className="span2">
-                                       
                                       {this.getGolaieInfo(
                                         data[0].starting_goalie_home_team,
                                         data[0].starting_goalie_home_team_gaa
-                                      )} 
-                                    </span> 
-                                  </p> 
-                                </div> 
-                              </div> 
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                               <div className="clearfix" />
-                            </div> 
-                            <p className="vs"> -VS. - </p> 
+                            </div>
+                            <p className="vs"> -VS. - </p>
                             <div className="box-one">
-                               
                               {(() => {
                                 if (
                                   this.state.selectedTeams.includes(
@@ -495,8 +483,8 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Selected 
-                                      </div> 
+                                        Selected
+                                      </div>
                                     </div>
                                   );
                                 } else {
@@ -512,9 +500,9 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Click to <br className="hidden-xs" /> 
-                                        Select 
-                                      </div> 
+                                        Click to <br className="hidden-xs" />
+                                        Select
+                                      </div>
                                     </div>
                                   );
                                 }
@@ -522,38 +510,31 @@ class CTA extends Component {
                               <div className="col-sm-9 zones-det">
                                 <div className="iner-zones">
                                   <p>
-                                     
                                     {data[0].away_team} <br />
                                     <span className="span1">
-                                       
-                                      Starting Goalie 
+                                      Starting Goalie
                                     </span>
-                                    <br /> 
+                                    <br />
                                     <span className="span2">
-                                       
                                       {this.getGolaieInfo(
                                         data[0].starting_goalie_away_team,
                                         data[0].starting_goalie_away_team_gaa
-                                      )} 
-                                    </span> 
-                                  </p> 
-                                </div> 
-                              </div> 
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                               <div className="clearfix" />
-                            </div> 
-                          </div> 
+                            </div>
+                          </div>
                           <div className="col-sm-4 boxes-right">
                             <div className="iner-zones">
                               <p>
                                 Location <br />
-                                <span className="span">
-                                   
-                                  {data[0].location} 
-                                </span>
+                                <span className="span">{data[0].location}</span>
                                 <br /> <br />
                                 Start Time <br />
                                 <span className="span">
-                                   
                                   {data[0].status != "UNPLAYED"
                                     ? data[0].status
                                     : data[0].start_time.split("T")[0] +
@@ -562,11 +543,11 @@ class CTA extends Component {
                                         data[0].start_time
                                           .split("T")[1]
                                           .replace(":00.000Z", "")
-                                      )} 
-                                </span> 
-                              </p> 
-                            </div> 
-                          </div> 
+                                      )}
+                                </span>
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       );
                     }
@@ -603,8 +584,8 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Selected 
-                                      </div> 
+                                        Selected
+                                      </div>
                                     </div>
                                   );
                                 } else {
@@ -620,36 +601,33 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Click to <br className="hidden-xs" /> 
-                                        Select 
-                                      </div> 
+                                        Click to <br className="hidden-xs" />
+                                        Select
+                                      </div>
                                     </div>
                                   );
                                 }
-                              })()} 
+                              })()}
                               <div className="col-sm-9 zones-det">
                                 <div className="iner-zones">
                                   <p>
-                                     
                                     {data[1].home_team} <br />
                                     <span className="span1">
-                                       
-                                      Starting Goalie 
+                                      Starting Goalie
                                     </span>
-                                    <br /> 
+                                    <br />
                                     <span className="span2">
-                                       
                                       {this.getGolaieInfo(
                                         data[1].starting_goalie_home_team,
                                         data[1].starting_goalie_home_team_gaa
-                                      )} 
-                                    </span> 
-                                  </p> 
-                                </div> 
-                              </div> 
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                               <div className="clearfix" />
-                            </div> 
-                            <p className="vs"> -VS. - </p> 
+                            </div>
+                            <p className="vs"> -VS. - </p>
                             <div className="box-one">
                               {(() => {
                                 if (
@@ -671,8 +649,8 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Selected 
-                                      </div> 
+                                        Selected
+                                      </div>
                                     </div>
                                   );
                                 } else {
@@ -688,48 +666,41 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Click to <br className="hidden-xs" /> 
-                                        Select 
-                                      </div> 
+                                        Click to <br className="hidden-xs" />
+                                        Select
+                                      </div>
                                     </div>
                                   );
                                 }
-                              })()} 
+                              })()}
                               <div className="col-sm-9 zones-det">
                                 <div className="iner-zones">
                                   <p>
-                                     
                                     {data[1].away_team} <br />
                                     <span className="span1">
-                                       
-                                      Starting Goalie 
+                                      Starting Goalie
                                     </span>
-                                    <br /> 
+                                    <br />
                                     <span className="span2">
-                                       
                                       {this.getGolaieInfo(
                                         data[1].starting_goalie_away_team,
                                         data[1].starting_goalie_away_team_gaa
-                                      )} 
-                                    </span> 
-                                  </p> 
-                                </div> 
-                              </div> 
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                               <div className="clearfix" />
-                            </div> 
-                          </div> 
+                            </div>
+                          </div>
                           <div className="col-sm-4 boxes-right">
                             <div className="iner-zones">
                               <p>
                                 Location <br />
-                                <span className="span">
-                                   
-                                  {data[1].location} 
-                                </span>
+                                <span className="span">{data[1].location}</span>
                                 <br /> <br />
                                 Start Time <br />
                                 <span className="span">
-                                   
                                   {data[1].status != "UNPLAYED"
                                     ? data[1].status
                                     : data[1].start_time.split("T")[0] +
@@ -738,11 +709,11 @@ class CTA extends Component {
                                         data[1].start_time
                                           .split("T")[1]
                                           .replace(":00.000Z", "")
-                                      )} 
-                                </span> 
-                              </p> 
-                            </div> 
-                          </div> 
+                                      )}
+                                </span>
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       );
                     } else {
@@ -750,124 +721,112 @@ class CTA extends Component {
                     }
                   })()}
                 </div>
-              ))} 
-            </div> 
+              ))}
+            </div>
             <div className="row">
               <div className="col-md-9 col-sm-8">
                 <a href="#">
-                   
                   <button className="btn_one_zones"> Maximum Prize </button>
                 </a>
-              </div> 
+              </div>
               <div className="col-md-3 col-sm-4">
                 <a href="#">
-                   
                   <button className="btn_two_zones">
-                     
-                    {this.getPrizeAmount()} 
+                    {this.getPrizeAmount()}
                   </button>
                 </a>
-              </div> 
-            </div> 
+              </div>
+            </div>
             <div className="row gamzone_price">
               <div className="col-md-12">
                 <h2>
-                   
-                  <span className="fa fa-info-circle infobtn" /> 
-                  {this.createPrizeText()} 
-                </h2> 
-              </div> 
-            </div> 
+                  <span className="fa fa-info-circle infobtn" />
+                  {this.createPrizeText()}
+                </h2>
+              </div>
+            </div>
             <div className="row game_zone_sub">
               <div className="col-sm-12">
                 <a>
-                   
                   <button onClick={e => this.onSubmitClicked()}>
-                     
-                    {this.getButtonText()} 
+                    {this.getButtonText()}
                   </button>
                 </a>
-              </div> 
-            </div> 
+              </div>
+            </div>
             <div className="row game_zone_btn">
               <div className="col-sm-6">
                 <a>
-                   
                   <button onClick={e => this.handleShowPrize()}>
-                     
-                    View Prize Grid 
+                    View Prize Grid
                   </button>
                 </a>
-              </div> 
+              </div>
               <div className="col-sm-6">
                 <a href="#">
-                   
                   <button> Game Rules </button>
                 </a>
-              </div> 
-            </div> 
-          </div> 
-        </div> 
+              </div>
+            </div>
+          </div>
+        </div>
         <Footer />
       </>
     );
   }
-  pageForMLB(){
+  pageForMLB() {
     return (
       <>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title> {popupHader} </Modal.Title> 
-          </Modal.Header> 
-          <Modal.Body> {popupText}</Modal.Body> 
+            <Modal.Title> {popupHader} </Modal.Title>
+          </Modal.Header>
+          <Modal.Body> {popupText}</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
-              Close 
+              Close
             </Button>
-          </Modal.Footer> 
-        </Modal> 
+          </Modal.Footer>
+        </Modal>
         <Header />
         <div className="container-fluid game_zones">
           <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
-          <Modal.Header closeButton>
-            <Modal.Title>Prizes</Modal.Title> 
-          </Modal.Header> 
-            <Modal.Body className="grid-body" >
-               
+            <Modal.Header closeButton>
+              <Modal.Title>Prizes</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="grid-body">
               {
-                <table >
+                <table>
                   <thead>
-                    <tr >
-                      <th scope="col"> # of Teams </th> 
+                    <tr>
+                      <th scope="col"> # of Teams </th>
                       <th scope="col"> Prize </th>
-                    </tr> 
-                  </thead> 
+                    </tr>
+                  </thead>
                   <tbody>
-                     
                     {this.state.prizeTable.map((prize, key) => {
-                     if (
-                      prize.no_of_team >= this.state.gameData.min_teams_allowed &&
-                      prize.no_of_team <= this.state.gameData.max_teams_allowed
-                    )
+                      if (
+                        prize.no_of_team >=
+                          this.state.gameData.min_teams_allowed &&
+                        prize.no_of_team <=
+                          this.state.gameData.max_teams_allowed
+                      )
                         return (
-                          <tr  className = "prize-row" key={key}>
+                          <tr className="prize-row" key={key}>
                             <td>
-                               
                               <p> {prize.no_of_team} </p>
                             </td>
                             <td>
-                               
                               <p>
-                                 
                                 {this.state.gameData.prize_type == "cash"
                                   ? "$" + prize.prize
-                                  : prize.prize + " Points"} 
+                                  : prize.prize + " Points"}
                               </p>
                             </td>
                           </tr>
                         );
-                    })} 
-                  </tbody> 
+                    })}
+                  </tbody>
                 </table>
               }
             </Modal.Body>
@@ -876,22 +835,23 @@ class CTA extends Component {
             <div className="row top-area">
               <div className="col-md-12">
                 <img
-                  src={require("./../../assets/images/header/nhl/CTA.png")}
-                  className="img-responsive"
+                  src={
+                    "http://mypowerplaygames.com/api/sport_league/get_image.php?id=" +
+                    this.state.gameData.association_id +
+                    "&type=header"
+                  }
+                  className="img-responsive livescore-header-img"
                 />
                 <h1>
-                   
                   <span> {this.state.gameData.name} </span>
-                </h1> 
+                </h1>
                 <br />
-                <h1> {this.state.gameData.header_text} </h1> 
-              </div> 
-            </div> 
+                <h1> {this.state.gameData.header_text} </h1>
+              </div>
+            </div>
             <div className="game_zones_main">
-               
               {this.state.gamesArraysInPair.map((data, index) => (
                 <div className="row game_zones_score">
-                   
                   {(() => {
                     if (data.length > 0) {
                       return (
@@ -924,8 +884,8 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Selected 
-                                      </div> 
+                                        Selected
+                                      </div>
                                     </div>
                                   );
                                 } else {
@@ -941,38 +901,34 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Click to <br className="hidden-xs" /> 
-                                        Select 
-                                      </div> 
+                                        Click to <br className="hidden-xs" />
+                                        Select
+                                      </div>
                                     </div>
                                   );
                                 }
-                              })()} 
+                              })()}
                               <div className="col-sm-9 zones-det">
                                 <div className="iner-zones">
                                   <p>
-                                     
                                     {data[0].home_team} <br />
                                     <span className="span1">
-                                       
-                                      Starting Pitcher 
+                                      Starting Pitcher
                                     </span>
-                                    <br /> 
+                                    <br />
                                     <span className="span2">
-                                       
                                       {this.getPitcherInfo(
                                         data[0].starting_goalie_home_team,
                                         data[0].starting_pitcher_home_team_era
-                                      )} 
-                                    </span> 
-                                  </p> 
-                                </div> 
-                              </div> 
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                               <div className="clearfix" />
-                            </div> 
-                            <p className="vs"> -VS. - </p> 
+                            </div>
+                            <p className="vs"> -VS. - </p>
                             <div className="box-one">
-                               
                               {(() => {
                                 if (
                                   this.state.selectedTeams.includes(
@@ -993,8 +949,8 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Selected 
-                                      </div> 
+                                        Selected
+                                      </div>
                                     </div>
                                   );
                                 } else {
@@ -1010,9 +966,9 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Click to <br className="hidden-xs" /> 
-                                        Select 
-                                      </div> 
+                                        Click to <br className="hidden-xs" />
+                                        Select
+                                      </div>
                                     </div>
                                   );
                                 }
@@ -1020,38 +976,31 @@ class CTA extends Component {
                               <div className="col-sm-9 zones-det">
                                 <div className="iner-zones">
                                   <p>
-                                     
                                     {data[0].away_team} <br />
                                     <span className="span1">
-                                       
-                                      Starting pitcher 
+                                      Starting pitcher
                                     </span>
-                                    <br /> 
+                                    <br />
                                     <span className="span2">
-                                       
                                       {this.getPitcherInfo(
                                         data[0].starting_pitcher_away_team,
                                         data[0].starting_pitcher_away_team_era
-                                      )} 
-                                    </span> 
-                                  </p> 
-                                </div> 
-                              </div> 
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                               <div className="clearfix" />
-                            </div> 
-                          </div> 
+                            </div>
+                          </div>
                           <div className="col-sm-4 boxes-right">
                             <div className="iner-zones">
                               <p>
                                 Location <br />
-                                <span className="span">
-                                   
-                                  {data[0].location} 
-                                </span>
+                                <span className="span">{data[0].location}</span>
                                 <br /> <br />
                                 Start Time <br />
                                 <span className="span">
-                                   
                                   {data[0].status != "UNPLAYED"
                                     ? data[0].status
                                     : data[0].start_time.split("T")[0] +
@@ -1060,11 +1009,11 @@ class CTA extends Component {
                                         data[0].start_time
                                           .split("T")[1]
                                           .replace(":00.000Z", "")
-                                      )} 
-                                </span> 
-                              </p> 
-                            </div> 
-                          </div> 
+                                      )}
+                                </span>
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       );
                     }
@@ -1101,8 +1050,8 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Selected 
-                                      </div> 
+                                        Selected
+                                      </div>
                                     </div>
                                   );
                                 } else {
@@ -1118,36 +1067,33 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Click to <br className="hidden-xs" /> 
-                                        Select 
-                                      </div> 
+                                        Click to <br className="hidden-xs" />
+                                        Select
+                                      </div>
                                     </div>
                                   );
                                 }
-                              })()} 
+                              })()}
                               <div className="col-sm-9 zones-det">
                                 <div className="iner-zones">
                                   <p>
-                                     
                                     {data[1].home_team} <br />
                                     <span className="span1">
-                                       
-                                      Starting pitcher 
+                                      Starting pitcher
                                     </span>
-                                    <br /> 
+                                    <br />
                                     <span className="span2">
-                                       
                                       {this.getPitcherInfo(
                                         data[1].starting_pitcher_home_team,
                                         data[1].starting_pitcher_home_team_era
-                                      )} 
-                                    </span> 
-                                  </p> 
-                                </div> 
-                              </div> 
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                               <div className="clearfix" />
-                            </div> 
-                            <p className="vs"> -VS. - </p> 
+                            </div>
+                            <p className="vs"> -VS. - </p>
                             <div className="box-one">
                               {(() => {
                                 if (
@@ -1169,8 +1115,8 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Selected 
-                                      </div> 
+                                        Selected
+                                      </div>
                                     </div>
                                   );
                                 } else {
@@ -1186,48 +1132,41 @@ class CTA extends Component {
                                           )
                                         }
                                       >
-                                        Click to <br className="hidden-xs" /> 
-                                        Select 
-                                      </div> 
+                                        Click to <br className="hidden-xs" />
+                                        Select
+                                      </div>
                                     </div>
                                   );
                                 }
-                              })()} 
+                              })()}
                               <div className="col-sm-9 zones-det">
                                 <div className="iner-zones">
                                   <p>
-                                     
                                     {data[1].away_team} <br />
                                     <span className="span1">
-                                       
-                                      Starting pitcher 
+                                      Starting pitcher
                                     </span>
-                                    <br /> 
+                                    <br />
                                     <span className="span2">
-                                       
                                       {this.getPitcherInfo(
                                         data[1].starting_pitcher_away_team,
                                         data[1].starting_pitcher_away_team_era
-                                      )} 
-                                    </span> 
-                                  </p> 
-                                </div> 
-                              </div> 
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
                               <div className="clearfix" />
-                            </div> 
-                          </div> 
+                            </div>
+                          </div>
                           <div className="col-sm-4 boxes-right">
                             <div className="iner-zones">
                               <p>
                                 Location <br />
-                                <span className="span">
-                                   
-                                  {data[1].location} 
-                                </span>
+                                <span className="span">{data[1].location}</span>
                                 <br /> <br />
                                 Start Time <br />
                                 <span className="span">
-                                   
                                   {data[1].status != "UNPLAYED"
                                     ? data[1].status
                                     : data[1].start_time.split("T")[0] +
@@ -1236,11 +1175,11 @@ class CTA extends Component {
                                         data[1].start_time
                                           .split("T")[1]
                                           .replace(":00.000Z", "")
-                                      )} 
-                                </span> 
-                              </p> 
-                            </div> 
-                          </div> 
+                                      )}
+                                </span>
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       );
                     } else {
@@ -1248,64 +1187,55 @@ class CTA extends Component {
                     }
                   })()}
                 </div>
-              ))} 
-            </div> 
+              ))}
+            </div>
             <div className="row">
               <div className="col-md-9 col-sm-8">
                 <a href="#">
-                   
                   <button className="btn_one_zones"> Maximum Prize </button>
                 </a>
-              </div> 
+              </div>
               <div className="col-md-3 col-sm-4">
                 <a href="#">
-                   
                   <button className="btn_two_zones">
-                     
-                    {this.getPrizeAmount()} 
+                    {this.getPrizeAmount()}
                   </button>
                 </a>
-              </div> 
-            </div> 
+              </div>
+            </div>
             <div className="row gamzone_price">
               <div className="col-md-12">
                 <h2>
-                   
-                  <span className="fa fa-info-circle infobtn" /> 
-                  {this.createPrizeText()} 
-                </h2> 
-              </div> 
-            </div> 
+                  <span className="fa fa-info-circle infobtn" />
+                  {this.createPrizeText()}
+                </h2>
+              </div>
+            </div>
             <div className="row game_zone_sub">
               <div className="col-sm-12">
                 <a>
-                   
                   <button onClick={e => this.onSubmitClicked()}>
-                     
-                    {this.getButtonText()} 
+                    {this.getButtonText()}
                   </button>
                 </a>
-              </div> 
-            </div> 
+              </div>
+            </div>
             <div className="row game_zone_btn">
               <div className="col-sm-6">
                 <a>
-                   
                   <button onClick={e => this.handleShowPrize()}>
-                     
-                    View Prize Grid 
+                    View Prize Grid
                   </button>
                 </a>
-              </div> 
+              </div>
               <div className="col-sm-6">
                 <a href="#">
-                   
                   <button> Game Rules </button>
                 </a>
-              </div> 
-            </div> 
-          </div> 
-        </div> 
+              </div>
+            </div>
+          </div>
+        </div>
         <Footer />
       </>
     );
@@ -1313,18 +1243,17 @@ class CTA extends Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return (<h1> Something went wrong. </h1>);
+      return <h1> Something went wrong. </h1>;
     }
     if (this.state.isLoaded) {
       //if NHL
-      if(this.state.gameData.league_id == 14){
+      if (this.state.gameData.league_id == 14) {
         return this.pageforNHL();
       }
       //if MLB
-      if(this.state.gameData.league_id == 15){
+      if (this.state.gameData.league_id == 15) {
         return this.pageForMLB();
       }
-   
     } else {
       return "Loading";
     }

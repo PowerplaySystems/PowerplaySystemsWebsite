@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Atletico-RegularDemo';
+    src: url('../../assets/fonts/Atletico-RegularDemod41d.eot?#iefix') format('embedded-opentype'),  url('../../assets/fonts/Atletico-RegularDemo.otf')  format('opentype'),
+           url('../../assets/fonts/Atletico-RegularDemo.woff') format('woff'), url('../../assets/fonts/Atletico-RegularDemo.ttf')  format('truetype'), url('../../assets/fonts/Atletico-RegularDemo.svg#Atletico-RegularDemo') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+.step-content {
+    font-family: 'Atletico-RegularDemo';
+  float: left;
+  width: calc(100% - 220px);
+  padding: 40px 20px 0;
+}
+.step-content h5,
+h4,
+h3,
+h2,
+h1 {
+  font-size: 30px;
+  color: #fff;
+}
+.step-content p {
+  font-size: 16px;
+  margin: 15px 0px !important;
+  max-width: 690px;
+  color: #fff;
+}
+.right-side-section .step-content {
+  float: right;
+  text-align: right;
+}
+.right-side-section .step-content > p {
+  float: right;
+}
+
+@media (max-width: 767px) {
+  .step-content {
+    float: none;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0 !important;
+    text-align: center;
+  }
+  .step-content > p {
+    font-size: 16px;
+    margin: 0;
+    max-width: 690px;
+  }
+
+  .right-side-section .step-content {
+    float: none;
+    text-align: center;
+  }
+}
+@media (max-width: 480px) {
+  .step-content > h4,
+  h3,
+  h2,
+  h1 {
+    font-size: 20px;
+  }
+  .step-content > p {
+    font-size: 14px;
+  }
+}

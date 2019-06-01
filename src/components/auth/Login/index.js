@@ -12,7 +12,7 @@ class Login extends Component {
             email: '',
             password: ''
         };
-
+        window.scrollTo(0, 0);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }

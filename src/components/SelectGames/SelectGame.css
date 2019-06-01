@@ -102,3 +102,10 @@ td {
   background: #ff7b00;
   cursor: auto
 }
+.rules_tab_active{
+  background: #fafafa !important;
+  color: #ff7b00 !important;
+}
+.rules_tab_active a{
+  color: #ff7b00 !important;
+}

@@ -442,10 +442,18 @@ class HockeyGames extends Component {
                           );
                         } else {
                           return (
-                            <h1>
-                               
-                              <span className="span2">{data.no_game_text}</span>
-                            </h1>
+                            <>
+                              <h1>
+                                <span className="span1">-</span>
+                                <span className="span2">{data.name}</span>
+                                <span className="span1">-</span>
+                              </h1>
+                              <h1>
+                                <span className="span2">
+                                  {data.no_game_text}
+                                </span>
+                              </h1>
+                            </>
                           );
                         }
                       })()}

@@ -26,6 +26,13 @@ import Highfive from './components/SelectTeams/highfive'
 import Brackets from './components/SelectTeams/brackets'
 import LiveScore from './components/LiveScore'
 import MyAccount from './components/MyAccount'
+import Page747 from './components/Page747'
+import Page747Draw from './components/Page747Draw'
+import Sweet16 from './components/Sweet16'
+import Sweet16Draw from './components/Sweet16Draw'
+import Elite8 from './components/Elite8'
+import Elite8Draw from './components/Elite8Draw'
+import LotteryPlatform from './components/LotteryPlatform'
 import './App.css';
 
 
@@ -59,7 +66,14 @@ class App extends Component {
             <Route exact path="/select-teams-high5" component={Highfive} />
             <Route exact path="/select-teams-brackets" component={Brackets} />
             <Route exact path="/livescore" component={LiveScore} />
+            <Route exact path="/747" component={Page747} />
+            <Route exact path="/747-draw" component={Page747Draw} />
+            <Route exact path="/sweet16" component={Sweet16} />
+            <Route exact path="/sweet16-draw" component={Sweet16Draw} />
+            <Route exact path="/elite8" component={Elite8} />
+            <Route exact path="/elite8-draw" component={Elite8Draw} />
             <Route path="/my-account" component={MyAccount} />
+            <Route path="/sport-platform" component={LotteryPlatform} />
           </div>
         </Router>
       </Provider>

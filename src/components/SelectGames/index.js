@@ -20,13 +20,14 @@ class SelectGames extends Component {
             $(this).addClass('active_rules');
         });
 
-
+        window.scrollTo(0, 0);
 
         // when user want to get specific game by url params
         let id = this.props.match.params.id
         if (id && id > -1) {
-            $('.slick-slider').slick('slickGoTo', id, true);
+            this.onTabClicked(id);
         }
+
     }
     constructor(props) {
         super(props);
@@ -37,7 +38,7 @@ class SelectGames extends Component {
             activeTab: 0
 
         };
-
+        
 
     }
     onTabClicked(index) {

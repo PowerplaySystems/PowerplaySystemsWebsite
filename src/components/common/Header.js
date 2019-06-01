@@ -79,7 +79,7 @@ class Header extends Component {
                                                 <li className="c-p"><a onClick={() => this.props.history.push('/how-to-play')} >How To Play</a></li>
                                                 <li className="c-p"><a>Corporate</a>
                                                     <ul className="drop-down"> 
-                                                    <ul className="c-p"><a onClick={() => this.props.history.push('/')}>Live Sports Platform</a></ul>
+                                                    <ul className="c-p"><a onClick={() => this.props.history.push('/sport-platform')}>Live Sports Platform</a></ul>
                                                     <ul className="c-p"><a onClick={() => this.props.history.push('/sponsor-games')}>Lottery Platform</a></ul>
                                                     </ul>
                                                 </li>
@@ -131,7 +131,7 @@ class Header extends Component {
                                                 <li className="c-p"><a onClick={() => this.props.history.push('/how-to-play')} >How To Play</a></li>
                                                 <li className="c-p"><a>Corporate</a>
                                                     <ul className="drop-down"> 
-                                                    <li className="c-p"><a onClick={() => this.props.history.push('/')}>Live Sports Platform</a></li>
+                                                    <li className="c-p"><a onClick={() => this.props.history.push('/sport-platform')}>Live Sports Platform</a></li>
                                                     <li className="c-p"><a onClick={() => this.props.history.push('/sponsor-games')}>Lottery Platform</a></li>
                                                     </ul>
                                                 </li>

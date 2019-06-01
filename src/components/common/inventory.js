@@ -54,7 +54,6 @@ class Inventory extends Component {
         }
       );
   }
-
   render() {
     this.state.mSubscriptions.forEach(element => {
       if (element.sport_id == 1) {
