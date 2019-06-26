@@ -379,22 +379,24 @@
   grid-template-rows: auto auto auto auto auto;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
+  margin: 30px auto;
 }
 .page747_selection_button {
   width: 62px;
-  height: 62px;
-  -webkit-border-radius: 31px;
-  -moz-border-radius: 31px;
-  border-radius: 31px;
-  background: #fff;
-  font-size: 25px;
-  font-weight: 500;
-  padding-top: 13px;
-  letter-spacing: -0.1px;
-  vertical-align: middle;
-  text-align: center;
-  color: #000000;
-  box-shadow: 0 2px 18px -1px #979797;
+    height: 62px;
+    line-height: 62px;
+    -webkit-border-radius: 31px;
+    -moz-border-radius: 31px;
+    border-radius: 31px;
+    background: #fff;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: -0.1px;
+    vertical-align: middle;
+    text-align: center;
+    color: #000000;
+    box-shadow: 0 2px 18px -1px #979797;
+    cursor: pointer;
 }
 .page747_selection_box_submit {
   cursor: pointer;

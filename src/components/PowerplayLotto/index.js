@@ -4,7 +4,7 @@ import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import "./index.css";
 
-var bg = require("./../../assets/images/lotto/lotto_header.png");
+var bg = require("./../../assets/images/lotto/lottohomehero.png");
 let mCircleStyles = {
   backgroundImage: "url(" + bg + ")",
   backgroundSize: "cover",
@@ -18,14 +18,16 @@ let mDivStyle = {
 class PowerplayLotto extends Component {
   constructor(props) {
     super(props);
-
+    window.scrollTo(0, 0);
     this.state = {
       error: null,
       isLoaded: false,
       content: ""
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <div>
@@ -35,7 +37,8 @@ class PowerplayLotto extends Component {
             <div style={mCircleStyles}>
               <div className="lotto-header">
                 <div className="lotto-heading-main">
-                  <span>PowerPlay Lotto</span>
+                  POWERPLAY LOTTO
+                  
                 </div>
                 <div className="lotto-heading-sub">
                   <span>
@@ -49,6 +52,7 @@ class PowerplayLotto extends Component {
                 </div>
               </div>
             </div>
+          
 
             <div className="lotto-section-2-heading">
               <span>
@@ -66,7 +70,7 @@ class PowerplayLotto extends Component {
               </div>
               <div className="lotto-even-details">
                 <div className="lotto-even-details-header">
-                  <span>747</span>
+                 747
                 </div>
                 <div className="lotto-even-details-sub-heading">
                   <span>
@@ -108,7 +112,7 @@ class PowerplayLotto extends Component {
                     </div>
                   </div>
                   <div>
-                    <button>Pick your Numbers now</button>
+                    <button onClick={() =>  this.props.history.push('/747')}>Pick your Numbers now</button>
                   </div>
                 </div>
               </div>
@@ -122,7 +126,7 @@ class PowerplayLotto extends Component {
               </div>
               <div className="lotto-even-details">
                 <div className="lotto-even-details-header">
-                  <span>ELITE 8</span>
+                 ELITE 8
                 </div>
                 <div className="lotto-even-details-sub-heading">
                   <span>
@@ -163,7 +167,7 @@ class PowerplayLotto extends Component {
                     </div>
                   </div>
                   <div>
-                    <button>Pick your Numbers now</button>
+                    <button onClick={() =>  this.props.history.push('/elite8')}>Pick your Numbers now</button>
                   </div>
                 </div>
               </div>
@@ -177,7 +181,7 @@ class PowerplayLotto extends Component {
               </div>
               <div className="lotto-even-details">
                 <div className="lotto-even-details-header">
-                  <span>Sweet 16</span>
+                  Sweet 16
                 </div>
                 <div className="lotto-even-details-sub-heading">
                   <span>
@@ -218,7 +222,7 @@ class PowerplayLotto extends Component {
                     </div>
                   </div>
                   <div>
-                    <button>Pick your Numbers now</button>
+                    <button onClick={() =>  this.props.history.push('/sweet16')}>Pick your Numbers now</button>
                   </div>
                 </div>
               </div>
@@ -232,7 +236,7 @@ class PowerplayLotto extends Component {
               </div>
               <div className="lotto-even-details">
                 <div className="lotto-even-details-header">
-                  <span>Gridlock</span>
+                  Gridlock
                 </div>
                 <div className="lotto-even-details-sub-heading">
                   <span>

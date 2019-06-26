@@ -13,8 +13,20 @@ class Elite8 extends Component {
       isLoaded: false,
       content: ""
     };
+  
   }
-  componentDidMount() {}
+  componentDidMount() {
+    window.scroll(0, 0);
+    var that = this;
+    var buttons = document.getElementsByClassName("elite8_selection_button");
+    for (var x = 0; x < buttons.length; x++) {
+      buttons[x].addEventListener("click",function(e){
+        console.log(e);
+       var mTarget = e.target;
+       mTarget.classList.toggle("btn-active");
+      });
+    }
+  }
   render() {
     return (
       <div>
@@ -34,13 +46,12 @@ class Elite8 extends Component {
                     <div class="main_bar_inner">
                       <div>
                         <p>Jackpot</p>
-                        <p className = "main_bar_inner_bigger">$100,000</p>
+                        <p className="main_bar_inner_bigger">$100,000</p>
                       </div>
                       <div className="page747_main_left_lower_text">
                         Draw date <s>June 5th, 2019 , 8:00 pm EST</s>
                       </div>
                     </div>
-                     
                   </div>
                   <div className="col-md-6">
                     <div class="page747_main_draw_box">
@@ -156,7 +167,7 @@ class Elite8 extends Component {
                           <div className="power_content_box_left_image_wrapper">
                             <img
                               className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_2.png")}
+                              src={require("./../../assets/images/747/747_3.png")}
                             />
                           </div>
                           <div className="power_content_box_left_text">
@@ -165,7 +176,7 @@ class Elite8 extends Component {
                         </div>
                         <div className="col-md-6 power_content_box_right">
                           <span>
-                            Use Power Match to change your pick to match the
+                            Use force match to change your pick to match the
                             drawn #
                           </span>
                         </div>
@@ -175,17 +186,16 @@ class Elite8 extends Component {
                           <div className="power_content_box_left_image_wrapper">
                             <img
                               className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_3.png")}
+                              src={require("./../../assets/images/lotto/shuffle.png")}
                             />
                           </div>
                           <div className="power_content_box_left_text">
-                            Increase/Decrease
+                            Change
                           </div>
                         </div>
                         <div className="col-md-6 power_content_box_right">
                           <span>
-                            You can increase or decrease your pick live during
-                            the draw
+                            Use change to replace one # with a random new Number
                           </span>
                         </div>
                       </div>
@@ -213,14 +223,12 @@ class Elite8 extends Component {
                 </div>
               </div>
               <div className="col-md-12">
-              <div className="page747_number_header">
+                <div className="page747_number_header">
                   <span>Pick Your Numbers!</span>
                 </div>
 
                 <div className="col-md-12">
-                  <div className = "page747_number_rules">
-                    CONTEST RULES
-                  </div>
+                  <div className="page747_number_rules">CONTEST RULES</div>
                   <div class="page747_number_box">
                     <div>
                       <p>Till Next Draw</p>

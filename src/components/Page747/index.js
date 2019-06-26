@@ -14,7 +14,17 @@ class Page747 extends Component {
       content: ""
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    window.scroll(0,0);
+    var buttons = document.getElementsByClassName("page747_selection_button");
+    for (var x = 0; x < buttons.length; x++) {
+      buttons[x].addEventListener("click",function(e){
+        console.log(e);
+       var mTarget = e.target;
+       mTarget.classList.toggle("btn-active");
+      });
+    }
+  }
   render() {
     return (
       <div>
@@ -133,7 +143,7 @@ class Page747 extends Component {
                   <div className="page747_power_details">
                     <div className="page747_power_heading">Powerplays</div>
                     <div className="page747_power_content">
-                      <div className="col-md-6 power_content_box">
+                    <div className="col-md-6 power_content_box">
                         <div className="col-md-4 power_content_box_left">
                           <div className="power_content_box_left_image_wrapper">
                             <img
@@ -149,25 +159,6 @@ class Page747 extends Component {
                           <span>
                             You can increase or decrease your pick live during
                             the draw
-                          </span>
-                        </div>
-                      </div>
-                      <div className="col-md-6 power_content_box">
-                        <div className="col-md-4 power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_2.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Power Match
-                          </div>
-                        </div>
-                        <div className="col-md-6 power_content_box_right">
-                          <span>
-                            Use Power Match to change your pick to match the
-                            drawn #
                           </span>
                         </div>
                       </div>
@@ -180,13 +171,31 @@ class Page747 extends Component {
                             />
                           </div>
                           <div className="power_content_box_left_text">
-                            Increase/Decrease
+                            Power Match
                           </div>
                         </div>
                         <div className="col-md-6 power_content_box_right">
                           <span>
-                            You can increase or decrease your pick live during
-                            the draw
+                            Use force match to change your pick to match the
+                            drawn #
+                          </span>
+                        </div>
+                      </div>
+                      <div className="col-md-6 power_content_box">
+                        <div className="col-md-4 power_content_box_left">
+                          <div className="power_content_box_left_image_wrapper">
+                            <img
+                              className="img-responsive power_content_box_left_image"
+                              src={require("./../../assets/images/lotto/shuffle.png")}
+                            />
+                          </div>
+                          <div className="power_content_box_left_text">
+                            Change
+                          </div>
+                        </div>
+                        <div className="col-md-6 power_content_box_right">
+                          <span>
+                          Use change to replace one # with a random new Number
                           </span>
                         </div>
                       </div>

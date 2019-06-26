@@ -1,3 +1,9 @@
+@font-face {
+	font-family: 'jibril';
+	src: url(../../assets/fonts/Jibril.ttf)  format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 .lotto-section-2 {
   padding: 50px 50px 100px 50px;
   background: #fff;
@@ -15,7 +21,7 @@
 .lotto-header > div {
   margin: 0 auto;
 }
-.lotto-heading-main {
+.lotto-heading-main, lotto-heading-main > span {
   width: 420px;
   height: 152px;
   font-family: jibril;
@@ -23,6 +29,7 @@
   line-height: 1.23;
   text-align: center;
   color: #ffffff;
+
   margin: 140px auto 0px auto !important;
 }
 .lotto-heading-sub {
@@ -32,7 +39,7 @@
   font-size: 32px;
   text-align: center;
   color: #ffffff;
-  margin: 20px auto !important;
+  margin: auto !important;
 }
 .lotto-header-button-wrapper {
   margin: 30px auto !important;

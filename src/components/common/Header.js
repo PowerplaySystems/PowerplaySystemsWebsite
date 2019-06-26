@@ -64,7 +64,7 @@ class Header extends Component {
                                                     <ul className="drop-down"> 
                                                         <ul className="c-p"><a onClick={() => this.props.history.push('/select-games')}>Explore Games</a></ul>
                                                         <ul className="c-p"><a onClick={() => this.props.history.push('/game-central')}>Game Center</a></ul>
-                                                        <ul className="c-p"><a onClick={() => this.props.history.push('/powerplay-store')}>Power Up</a></ul>
+                                                        {/* <ul className="c-p"><a onClick={() => this.props.history.push('/powerplay-store')}>Power Up</a></ul> */}
                                                     </ul>
                                                 </li>
                                                
@@ -72,7 +72,7 @@ class Header extends Component {
                                                 <li className="c-p"><a>Platforms</a>
                                                     <ul className="drop-down"> 
                                                         <ul className="c-p"><a onClick={() => this.props.history.push('/powerplay-lotto')}>Powerplay Lotto</a></ul>
-                                                        <ul className="c-p"><a onClick={() =>  this.props.history.push('/')}>Powerplay Live Sports</a></ul>
+                                                        <ul className="c-p"><a onClick={() =>  this.props.history.push('/select-games')}>Powerplay Live Sports</a></ul>
                                                     </ul>
                                                 </li>
                                                 
@@ -125,7 +125,7 @@ class Header extends Component {
                                                <li className="c-p"><a>Platforms</a>
                                                 <ul className="drop-down"> 
                                                     <li className="c-p"><a onClick={() =>  this.props.history.push('/powerplay-lotto')}>Powerplay Lotto</a></li>
-                                                    <li className="c-p"><a onClick={() =>  this.props.history.push('/')}>Powerplay Live Sports</a></li>
+                                                    <li className="c-p"><a onClick={() =>  this.props.history.push('/select-games')}>Powerplay Live Sports</a></li>
                                                 </ul>
                                                 </li>
                                                 <li className="c-p"><a onClick={() => this.props.history.push('/how-to-play')} >How To Play</a></li>

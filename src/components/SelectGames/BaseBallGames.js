@@ -239,6 +239,24 @@ class BaseBallGames extends Component {
       max_teams_allowed: max
     });
   }
+  calculateMaxPrize(pid, ptype, max) {
+    var text = "0.00";
+    if (ptype == "items") {
+      text = "View";
+    } else {
+      this.state.prizes.forEach(prize => {
+        if (pid == prize.id) {
+          console.log(prize.no_of_team);
+          console.log(max);
+          if (prize.no_of_team == max) {
+            text = ptype == "cash" ? "$" + prize.prize : prize.prize + " Pts.";
+          }
+        }
+      });
+    }
+
+    return text;
+  }
   render() {
     const { error, isLoaded, allGames, associations } = this.state;
     if (error) {
@@ -278,48 +296,7 @@ class BaseBallGames extends Component {
               </div>
             </div>
           </div>
-          <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
-            <Modal.Header closeButton>
-              <Modal.Title>Prizes</Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="grid-body">
-              {
-                <table>
-                  <thead>
-                    <tr>
-                      <th scope="col"> # of Teams </th>
-                      <th scope="col">Prize</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.state.prizes.map((prize, key) => {
-                      if (this.state.prize_id == prize.id) {
-                        if (
-                          prize.no_of_team >= this.state.min_teams_allowed &&
-                          prize.no_of_team <= this.state.max_teams_allowed
-                        ) {
-                          return (
-                            <tr className="prize-row" key={key}>
-                              <td>
-                                <p>{prize.no_of_team}</p>
-                              </td>
-                              <td>
-                                <p>
-                                  {this.state.prize_type == "cash"
-                                    ? "$" + prize.prize
-                                    : prize.prize + " Pts."}
-                                </p>
-                              </td>
-                            </tr>
-                          );
-                        }
-                      }
-                    })}
-                  </tbody>
-                </table>
-              }
-            </Modal.Body>
-          </Modal>
+
 
           <div className="tab-content" id="games-table">
             {this.state.associations.map((data, key) => (
@@ -383,9 +360,11 @@ class BaseBallGames extends Component {
                                                   }
                                                   className="entries"
                                                 >
-                                                  {data1.prize_type == "cash"
-                                                    ? "$" + data1.prize
-                                                    : data1.prize + " Pts."}
+                                                  {this.calculateMaxPrize(
+                                                    data1.prize_id,
+                                                    data1.prize_type,
+                                                    data1.max_teams_allowed
+                                                  )}
                                                 </button>
                                               </p>
                                             </td>

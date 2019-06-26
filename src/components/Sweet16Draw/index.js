@@ -208,7 +208,7 @@ class Sweet16Draw extends Component {
                           </div>
                           <div className="item_right">
                             <p>
-                              Power Match
+                              force match
                               <br />
                               <span>2</span> Left
                             </p>

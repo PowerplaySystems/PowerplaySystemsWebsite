@@ -22,6 +22,7 @@ class BasketballGames extends Component {
         isLoaded: false,
         associations: [],
         allGames: [],
+        enteredGames: [],
         howTo: [],
         rules: [],
         prizes: [],
@@ -29,7 +30,7 @@ class BasketballGames extends Component {
         prize_id: 0,
         prize_type: "",
         modalIsOpen: false,
-        enteredGames: [],
+       
         entriesCounter: 0,
         min_teams_allowed: 0,
         max_teams_allowed: 0
@@ -230,7 +231,6 @@ class BasketballGames extends Component {
     handleClosePrize() {
       this.setState({ showPrize: false });
     }
-  
     handleShowPrize(pid, ptype, min, max) {
       this.setState({
         showPrize: true,
@@ -239,6 +239,24 @@ class BasketballGames extends Component {
         min_teams_allowed: min,
         max_teams_allowed: max
       });
+    }
+    calculateMaxPrize(pid, ptype, max) {
+      var text = "0.00";
+      if (ptype == "items") {
+        text = "View";
+      } else {
+        this.state.prizes.forEach(prize => {
+          if (pid == prize.id) {
+            console.log(prize.no_of_team);
+            console.log(max);
+            if (prize.no_of_team == max) {
+              text = ptype == "cash" ? "$" + prize.prize : prize.prize + " Pts.";
+            }
+          }
+        });
+      }
+  
+      return text;
     }
     render() {
       const { error, isLoaded, allGames, associations } = this.state;
