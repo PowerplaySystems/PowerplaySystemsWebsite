@@ -840,7 +840,7 @@ class CTA extends Component {
                     this.state.gameData.association_id +
                     "&type=header"
                   }
-                  className="img-responsive livescore-header-img"
+                  className="img-responsive"
                 />
                 <h1>
                   <span> {this.state.gameData.name} </span>

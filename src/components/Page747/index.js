@@ -3,7 +3,10 @@ import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import "./index.css";
-
+let ballsTotal = 47;
+let allowedToSelect = 7;
+let ballElements = [];
+let selectedNumbers = [];
 class Page747 extends Component {
   constructor(props) {
     super(props);
@@ -13,16 +16,69 @@ class Page747 extends Component {
       isLoaded: false,
       content: ""
     };
+    this.setBalls();
+    this.canSelectMore = this.canSelectMore.bind(this);
   }
   componentDidMount() {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     var buttons = document.getElementsByClassName("page747_selection_button");
+    var that = this;
     for (var x = 0; x < buttons.length; x++) {
-      buttons[x].addEventListener("click",function(e){
-        console.log(e);
-       var mTarget = e.target;
-       mTarget.classList.toggle("btn-active");
+      buttons[x].addEventListener("click", function(e) {
+        var mTarget = e.target;
+
+        var number = mTarget.textContent;
+        var index = selectedNumbers.indexOf(number);
+        if (index > -1) {
+          var filtered = selectedNumbers.filter(function(value, index, arr) {
+            return value != number;
+          });
+          selectedNumbers = [...filtered]
+          mTarget.classList.toggle("btn-active");
+        } else {
+          if (that.canSelectMore()) {
+            selectedNumbers.push(number);
+            mTarget.classList.toggle("btn-active");
+          } else {
+            alert("Cannot select More than " + allowedToSelect);
+          }
+        }
       });
+    
+    }
+    document.getElementById("submit_selection_ball").addEventListener("click", function(e) {
+      if (that.canSubmit()) {
+        that.submitUserSelections();
+      } else {
+        alert("Can not submit less than " + allowedToSelect)
+        return;
+      }
+    });
+  }
+  canSelectMore() {
+    if (selectedNumbers.length >= allowedToSelect) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  canSubmit() {
+    if ((selectedNumbers.length == allowedToSelect)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  submitUserSelections() {
+    alert("Submited");
+  }
+  setBalls() {
+    for (var i = 1; i <= ballsTotal; i++) {
+      ballElements.push(
+        <div className="page747_selection_button" id={"ball-" + i}>
+          {i}
+        </div>
+      );
     }
   }
   render() {
@@ -44,13 +100,12 @@ class Page747 extends Component {
                     <div class="main_bar_inner">
                       <div>
                         <p>Jackpot</p>
-                        <p className = "main_bar_inner_bigger">$100,000</p>
+                        <p className="main_bar_inner_bigger">$100,000</p>
                       </div>
                       <div className="page747_main_left_lower_text">
                         Draw date <s>June 5th, 2019 , 8:00 pm EST</s>
                       </div>
                     </div>
-                     
                   </div>
                   <div className="col-md-6">
                     <div class="page747_main_draw_box">
@@ -143,7 +198,7 @@ class Page747 extends Component {
                   <div className="page747_power_details">
                     <div className="page747_power_heading">Powerplays</div>
                     <div className="page747_power_content">
-                    <div className="col-md-6 power_content_box">
+                      <div className="col-md-6 power_content_box">
                         <div className="col-md-4 power_content_box_left">
                           <div className="power_content_box_left_image_wrapper">
                             <img
@@ -195,7 +250,7 @@ class Page747 extends Component {
                         </div>
                         <div className="col-md-6 power_content_box_right">
                           <span>
-                          Use change to replace one # with a random new Number
+                            Use change to replace one # with a random new Number
                           </span>
                         </div>
                       </div>
@@ -228,9 +283,7 @@ class Page747 extends Component {
                 </div>
 
                 <div className="col-md-12">
-                  <div className = "page747_number_rules">
-                    CONTEST RULES
-                  </div>
+                  <div className="page747_number_rules">CONTEST RULES</div>
                   <div class="page747_number_box">
                     <div>
                       <p>Till Next Draw</p>
@@ -252,59 +305,15 @@ class Page747 extends Component {
                   </div>
                 </div>
                 <div className="col-md-12">
-                  <div className="page747_selection_box">
-                    <div className="page747_selection_button">1</div>
-                    <div className="page747_selection_button">2</div>
-                    <div className="page747_selection_button">3</div>
-                    <div className="page747_selection_button">4</div>
-                    <div className="page747_selection_button">15</div>
-                    <div className="page747_selection_button">6</div>
-                    <div className="page747_selection_button">1</div>
-                    <div className="page747_selection_button">2</div>
-                    <div className="page747_selection_button">3</div>
-                    <div className="page747_selection_button">4</div>
-                    <div className="page747_selection_button">5</div>
-                    <div className="page747_selection_button">6</div>
-                    <div className="page747_selection_button">1</div>
-                    <div className="page747_selection_button">2</div>
-                    <div className="page747_selection_button">3</div>
-                    <div className="page747_selection_button">4</div>
-                    <div className="page747_selection_button">5</div>
-                    <div className="page747_selection_button">6</div>
-                    <div className="page747_selection_button">1</div>
-                    <div className="page747_selection_button">2</div>
-                    <div className="page747_selection_button">3</div>
-                    <div className="page747_selection_button">4</div>
-                    <div className="page747_selection_button">5</div>
-                    <div className="page747_selection_button">6</div>
-                    <div className="page747_selection_button">1</div>
-                    <div className="page747_selection_button">2</div>
-                    <div className="page747_selection_button">3</div>
-                    <div className="page747_selection_button">4</div>
-                    <div className="page747_selection_button">5</div>
-                    <div className="page747_selection_button">6</div>
-                    <div className="page747_selection_button">1</div>
-                    <div className="page747_selection_button">2</div>
-                    <div className="page747_selection_button">3</div>
-                    <div className="page747_selection_button">4</div>
-                    <div className="page747_selection_button">5</div>
-                    <div className="page747_selection_button">6</div>
-                    <div className="page747_selection_button">1</div>
-                    <div className="page747_selection_button">2</div>
-                    <div className="page747_selection_button">3</div>
-                    <div className="page747_selection_button">4</div>
-                    <div className="page747_selection_button">5</div>
-                    <div className="page747_selection_button">6</div>
-                    <div className="page747_selection_button">1</div>
-                    <div className="page747_selection_button">2</div>
-                    <div className="page747_selection_button">3</div>
-                    <div className="page747_selection_button">4</div>
-                    <div className="page747_selection_button">5</div>
-                    <div className="page747_selection_button">6</div>
-                  </div>
+                  <div className="page747_selection_box">{ballElements}</div>
                 </div>
                 <div className="col-md-12">
-                  <div className="page747_selection_box_submit">SUBMIT!</div>
+                  <div
+                    id="submit_selection_ball"
+                    className="page747_selection_box_submit"
+                  >
+                    SUBMIT!
+                  </div>
                 </div>
               </div>
             </div>

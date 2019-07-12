@@ -143,7 +143,7 @@ class Home extends Component {
                   <button className="first_row_button">Partner With Us</button>
                 </center>
                 <div className="first_row_extra_info">
-                *International Patent Pending
+                *International Patents Pending
                 </div>
               </div>
               <div class="home_first_row" style={secondRows}>

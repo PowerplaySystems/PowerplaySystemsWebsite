@@ -8,10 +8,10 @@
   font-family: "Poppins", sans-serif;
 }
 @font-face {
-	font-family: 'jibril';
-	src: url(./assets/fonts/Jibril.ttf)  format('truetype');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "jibril";
+  src: url(./assets/fonts/Jibril.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
   font-family: "nike_combat_stencilregular";
@@ -62,8 +62,8 @@ body {
 }
 @media (max-width: 1200px) {
   .container {
-	width: 100% !important;
-	padding: 0px !important;
+    width: 100% !important;
+    padding: 0px !important;
   }
 }
 a:hover {
@@ -89,9 +89,8 @@ p {
 header {
   position: relative;
   clear: both;
-  padding: 30px 0px;
-  background: url(./assets/images/header-bg.png) no-repeat;
-  background-size: cover;
+  height: 85px;
+  background-color: #1e1e1e;
 }
 .logo {
   position: relative;
@@ -101,7 +100,6 @@ header {
 .navbar-nav {
   text-align: center;
   float: right;
-  margin-top: 15px;
 }
 .navbar {
   margin-bottom: 0px !important;
@@ -123,10 +121,13 @@ header {
 }
 .nav > li > a {
   color: #fff;
-  font-size: 15px;
   padding: 0px;
-  font-weight: 600;
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
   display: inline-block;
+  margin: 0px 10px;
 }
 .nav > li > .drop-down {
   position: absolute;
@@ -1203,15 +1204,13 @@ footer {
   text-align: center;
   display: table;
   width: 100%;
-  
- 
 }
 footer p {
-	font-family: Poppins;
-	font-size: 16px;
-	letter-spacing: 2px;
-	text-align: center;
-	color: #ffffff;
+  font-family: Poppins;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #ffffff;
 }
 /**### End Footer US  ### **/
 /****Live Score***/
@@ -2694,10 +2693,8 @@ body,
   font-weight: bold;
   line-height: 1.5;
   color: #fb6e00;
-  margin-left:60px;
-
+  margin-left: 60px;
 }
-
 
 .drop-tab {
   cursor: pointer;
@@ -5220,7 +5217,7 @@ li.power-sel a {
 .c-p {
   cursor: pointer;
 }
-.modal-title{
+.modal-title {
   font-family: jibril;
-  color:  #333333 !important;
+  color: #333333 !important;
 }

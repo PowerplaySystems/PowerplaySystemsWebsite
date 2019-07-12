@@ -3,10 +3,10 @@ font-face {
   src: url("https://fonts.googleapis.com/css?family=Poppins");
 }
 @font-face {
-	font-family: 'jibril';
-	src: url(../../assets/fonts/Jibril.ttf)  format('truetype');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "jibril";
+  src: url(../../assets/fonts/Jibril.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 .select_sport_heading {
   margin: 200px 0px 20px 0px;
@@ -210,7 +210,7 @@ font-face {
   color: #ffffff;
 }
 .how_to_item_sub {
-  width: 325px;
+  width: 375px;
   height: 56px;
   font-family: Poppins;
   font-size: 20px;
@@ -280,7 +280,7 @@ font-face {
   border: none;
   margin-left: 10px;
 }
-.modal-prize-table{
+.modal-prize-table {
   width: 100%;
   border-radius: 6px;
   background-color: #ffffff;

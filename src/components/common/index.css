@@ -3,6 +3,72 @@
   font-weight: 600;
   color: #fff;
 }
+.logo_img {
+  margin: 0px 50px;
+  width: 140.7px;
+}
+header > div {
+  line-height: 85px;
+}
+.header_li_button {
+  width: 193px;
+  height: 52px;
+  border-radius: 34.5px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  margin-left: 60px !important;
+
+  line-height: 54px !important;
+}
+.header_user_img {
+  width: 41px;
+  height: 41px;
+  object-fit: contain;
+}
+.header_dropdown:hover{ 
+  background-color: #fb6e00;
+  color: #ffffff !important;
+}
+.header_dropdown_list{
+  line-height: 50px;
+
+  padding: 0px !important;
+  width:171.5px !important; 
+}
+.header_dropdown_menu_item {
+  background-color: #fb6e00;
+  color: #ffffff;
+  text-align: center;
+}
+.header_dropdown_menu_item :hover{
+  background-color: #c05400;
+  color: #ffffff !important;
+}
+.header_li_button_start{
+  width: 170px;
+  height: 52px;
+  border-radius: 34.5px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  margin-left: -20px !important;
+  line-height: 54px !important;
+}
+.header_li_signin{
+  width: 67px;
+  height: 28px;
+  font-family: Poppins;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #fb6e00 !important;
+}
 .inventory-li {
   text-align: left;
   position: relative;
@@ -30,8 +96,8 @@
   color: #ff7c00;
   background: #edefef;
 }
-.box{
-  margin-top:46px;
+.box {
+  margin-top: 46px;
 }
 .box a {
   display: block;
@@ -41,10 +107,9 @@
   color: #ffffff;
   line-height: 30px;
 }
-.box h2{
+.box h2 {
   line-height: 30px;
   font-family: Poppins;
   font-size: 14px;
   color: #ffffff;
-
 }

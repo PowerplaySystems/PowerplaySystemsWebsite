@@ -3,7 +3,10 @@ import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import "./index.css";
-
+let ballsTotal = 48;
+let allowedToSelect = 8;
+let ballElements = [];
+let selectedNumbers = [];
 class Elite8 extends Component {
   constructor(props) {
     super(props);
@@ -13,18 +16,70 @@ class Elite8 extends Component {
       isLoaded: false,
       content: ""
     };
-  
+    this.setBalls();
+    this.canSelectMore = this.canSelectMore.bind(this);
   }
   componentDidMount() {
     window.scroll(0, 0);
-    var that = this;
     var buttons = document.getElementsByClassName("elite8_selection_button");
+    var that = this;
     for (var x = 0; x < buttons.length; x++) {
-      buttons[x].addEventListener("click",function(e){
-        console.log(e);
-       var mTarget = e.target;
-       mTarget.classList.toggle("btn-active");
+      buttons[x].addEventListener("click", function(e) {
+        var mTarget = e.target;
+
+        var number = mTarget.textContent;
+        var index = selectedNumbers.indexOf(number);
+        if (index > -1) {
+          var filtered = selectedNumbers.filter(function(value, index, arr) {
+            return value != number;
+          });
+          selectedNumbers = [...filtered];
+          mTarget.classList.toggle("btn-active");
+        } else {
+          if (that.canSelectMore()) {
+            selectedNumbers.push(number);
+            mTarget.classList.toggle("btn-active");
+          } else {
+            alert("Cannot select More than " + allowedToSelect);
+          }
+        }
       });
+    }
+    document
+      .getElementById("submit_selection_ball")
+      .addEventListener("click", function(e) {
+        if (that.canSubmit()) {
+          that.submitUserSelections();
+        } else {
+          alert("Can not submit less than " + allowedToSelect);
+          return;
+        }
+      });
+  }
+  canSelectMore() {
+    if (selectedNumbers.length >= allowedToSelect) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  canSubmit() {
+    if (selectedNumbers.length == allowedToSelect) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  submitUserSelections() {
+    alert("Submited");
+  }
+  setBalls() {
+    for (var i = 1; i <= ballsTotal; i++) {
+      ballElements.push(
+        <div className="elite8_selection_button" id={"ball-" + i}>
+          {i}
+        </div>
+      );
     }
   }
   render() {
@@ -250,59 +305,15 @@ class Elite8 extends Component {
                   </div>
                 </div>
                 <div className="col-md-12">
-                  <div className="elite8_selection_box">
-                    <div className="elite8_selection_button">1</div>
-                    <div className="elite8_selection_button">2</div>
-                    <div className="elite8_selection_button">3</div>
-                    <div className="elite8_selection_button">4</div>
-                    <div className="elite8_selection_button">15</div>
-                    <div className="elite8_selection_button">6</div>
-                    <div className="elite8_selection_button">1</div>
-                    <div className="elite8_selection_button">2</div>
-                    <div className="elite8_selection_button">3</div>
-                    <div className="elite8_selection_button">4</div>
-                    <div className="elite8_selection_button">5</div>
-                    <div className="elite8_selection_button">6</div>
-                    <div className="elite8_selection_button">1</div>
-                    <div className="elite8_selection_button">2</div>
-                    <div className="elite8_selection_button">3</div>
-                    <div className="elite8_selection_button">4</div>
-                    <div className="elite8_selection_button">5</div>
-                    <div className="elite8_selection_button">6</div>
-                    <div className="elite8_selection_button">1</div>
-                    <div className="elite8_selection_button">2</div>
-                    <div className="elite8_selection_button">3</div>
-                    <div className="elite8_selection_button">4</div>
-                    <div className="elite8_selection_button">5</div>
-                    <div className="elite8_selection_button">6</div>
-                    <div className="elite8_selection_button">1</div>
-                    <div className="elite8_selection_button">2</div>
-                    <div className="elite8_selection_button">3</div>
-                    <div className="elite8_selection_button">4</div>
-                    <div className="elite8_selection_button">5</div>
-                    <div className="elite8_selection_button">6</div>
-                    <div className="elite8_selection_button">1</div>
-                    <div className="elite8_selection_button">2</div>
-                    <div className="elite8_selection_button">3</div>
-                    <div className="elite8_selection_button">4</div>
-                    <div className="elite8_selection_button">5</div>
-                    <div className="elite8_selection_button">6</div>
-                    <div className="elite8_selection_button">1</div>
-                    <div className="elite8_selection_button">2</div>
-                    <div className="elite8_selection_button">3</div>
-                    <div className="elite8_selection_button">4</div>
-                    <div className="elite8_selection_button">5</div>
-                    <div className="elite8_selection_button">6</div>
-                    <div className="elite8_selection_button">1</div>
-                    <div className="elite8_selection_button">2</div>
-                    <div className="elite8_selection_button">3</div>
-                    <div className="elite8_selection_button">4</div>
-                    <div className="elite8_selection_button">5</div>
-                    <div className="elite8_selection_button">6</div>
-                  </div>
+                  <div className="elite8_selection_box">{ballElements}</div>
                 </div>
                 <div className="col-md-12">
-                  <div className="elite8_selection_box_submit">SUBMIT!</div>
+                  <div
+                    className="elite8_selection_box_submit"
+                    id="submit_selection_ball"
+                  >
+                    SUBMIT!
+                  </div>
                 </div>
               </div>
             </div>

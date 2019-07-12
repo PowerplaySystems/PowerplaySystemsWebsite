@@ -206,12 +206,14 @@
   float: left;
 }
 .game_center_item_details_header {
-  width: 60px;
+  text-transform: capitalize;
+  width: 90px;
   height: 23px;
   font-family: Poppins;
   font-size: 16px;
   font-weight: bold;
   color: #fb6e00;
+
 }
 .game_center_item_details_sub {
   width: 100px;
@@ -224,35 +226,25 @@
   width: 226px;
   height: 47px;
   border-radius: 23.5px;
-  box-shadow: 0 3px 27px -2px #fb6e00;
-  background-color: #fb6e00;
-  font-family: Poppins;
+  box-shadow: 0 3px 27px -2px #8c8c8c;
+  background-color: #ffffff;
   font-size: 16px;
   text-align: center;
-  color: #ffffff;
+  color: #090909;
   border: none;
   float: left;
   margin: 22px 0px 0px 300px;
 }
-.game_center_more_games_button {
-  width: 578px;
-  height: 69px;
-  border-radius: 34.5px;
-  box-shadow: 0 3px 27px -2px #fb6e00;
-  background-color: #fb6e00;
-  font-family: Poppins;
-  font-size: 30px;
-  text-align: center;
-  color: #ffffff;
-  border: none;
-  margin: 50px;
-}
+
 .game_center_action_menu {
   width: 244px;
   height: 154px;
   left: -96px;
   box-shadow: 0 2px 9px 2px rgba(0, 86, 216, 0.1);
   background-color: #ffffff;
+}
+.menu_up{
+  top: -150px;
 }
 .action_menu_item {
   padding: 10px 0px 0px 20px;
@@ -397,4 +389,54 @@
   text-align: center;
   color: #fb6e00;
   margin:15px;
+}
+.button_pick_teams{
+  width: 162.7px;
+  height: 37px;
+  border-radius: 19.5px;
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.28);
+  background-color: #000000;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+.game_center_enter_more{
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
+  float: left;
+  margin:0px 50px;
+}
+.explore_text{
+  width: 242px;
+  height: 49px;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
+  float: left;
+  margin-left: 10px !important;
+  text-align: start;
+}
+.game_center_enter_more img{
+  float: left;
+  width: 61px;
+  height: 46px;
+  object-fit: contain;
+}
+.game_center_enter_more > div{
+  margin:16px;
+  height: 46px;
+  width: 313px;
+}
+.game_center_more_games_button {
+  width: 310px;
+  height: 51px;
+  border-radius: 34.5px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  border: none;
+  display: block;
+  margin-top: 16px;
 }

@@ -37,7 +37,7 @@ var popupHeader = "Sorry!";
 
 var scrollKey = -1;
 var hasGamesOnLeft = true;
-var hasSubscription = false;
+var canPlay = false;
 class LiveScore extends Component {
   constructor(props) {
     super(props);
@@ -110,7 +110,8 @@ class LiveScore extends Component {
             meta: result.meta,
             cc: counter
           });
-          hasSubscription = this.state.meta.hasSubscription;
+          var club = result.meta.club == null ? "basic" :  result.meta.club;
+          canPlay = this.isEligible(club);
           this.sortMatchesOrder();
         },
         error => {
@@ -179,7 +180,25 @@ class LiveScore extends Component {
       hasGamesOnLeft = true;
     }
   }
-
+  isEligible(player_club) {
+    var requiredClub = activeGame.eligibility.toUpperCase();
+    var playerClub = player_club.toUpperCase();
+    if (requiredClub == "ALL" || requiredClub == "BASIC") {
+      return true;
+    } else if (requiredClub == "ELITE") {
+      if (playerClub == "ELITE" || playerClub == "SUPER") {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (requiredClub == "SUPER ELITE") {
+      if (playerClub == "SUPER ELITE") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
   onUpdateTeamSelectionClicked(team, match, action, matchStatus, tScore) {
     var addOrDrop = "add";
     if (matchStatus == "LIVE" || matchStatus == "UNPLAYED") {
@@ -192,9 +211,7 @@ class LiveScore extends Component {
 
       if (matchStatus == "LIVE") {
         //check if powerplay available
-        var powerplay = this.state.powerplays.find(
-          x => x.powerplay_id == 24
-        );
+        var powerplay = this.state.powerplays.find(x => x.powerplay_id == 24);
         if (powerplay) {
           if (powerplay.amount_available <= 0) {
             popupText = "Powerplay has been fully used!";
@@ -202,7 +219,7 @@ class LiveScore extends Component {
             this.handleShow();
             return;
           }
-        }else{
+        } else {
           popupText = "Powerplay has been fully used!";
           popupHeader = "Sorry!";
           this.handleShow();
@@ -217,7 +234,7 @@ class LiveScore extends Component {
             this.handleShowTeams();
             this.forceUpdate();
             currentTeams.push(id);
-            console.log(currentTeams)
+            console.log(currentTeams);
           } else {
             addOrDrop = currentAction = "minus";
             currentTeams = currentTeams.filter(item => item != id);
@@ -240,28 +257,26 @@ class LiveScore extends Component {
         }
       } else {
         if (this.state.showTeamModal == true) {
-          console.log(currentTeams)
+          console.log(currentTeams);
           if (currentAction == "add") {
             currentTeams = currentTeams.filter(item => item != id);
-            
           } else {
             currentTeams.push(id);
-            
           }
           teams = currentTeams.slice(0);
-          console.log(currentTeams)
+          console.log(currentTeams);
           this.handleCloseTeams();
           scrollKey = match;
           newTeams = teams.slice(0);
           this.onPowerplayClicked(team, match, tScore, "swap");
           return true;
-        }else{
+        } else {
           mPicks.forEach(element => {
             teams.push(element);
           });
           //action add team
           //id = 5
-         
+
           if (!action) {
             addOrDrop = "add";
             if (!(teams.length >= max)) {
@@ -281,7 +296,7 @@ class LiveScore extends Component {
             SelectedTeams = teams.length;
             addOrDrop = "minus";
             if (isTeamNumberOkay) {
-              if ( SelectedTeams<= min) {
+              if (SelectedTeams <= min) {
                 popupText = "Not Allowed";
                 popupHeader = "Sorry!";
                 this.handleShow();
@@ -301,11 +316,10 @@ class LiveScore extends Component {
             this.handleShow();
           }
         }
-  
-        }
-        console.log(currentTeams);
-        console.log(teams);
-       
+      }
+      console.log(currentTeams);
+      console.log(teams);
+
       if (teams.length >= min && teams.length <= max) {
         scrollKey = match;
         const cookies = new Cookies();
@@ -360,7 +374,7 @@ class LiveScore extends Component {
       this.handleShow();
       return;
     }
-    if (!hasSubscription) {
+    if (!canPlay) {
       popupText = (
         <p style={pStyle}>
           You Need A live Score Subscription To Access Powerplays On this Page.
@@ -1580,7 +1594,7 @@ class LiveScore extends Component {
                       }
                     })}
                   </ul>
-                  {this.state.meta.hasSubscription ? (
+                  {this.state.meta.canPlay ? (
                     ""
                   ) : (
                     <button
@@ -1698,7 +1712,7 @@ class LiveScore extends Component {
           <Modal.Body>
             <ListGroup>
               {this.state.allMatches.map((item, key) => {
-                if(item.status == "LIVE" ||  item.status == "UNPLAYED"){
+                if (item.status == "LIVE" || item.status == "UNPLAYED") {
                   let mId1 = item.feed_game_id + "-" + item.home_team_id;
                   let mId2 = item.feed_game_id + "-" + item.away_team_id;
                   let allTeamsTodisplay = [];
@@ -1813,7 +1827,7 @@ class LiveScore extends Component {
                         </>
                       );
                     }
-                  }else{
+                  } else {
                     if (
                       mPicks.indexOf(mId1) > -1 ||
                       mPicks.indexOf(mId2) > -1
@@ -1922,11 +1936,9 @@ class LiveScore extends Component {
                         );
                       }
                     } else {
-                     
                     }
                   }
                 }
-
               })}
             </ListGroup>
           </Modal.Body>
@@ -2611,7 +2623,7 @@ class LiveScore extends Component {
                       }
                     })}
                   </ul>
-                  {this.state.meta.hasSubscription ? (
+                  {this.state.meta.canPlay ? (
                     ""
                   ) : (
                     <button

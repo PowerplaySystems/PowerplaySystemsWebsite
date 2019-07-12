@@ -17,17 +17,22 @@ import BasketballGames from "./BasketballGames";
 import FootballGames from "./FootballGames";
 var bgFirst = require("./../../assets/images/select-game/header.jpg");
 var bg3 = require("./../../assets/images/select-game/row-3.jpg");
+
 var pid, ptype, min, max;
+
 var popupText = "Error";
 var popupHader = "Sorry!";
+
 var mSportId = -1;
 var enterGameId = -1;
+var entryGame = [];
 var allSportsArray = [
   { id: 1, name: "Hockey" },
   { id: 2, name: "Baseball" },
   { id: 3, name: "Basketball" },
   { id: 4, name: "Football" }
 ];
+
 let firstRowStyle = {
   backgroundImage: "url(" + bgFirst + ")",
   backgroundSize: "cover",
@@ -65,7 +70,7 @@ function GamesTable(props) {
     if (ptype == "items") {
       text = "View";
     } else {
-      this.state.prizes.forEach(prize => {
+      props.prizes.forEach(prize => {
         if (pid == prize.id) {
           if (prize.no_of_team == max) {
             text = ptype == "cash" ? "$" + prize.prize : prize.prize + " Pts.";
@@ -84,7 +89,8 @@ function GamesTable(props) {
 
     props.onPrizeClick();
   }
-  function onGameEntry(mGameId){
+  function onGameEntry(mGameId, game) {
+    entryGame = game;
     enterGameId = mGameId;
     props.enterGameClicked();
   }
@@ -115,7 +121,7 @@ function GamesTable(props) {
                   <p>{data1.game}</p>
                 </td>
                 <td>
-                  <p>{data1.game}</p>
+                  <p>{data1.game_type}</p>
                 </td>
                 <td>
                   <p>{data1.game}</p>
@@ -147,19 +153,29 @@ function GamesTable(props) {
                   <p>{data1.entries}</p>
                 </td>
                 <td data-label="Action">
-                  <button
-                    className="action-button"
-                    onClick={e => onGameEntry(data1.id)}
-                   
-                  >
-                    {(() => {
-                      if (props.enteredGames.indexOf(data1.id) > -1) {
-                        return "Entered";
-                      } else {
-                        return "Enter";
-                      }
-                    })()}
-                  </button>
+                  {(() => {
+                    if (props.enteredGames.indexOf(data1.id) > -1) {
+                      return (
+                        <button
+                          className="action-button"
+                          onClick={() =>
+                            props.myProp.history.push("/game-central")
+                          }
+                        >
+                          View Entry
+                        </button>
+                      );
+                    } else {
+                      return (
+                        <button
+                          className="action-button"
+                          onClick={e => onGameEntry(data1.id, data1)}
+                        >
+                          Enter
+                        </button>
+                      );
+                    }
+                  })()}
                 </td>
               </tr>
             );
@@ -202,7 +218,8 @@ class SelectGames extends Component {
       prize_type: "",
       max_teams_allowed: 0,
       min_teams_allowed: 0,
-      showPrize: false
+      showPrize: false,
+      user: []
     };
 
     //alerts
@@ -243,7 +260,7 @@ class SelectGames extends Component {
 
   //Fetch data for a perticular sport using ID
   fetchSport(id) {
-      mSportId = id;
+    mSportId = id;
     fetch(
       "https://mypowerplaygames.com/public_api/association/read.php?id=" + id
     )
@@ -303,7 +320,8 @@ class SelectGames extends Component {
         .then(
           xx => {
             this.setState({
-              enteredGames: xx.records
+              enteredGames: xx.records,
+              user: xx.user
             });
           },
           error => {
@@ -327,12 +345,37 @@ class SelectGames extends Component {
   handleClosPrizeModal() {
     this.setState({ showPrize: false });
   }
-
+  canEnter() {
+    let eligibility = entryGame.eligibility;
+    let club = this.state.user.club;
+    console.log(club.toUpperCase)
+    if (entryGame.restriction.toUpperCase() == "ENTRY") {
+      console.log(entryGame.restriction);
+      if (
+        eligibility == null ||
+        eligibility == undefined ||
+        eligibility == "All"
+      ) {
+        return true;
+      } else if (eligibility.toUpperCase() == "BASIC") {
+        return true;
+      } else if (eligibility.toUpperCase() == "ELITE") {
+        if (club.toUpperCase == "BASIC") return false;
+        return true;
+      } else if (eligibility.toUpperCase() == "SUPER ELITE") {
+        console.log(club);
+        console.log(eligibility);
+        if (club.toUpperCase() == "SUPER ELITE") return true;
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
   //enter A Game
   enterGame(id) {
-      id = enterGameId;
-      console.log(this.state.enteredGames);
-      console.log(id);
+    id = enterGameId;
+
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
     if (jwt == "" || jwt == undefined) {
@@ -341,39 +384,42 @@ class SelectGames extends Component {
       this.handleShow();
       this.goToLogin();
     } else {
-      if (this.state.enteredGames.indexOf(id) == -1) {
-        var x = this.state.enteredGames.slice();
-        x.push(id);
-        this.setState({
-          enteredGames: x
-        });
-        var data = "game=" + id + "&jwt=" + jwt;
-        var that = this;
-        var xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
-        that = this;
-        xhr.addEventListener("readystatechange", function() {
-          if (this.readyState === 4) {
-            if (~this.responseText.indexOf("Created")) {
-                that.fetchSport(mSportId);
-            } else {
-              popupText = "Something Went Wrong, Please Try Again";
-              popupHader = "Sorry!";
-              this.handleShow();
-            }
-          }
-        });
-        xhr.open(
-          "POST",
-          " https://www.mypowerplaygames.com/public_api/entry/create.php"
-        );
-        xhr.setRequestHeader(
-          "content-type",
-          "application/x-www-form-urlencoded"
-        );
-        xhr.send(data);
+      if (!this.canEnter()) {
+        popupText =
+          "You are not eligible to enter This game. Please Increase your points to upgrade your Club.";
+        popupHader = "Sorry!";
+        this.handleShow();
       } else {
-          alert("Something iS wrong")
+        if (this.state.enteredGames.indexOf(id) == -1) {
+          var x = this.state.enteredGames.slice();
+          x.push(id);
+          this.setState({
+            enteredGames: x
+          });
+          var data = "game=" + id + "&jwt=" + jwt;
+          var that = this;
+          var xhr = new XMLHttpRequest();
+          xhr.withCredentials = true;
+          that = this;
+          xhr.addEventListener("readystatechange", function() {
+            if (this.readyState === 4) {
+              if (~this.responseText.indexOf("Created")) {
+                that.fetchSport(mSportId);
+              }
+            }
+          });
+          xhr.open(
+            "POST",
+            " https://www.mypowerplaygames.com/public_api/entry/create.php"
+          );
+          xhr.setRequestHeader(
+            "content-type",
+            "application/x-www-form-urlencoded"
+          );
+          xhr.send(data);
+        } else {
+          alert("Something iS wrong");
+        }
       }
     }
   }
@@ -502,9 +548,11 @@ class SelectGames extends Component {
                         <GamesTable
                           allGames={this.state.allGames}
                           data={this.state.mAssociationId}
+                          prizes={this.state.prizes}
                           enteredGames={this.state.enteredGames}
                           onPrizeClick={this.handleShowPrizeModal}
-                          enterGameClicked = {e => this.enterGame(this.state.mAssociationId.association_id)}
+                          myProp={this.props}
+                          enterGameClicked={e => this.enterGame(obj)}
                         />
                       );
                     } else {
@@ -540,11 +588,9 @@ class SelectGames extends Component {
                     src={require("./../../assets/images/select-game/group_19.png")}
                   />
                   <div className="how_to_item_text">
-                    <div className="how_to_item_header">
-                      Enter a Sponsored Contest
-                    </div>
+                    <div className="how_to_item_header">Pick Teams</div>
                     <div className="how_to_item_sub">
-                      Explore all games on the Explore Games page
+                      Pick your teams on the Team Selection page
                     </div>
                   </div>
                 </div>
@@ -555,10 +601,11 @@ class SelectGames extends Component {
                   />
                   <div className="how_to_item_text">
                     <div className="how_to_item_header">
-                      Enter a Sponsored Contest
+                      Manipulate livescores
                     </div>
                     <div className="how_to_item_sub">
-                      Explore all games on the Explore Games page
+                      Use your PowerPlays to change your teams score on
+                      LiveScore page.
                     </div>
                   </div>
                 </div>
@@ -568,9 +615,7 @@ class SelectGames extends Component {
                     src={require("./../../assets/images/select-game/group_19_3.png")}
                   />
                   <div className="how_to_item_text">
-                    <div className="how_to_item_header">
-                      Enter a Sponsored Contest
-                    </div>
+                    <div className="how_to_item_header">Win!</div>
                     <div className="how_to_item_sub">
                       Explore all games on the Explore Games page
                     </div>
@@ -586,7 +631,7 @@ class SelectGames extends Component {
                       Enter a Sponsored Contest
                     </div>
                     <div className="how_to_item_sub">
-                      Explore all games on the Explore Games page
+                      See all prizes details on Explore games page
                     </div>
                   </div>
                 </div>
@@ -680,7 +725,17 @@ class SelectGames extends Component {
             </div>
           </div>
           <Footer />
-
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title> {popupHader} </Modal.Title>
+            </Modal.Header>
+            <Modal.Body dangerouslySetInnerHTML={{ __html: popupText }} />
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
           <Modal show={this.state.showPrize} onHide={this.handleClosPrizeModal}>
             <Modal.Header closeButton>
               <Modal.Title>Prizes</Modal.Title>

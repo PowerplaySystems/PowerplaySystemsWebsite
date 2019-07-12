@@ -45,7 +45,9 @@ function GameDetailsPopUp(props) {
           <div className="game_center_summry_header flex">
             <div className="col-md-6">
               <center>
-                <div className="summry_header_sport_name">Summer Baseball</div>
+                <div className="summry_header_sport_name">
+                  {activeGame.name}
+                </div>
                 <button
                   className="summry_header_score_button"
                   onClick={e => onButtonClick("livescore")}
@@ -87,7 +89,6 @@ function GameDetailsPopUp(props) {
                     <>
                       <thead>
                         <tr>
-                          <th>Suit</th>
                           <th>Team Name</th>
                           <th>Live Score</th>
                           <th>My Score</th>
@@ -97,12 +98,6 @@ function GameDetailsPopUp(props) {
                         {props.liveScores.map((item, key) => {
                           return (
                             <tr key={key}>
-                              <td>
-                                <img
-                                  className="summry_table_img"
-                                  src={require("./../../assets/images/game-center/spade_black.jpg")}
-                                />
-                              </td>
                               <td>{item.name}</td>
                               <td>{item.status}</td>
                               <td>{item.my_score}</td>
@@ -117,7 +112,6 @@ function GameDetailsPopUp(props) {
                     <>
                       <thead>
                         <tr>
-                          <th>Suit</th>
                           <th>Team Name</th>
                           <th>Live Score</th>
                           <th>My Score</th>
@@ -128,20 +122,20 @@ function GameDetailsPopUp(props) {
                           {(() => {
                             if (activeGame == [] || activeGame == false) {
                               return (
-                                <td colSpan="4" style={{ padding: "60px" }}>
+                                <td colSpan="3" style={{ padding: "60px" }}>
                                   Click The Game Name In the Table To see Your
                                   Picks
                                 </td>
                               );
                             } else if (activeGame.entries == "#") {
                               return (
-                                <td colSpan="4" style={{ padding: "60px" }}>
+                                <td colSpan="3" style={{ padding: "60px" }}>
                                   <a>No Selections Made</a>
                                 </td>
                               );
                             } else {
                               return (
-                                <td colSpan="4" style={{ padding: "60px" }}>
+                                <td colSpan="3" style={{ padding: "60px" }}>
                                   <a onClick={e => onButtonClick("Pick Teams")}>
                                     Click Here to Pick Teams
                                   </a>
@@ -486,7 +480,9 @@ class GameCentral extends Component {
                       />
                       <div className="game_center_item_details">
                         <div className="game_center_item_details_header">
-                          {"$" + this.state.balance.cash}
+                          {this.state.balance.cash == null
+                            ? "$00"
+                            : "$" + this.state.balance.cash}
                         </div>
                         <div className="game_center_item_details_sub">
                           Prizes Won
@@ -504,7 +500,11 @@ class GameCentral extends Component {
                       />
                       <div className="game_center_item_details">
                         <div className="game_center_item_details_header">
-                          10,000
+                          {this.state.user.points === undefined
+                            ? "00"
+                            : this.state.user.points === null
+                            ? "0000"
+                            : this.state.user.points.toLocaleString()}
                         </div>
                         <div className="game_center_item_details_sub">
                           Pts Collected
@@ -522,7 +522,11 @@ class GameCentral extends Component {
                       />
                       <div className="game_center_item_details">
                         <div className="game_center_item_details_header">
-                          Elite
+                          {this.state.user.club === undefined
+                            ? "Basic"
+                            : this.state.user.points === null
+                            ? "Basic"
+                            : this.state.user.club}
                         </div>
                         <div className="game_center_item_details_sub">
                           Player Club
@@ -531,7 +535,12 @@ class GameCentral extends Component {
                     </div>
                   </center>
                 </div>
-                <button className="game_center_first_row_button">
+                <button
+                  className="game_center_first_row_button"
+                  onClick={() =>
+                    this.props.history.push("/my-account/my-balance")
+                  }
+                >
                   Redeem Now!
                 </button>
               </div>
@@ -672,43 +681,7 @@ class GameCentral extends Component {
                           <th>Start Date</th>
                           <th>Max Prize</th>
                           <th>Entries</th>
-                          <th>
-                            <div className="dropdown">
-                              <span className="drop-tab" data-toggle="dropdown">
-                                {this.state.aciveFilters[2] == ""
-                                  ? "Action"
-                                  : this.state.aciveFilters[2]}
-                                <span className="caret" />
-                              </span>
-                              <ul className="dropdown-menu progrs-list">
-                                <li>
-                                  <a
-                                    onClick={() => this.onFilterApplied(2, "")}
-                                  >
-                                    All
-                                  </a>
-                                </li>
-                                <li>
-                                  <a
-                                    onClick={() =>
-                                      this.onFilterApplied(2, "Pick Teams")
-                                    }
-                                  >
-                                    Pick Teams
-                                  </a>
-                                </li>
-                                <li>
-                                  <a
-                                    onClick={() =>
-                                      this.onFilterApplied(2, "Edit Picks")
-                                    }
-                                  >
-                                    Edit Picks
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </th>
+                          <th>Actions</th>
                         </tr>
                         {this.state.games.map((data1, key) => {
                           var filters = this.state.aciveFilters.slice();
@@ -781,78 +754,98 @@ class GameCentral extends Component {
                                 </td>
                                 <td>{data1.entries}</td>
                                 <td>
-                                  <div class="dropdown dropleft">
-                                    <img
-                                      class="btn btn-secondary dropdown-toggle"
-                                     
-                                      id="dropdownMenuButton"
-                                      data-toggle="dropdown"
-                                      aria-haspopup="true"
-                                      aria-expanded="false"
-                                      src={require("./../../assets/images/game-center/dots.png")}
-                                    />
-                                     
-                                  
-                                    <div
-                                      class="dropdown-menu game_center_action_menu"
-                                      aria-labelledby="dropdownMenuButton"
-                                    >
-                                      <div
-                                        className="dropdown-item action_menu_item"
-                                        onClick={() =>
-                                          this.onPickTeamsClicked(
-                                            data1.gametype_name,
-                                            data1.stat_time,
-                                            data1,
-                                            "Edit Live Score"
-                                          )
-                                        }
-                                      >
-                                        <img
-                                          className="action_menu_item_img"
-                                          src={require("./../../assets/images/game-center/group_19.png")}
-                                        />
-                                        <div className="action_menu_item_text">
-                                          Edit Live Scores
-                                        </div>
-                                      </div>
+                                  {data1.has_picks ? (
+                                    <div class="dropdown dropleft">
+                                      <img
+                                        class="btn btn-secondary dropdown-toggle"
+                                        id="dropdownMenuButton"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                        src={require("./../../assets/images/game-center/dots.png")}
+                                      />
 
                                       <div
-                                        className="dropdown-item action_menu_item"
-                                        onClick={() =>
-                                          this.onPickTeamsClicked(
-                                            data1.gametype_name,
-                                            data1.stat_time,
-                                            data1,
-                                            "Pick Teams"
-                                          )
+                                        class={
+                                          key > 1
+                                            ? "dropdown-menu game_center_action_menu menu_up"
+                                            : "dropdown-menu game_center_action_menu"
                                         }
+                                        aria-labelledby="dropdownMenuButton"
                                       >
-                                        <img
-                                          className="action_menu_item_img"
-                                          src={require("./../../assets/images/game-center/group_19_2.png")}
-                                        />
-                                        <div className="action_menu_item_text">
-                                          Show my Picks
+                                        <div
+                                          className="dropdown-item action_menu_item"
+                                          onClick={() =>
+                                            this.onPickTeamsClicked(
+                                              data1.gametype_name,
+                                              data1.stat_time,
+                                              data1,
+                                              "Edit Live Score"
+                                            )
+                                          }
+                                        >
+                                          <img
+                                            className="action_menu_item_img"
+                                            src={require("./../../assets/images/game-center/group_19.png")}
+                                          />
+                                          <div className="action_menu_item_text">
+                                            Edit Live Scores
+                                          </div>
                                         </div>
-                                      </div>
 
-                                      <div
-                                        className="dropdown-item action_menu_item"
-                                        onClick={() =>
-                                          this.onGameNameClicked(key)
-                                        }
-                                      >
-                                        <img
-                                          className="action_menu_item_img"
-                                          src={require("./../../assets/images/game-center/group_19_3.png")}
-                                        />
-                                        <div className="action_menu_item_text">
-                                          Show Game Summary
+                                        <div
+                                          className="dropdown-item action_menu_item"
+                                          onClick={() =>
+                                            this.onPickTeamsClicked(
+                                              data1.gametype_name,
+                                              data1.stat_time,
+                                              data1,
+                                              "Pick Teams"
+                                            )
+                                          }
+                                        >
+                                          <img
+                                            className="action_menu_item_img"
+                                            src={require("./../../assets/images/game-center/group_19_2.png")}
+                                          />
+                                          <div className="action_menu_item_text">
+                                            {data1.has_picks
+                                              ? "Show my Picks"
+                                              : "Pick Teams"}
+                                          </div>
+                                        </div>
+
+                                        <div
+                                          className="dropdown-item action_menu_item"
+                                          onClick={() =>
+                                            this.onGameNameClicked(key)
+                                          }
+                                        >
+                                          <img
+                                            className="action_menu_item_img"
+                                            src={require("./../../assets/images/game-center/group_19_3.png")}
+                                          />
+                                          <div className="action_menu_item_text">
+                                            Show Game Summary
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  ) : (
+                                    <button
+                                      className="button_pick_teams"
+                                      onClick={() =>
+                                        this.onPickTeamsClicked(
+                                          data1.gametype_name,
+                                          data1.stat_time,
+                                          data1,
+                                          "Pick Teams"
+                                        )
+                                      }
+                                    >
+                                      Pick My Teams
+                                    </button>
+                                  )}
                                 </td>
                               </tr>
                             );
@@ -864,12 +857,39 @@ class GameCentral extends Component {
                 </div>
               </div>
               <center>
-                <button
-                  onClick={this.onEnterMoreClicked}
-                  className="game_center_more_games_button"
-                >
-                  Enter More Games
-                </button>
+                <div style={{ width: "890px" }}>
+                <div className="game_center_enter_more">
+                  <div >
+                    <img
+                      src={require("./../../assets/images/game-center/scoreboard.png")}
+                    />
+                    <p className="explore_text">Want to explore more live sports games ?</p>
+                  </div>
+
+                  <button
+                    onClick={this.onEnterMoreClicked}
+                    className="game_center_more_games_button"
+                  >
+                    Enter More Live Sports Games
+                  </button>
+                </div>
+                <div className="game_center_enter_more">
+                  <div>
+                    <img
+                      src={require("./../../assets/images/game-center/lottoicon.png")}
+                    />
+                    <p className="explore_text">Want to explore more Lotto games ?</p>
+                  </div>
+
+                  <button
+                    onClick={() => this.props.history.push("/powerplay-lotto")}
+                    className="game_center_more_games_button"
+                  >
+                   Enter More Lotto Games
+                  </button>
+                </div>
+                </div>
+               
               </center>
             </div>
           </div>
