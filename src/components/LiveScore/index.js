@@ -984,7 +984,7 @@ class LiveScore extends Component {
                         <h2>Results are at the bottom of the page</h2>
                         <a
                           onClick={() =>
-                            this.props.history.push("/select-games")
+                            this.props.history.push("/live-sports")
                           }
                         >
                           CLICK HERE TO PLAY AGAIN
@@ -2010,7 +2010,7 @@ class LiveScore extends Component {
                         <h2>Results are at the bottom of the page</h2>
                         <a
                           onClick={() =>
-                            this.props.history.push("/select-games")
+                            this.props.history.push("/live-sports")
                           }
                         >
                           CLICK HERE TO PLAY AGAIN

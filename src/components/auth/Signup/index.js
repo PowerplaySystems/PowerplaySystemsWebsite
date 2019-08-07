@@ -114,7 +114,7 @@ class Signup extends Component {
                     const cookies = new Cookies();
                     console.log(json.jwt)
                     cookies.set('jwt',json.jwt, { path: '/' });
-                    that.props.history.push('../../select-games')
+                    that.props.history.push('/')
 
                 } else if (~this.responseText.indexOf("Incorrect"))  {
                     alert("Username or Password Incorrect");

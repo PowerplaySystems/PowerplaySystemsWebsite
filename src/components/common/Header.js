@@ -30,7 +30,13 @@ class Header extends Component {
   logout() {
     const cookies = new Cookies();
     cookies.set("jwt", "", { path: "/" });
-    this.props.history.push("/");
+    this.setState(
+      {
+        isLogedin: false
+      },
+      this.props.history.push("/")
+    );
+    // ;
   }
   render() {
     //if user logged IN
@@ -74,39 +80,9 @@ class Header extends Component {
                     </a>
                   </li>
                   <li className="c-p">
-                    <a onClick={() => this.props.history.push("/select-games")}>
+                    <a onClick={() => this.props.history.push("/live-sports")}>
                       Powerplay Live Sports
                     </a>
-                  </li>
-
-                  <li className="c-p header_dropdown">
-                    <a>
-                      About Our Games &nbsp;
-                      <span class="caret" />
-                    </a>
-                    <ul
-                      className="drop-down header_dropdown_list"
-                      style={{ left: "0px" }}
-                    >
-                      <ul className="c-p header_dropdown_menu_item">
-                        <a
-                          onClick={() =>
-                            this.props.history.push("/sport-platform")
-                          }
-                        >
-                          Live Sports Platform
-                        </a>
-                      </ul>
-                      <ul className="c-p header_dropdown_menu_item">
-                        <a
-                          onClick={() =>
-                            this.props.history.push("/sponsor-games")
-                          }
-                        >
-                          Lottery Platform
-                        </a>
-                      </ul>
-                    </ul>
                   </li>
                   <li className="c-p">
                     <a onClick={() => this.props.history.push("/select-games")}>
@@ -198,40 +174,11 @@ class Header extends Component {
                     </a>
                   </li>
                   <li className="c-p">
-                    <a onClick={() => this.props.history.push("/select-games")}>
+                    <a onClick={() => this.props.history.push("/live-sports")}>
                       Powerplay Live Sports
                     </a>
                   </li>
 
-                  <li className="c-p header_dropdown">
-                    <a>
-                      About Our Games &nbsp;
-                      <span class="caret" />
-                    </a>
-                    <ul
-                      className="drop-down header_dropdown_list"
-                      style={{ left: "0px" }}
-                    >
-                      <ul className="c-p header_dropdown_menu_item">
-                        <a
-                          onClick={() =>
-                            this.props.history.push("/sport-platform")
-                          }
-                        >
-                          Live Sports Platform
-                        </a>
-                      </ul>
-                      <ul className="c-p header_dropdown_menu_item">
-                        <a
-                          onClick={() =>
-                            this.props.history.push("/sponsor-games")
-                          }
-                        >
-                          Lottery Platform
-                        </a>
-                      </ul>
-                    </ul>
-                  </li>
                   <li className="c-p">
                     <a onClick={() => this.props.history.push("/select-games")}>
                       Partner With Us
@@ -242,7 +189,7 @@ class Header extends Component {
                       className="header_li_signin"
                       onClick={() => this.props.history.push("/login")}
                     >
-                     Sign In
+                      Sign In
                     </a>
                   </li>
                   <li className="c-p">

@@ -10,22 +10,20 @@ import Cookies from "universal-cookie";
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
 // import { connect } from 'react-redux';
-import ChangeGameSlider from "./ChangeGameSlider";
-import BaseBallGames from "./BaseBallGames";
-import HockeyGames from "./HockeyGames";
-import BasketballGames from "./BasketballGames";
-import FootballGames from "./FootballGames";
+
 var bgFirst = require("./../../assets/images/select-game/header.jpg");
 var bg3 = require("./../../assets/images/select-game/row-3.jpg");
 
 var pid, ptype, min, max;
-
+var activeAssociation = -1;
 var popupText = "Error";
 var popupHader = "Sorry!";
-
+var mGameTypeId = -1,
+  mLeagueId = -1;
 var mSportId = -1;
 var enterGameId = -1;
 var entryGame = [];
+async function waiter() {}
 var allSportsArray = [
   { id: 1, name: "Hockey" },
   { id: 2, name: "Baseball" },
@@ -58,7 +56,11 @@ var Gametypes = props => {
           props.data.association_id +
           "&type=image"
         }
-        className="game_type_img "
+        className={
+          props.data.association_id == activeAssociation
+            ? "game_type_img_selected"
+            : "game_type_img "
+        }
       />
     </a>
   );
@@ -118,7 +120,7 @@ function GamesTable(props) {
                   <p>{data1.name}</p>
                 </td>
                 <td>
-                  <p>{data1.game}</p>
+                  <p>{data1.sponsor}</p>
                 </td>
                 <td>
                   <p>{data1.game_type}</p>
@@ -197,6 +199,15 @@ class SelectGames extends Component {
     } else {
       this.onTabClicked(1);
     }
+    if (this.props.location.state != undefined) {
+      let sport_id = this.props.location.state.sport;
+      if (sport_id) {
+        mGameTypeId = this.props.location.state.gametype;
+        mLeagueId = this.props.location.state.league;
+        this.onTabClicked(sport_id);
+      }
+    }
+
     this.fetchSport = this.fetchSport.bind(this);
   }
   goToLogin() {
@@ -237,13 +248,20 @@ class SelectGames extends Component {
 
   //functions To Handle UI elements Clicks
   onGameTypeClicked(data) {
-    const gameTable = document.getElementById("m-table");
+    const gameTable = document.getElementById("inner-tabs");
     if (gameTable) {
       gameTable.scrollIntoView({ block: "start", behavior: "smooth" });
     }
-    this.setState({
-      mAssociationId: data
-    });
+    activeAssociation = data.association_id;
+
+    this.setState(
+      {
+        mAssociationId: data
+      },
+      () => {
+        mGameTypeId = -1;
+      }
+    );
   }
   onExploreGamesClicked() {
     const explore = document.getElementById("explore-games");
@@ -261,75 +279,87 @@ class SelectGames extends Component {
   //Fetch data for a perticular sport using ID
   fetchSport(id) {
     mSportId = id;
-    fetch(
-      "https://mypowerplaygames.com/public_api/association/read.php?id=" + id
-    )
-      .then(res => res.json())
-      .then(
-        dd => {
-          this.setState({
-            associations: dd.records,
-            isLoaded: true
-          });
-        },
-        error => {
-          this.setState({
-            error: error
-          });
-        }
-      );
-    fetch("https://www.mypowerplaygames.com/api/select_game/read.php?id=" + id)
-      .then(res => res.json())
-      .then(
-        result => {
-          result = result.records;
-
-          this.setState({
-            allGames: result
-          });
-        },
-        error => {
-          this.setState({
-            error: error
-          });
-        }
-      );
-    fetch("https://mypowerplaygames.com/api/prize/read.php")
-      .then(res => res.json())
-      .then(
-        data => {
-          data.records.sort(
-            (a, b) => parseFloat(b.prize) - parseFloat(a.prize)
-          );
-          this.setState({
-            prizes: data.records
-          });
-        },
-        error => {
-          this.setState({
-            error: error
-          });
-        }
-      );
     const cookies = new Cookies();
     const jwt = (this.mJwt = cookies.get("jwt"));
     if (jwt == undefined || jwt == "") {
+      Promise.all([
+        fetch(
+          "https://mypowerplaygames.com/public_api/association/read.php?id=" +
+            id
+        ),
+        fetch(
+          "https://www.mypowerplaygames.com/api/select_game/read.php?id=" + id
+        ),
+        fetch("https://mypowerplaygames.com/api/prize/read.php")
+      ])
+        .then(([res1, res2, res3]) =>
+          Promise.all([res1.json(), res2.json(), res3.json()])
+        )
+        .then(([data1, data2, data3]) => {
+          data3.records.sort(
+            (a, b) => parseFloat(b.prize) - parseFloat(a.prize)
+          );
+          this.setState(
+            {
+              associations: data1.records,
+              allGames: data2.records,
+              prizes: data3.records,
+              isLoaded: true
+            },
+            () => {
+              if (mGameTypeId != -1) {
+                let obj = this.state.associations.find(
+                  o => o.gametype_id == mGameTypeId && o.league_id == mLeagueId
+                );
+                if (obj) {
+                  this.onGameTypeClicked(obj);
+                }
+              }
+            }
+          );
+        });
     } else {
-      fetch("https://mypowerplaygames.com/public_api/entry/read.php?jwt=" + jwt)
-        .then(res => res.json())
-        .then(
-          xx => {
-            this.setState({
-              enteredGames: xx.records,
-              user: xx.user
-            });
-          },
-          error => {
-            this.setState({
-              error: error
-            });
-          }
-        );
+      Promise.all([
+        fetch(
+          "https://mypowerplaygames.com/public_api/association/read.php?id=" +
+            id
+        ),
+        fetch(
+          "https://www.mypowerplaygames.com/api/select_game/read.php?id=" + id
+        ),
+        fetch("https://mypowerplaygames.com/api/prize/read.php"),
+        fetch(
+          "https://mypowerplaygames.com/public_api/entry/read.php?jwt=" + jwt
+        )
+      ])
+        .then(([res1, res2, res3, res4]) =>
+          Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
+        )
+        .then(([data1, data2, data3, data4]) => {
+          data3.records.sort(
+            (a, b) => parseFloat(b.prize) - parseFloat(a.prize)
+          );
+          this.setState(
+            {
+              associations: data1.records,
+              allGames: data2.records,
+              prizes: data3.records,
+              enteredGames: data4.records,
+              user: data4.user,
+              isLoaded: true
+            },
+            () => {
+              if (mGameTypeId != -1) {
+                let obj = this.state.associations.find(
+                  o => o.gametype_id == mGameTypeId && o.league_id == mLeagueId
+                );
+                if (obj) {
+                  this.onGameTypeClicked(obj);
+                }
+              }
+            }
+          );
+        });
     }
   }
   //Modal Functions
@@ -348,9 +378,10 @@ class SelectGames extends Component {
   canEnter() {
     let eligibility = entryGame.eligibility;
     let club = this.state.user.club;
-    console.log(club.toUpperCase)
+    if (club == null) {
+      club = "basic";
+    }
     if (entryGame.restriction.toUpperCase() == "ENTRY") {
-      console.log(entryGame.restriction);
       if (
         eligibility == null ||
         eligibility == undefined ||
@@ -524,7 +555,7 @@ class SelectGames extends Component {
                   <div className="select_game_row_2_sub">
                     2- Select <span>Game Type</span> to see available contests
                   </div>
-                  <div className="iner">
+                  <div className="iner" id="inner-tabs">
                     {this.state.associations.map((data, key) => (
                       <div className="col-sm-3 game-slide">
                         <Gametypes
@@ -601,11 +632,11 @@ class SelectGames extends Component {
                   />
                   <div className="how_to_item_text">
                     <div className="how_to_item_header">
-                      Manipulate livescores
+                      Manipulate Live Scores
                     </div>
                     <div className="how_to_item_sub">
-                      Use your PowerPlays to change your teams score on
-                      LiveScore page.
+                      Use your PowerPlays to change your teams score on Live
+                      Score page.
                     </div>
                   </div>
                 </div>
@@ -746,13 +777,13 @@ class SelectGames extends Component {
                   <thead>
                     {this.state.prize_type == "items" ? (
                       <tr>
-                        <th scope="col"> # of Teams </th>
+                        <th scope="col">Number of Teams</th>
                         <th scope="col">Prize Description</th>
                         <th scope="col">Retail Vaule</th>
                       </tr>
                     ) : (
                       <tr>
-                        <th scope="col"> # of Teams </th>
+                        <th scope="col">Number of Teams</th>
                         <th scope="col">Prize</th>
                       </tr>
                     )}

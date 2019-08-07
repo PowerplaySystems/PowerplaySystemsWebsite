@@ -178,8 +178,8 @@ class Home extends Component {
                     </div>
                   </div>
                   <button className="row_3_button"
-                   onClick={() => this.props.history.push("/select-games")}>
-                    Explore Free Demo Games Now !
+                   onClick={() => this.props.history.push("/live-sports")}>
+                    Explore Our Live Sports Games Now !
                   </button>
                 </div>
               </div>
@@ -196,9 +196,9 @@ class Home extends Component {
                     <div className="row_3_item">State run lotteries</div>
                     <div className="row_3_item">Casino based lotteries</div>
                   </div>
-                  <button className="row_3_button"
-                  onClick={() => this.props.history.push("/powerplay-lotto")}>>
-                    Explore Free Demo Games Now !
+                  <button className="row_3_button" style = {{width: "550px"}}
+                  onClick={() => this.props.history.push("/powerplay-lotto")}>
+                      Explore Our Interactive Lottery Games Now!
                   </button>
                 </div>
               </div>

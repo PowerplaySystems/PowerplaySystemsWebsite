@@ -33,6 +33,7 @@ import Sweet16Draw from './components/Sweet16Draw'
 import Elite8 from './components/Elite8'
 import Elite8Draw from './components/Elite8Draw'
 import LotteryPlatform from './components/LotteryPlatform'
+import LiveSports from './components/LiveSports'
 import './App.css';
 
 
@@ -74,6 +75,7 @@ class App extends Component {
             <Route exact path="/elite8-draw" component={Elite8Draw} />
             <Route path="/my-account" component={MyAccount} />
             <Route path="/sport-platform" component={LotteryPlatform} />
+            <Route path="/live-sports" component={LiveSports} />
           </div>
         </Router>
       </Provider>

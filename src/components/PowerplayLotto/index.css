@@ -1,8 +1,8 @@
 @font-face {
-	font-family: 'jibril';
-	src: url(../../assets/fonts/Jibril.ttf)  format('truetype');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "jibril";
+  src: url(../../assets/fonts/Jibril.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 .lotto-section-2 {
   padding: 50px 50px 100px 50px;
@@ -21,7 +21,8 @@
 .lotto-header > div {
   margin: 0 auto;
 }
-.lotto-heading-main, lotto-heading-main > span {
+.lotto-heading-main,
+lotto-heading-main > span {
   width: 420px;
   height: 152px;
   font-family: jibril;
@@ -75,36 +76,42 @@
   margin: 0 auto;
 }
 .lotto-block-even {
-  height: 500px;
-  height:  760px;
- 
+  height: 760px;
+  padding: 0px 0px 0px 120px;
 }
 .lotto-block-even > div {
   float: left;
-  margin-top:130px;
+  margin-top: 130px;
 }
-.lotto-block-odd{
+.lotto-block-odd {
   background: #1b1b1b;
-  height:  760px;
-  padding-right: 20px; 
+  height: 760px;
+  padding-right: 120px;
 }
 .lotto-block-odd > div {
   float: right;
-  margin-top:130px;
-
+  margin-top: 130px;
 }
 .lotto-even-image {
   width: 366px;
   height: 366px;
 }
 .lotto-even-details {
-  width: 650px;
+  width: 700px;
   margin: -15px 0px 20px 100px;
 }
 .lotto-even-details-header {
   font-family: jibril;
   font-size: 56px;
+  line-height: 80px;
   color: #ffffff;
+}
+.lotto-even-details-header > span {
+  font-family: Poppins;
+  font-size: 26px;
+  font-style: italic;
+  color: #fb6e00;
+  vertical-align: middle;
 }
 .lotto-even-details-sub-heading {
   font-family: Poppins;
@@ -136,12 +143,11 @@
 }
 .lotto-even-details-amount span {
   float: left;
-
 }
 .lotto-even-details-amount button {
   width: 201px;
   line-height: 48px;
-  margin-left:15px;
+  margin-left: 15px;
   height: 48px;
   border-radius: 24px;
   border: solid 2px #ffffff;
@@ -161,7 +167,6 @@
   color: #ffffff;
 }
 .lotto-even-details-odds-amount {
-  width: 264px;
   height: 49px;
   font-family: Poppins;
   font-size: 35px;
@@ -175,13 +180,35 @@
   font-size: 24px;
   color: #ffffff;
 }
-.lotto-even-details-draw >div{
-float: left;
+.lotto-even-details-draw > div {
+  float: left;
 }
 .lotto-even-details-draw > div > p {
   font-family: Poppins;
   font-size: 16px;
   color: #ffffff;
+}
+.lotto-game-date-wrapper {
+  width: 260px;
+  margin-right: 30px;
+  height: 10px;
+}
+.lotto-game-date-text {
+  height: 23px;
+  font-family: Poppins;
+  font-size: 16px;
+  color: #ffffff;
+}
+.lotto-game-date {
+  height: 31px;
+  margin-top: 1px;
+  font-family: Poppins;
+  font-size: 22px;
+  color: #ffffff;
+}
+.lotto-game-date > span {
+  font-weight: bold;
+  color: #fb6e00;
 }
 .lotto-even-details_draw_box > div {
   width: 39px;
@@ -201,9 +228,17 @@ float: left;
   text-align: center;
   color: #ffffff;
 }
-.lotto-even-details-draw button{
-  margin-top: 20px; 
-  margin-left: 30px;
+.lotto-even-details_draw_box > span {
+  line-height: 55px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: italic;
+  color: #fb6e00;
+  margin-left: 4px;
+}
+.lotto-even-details-draw button {
+  margin-top: 20px;
+  margin-left: 0px;
   width: 494px;
   height: 69px;
   border-radius: 34.5px;
@@ -214,5 +249,10 @@ float: left;
   font-size: 30px;
   text-align: center;
   color: #ffffff;
+}
+.btn_edit_numbers{
+  border: solid 1.5px #fb6e00 !important;
+  background-color: transparent !important; 
+  box-shadow: none !important;
 
 }

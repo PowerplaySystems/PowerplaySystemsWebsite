@@ -54,7 +54,7 @@
   font-weight: bold;
   font-style: italic;
   color: #ffffff;
-  float:right;
+  float: right;
   margin: 156px 10px 30px 0px;
 }
 .header_row_2 {
@@ -116,7 +116,7 @@
   margin: 5px;
 }
 .row_3_button {
-  width: 447px;
+  width: 467px;
   height: 69px;
   border-radius: 34.5px;
   box-shadow: 0 3px 27px -2px #fb6e00;
@@ -135,6 +135,10 @@
   font-weight: bold;
   text-align: center;
   color: #ffffff;
+}
+.home_offers {
+  margin: 0 auto;
+  width: 1347px;
 }
 .home_offers_item {
   float: left;

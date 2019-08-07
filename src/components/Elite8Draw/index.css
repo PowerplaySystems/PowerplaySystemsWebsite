@@ -30,7 +30,7 @@
   margin: 0 auto !important;
 }
 .winning_box_numbers_elite8 {
-  margin: 0px auto 20px auto;;
+  margin: 0px auto 20px auto;
   max-width: 100%;
   width: 1166px;
   min-height: 142px;
@@ -156,13 +156,13 @@
   color: #fb6e00;
 }
 .live_draw_my_numbers_edit {
-  width: 730px;
+  width: 740px;
   height: 437px;
   border-radius: 23px;
   background-color: #1e1e1e;
 }
 .live_draw_my_numbers_edit .mleft {
-  width: 530px;
+  width: 535px;
   height: 437px;
   float: left;
 }
@@ -225,7 +225,7 @@
 }
 .live_draw_my_numbers_edit .mright {
   float: left;
-  width: 200px;
+  width: 205px;
   height: 437px;
   border-radius: 23px;
   box-shadow: -5px 2px 12px 0 rgba(0, 0, 0, 0.5);

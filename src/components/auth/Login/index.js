@@ -48,7 +48,7 @@ class Login extends Component {
                 if (~this.responseText.indexOf("jwt")) {
                     const cookies = new Cookies();
                     cookies.set('jwt',json.jwt, { path: '/' });
-                    that.props.history.push('../../select-games')
+                    that.props.history.push('/')
 
                 } else if (~this.responseText.indexOf("create")) {
                     alert("Username or Password Incorrect");

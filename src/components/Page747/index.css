@@ -43,7 +43,6 @@
   width: 458px;
   height: 65px;
   border-radius: 32.5px;
-  box-shadow: 0 2px 18px -1px #fb6e00;
   background-color: #fb6e00;
   font-family: Poppins;
   font-size: 20px;
@@ -51,6 +50,9 @@
   text-align: center;
   color: #ffffff;
   border: none;
+}
+.main_bar_button > button:hover{
+  box-shadow: 0 2px 18px -1px #fb6e00;
 }
 .main_bar_inner > div{
   vertical-align: middle;
@@ -142,11 +144,14 @@
   width: 220px;
   height: 46px;
   border-radius: 23px;
-  box-shadow: 0 2px 18px -1px #fb6e00;
+  
   background-color: #fb6e00;
   border: none;
   font-weight: bold;
   text-align: center;
+}
+.main_bar_inner > button:hover{
+  box-shadow: 0 2px 18px -1px #fb6e00;
 }
 .main_prize_inner {
   margin: 0 auto;
@@ -406,10 +411,12 @@
   width: 434px;
   height: 60px;
   border-radius: 30px;
-  box-shadow: 0 2px 18px -1px #fb6e00;
   background-color: #fb6e00;
   font-weight: bold;
   text-align: center;
   color: #ffffff;
   border: none;
+}
+.page747_selection_box_submit:hover{
+  box-shadow: 0 2px 18px -1px #fb6e00;
 }

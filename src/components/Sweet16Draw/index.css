@@ -156,7 +156,7 @@
   color: #fb6e00;
 }
 .live_draw_my_numbers_edit {
-  width: 730px;
+  width: 740px;
   height: 437px;
   border-radius: 23px;
   background-color: #1e1e1e;
@@ -180,7 +180,7 @@
   margin: 20px 0px 20px 20px;
 }
 .mleft .edit_numbers .edit_numbers_circle_sweet16 {
-  margin: 10px 5px 10px 5px;
+  margin: 5px;
   float: left;
   width: 50px;
   height: 50px;
@@ -192,7 +192,7 @@
   color: #000000;
 }
 .mleft .edit_numbers .edit_numbers_circle_sweet16_active {
-  margin: 10px 5px 10px 5px;
+  margin: 5px;
   float: left;
   width: 50px;
   height: 50px;

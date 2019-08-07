@@ -81,6 +81,7 @@ p {
   max-width: 100% !important;
   width: 100%;
   padding: 0px !important;
+  min-width: 1347px;
 }
 .p-o {
   padding: 0px;
@@ -220,6 +221,7 @@ li.block-btn:hover a {
   /****Navigation*****/
   .container {
     width: 100% !important;
+    min-width: 1347px;
   }
   .navbar-nav {
     margin-top: 11px;
@@ -1653,6 +1655,7 @@ button.scor_live {
 @media (max-width: 991px) {
   .live_midle_cont .container {
     padding: 0px;
+    min-width: 1347px;
   }
   .score-all {
     height: 500px;
@@ -3244,6 +3247,7 @@ body,
   width: 100%;
   max-width: 100% !important;
   padding: 0px 15px;
+  min-width: 1347px;
 }
 .login-inner-section {
   background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;
@@ -3391,6 +3395,7 @@ body,
   width: 100%;
   max-width: 100% !important;
   padding: 0px 15px;
+  min-width: 1347px;
 }
 .register-inner-section {
   background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;
@@ -5218,6 +5223,8 @@ li.power-sel a {
   cursor: pointer;
 }
 .modal-title {
-  font-family: jibril;
-  color: #333333 !important;
+  font-family: Poppins;
+  font-size: 26px;
+  font-weight: 500;
+  color: #ffffff;
 }

@@ -260,8 +260,7 @@ font-face {
   font-size: 25px;
   color: #ffffff;
 }
-.slick-dots {
-}
+
 .our_games_item_img {
   margin-top: 20px;
   height: 50px;
@@ -287,30 +286,39 @@ font-face {
   text-align: center;
 }
 .modal-prize-table th {
-  opacity: 0.5;
   font-family: Poppins;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1.5;
-  color: #333333;
+  background-color: #ffffff;
+  font-weight: 500;
+  line-height: 1.09;
   text-align: center;
-  padding: 17px;
+  color: #999999;
 }
-.modal-prize-table tr:nth-child(even) {
-  background-color: #c6cbd4;
-}
-.modal-prize-table tbody td:nth-child(1) {
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1.5;
-  color: #fb6e00;
+.modal-prize-table tr:nth-child(odd) {
+  background-color: #f2f3f5;
 }
 .modal-prize-table tbody td {
   font-family: Poppins;
   font-size: 16px;
   line-height: 1.5;
-  color: #333333;
+  color: #040404;
+  width: 100px;
 }
 .modal-prize-table tr {
   height: 72px;
+}
+.modal-header {
+  width: 503px;
+  height: 69px;
+  border-radius: 6px;
+  background-color: #fb6e00;
+}
+.modal-header button {
+  line-height: 40px;
+  color: #ffffff;
+}
+.modal-content {
+  width: 503px;
+}
+.content{
+  min-width: 1300px;
 }

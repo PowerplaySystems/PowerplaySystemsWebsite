@@ -60,8 +60,8 @@ class Footer extends Component {
               <footer>
                 <div className="col-md-12">
                   <p>
-                    Copyright © 2018 Powerplay Interactive Marketing - All
-                    Rights Reserved
+                    Copyright © 2019 3House Management & Consulting - All Rights
+                    Reserved
                   </p>
                 </div>
               </footer>

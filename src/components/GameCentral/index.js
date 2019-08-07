@@ -215,7 +215,7 @@ function GameDetailsPopUp(props) {
     </div>
   );
 }
-
+function GamesTableLotteryRow(props) {}
 class GameCentral extends Component {
   constructor(props) {
     super(props);
@@ -226,6 +226,7 @@ class GameCentral extends Component {
       games: [],
       user: [],
       balance: [],
+      lotteryGames: [],
       balance: 0,
       liveScores: [],
       aciveFilters: ["", "", ""],
@@ -238,11 +239,18 @@ class GameCentral extends Component {
     this.onEnterMoreClicked = this.onEnterMoreClicked.bind(this);
     this.onGameNameClicked = this.onGameNameClicked.bind(this);
     this.onLiveScoreCliced = this.onLiveScoreCliced.bind(this);
-
+    this.getJackpot = this.getJackpot.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
-
+  getJackpot(prizeArray) {
+    if (prizeArray) {
+      prizeArray.sort((a, b) => parseFloat(a.hits) - parseFloat(b.hits));
+      return "$" + prizeArray[prizeArray.length - 1].prize;
+    } else {
+      return "Coming soon";
+    }
+  }
   onLiveScoreCliced() {
     this.onPickTeamsClicked(
       activeGame.gametype_name,
@@ -260,7 +268,29 @@ class GameCentral extends Component {
   updateBalance = ball => {
     this.setState({ balance: ball });
   };
-
+  getStringDate(mDate) {
+    if (mDate == null) {
+      return "";
+    }
+    var mydate = new Date(mDate);
+    var month = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ][mydate.getMonth()];
+    var str =
+      month + " " + mydate.getDate() + ", " + mydate.getFullYear() + " ";
+    return str;
+  }
   handleShow() {
     this.setState({
       show: true
@@ -299,6 +329,23 @@ class GameCentral extends Component {
         }
       });
     }
+  }
+  onPickBallsClicked(gametype, dateTime, game, action) {
+    var path = "";
+    if (gametype == "747") path = "/747";
+    if (gametype == "Sweet 16") path = "/sweet16";
+    if (gametype == "Elite 8") path = "/elite8";
+    if (gametype == "Gridlock") path = "/gridlock";
+    if (action == "live") {
+      path = path + "-draw";
+    }
+    this.props.history.push({
+      pathname: path,
+      state: {
+        date: dateTime,
+        gameData: game
+      }
+    });
   }
   onPowerplayClicked() {
     if (!activeGame) {
@@ -413,6 +460,7 @@ class GameCentral extends Component {
           console.log(xx.records);
           this.setState({
             games: xx.records,
+            lotteryGames: xx.lottery_games,
             user: xx.user,
             balance: xx.balance
           });
@@ -465,9 +513,8 @@ class GameCentral extends Component {
                 </div>
                 <div className="game_center_user_date">
                   {"Member since " +
-                    Date(this.state.user.join_date)
-                      .toString()
-                      .substr(4, 11)}
+                    this.getStringDate(this.state.user.join_date)
+                      }
                 </div>
               </div>
               <div className="game_center_first_row">
@@ -768,7 +815,7 @@ class GameCentral extends Component {
                                       <div
                                         class={
                                           key > 1
-                                            ? "dropdown-menu game_center_action_menu menu_up"
+                                          ? (data1.match_started ? "dropdown-menu game_center_action_menu menu_up_short" :"dropdown-menu game_center_action_menu menu_up") 
                                             : "dropdown-menu game_center_action_menu"
                                         }
                                         aria-labelledby="dropdownMenuButton"
@@ -792,8 +839,7 @@ class GameCentral extends Component {
                                             Edit Live Scores
                                           </div>
                                         </div>
-
-                                        <div
+                                        <>{data1.match_started ? "": (                                        <div
                                           className="dropdown-item action_menu_item"
                                           onClick={() =>
                                             this.onPickTeamsClicked(
@@ -813,7 +859,9 @@ class GameCentral extends Component {
                                               ? "Show my Picks"
                                               : "Pick Teams"}
                                           </div>
-                                        </div>
+                                        </div>) }</>
+                                          
+
 
                                         <div
                                           className="dropdown-item action_menu_item"
@@ -826,7 +874,7 @@ class GameCentral extends Component {
                                             src={require("./../../assets/images/game-center/group_19_3.png")}
                                           />
                                           <div className="action_menu_item_text">
-                                            Show Game Summary
+                                           Show My Scores
                                           </div>
                                         </div>
                                       </div>
@@ -851,6 +899,111 @@ class GameCentral extends Component {
                             );
                           }
                         })}
+                        {this.state.lotteryGames.map((data1, key) => {
+                          var filters = this.state.aciveFilters.slice();
+
+                          var shouldShowGame = true;
+                          if (
+                            filters[0] != "" &&
+                            data1.gametype_name != filters[0]
+                          ) {
+                            shouldShowGame = false;
+                          }
+                          if (filters[1] != "" && data1.status != filters[1]) {
+                            shouldShowGame = false;
+                          }
+                          if (filters[1] == "" && data1.status == "Archived") {
+                            shouldShowGame = false;
+                          }
+
+                          if (shouldShowGame) {
+                            return (
+                              <tr key={key}>
+                                <td>
+                                  <a
+                                    className="c-p"
+                                   
+                                  >
+                                    {data1.name}
+                                  </a>
+                                </td>
+                                <td>
+                                  <p>{data1.gametype_name}</p>
+                                </td>
+                                <td>
+                                  <p>{data1.status}</p>
+                                </td>
+
+                                <td>
+                                  <p>{data1.start_datetime}</p>
+                                </td>
+                                <td>
+                                  <p>{this.getJackpot(data1.prize)}</p>
+                                </td>
+                                <td>--</td>
+                                <td>
+                                  <div class="dropdown dropleft">
+                                    <img
+                                      class="btn btn-secondary dropdown-toggle"
+                                      id="dropdownMenuButton"
+                                      data-toggle="dropdown"
+                                      aria-haspopup="true"
+                                      aria-expanded="false"
+                                      src={require("./../../assets/images/game-center/dots.png")}
+                                    />
+
+                                    <div
+                                      class={
+                                        "dropdown-menu game_center_action_menu menu_up_short"
+                                      }
+                                      aria-labelledby="dropdownMenuButton"
+                                    >
+                                      <div
+                                        className="dropdown-item action_menu_item"
+                                        onClick={() =>
+                                          this.onPickBallsClicked(
+                                            data1.gametype_name,
+                                            data1.start_datetime,
+                                            data1,
+                                            "live"
+                                          )
+                                        }
+                                      >
+                                        <img
+                                          className="action_menu_item_img"
+                                          src={require("./../../assets/images/game-center/group_19.png")}
+                                        />
+                                        <div className="action_menu_item_text">
+                                          Edit Live Draw
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        className="dropdown-item action_menu_item"
+                                        onClick={() =>
+                                          this.onPickBallsClicked(
+                                            data1.gametype_name,
+                                            data1.start_datetime,
+                                            data1,
+                                            "Pick Teams"
+                                          )
+                                        }
+                                      >
+                                        <img
+                                          className="action_menu_item_img"
+                                          src={require("./../../assets/images/game-center/group_19_2.png")}
+                                        />
+                                        <div className="action_menu_item_text">
+                                          Show my Picks
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            );
+                          }
+                        })}
                       </tbody>
                     </table>
                   </div>
@@ -858,38 +1011,43 @@ class GameCentral extends Component {
               </div>
               <center>
                 <div style={{ width: "890px" }}>
-                <div className="game_center_enter_more">
-                  <div >
-                    <img
-                      src={require("./../../assets/images/game-center/scoreboard.png")}
-                    />
-                    <p className="explore_text">Want to explore more live sports games ?</p>
-                  </div>
+                  <div className="game_center_enter_more">
+                    <div>
+                      <img
+                        src={require("./../../assets/images/game-center/scoreboard.png")}
+                      />
+                      <p className="explore_text">
+                        Want to explore more live sports games ?
+                      </p>
+                    </div>
 
-                  <button
-                    onClick={this.onEnterMoreClicked}
-                    className="game_center_more_games_button"
-                  >
-                    Enter More Live Sports Games
-                  </button>
-                </div>
-                <div className="game_center_enter_more">
-                  <div>
-                    <img
-                      src={require("./../../assets/images/game-center/lottoicon.png")}
-                    />
-                    <p className="explore_text">Want to explore more Lotto games ?</p>
+                    <button
+                      onClick={this.onEnterMoreClicked}
+                      className="game_center_more_games_button"
+                    >
+                      Enter More Live Sports Games
+                    </button>
                   </div>
+                  <div className="game_center_enter_more">
+                    <div>
+                      <img
+                        src={require("./../../assets/images/game-center/lottoicon.png")}
+                      />
+                      <p className="explore_text">
+                        Want to explore more Lotto games ?
+                      </p>
+                    </div>
 
-                  <button
-                    onClick={() => this.props.history.push("/powerplay-lotto")}
-                    className="game_center_more_games_button"
-                  >
-                   Enter More Lotto Games
-                  </button>
+                    <button
+                      onClick={() =>
+                        this.props.history.push("/powerplay-lotto")
+                      }
+                      className="game_center_more_games_button"
+                    >
+                      Enter More Lotto Games
+                    </button>
+                  </div>
                 </div>
-                </div>
-               
               </center>
             </div>
           </div>

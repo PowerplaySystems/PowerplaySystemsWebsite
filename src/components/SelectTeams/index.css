@@ -1,40 +1,410 @@
-
 @media only screen and (min-width: 1170px) {
-    .left_box{
-        border-right: 2px solid black;
-        padding: 5px;
-       }
-       .vs{
-        font-weight: 700;
-        font-size: 25px;
-        
-        width: 75%;
-        margin: 0 auto !important;
-    }
+  .left_box {
+    border-right: 2px solid black;
+    padding: 5px;
   }
-  @media only screen and (min-width: 770px) {
-       .vs{
-        font-weight: 700;
-        font-size: 25px;
-        padding-left: 18%;
-        width: 75%;
-        margin: 0 auto !important;
-    }
-  }
-  .vs{
-	font-weight: 700;
+  .vs {
+    font-weight: 700;
     font-size: 25px;
-    
+
+    width: 75%;
+    margin: 0 auto !important;
+  }
 }
-.div-disabled{
-  pointer-events:none;
- 
+@media only screen and (min-width: 770px) {
+  .vs {
+    font-weight: 700;
+    font-size: 25px;
+    padding-left: 18%;
+    width: 75%;
+    margin: 0 auto !important;
+  }
+}
+.select_game_description{
+  font-family: Poppins;
+  font-size: 18px;
+  height: 210px;
+  text-align: center;
+  color: #ffffff;
+}
+.select_teams_game_title{
+  height: 51px;
+  font-family: Poppins;
+  font-size: 36px;
+  font-weight: 500;
+  text-align: center;
+  color: #ff7b00;
+}
+.select_teams_game_time{
+  font-family: Poppins;
+  font-size: 22px;
+  font-weight: normal;
+  color: #ffffff;
+}
+.select_teams_game_time > span{
+  font-weight: bold;
+  text-align: center;
+  color: #ec7538;
+}
+.select_teams_header_buttons_wrapper{
+  width: 415px;
+  margin: 20px auto;
+}
+.page_main {
+  width: 100%;
+  min-width: 1347px;
+}
+.vs {
+  font-weight: 700;
+  font-size: 25px;
+}
+.div-disabled {
+  pointer-events: none;
+
   opacity: 0.8;
 }
-.prize-row{
+.select_team_heading_right{
+  width: 217px;
+  height: 45px;
+  line-height: 117px;
+  font-family: Poppins;
+  font-size: 32px;
+  text-align: center;
+  color: #ffffff;
+  margin-left: 326px;
+}
+.select_teams_sponsor_img {
+  width: 140px;
+ 
+}
+.prize-row {
   font-size: 18px;
   max-width: 40%;
 }
-.prize-table{
+.prize-table {
   width: 450px;
+}
+.select_team_row {
+  width: 100%;
+  display: flex;
+}
+.select_team_row > div {
+  float: left;
+}
+.select_team_heading {
+  width: 294px;
+  height: 45px;
+  font-family: Poppins;
+  font-size: 32px;
+  text-align: center;
+  color: #ffffff;
+}
+.select_team_button_lineup {
+  cursor: pointer;
+  width: 193px;
+  line-height: 42px;
+  height: 42px;
+  border-radius: 21px;
+  box-shadow: 0 3px 27px -2px #8c8c8c;
+  background-color: #ffffff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #000000;
+  margin: 3px 200px 0px 20px;
+}
+.select_team_button_rules {
+  cursor: pointer;
+  float: left;
+  width: 191px;
+  height: 42px;
+  border-radius: 21px;
+  border: solid 1px #ffffff;
+  line-height: 42px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  margin-right: 20px;
+}
+
+.select_team_button_grid {
+  cursor: pointer;
+  float: left;
+  width: 191px;
+  height: 42px;
+  border-radius: 21px;
+  border: solid 1px #ffffff;
+  line-height: 42px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+}
+.select_team_game_info{
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #ed7930;
+  text-align: left;
+  margin-bottom: 10px !important;
+}
+.select_team_box_teams {
+  float: left;
+  width: 955px;
+  height: 562.1px;
+  border-radius: 11px;
+  background-color: #1a1a1a;
+  overflow: auto;
+  overflow-y: scroll;
+  margin-bottom: 60px;
+}
+.select_team_box_details {
+  width: 334px;
+  height: 562.1px;
+  border-radius: 16px;
+  background-color: #1a1a1a;
+  margin-left: 20px;
+  padding: 10px;
+}
+.select_team_box_select_team {
+  float: left;
+  width: 433px;
+  height: 222px;
+  border-radius: 5px;
+  background-color: #0f0f0f;
+  margin: 20px 10px 20px 20px;
+}
+.select_team_box_inner_left {
+  height: 160px;
+  width: 216px;
+  float: left;
+  text-align: center;
+}
+.select_team_box_inner_right {
+  height: 160px;
+  width: 231px;
+  float: left;
+}
+.select_team_box_name {
+  margin: 20px 0px 2px 0px;
+  height: 46px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+}
+.select_team_box_name_active {
+  margin: 20px 0px 2px 0px;
+  height: 46px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  color: #fb6e00;
+}
+.select_team_box_starting {
+  height: 20px;
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(256, 256, 256, 0.4);
+  border-right: solid 1px #232323;
+}
+.select_team_box_pitcher {
+  height: 20px;
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+  border-right: solid 1px #232323;
+}
+.select_team_box_select {
+  height: 20px;
+  font-family: Poppins;
+  font-size: 14px;
+  color: #ffffff;
+  border-right: solid 1px #232323;
+  cursor: pointer;
+  padding: 10px;
+}
+.select_team_box_select span:before {
+  content: "";
+  display: inline-block;
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+  border: solid 1px #ffffff;
+  border-radius: 6px;
+  margin-top: 3px;
+}
+.select_team_box_select_active {
+  cursor: pointer;
+  height: 20px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fb6e00;
+  border-right: solid 1px #232323;
+  padding: 10px;
+}
+.select_teams_vs {
+  width: 0px;
+  height: 20px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fb6e00;
+  float: left;
+  margin-top: 42px;
+  margin-left: -8px;
+}
+.select_team_box_inner_bottom {
+  height: 61px;
+  padding: 18px 15px 0px 15px;
+  float: left;
+  width: 433px;
+}
+.select_team_box_inner_bottom_item {
+  float: left;
+  width: 33.3%;
+  text-align: left;
+}
+.select_team_box_inner_bottom_img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  float: left;
+}
+.select_team_box_inner_bottom_text {
+  float: left;
+  margin-left: 6px;
+  height: 20px;
+  font-family: Poppins;
+  font-size: 12px;
+  text-align: left;
+  color: #ffffff;
+  max-width: 117px;
+}
+.select_teams_sponsor {
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  margin: 5px;
+}
+.select_teams_sponsor_name {
+  font-family: Poppins;
+  font-size: 24px;
+  text-align: center;
+  color: #ffffff;
+  margin: 5px;
+}
+.select_teams_game_info {
+  padding: 5px;
+  width: 297px;
+  height: 62px;
+  border-radius: 4px;
+  background-color: rgba(29, 149, 9, 0.3);
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  margin: 10px 0px 20px 0px;
+}
+.select_teams_button_submit {
+  width: 310px;
+  cursor: pointer;
+  height: 51px;
+  border-radius: 34.5px;
+
+  background-color: #fb6e00;
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  line-height: 51px;
+}
+.select_teams_button_submit:hover {
+  box-shadow: 0 3px 27px -2px #fb6e00;
+}
+.select_teams_button_submit_inactive {
+  cursor: alias;
+  width: 310px;
+  height: 51px;
+  line-height: 51px;
+  border-radius: 34.5px;
+  background-color: #9d9d9d;
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #737373;
+}
+.selected_teams_wrapper{
+  height: 350px;
+  overflow-y: auto; 
+}
+.selected_team_box {
+  width: 285px;
+  height: 47px;
+  line-height: 47px;
+  border-radius: 13px;
+  margin: 5px;
+  background-color: #0f0f0f;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #fb6e00;
+}
+.close-thin {
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #fff;
+  float: right;
+  line-height: 47px;
+  padding-right: 10px;
+  font-size: 25px;
+}
+.close-thin:hover {
+  font-weight: bold;
+  color: white !important;
+}
+.close-thin:after {
+  content: "×"; /* UTF-8 symbol */
+}
+.total_teams_selected_info {
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+.max_teams_selected_info {
+  font-family: Poppins;
+  font-size: 13px;
+  text-align: center;
+  color: #fb6e00;
+}
+.selected_teams_info{
+  width: 165px;
+  height: 46px;
+  margin-top: 10px;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #909090;
+}
+.selected_a_team_info{
+  width: 291px;
+  height: 20px;
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+}
+.no_teams_selected_wrapper{
+  margin: 160px 0px;
 }

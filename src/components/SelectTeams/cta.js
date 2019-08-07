@@ -12,6 +12,108 @@ import Button from "react-bootstrap/lib/Button";
 var path = "";
 var popupText = "Error";
 var popupHader = "Sorry!";
+
+var MySelections = props => {
+  function createPrizeText() {
+    var prizeText = "";
+    var SelectedTeams = props.teams.length;
+    var minAllowed = props.gameData.min_teams_allowed;
+    if (SelectedTeams < minAllowed) {
+      prizeText =
+        "Select At least " + minAllowed + " Teams To Enter This Contest";
+    } else {
+      prizeText =
+        "You could win " +
+        (props.gameData.prize_type == "cash"
+          ? "$" + props.prizeCurrent
+          : props.prizeCurrent + " Points") +
+        " " +
+        props.gameData.gametype_prize_text;
+    }
+    return prizeText;
+  }
+  function getTeamName(id) {
+    var matchId = id.split("-")[0];
+    var teamId = id.split("-")[1];
+    console.log(matchId);
+    console.log(props.matches);
+    let obj = props.matches.find(obj => obj.feed_game_id == matchId);
+    if (obj) {
+      return obj.home_team_id == teamId ? obj.home_team : obj.away_team;
+    } else {
+      return ":(";
+    }
+  }
+  function passClick(id) {
+    props.onClickClose(id);
+  }
+  if (props.teams.length > 0) {
+    return (
+      <div className="select_team_box_details">
+        <center>
+          <div className="selected_teams_wrapper">
+            {props.teams.map((team, key) => {
+              return (
+                <div className="selected_team_box">
+                  {getTeamName(team)}
+                  <a onClick={() => passClick(team)} class="close-thin" />
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="total_teams_selected_info">
+            {props.teams.length +
+              "/" +
+              props.gameData.max_teams_allowed +
+              "Teams Selected"}
+          </div>
+          <div className="max_teams_selected_info">
+            {props.teams.length == props.gameData.max_teams_allowed
+              ? "Maximum Teams Selected"
+              : ""}
+          </div>
+          <div className="select_teams_game_info">{createPrizeText()}</div>
+          <div
+            className="select_teams_button_submit"
+            onClick={props.onClickSubmit}
+          >
+            Submit My Picks
+          </div>
+        </center>
+      </div>
+    );
+  } else {
+    return (
+      <div className="select_team_box_details">
+        <center>
+          <div className="no_teams_selected_wrapper">
+            <img
+              src={require("./../../assets/images/select_team/check.png")}
+              className="img-responsive"
+            />
+            <div className="selected_teams_info">
+              Your selected teams will appear here{" "}
+            </div>
+            <div className="total_teams_selected_info">
+              {props.teams.length +
+                "/" +
+                props.gameData.max_teams_allowed +
+                "Teams Selected"}
+            </div>
+            <div className="selected_a_team_info">
+              Select at least 1 team to sumbit your picks
+            </div>
+          </div>
+
+          <div className="select_teams_button_submit_inactive">
+            Submit My Picks
+          </div>
+        </center>
+      </div>
+    );
+  }
+};
 class CTA extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +123,7 @@ class CTA extends Component {
       error: "",
       isLoaded: false,
       gamesArraysInPair: [],
+      matches: [],
       selectedTeams: [],
       show: false,
       showPrize: false,
@@ -41,7 +144,9 @@ class CTA extends Component {
     this.handleShowPrize = this.handleShowPrize.bind(this);
     this.handleClosePrize = this.handleClosePrize.bind(this);
   }
-
+  removeClicked = teamId => {
+    this.onSelectClicked(teamId);
+  };
   onSelectClicked(id) {
     //saving a copy
     var teams = this.state.selectedTeams.slice();
@@ -154,11 +259,14 @@ class CTA extends Component {
         dd => {
           var arrays = [],
             size = 2;
+          var mymatches = [...dd.records];
+
           dd = dd.records;
           while (dd.length > 0) arrays.push(dd.splice(0, size));
           this.setState({
             isLoaded: true,
-            gamesArraysInPair: arrays
+            gamesArraysInPair: arrays,
+            matches: mymatches
           });
         },
         error => {
@@ -234,7 +342,7 @@ class CTA extends Component {
   }
   getGolaieInfo(goalie, gaa) {
     if (goalie == "" || goalie == null) {
-      return "TBA";
+      return "-/-";
     } else {
       return goalie + " - " + gaa;
     }
@@ -246,24 +354,7 @@ class CTA extends Component {
       return pitcher + " - " + era;
     }
   }
-  createPrizeText() {
-    var prizeText = "";
-    var SelectedTeams = this.state.selectedTeams.length;
-    var minAllowed = this.state.gameData.min_teams_allowed;
-    if (SelectedTeams < minAllowed) {
-      prizeText =
-        "Select At least " + minAllowed + " Teams To Enter This Contest";
-    } else {
-      prizeText =
-        "You could win " +
-        (this.state.gameData.prize_type == "cash"
-          ? "$" + this.state.prizeCurrent
-          : this.state.prizeCurrent + " Points") +
-        " " +
-        this.state.gameData.gametype_prize_text;
-    }
-    return prizeText;
-  }
+
   getPrizeAmount() {
     var prizeText = "";
     var SelectedTeams = this.state.selectedTeams.length;
@@ -278,17 +369,7 @@ class CTA extends Component {
     }
     return prizeText;
   }
-  getButtonText() {
-    var prizeText = "";
-    var SelectedTeams = this.state.selectedTeams.length;
-    var minAllowed = this.state.gameData.min_teams_allowed;
-    if (SelectedTeams < minAllowed) {
-      prizeText = "Pick minimum Of " + minAllowed + " Team(s) ";
-    } else {
-      prizeText = "Submit My Picks";
-    }
-    return prizeText;
-  }
+
   handleClose() {
     this.setState({
       show: false
@@ -311,6 +392,56 @@ class CTA extends Component {
     this.setState({
       showPrize: true
     });
+  }
+  openLineupWindow() {
+    var win = window.open(
+      "https://www.mlb.com/starting-lineups/" +
+        this.state.gameData.stat_time.split(" ")[0],
+      "_blank"
+    );
+    win.focus();
+  }
+  getStringDate(mDate) {
+    if (mDate == null) {
+      return "";
+    }
+    var mydate = new Date(mDate);
+    var month = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ][mydate.getMonth()];
+    var str =
+      month + " " + mydate.getDate() + ", " + mydate.getFullYear() + " ";
+    return str;
+  }
+  getStringTime(time) {
+    if (time) {
+      time = time.split(" ")[1];
+    } else {
+      return "-/-";
+    }
+    // Check correct time format and split into components
+    time = time
+      .toString()
+      .match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+    if (time.length > 1) {
+      // If time format correct
+      time = time.slice(1); // Remove full string match value
+      time[3] = +time[0] < 12 ? "AM" : "PM"; // Set AM/PM
+      time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join(""); // return adjusted time or original string
   }
   pageforNHL() {
     return (
@@ -789,14 +920,14 @@ class CTA extends Component {
           </Modal.Footer>
         </Modal>
         <Header />
-        <div className="container-fluid game_zones">
+        <div className="page_main">
           <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
             <Modal.Header closeButton>
               <Modal.Title>Prizes</Modal.Title>
             </Modal.Header>
             <Modal.Body className="grid-body">
               {
-                <table>
+                <table className="modal-prize-table">
                   <thead>
                     <tr>
                       <th scope="col"> # of Teams </th>
@@ -831,407 +962,276 @@ class CTA extends Component {
               }
             </Modal.Body>
           </Modal>
-          <div className="container">
-            <div className="row top-area">
-              <div className="col-md-12">
-                <img
-                  src={
-                    "http://mypowerplaygames.com/api/sport_league/get_image.php?id=" +
-                    this.state.gameData.association_id +
-                    "&type=header"
-                  }
-                  className="img-responsive"
-                />
-                <h1>
-                  <span> {this.state.gameData.name} </span>
-                </h1>
-                <br />
-                <h1> {this.state.gameData.header_text} </h1>
+          <div className="">
+            <img
+              src={
+                "http://mypowerplaygames.com/api/sport_league/get_image.php?id=" +
+                this.state.gameData.association_id +
+                "&type=header"
+              }
+              style={{ width: "100%" }}
+            />
+            <div className="select_game_description">
+              Sponsored by: &nbsp; &nbsp; &nbsp;
+              <img
+                className="select_teams_sponsor_img"
+                src={require("./../../assets/images/logo.png")}
+              />
+              <div className="select_teams_game_title">
+                Summer Fantasy Battle
               </div>
-            </div>
-            <div className="game_zones_main">
-              {this.state.gamesArraysInPair.map((data, index) => (
-                <div className="row game_zones_score">
-                  {(() => {
-                    if (data.length > 0) {
-                      return (
-                        <div
-                          className={
-                            data[0].status != "UNPLAYED"
-                              ? "col-md-6 left_box div-disabled"
-                              : "col-md-6 left_box"
-                          }
-                        >
-                          <div className="col-sm-8 boxes-left">
-                            <div className="box-one">
-                              {(() => {
-                                if (
-                                  this.state.selectedTeams.includes(
-                                    data[0].feed_game_id +
-                                      "-" +
-                                      data[0].home_team_id
-                                  )
-                                ) {
-                                  return (
-                                    <div className="col-sm-3 zones zones_box">
-                                      <div
-                                        className="iner-zones"
-                                        onClick={() =>
-                                          this.onSelectClicked(
-                                            data[0].feed_game_id +
-                                              "-" +
-                                              data[0].home_team_id
-                                          )
-                                        }
-                                      >
-                                        Selected
-                                      </div>
-                                    </div>
-                                  );
-                                } else {
-                                  return (
-                                    <div className="col-sm-3 zones zone-sel">
-                                      <div
-                                        className="iner-zones"
-                                        onClick={() =>
-                                          this.onSelectClicked(
-                                            data[0].feed_game_id +
-                                              "-" +
-                                              data[0].home_team_id
-                                          )
-                                        }
-                                      >
-                                        Click to <br className="hidden-xs" />
-                                        Select
-                                      </div>
-                                    </div>
-                                  );
-                                }
-                              })()}
-                              <div className="col-sm-9 zones-det">
-                                <div className="iner-zones">
-                                  <p>
-                                    {data[0].home_team} <br />
-                                    <span className="span1">
-                                      Starting Pitcher
-                                    </span>
-                                    <br />
-                                    <span className="span2">
-                                      {this.getPitcherInfo(
-                                        data[0].starting_goalie_home_team,
-                                        data[0].starting_pitcher_home_team_era
-                                      )}
-                                    </span>
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="clearfix" />
-                            </div>
-                            <p className="vs"> -VS. - </p>
-                            <div className="box-one">
-                              {(() => {
-                                if (
-                                  this.state.selectedTeams.includes(
-                                    data[0].feed_game_id +
-                                      "-" +
-                                      data[0].away_team_id
-                                  )
-                                ) {
-                                  return (
-                                    <div className="col-sm-3 zones zones_box">
-                                      <div
-                                        className="iner-zones"
-                                        onClick={() =>
-                                          this.onSelectClicked(
-                                            data[0].feed_game_id +
-                                              "-" +
-                                              data[0].away_team_id
-                                          )
-                                        }
-                                      >
-                                        Selected
-                                      </div>
-                                    </div>
-                                  );
-                                } else {
-                                  return (
-                                    <div className="col-sm-3 zones zone-sel">
-                                      <div
-                                        className="iner-zones"
-                                        onClick={() =>
-                                          this.onSelectClicked(
-                                            data[0].feed_game_id +
-                                              "-" +
-                                              data[0].away_team_id
-                                          )
-                                        }
-                                      >
-                                        Click to <br className="hidden-xs" />
-                                        Select
-                                      </div>
-                                    </div>
-                                  );
-                                }
-                              })()}
-                              <div className="col-sm-9 zones-det">
-                                <div className="iner-zones">
-                                  <p>
-                                    {data[0].away_team} <br />
-                                    <span className="span1">
-                                      Starting pitcher
-                                    </span>
-                                    <br />
-                                    <span className="span2">
-                                      {this.getPitcherInfo(
-                                        data[0].starting_pitcher_away_team,
-                                        data[0].starting_pitcher_away_team_era
-                                      )}
-                                    </span>
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="clearfix" />
-                            </div>
-                          </div>
-                          <div className="col-sm-4 boxes-right">
-                            <div className="iner-zones">
-                              <p>
-                                Location <br />
-                                <span className="span">{data[0].location}</span>
-                                <br /> <br />
-                                Start Time <br />
-                                <span className="span">
-                                  {data[0].status != "UNPLAYED"
-                                    ? data[0].status
-                                    : data[0].start_time.split("T")[0] +
-                                      " " +
-                                      this.tConv24(
-                                        data[0].start_time
-                                          .split("T")[1]
-                                          .replace(":00.000Z", "")
-                                      )}
-                                </span>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    }
-                  })()}
-                  {(() => {
-                    if (data.length > 1) {
-                      return (
-                        <div
-                          className={
-                            data[1].status != "UNPLAYED"
-                              ? "col-md-6 right_box div-disabled"
-                              : "col-md-6 right_box"
-                          }
-                        >
-                          <div className="col-sm-8 boxes-left">
-                            <div className="box-one">
-                              {(() => {
-                                if (
-                                  this.state.selectedTeams.includes(
-                                    data[1].feed_game_id +
-                                      "-" +
-                                      data[1].home_team_id
-                                  )
-                                ) {
-                                  return (
-                                    <div className="col-sm-3 zones zones_box">
-                                      <div
-                                        className="iner-zones"
-                                        onClick={() =>
-                                          this.onSelectClicked(
-                                            data[1].feed_game_id +
-                                              "-" +
-                                              data[1].home_team_id
-                                          )
-                                        }
-                                      >
-                                        Selected
-                                      </div>
-                                    </div>
-                                  );
-                                } else {
-                                  return (
-                                    <div className="col-sm-3 zones zone-sel">
-                                      <div
-                                        className="iner-zones"
-                                        onClick={() =>
-                                          this.onSelectClicked(
-                                            data[1].feed_game_id +
-                                              "-" +
-                                              data[1].home_team_id
-                                          )
-                                        }
-                                      >
-                                        Click to <br className="hidden-xs" />
-                                        Select
-                                      </div>
-                                    </div>
-                                  );
-                                }
-                              })()}
-                              <div className="col-sm-9 zones-det">
-                                <div className="iner-zones">
-                                  <p>
-                                    {data[1].home_team} <br />
-                                    <span className="span1">
-                                      Starting pitcher
-                                    </span>
-                                    <br />
-                                    <span className="span2">
-                                      {this.getPitcherInfo(
-                                        data[1].starting_pitcher_home_team,
-                                        data[1].starting_pitcher_home_team_era
-                                      )}
-                                    </span>
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="clearfix" />
-                            </div>
-                            <p className="vs"> -VS. - </p>
-                            <div className="box-one">
-                              {(() => {
-                                if (
-                                  this.state.selectedTeams.includes(
-                                    data[1].feed_game_id +
-                                      "-" +
-                                      data[1].away_team_id
-                                  )
-                                ) {
-                                  return (
-                                    <div className="col-sm-3 zones zones_box">
-                                      <div
-                                        className="iner-zones"
-                                        onClick={() =>
-                                          this.onSelectClicked(
-                                            data[1].feed_game_id +
-                                              "-" +
-                                              data[1].away_team_id
-                                          )
-                                        }
-                                      >
-                                        Selected
-                                      </div>
-                                    </div>
-                                  );
-                                } else {
-                                  return (
-                                    <div className="col-sm-3 zones zone-sel">
-                                      <div
-                                        className="iner-zones"
-                                        onClick={() =>
-                                          this.onSelectClicked(
-                                            data[1].feed_game_id +
-                                              "-" +
-                                              data[1].away_team_id
-                                          )
-                                        }
-                                      >
-                                        Click to <br className="hidden-xs" />
-                                        Select
-                                      </div>
-                                    </div>
-                                  );
-                                }
-                              })()}
-                              <div className="col-sm-9 zones-det">
-                                <div className="iner-zones">
-                                  <p>
-                                    {data[1].away_team} <br />
-                                    <span className="span1">
-                                      Starting pitcher
-                                    </span>
-                                    <br />
-                                    <span className="span2">
-                                      {this.getPitcherInfo(
-                                        data[1].starting_pitcher_away_team,
-                                        data[1].starting_pitcher_away_team_era
-                                      )}
-                                    </span>
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="clearfix" />
-                            </div>
-                          </div>
-                          <div className="col-sm-4 boxes-right">
-                            <div className="iner-zones">
-                              <p>
-                                Location <br />
-                                <span className="span">{data[1].location}</span>
-                                <br /> <br />
-                                Start Time <br />
-                                <span className="span">
-                                  {data[1].status != "UNPLAYED"
-                                    ? data[1].status
-                                    : data[1].start_time.split("T")[0] +
-                                      " " +
-                                      this.tConv24(
-                                        data[1].start_time
-                                          .split("T")[1]
-                                          .replace(":00.000Z", "")
-                                      )}
-                                </span>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    } else {
-                      return "";
-                    }
-                  })()}
+              <div className="select_teams_game_time">
+                Game Set Start Date&nbsp;
+                <span>
+                  {this.getStringDate(this.state.gameData.stat_time) +
+                    ", " +
+                    this.getStringTime(this.state.gameData.stat_time)}
+                </span>
+              </div>
+              <div className="select_teams_header_buttons_wrapper">
+                <div className="select_team_button_rules">Game Rules</div>
+                <div
+                  className="select_team_button_grid"
+                  onClick={e => this.handleShowPrize()}
+                >
+                  Prize Grid
                 </div>
-              ))}
-            </div>
-            <div className="row">
-              <div className="col-md-9 col-sm-8">
-                <a href="#">
-                  <button className="btn_one_zones"> Maximum Prize </button>
-                </a>
-              </div>
-              <div className="col-md-3 col-sm-4">
-                <a href="#">
-                  <button className="btn_two_zones">
-                    {this.getPrizeAmount()}
-                  </button>
-                </a>
               </div>
             </div>
-            <div className="row gamzone_price">
-              <div className="col-md-12">
-                <h2>
-                  <span className="fa fa-info-circle infobtn" />
-                  {this.createPrizeText()}
-                </h2>
+            <div style={{ margin: "20px" }}>
+              <div
+                className="select_team_row"
+                style={{ margin: "60px 0px 20px 0px" }}
+              >
+                <div className="select_team_heading">Select Your Teams</div>
+                <div
+                  className="select_team_button_lineup"
+                  onClick={e => this.openLineupWindow()}
+                >
+                  Starting Lineups
+                </div>
+                <div className="select_team_heading_right">My Selections</div>
               </div>
-            </div>
-            <div className="row game_zone_sub">
-              <div className="col-sm-12">
-                <a>
-                  <button onClick={e => this.onSubmitClicked()}>
-                    {this.getButtonText()}
-                  </button>
-                </a>
-              </div>
-            </div>
-            <div className="row game_zone_btn">
-              <div className="col-sm-6">
-                <a>
-                  <button onClick={e => this.handleShowPrize()}>
-                    View Prize Grid
-                  </button>
-                </a>
-              </div>
-              <div className="col-sm-6">
-                <a href="#">
-                  <button> Game Rules </button>
-                </a>
+              <p className="select_team_game_info">
+                Pick teams that you think will have a final score equal to 1
+              </p>
+              <div className="select_team_row">
+                <div className="select_team_box_teams">
+                  {this.state.matches.map((data, index) => (
+                    <div
+                      className={
+                        data.status != "UNPLAYED"
+                          ? "select_team_box_select_team div-disabled"
+                          : "select_team_box_select_team"
+                      }
+                    >
+                      <div
+                        style={{
+                          borderBottom: "solid 1px #232323",
+                          height: "160px"
+                        }}
+                      >
+                        <div className="select_team_box_inner_left">
+                          <div
+                            className={
+                              this.state.selectedTeams.includes(
+                                data.feed_game_id + "-" + data.home_team_id
+                              )
+                                ? "select_team_box_name_active"
+                                : "select_team_box_name"
+                            }
+                          >
+                            {data.home_team}
+                          </div>
+                          <div className="select_team_box_starting">
+                            Starting Pitcher
+                          </div>
+                          <div className="select_team_box_pitcher">
+                            {this.getPitcherInfo(
+                              data.starting_pitcher_home_team,
+                              data.starting_pitcher_home_team_era
+                            )}
+                          </div>
+                          {(() => {
+                            if (
+                              this.state.selectedTeams.includes(
+                                data.feed_game_id + "-" + data.home_team_id
+                              )
+                            ) {
+                              return (
+                                <div
+                                  className="select_team_box_select_active"
+                                  onClick={() =>
+                                    this.onSelectClicked(
+                                      data.feed_game_id +
+                                        "-" +
+                                        data.home_team_id
+                                    )
+                                  }
+                                >
+                                  <span
+                                    style={{
+                                      color: "#fb6e00",
+                                      marginRight: "10px"
+                                    }}
+                                    class="glyphicon glyphicon-record"
+                                    aria-hidden="true"
+                                  />
+                                  {data.status == "UNPLAYED"
+                                    ? "Selected"
+                                    : data.status == "COMPLETED"
+                                    ? "Selected (Finished)"
+                                    : "Selected (LIVE)"}
+                                </div>
+                              );
+                            } else {
+                              return (
+                                <div
+                                  className="select_team_box_select"
+                                  onClick={() =>
+                                    this.onSelectClicked(
+                                      data.feed_game_id +
+                                        "-" +
+                                        data.home_team_id
+                                    )
+                                  }
+                                >
+                                  <span aria-hidden="true">
+                                    {data.status == "UNPLAYED"
+                                      ? "Select This Team"
+                                      : data.status == "COMPLETED"
+                                      ? "Finished"
+                                      : "LIVE"}
+                                  </span>
+                                </div>
+                              );
+                            }
+                          })()}
+                        </div>
+                        <div className="select_teams_vs">vs.</div>
+                        <div className="select_team_box_inner_left">
+                          <div
+                            className={
+                              this.state.selectedTeams.includes(
+                                data.feed_game_id + "-" + data.away_team_id
+                              )
+                                ? "select_team_box_name_active"
+                                : "select_team_box_name"
+                            }
+                          >
+                            {data.away_team}
+                          </div>
+                          <div className="select_team_box_starting">
+                            Starting Pitcher
+                          </div>
+                          <div className="select_team_box_pitcher">
+                            {this.getPitcherInfo(
+                              data.starting_pitcher_away_team,
+                              data.starting_pitcher_away_team_era
+                            )}
+                          </div>
+                          {(() => {
+                            if (
+                              this.state.selectedTeams.includes(
+                                data.feed_game_id + "-" + data.away_team_id
+                              )
+                            ) {
+                              return (
+                                <div
+                                  className="select_team_box_select_active"
+                                  onClick={() =>
+                                    this.onSelectClicked(
+                                      data.feed_game_id +
+                                        "-" +
+                                        data.away_team_id
+                                    )
+                                  }
+                                >
+                                  <span
+                                    style={{
+                                      color: "#fb6e00",
+                                      marginRight: "10px"
+                                    }}
+                                    class="glyphicon glyphicon-record"
+                                    aria-hidden="true"
+                                  />
+                                  {data.status == "UNPLAYED"
+                                    ? "Selected"
+                                    : data.status == "COMPLETED"
+                                    ? "Selected (Finished)"
+                                    : "Selected (LIVE)"}
+                                </div>
+                              );
+                            } else {
+                              return (
+                                <div
+                                  className="select_team_box_select"
+                                  onClick={() =>
+                                    this.onSelectClicked(
+                                      data.feed_game_id +
+                                        "-" +
+                                        data.away_team_id
+                                    )
+                                  }
+                                >
+                                  <span aria-hidden="true">
+                                    {data.status == "UNPLAYED"
+                                      ? "Select This Team"
+                                      : data.status == "COMPLETED"
+                                      ? "Finished"
+                                      : "LIVE"}
+                                  </span>
+                                </div>
+                              );
+                            }
+                          })()}
+                        </div>
+                        <div className="select_team_box_inner_bottom">
+                          <div className="select_team_box_inner_bottom_item">
+                            <img
+                              className="select_team_box_inner_bottom_img"
+                              src={require("./../../assets/images/select_team/clock.png")}
+                            />
+                            <div className="select_team_box_inner_bottom_text">
+                              {this.tConv24(
+                                data.start_time
+                                  .split("T")[1]
+                                  .replace(":00.000Z", "")
+                              )}
+                            </div>
+                          </div>
+                          <div className="select_team_box_inner_bottom_item">
+                            <img
+                              className="select_team_box_inner_bottom_img"
+                              src={require("./../../assets/images/select_team/calendar.png")}
+                            />
+                            <div className="select_team_box_inner_bottom_text">
+                              {data.start_time.split("T")[0]}
+                            </div>
+                          </div>
+                          <div className="select_team_box_inner_bottom_item">
+                            <img
+                              className="select_team_box_inner_bottom_img"
+                              src={require("./../../assets/images/select_team/stadium.png")}
+                            />
+                            <div className="select_team_box_inner_bottom_text">
+                              {data.location}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <MySelections
+                  teams={this.state.selectedTeams}
+                  onClickClose={this.removeClicked}
+                  onClickSubmit={this.onSubmitClicked}
+                  gameData={this.state.gameData}
+                  prizeCurrent={this.state.prizeCurrent}
+                  matches={this.state.matches}
+                />
               </div>
             </div>
           </div>
