@@ -15,7 +15,7 @@ class FAQ extends Component {
         };
       }
       componentDidMount() {
-        fetch("https://mypowerplaygames.com/api/website_footer/getone.php?id=3")
+        fetch("https://powerplaysystems.com/api/website_footer/getone.php?id=3")
           .then(res => res.json())
           .then(
             result => {

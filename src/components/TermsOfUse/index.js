@@ -15,7 +15,7 @@ class TermsOfUse extends Component {
     };
   }
   componentDidMount() {
-    fetch("https://mypowerplaygames.com/api/website_footer/getone.php?id=1")
+    fetch("https://powerplaysystems.com/api/website_footer/getone.php?id=1")
       .then(res => res.json())
       .then(
         result => {

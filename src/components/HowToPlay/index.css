@@ -330,7 +330,9 @@ h5{
 }
 .box_one_ply{
     font-family: 'Atletico-RegularDemo';
-	color:#FFF;
+    color:#FFF;
+    width: 1100px;
+    margin: 0 auto;
 }
 .color-white{
 	color:#FFF;

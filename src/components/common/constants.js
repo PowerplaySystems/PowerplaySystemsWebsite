@@ -24,4 +24,13 @@ export const LOTETRY_POWERPLAY_FORCE_MATCH = 3;
 export const LOTETRY_POWERPLAY_INCREASE = 4;
 export const LOTETRY_POWERPLAY_DECREASE = 5;
 
+export const SPORTS_POWERPLAY_INCREASE = 19;
+export const SPORTS_POWERPLAY_DESCREASE = 18;
+export const SPORTS_POWERPLAY_UNDO = 21;
+export const SPORTS_POWERPLAY_11_TO_1 = 13;
+export const SPORTS_POWERPLAY_SWAP = 24;
+export const SPORTS_POWERPLAY_LOCK = 1;
+
 export const ENK = 1122334455;
+export const URL = "wwww.powerplaysystems.com"
+

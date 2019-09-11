@@ -16,7 +16,7 @@ class MyWithdrawals extends Component {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
     fetch(
-      "https://mypowerplaygames.com/public_api/powerplay/my_powerplays.php?jwt=" +
+      "https://powerplaysystems.com/public_api/powerplay/my_powerplays.php?jwt=" +
         jwt
     )
       .then(res => res.json())

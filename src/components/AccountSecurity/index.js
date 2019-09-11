@@ -15,7 +15,7 @@ class AccountSecurity extends Component {
     };
   }
   componentDidMount() {
-    fetch("https://mypowerplaygames.com/api/website_footer/getone.php?id=5")
+    fetch("https://powerplaysystems.com/api/website_footer/getone.php?id=5")
       .then(res => res.json())
       .then(
         result => {

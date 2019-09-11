@@ -228,6 +228,8 @@ font-face {
   padding-top: 32px;
   margin-bottom: 30px;
   margin-top: 30px;
+  margin-left: 40px;
+  padding: 32px 0px;
 }
 .our_games_inner_leaf {
   width: 222px;
@@ -321,4 +323,7 @@ font-face {
 }
 .content{
   min-width: 1300px;
+}
+.mSlick{
+
 }

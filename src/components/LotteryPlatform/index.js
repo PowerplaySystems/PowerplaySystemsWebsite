@@ -17,7 +17,7 @@ class LotteryPlatform extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     fetch(
-      "https://mypowerplaygames.com/api/website_corporate/get.php?type=sport"
+      "https://powerplaysystems.com/api/website_corporate/get.php?type=sport"
     )
       .then(res => res.json())
       .then(

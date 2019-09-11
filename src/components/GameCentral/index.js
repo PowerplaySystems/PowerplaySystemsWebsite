@@ -4,6 +4,7 @@ import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import Invertory from "./../common/inventory";
 import "./index.css";
+import $ from "jquery";
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
 
@@ -11,7 +12,7 @@ import Cookies from "universal-cookie";
 
 var popupText = "Error";
 var popupHader = "Sorry!";
-
+var rowCounter = 0;
 var totalWithOne = 0;
 //active Game Data variables
 var activeGame = false;
@@ -371,7 +372,17 @@ class GameCentral extends Component {
       pathname: "/select-games"
     });
   }
-
+  setDroDown(event) {
+    const target = event.target;
+    if (target) {
+      const distanceFromTableTop =
+        $(target).offset().top - $(".game_center_table").offset().top;
+      console.log(distanceFromTableTop);
+      const canDropUp = 110 < distanceFromTableTop;
+      console.log(canDropUp)
+      $(".dropdown-menu").toggleClass("menu_up", canDropUp);
+    }
+  }
   onGameNameClicked(index) {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
@@ -381,7 +392,7 @@ class GameCentral extends Component {
     var league = this.state.games[index].league_id;
     var that = this;
     fetch(
-      "https://mypowerplaygames.com/public_api/entry/game_data.php?prize_id=" +
+      "https://powerplaysystems.com/public_api/entry/game_data.php?prize_id=" +
         activeGame.prize_id +
         "&jwt=" +
         jwt +
@@ -452,7 +463,7 @@ class GameCentral extends Component {
       }
     });
     fetch(
-      "https://mypowerplaygames.com/public_api/entry/readmygames.php?jwt=" + jwt
+      "https://powerplaysystems.com/public_api/entry/readmygames.php?jwt=" + jwt
     )
       .then(res => res.json())
       .then(
@@ -472,9 +483,17 @@ class GameCentral extends Component {
         }
       );
   }
+  setDropDirection(menuClassName) {
+    const canDropDown = this.menuHeight < this.distanceFromBottom;
+    this.elememt.toggleClass("dropdown", canDropDown);
+    this.elememt.toggleClass("dropup", !canDropDown);
+  }
 
+  distanceFromBottom() {}
+  
   render() {
     totalWithOne = 0;
+    rowCounter = 0;
     this.state.liveScores.forEach(element => {
       if (element.my_score == 1) {
         totalWithOne = totalWithOne + 1;
@@ -513,8 +532,7 @@ class GameCentral extends Component {
                 </div>
                 <div className="game_center_user_date">
                   {"Member since " +
-                    this.getStringDate(this.state.user.join_date)
-                      }
+                    this.getStringDate(this.state.user.join_date)}
                 </div>
               </div>
               <div className="game_center_first_row">
@@ -603,7 +621,7 @@ class GameCentral extends Component {
                     className="game_center_table"
                   >
                     <table className="game-center-table">
-                      <tbody>
+                      <thead>
                         <tr>
                           <th>Game</th>
                           <th>
@@ -730,6 +748,8 @@ class GameCentral extends Component {
                           <th>Entries</th>
                           <th>Actions</th>
                         </tr>
+                      </thead>
+                      <tbody>
                         {this.state.games.map((data1, key) => {
                           var filters = this.state.aciveFilters.slice();
 
@@ -758,6 +778,7 @@ class GameCentral extends Component {
                             }
                           }
                           if (shouldShowGame) {
+                            rowCounter = rowCounter + 1;
                             var text = "";
                             if (data1.status == "Finished") {
                               text = "View Results";
@@ -814,8 +835,10 @@ class GameCentral extends Component {
 
                                       <div
                                         class={
-                                          key > 1
-                                          ? (data1.match_started ? "dropdown-menu game_center_action_menu menu_up_short" :"dropdown-menu game_center_action_menu menu_up") 
+                                          rowCounter > 1
+                                            ? data1.match_started
+                                              ? "dropdown-menu game_center_action_menu menu_up_short"
+                                              : "dropdown-menu game_center_action_menu menu_up"
                                             : "dropdown-menu game_center_action_menu"
                                         }
                                         aria-labelledby="dropdownMenuButton"
@@ -839,29 +862,33 @@ class GameCentral extends Component {
                                             Edit Live Scores
                                           </div>
                                         </div>
-                                        <>{data1.match_started ? "": (                                        <div
-                                          className="dropdown-item action_menu_item"
-                                          onClick={() =>
-                                            this.onPickTeamsClicked(
-                                              data1.gametype_name,
-                                              data1.stat_time,
-                                              data1,
-                                              "Pick Teams"
-                                            )
-                                          }
-                                        >
-                                          <img
-                                            className="action_menu_item_img"
-                                            src={require("./../../assets/images/game-center/group_19_2.png")}
-                                          />
-                                          <div className="action_menu_item_text">
-                                            {data1.has_picks
-                                              ? "Show my Picks"
-                                              : "Pick Teams"}
-                                          </div>
-                                        </div>) }</>
-                                          
-
+                                        <>
+                                          {data1.match_started ? (
+                                            ""
+                                          ) : (
+                                            <div
+                                              className="dropdown-item action_menu_item"
+                                              onClick={() =>
+                                                this.onPickTeamsClicked(
+                                                  data1.gametype_name,
+                                                  data1.stat_time,
+                                                  data1,
+                                                  "Pick Teams"
+                                                )
+                                              }
+                                            >
+                                              <img
+                                                className="action_menu_item_img"
+                                                src={require("./../../assets/images/game-center/group_19_2.png")}
+                                              />
+                                              <div className="action_menu_item_text">
+                                                {data1.has_picks
+                                                  ? "Show my Picks"
+                                                  : "Pick Teams"}
+                                              </div>
+                                            </div>
+                                          )}
+                                        </>
 
                                         <div
                                           className="dropdown-item action_menu_item"
@@ -874,7 +901,7 @@ class GameCentral extends Component {
                                             src={require("./../../assets/images/game-center/group_19_3.png")}
                                           />
                                           <div className="action_menu_item_text">
-                                           Show My Scores
+                                            Show My Scores
                                           </div>
                                         </div>
                                       </div>
@@ -917,15 +944,11 @@ class GameCentral extends Component {
                           }
 
                           if (shouldShowGame) {
+                            rowCounter = rowCounter + 1;
                             return (
                               <tr key={key}>
                                 <td>
-                                  <a
-                                    className="c-p"
-                                   
-                                  >
-                                    {data1.name}
-                                  </a>
+                                  <a className="c-p">{data1.name}</a>
                                 </td>
                                 <td>
                                   <p>{data1.gametype_name}</p>
@@ -950,11 +973,14 @@ class GameCentral extends Component {
                                       aria-haspopup="true"
                                       aria-expanded="false"
                                       src={require("./../../assets/images/game-center/dots.png")}
+                                      onClick={this.setDroDown}
                                     />
 
                                     <div
                                       class={
-                                        "dropdown-menu game_center_action_menu menu_up_short"
+                                        rowCounter > 1
+                                          ? "dropdown-menu game_center_action_menu menu_up short"
+                                          : "dropdown-menu game_center_action_menu short"
                                       }
                                       aria-labelledby="dropdownMenuButton"
                                     >
@@ -962,7 +988,7 @@ class GameCentral extends Component {
                                         className="dropdown-item action_menu_item"
                                         onClick={() =>
                                           this.onPickBallsClicked(
-                                            data1.gametype_name,
+                                            data1.name,
                                             data1.start_datetime,
                                             data1,
                                             "live"
@@ -982,7 +1008,7 @@ class GameCentral extends Component {
                                         className="dropdown-item action_menu_item"
                                         onClick={() =>
                                           this.onPickBallsClicked(
-                                            data1.gametype_name,
+                                            data1.name,
                                             data1.start_datetime,
                                             data1,
                                             "Pick Teams"

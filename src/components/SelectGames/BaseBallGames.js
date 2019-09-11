@@ -77,7 +77,7 @@ class BaseBallGames extends Component {
           if (this.readyState === 4) {
             if (~this.responseText.indexOf("Created")) {
               fetch(
-                "https://www.mypowerplaygames.com/api/select_game/read.php?id=2"
+                "https://www.powerplaysystems.com/api/select_game/read.php?id=2"
               )
                 .then(res => res.json())
                 .then(
@@ -103,7 +103,7 @@ class BaseBallGames extends Component {
         });
         xhr.open(
           "POST",
-          " https://www.mypowerplaygames.com/public_api/entry/create.php"
+          " https://www.powerplaysystems.com/public_api/entry/create.php"
         );
         xhr.setRequestHeader(
           "content-type",
@@ -128,7 +128,7 @@ class BaseBallGames extends Component {
     this.setState({ isHowToPlay: isHowToPlayOpen });
   }
   componentDidMount() {
-    fetch("https://mypowerplaygames.com/public_api/association/read.php?id=2")
+    fetch("https://powerplaysystems.com/public_api/association/read.php?id=2")
       .then(res => res.json())
       .then(
         dd => {
@@ -142,7 +142,7 @@ class BaseBallGames extends Component {
           });
         }
       );
-    fetch("https://www.mypowerplaygames.com/api/select_game/read.php?id=2")
+    fetch("https://www.powerplaysystems.com/api/select_game/read.php?id=2")
       .then(res => res.json())
       .then(
         result => {
@@ -159,7 +159,7 @@ class BaseBallGames extends Component {
         }
       );
 
-    fetch("https://www.mypowerplaygames.com/api/select_game/readhow.php?id=2")
+    fetch("https://www.powerplaysystems.com/api/select_game/readhow.php?id=2")
       .then(res => res.json())
       .then(
         dd => {
@@ -173,7 +173,7 @@ class BaseBallGames extends Component {
           });
         }
       );
-    fetch("https://www.mypowerplaygames.com/api/select_game/readrules.php?id=2")
+    fetch("https://www.powerplaysystems.com/api/select_game/readrules.php?id=2")
       .then(res => res.json())
       .then(
         xx => {
@@ -188,7 +188,7 @@ class BaseBallGames extends Component {
           });
         }
       );
-    fetch("https://mypowerplaygames.com/api/prize/read.php")
+    fetch("https://powerplaysystems.com/api/prize/read.php")
       .then(res => res.json())
       .then(
         data => {
@@ -209,7 +209,7 @@ class BaseBallGames extends Component {
     const jwt = (this.mJwt = cookies.get("jwt"));
     if (jwt == undefined || jwt == "") {
     } else {
-      fetch("https://mypowerplaygames.com/public_api/entry/read.php?jwt=" + jwt)
+      fetch("https://powerplaysystems.com/public_api/entry/read.php?jwt=" + jwt)
         .then(res => res.json())
         .then(
           xx => {
@@ -283,7 +283,7 @@ class BaseBallGames extends Component {
                       >
                         <img
                           src={
-                            "http://mypowerplaygames.com/api/sport_league/get_image.php?id=" +
+                            "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
                             data.association_id +
                             "&type=image"
                           }

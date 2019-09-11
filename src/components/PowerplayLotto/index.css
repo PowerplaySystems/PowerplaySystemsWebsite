@@ -59,15 +59,36 @@ lotto-heading-main > span {
   text-align: center;
   color: #ffffff;
 }
-.lotto-section-2-heading {
-  margin: 115px auto 30px auto;
-  width: 940px;
-  height: 90px;
+.lotto-section-2-heading{
+  height: 260px;
+}
+.lotto-section-2-heading-note{
+  width: 748px;
+  height: 50px;
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0 auto;
+}
+.lotto-section-2-heading p{
+  margin: 115px auto 15px auto !important;
+  text-align: center;
+  width: 650px;
   font-family: Poppins;
   font-size: 32px;
   font-weight: bold;
   text-align: center;
   color: #ffffff;
+}
+.lotto-section-2-heading p span{
+  color: #fb6e00;
+}
+.lotto-section-2-heading-pointer{
+  margin: 0 auto;
+  width: 58px;
+  height: 58px;
+  margin-top: 40px;
 }
 .lotto-divider {
   width: 185px;
@@ -189,7 +210,7 @@ lotto-heading-main > span {
   color: #ffffff;
 }
 .lotto-game-date-wrapper {
-  width: 260px;
+  width: 320px;
   margin-right: 30px;
   height: 10px;
 }
@@ -207,8 +228,29 @@ lotto-heading-main > span {
   color: #ffffff;
 }
 .lotto-game-date > span {
-  font-weight: bold;
+  font-size: 16px;
+}
+.lotto-deadline-wrapper{
+  width: 115px;
+  height: 53px;
+}
+.lotto-deadline-wrapper p{
+  font-family: Poppins;
+  font-size: 16px;
+  color: #ffffff;
+}
+.lotto-deadline-wrapper span{
+  font-family: Poppins;
   color: #fb6e00;
+
+}
+.btn-draw{
+  float: left;
+  width: 427px !important;
+  margin-right: 20px;
+}
+.lotto-deadline-wrapper s{
+  font-size: 12px;
 }
 .lotto-even-details_draw_box > div {
   width: 39px;
@@ -251,8 +293,21 @@ lotto-heading-main > span {
   color: #ffffff;
 }
 .btn_edit_numbers{
+  width: 235px !important;
+  border: solid 1.5px #fb6e00;
   border: solid 1.5px #fb6e00 !important;
   background-color: transparent !important; 
   box-shadow: none !important;
-
+  float: left;
+  
+  font-size: 22px !important;
+  
+}
+.smaller-button{
+  width: 200px !important;
+  font-size: 18px !important;
+  border: solid 1.5px #fb6e00 !important;
+  background-color: transparent !important; 
+  box-shadow: none !important;
+  margin-left: 10px !important;
 }

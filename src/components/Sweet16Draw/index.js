@@ -108,7 +108,7 @@ class Sweet16Draw extends Component {
     const jwt = cookies.get("jwt");
     var that = this;
     fetch(
-      "https://mypowerplaygames.com/public_api/live_draw/data.php?jwt=" +
+      "https://powerplaysystems.com/public_api/live_draw/data.php?jwt=" +
         jwt +
         "&game_id=" +
         this.state.gameData.id
@@ -166,7 +166,7 @@ class Sweet16Draw extends Component {
                   <span>Live Draw</span>
                 </div>
                 <div className="live_draw_winning_box_content">
-                  <p>Winning Number</p>
+                  <p>Winning Numbers</p>
                   <div className="row winning_box_numbers_sweet16">
                     {this.state.picks.map((element, key) => {
                       return (

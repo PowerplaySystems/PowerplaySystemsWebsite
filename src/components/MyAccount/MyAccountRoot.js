@@ -43,7 +43,7 @@ class MyAccountRoot extends Component {
   onSaveClicked(inputType){
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    let link = "https://mypowerplaygames.com/public_api/account/update.php?jwt=" + jwt;
+    let link = "https://powerplaysystems.com/public_api/account/update.php?jwt=" + jwt;
     if (inputType == "name") {
      link = link + "&name=" + this.state.name + "&email=" + this.state.data.email;
     }
@@ -83,7 +83,7 @@ class MyAccountRoot extends Component {
   getAccount(){
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    fetch("https://mypowerplaygames.com/public_api/account/data.php?jwt=" + jwt)
+    fetch("https://powerplaysystems.com/public_api/account/data.php?jwt=" + jwt)
       .then(res => res.json())
       .then(
         xx => {

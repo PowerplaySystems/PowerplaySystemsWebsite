@@ -15,7 +15,7 @@ class TrustAndSafety extends Component {
     };
   }
   componentDidMount() {
-    fetch("https://mypowerplaygames.com/api/website_footer/getone.php?id=4")
+    fetch("https://powerplaysystems.com/api/website_footer/getone.php?id=4")
       .then(res => res.json())
       .then(
         result => {

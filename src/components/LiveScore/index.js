@@ -3,11 +3,13 @@ import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import "./index.css";
+import * as TeamComponent from "./team";
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
 import ListGroup from "react-bootstrap/lib/ListGroup";
 import ListGroupItem from "react-bootstrap/lib/ListGroupItem";
 import Cookies from "universal-cookie";
+import * as Functions from "./../common/functions";
 
 const pStyle = {
   fontSize: "15px",
@@ -16,6 +18,7 @@ const pStyle = {
 //variables for swap team
 var currentTeams = [];
 var currentAction = null;
+
 
 var newTeams = [],
   newEntry;
@@ -55,7 +58,9 @@ class LiveScore extends Component {
       show: false,
       showTeamModal: false,
       reload: true,
-      meta: []
+      meta: [],
+      rulesModal: false,
+      currentSelectedTeamToSwap :null
     };
     console.log(this.state.games);
     mGameIndex = this.state.games.indexOf(activeGame);
@@ -67,6 +72,9 @@ class LiveScore extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleShowTeams = this.handleShowTeams.bind(this);
     this.handleCloseTeams = this.handleCloseTeams.bind(this);
+    this.updateRulesModalState = this.updateRulesModalState.bind(this);
+    this.updateScore = this.updateScore.bind(this);
+    this.onPowerplayClicked = this.onPowerplayClicked.bind(this);
   }
 
   cronJob(mGameIndex) {
@@ -84,7 +92,7 @@ class LiveScore extends Component {
     console.log(mGame);
     var entry = this.state.games[index].id;
     fetch(
-      "https://mypowerplaygames.com/public_api/livescore/data.php?jwt=" +
+      "https://powerplaysystems.com/public_api/livescore/data.php?jwt=" +
         jwt +
         "&entry_id=" +
         entry +
@@ -110,7 +118,7 @@ class LiveScore extends Component {
             meta: result.meta,
             cc: counter
           });
-          var club = result.meta.club == null ? "basic" :  result.meta.club;
+          var club = result.meta.club == null ? "basic" : result.meta.club;
           canPlay = this.isEligible(club);
           this.sortMatchesOrder();
         },
@@ -124,7 +132,7 @@ class LiveScore extends Component {
     activeGame = this.state.games[index];
 
     fetch(
-      "https://mypowerplaygames.com/public_api/schedule/mypicks.php?jwt=" +
+      "https://powerplaysystems.com/public_api/schedule/mypicks.php?jwt=" +
         jwt +
         "&entry=" +
         entry
@@ -199,7 +207,14 @@ class LiveScore extends Component {
       }
     }
   }
+  onSelectedTeamToSwap(team, match, action, matchStatus, tScore){
+    this.setState({
+      currentSelectedTeamToSwap : team
+    })
+    this.onUpdateTeamSelectionClicked(team, match, action, matchStatus, tScore);
+  }
   onUpdateTeamSelectionClicked(team, match, action, matchStatus, tScore) {
+    console.log("hi");
     var addOrDrop = "add";
     if (matchStatus == "LIVE" || matchStatus == "UNPLAYED") {
       var teams = [];
@@ -344,7 +359,7 @@ class LiveScore extends Component {
           });
           xhr.open(
             "POST",
-            " https://www.mypowerplaygames.com/public_api/schedule/setmypicks.php"
+            " https://www.powerplaysystems.com/public_api/schedule/setmypicks.php"
           );
           xhr.setRequestHeader(
             "content-type",
@@ -389,6 +404,7 @@ class LiveScore extends Component {
       this.handleShow();
       return;
     }
+
     var powerplay_id;
     if (powerplay == "bust") {
       powerplay_id = 19;
@@ -420,7 +436,7 @@ class LiveScore extends Component {
         this.handleShow();
       }
     }
-    if (powerplay == "referesh") {
+    if (powerplay == "refresh") {
       powerplay_id = 13;
       if (score == 11)
         this.updateScore(
@@ -517,6 +533,17 @@ class LiveScore extends Component {
     score_after,
     mPowerplay_id
   ) {
+    console.log(
+      team +
+        "," +
+        match +
+        "," +
+        score_before +
+        "," +
+        score_after +
+        "," +
+        mPowerplay_id
+    );
     var powerplay = this.state.powerplays.find(
       x => x.powerplay_id == mPowerplay_id
     );
@@ -580,7 +607,7 @@ class LiveScore extends Component {
         });
         xhr.open(
           "POST",
-          " https://www.mypowerplaygames.com/public_api/livescore/setscore.php"
+          " https://www.powerplaysystems.com/public_api/livescore/setscore.php"
         );
         xhr.setRequestHeader(
           "content-type",
@@ -599,15 +626,6 @@ class LiveScore extends Component {
       this.handleShow();
       return;
     }
-  }
-  tConv24(time24) {
-    var ts = time24;
-    var H = +ts.substr(0, 2);
-    var h = H % 12 || 12;
-    h = h < 10 ? "0" + h : h; // leading 0 at the left for 1 digit hours
-    var ampm = H < 12 ? " AM" : " PM";
-    ts = h + ts.substr(2, 3) + ampm;
-    return ts;
   }
   componentDidMount() {
     mGameIndex = this.state.games.indexOf(activeGame);
@@ -780,6 +798,7 @@ class LiveScore extends Component {
       show: true
     });
   }
+
   pageForNHL() {}
 
   pageForHo() {
@@ -802,7 +821,7 @@ class LiveScore extends Component {
           </Modal.Footer>
         </Modal>
         <Header />
-        <Modal show={this.state.showTeamModal} onHide={this.handleCloseTeams}>
+        <Modal show={true} onHide={this.handleCloseTeams}>
           <Modal.Header closeButton>
             <Modal.Title>Select A Replacement!</Modal.Title>
           </Modal.Header>
@@ -917,9 +936,9 @@ class LiveScore extends Component {
             </ListGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleCloseTeams}>
-              Close
-            </Button>
+            <div className="swap_team_footer_wrapper">
+              Select a team to Swap
+            </div>
           </Modal.Footer>
         </Modal>
 
@@ -951,7 +970,7 @@ class LiveScore extends Component {
                 <div className="caption box_one_ply" id="top-div">
                   <img
                     src={
-                      "http://mypowerplaygames.com/api/sport_league/get_image.php?id=" +
+                      "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
                       game.association_id +
                       "&type=header"
                     }
@@ -971,6 +990,33 @@ class LiveScore extends Component {
           </div>
           <div className="container-fluid">
             <div className="container">
+              <div className="select_game_description">
+                Sponsored by: &nbsp; &nbsp; &nbsp;
+                <img
+                  className="select_teams_sponsor_img"
+                  src={require("./../../assets/images/live_sports/Logo.png")}
+                />
+                <div className="select_teams_game_title">
+                  Summer Fantasy Battle
+                </div>
+                <div className="select_teams_game_time">
+                  Game Set Start Date&nbsp;
+                  <span>
+                    {this.getStringDate(this.state.gameData.stat_time) +
+                      ", " +
+                      this.getStringTime(this.state.gameData.stat_time)}
+                  </span>
+                </div>
+                <div className="select_teams_header_buttons_wrapper">
+                  <div className="select_team_button_rules">Game Rules</div>
+                  <div
+                    className="select_team_button_grid"
+                    onClick={e => this.handleShowPrize()}
+                  >
+                    Prize Grid
+                  </div>
+                </div>
+              </div>
               <div className="col-md-12">
                 {(() => {
                   if (this.state.meta.gameStatus == "FINISHED") {
@@ -1684,9 +1730,14 @@ class LiveScore extends Component {
       </div>
     );
   }
+  updateRulesModalState(st) {
+    console.log(st);
+    this.setState({
+      rulesModal: st
+    });
+  }
   pageForMLB() {
     mTotlaScore = 0;
-
     let prize = this.state.prizeTable;
     let teamCount = this.state.meta.myPicksCount;
     let game = activeGame;
@@ -1705,165 +1756,50 @@ class LiveScore extends Component {
           </Modal.Footer>
         </Modal>
         <Header />
-        <Modal show={this.state.showTeamModal} onHide={this.handleCloseTeams}>
+        <Modal
+          className="swap_teams_modal"
+          show={false}
+          onHide={this.handleCloseTeams}
+        >
           <Modal.Header closeButton>
-            <Modal.Title>Select A Replacement!</Modal.Title>
+            <Modal.Title>
+              <img
+                src={require("./../../assets/images/livescore/group_13_15.png")}
+                className="img-responsive logo-modal"
+              />
+              Swap
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ListGroup>
-              {this.state.allMatches.map((item, key) => {
-                if (item.status == "LIVE" || item.status == "UNPLAYED") {
-                  let mId1 = item.feed_game_id + "-" + item.home_team_id;
-                  let mId2 = item.feed_game_id + "-" + item.away_team_id;
-                  let allTeamsTodisplay = [];
-                  if (currentAction == "minus") {
-                    if (
-                      mPicks.indexOf(mId1) > -1 ||
-                      mPicks.indexOf(mId2) > -1
-                    ) {
+            <table>
+              <thead>
+                <tr>
+                  <td>Team to Swap with</td>
+                  <td>Live Score</td>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.allMatches.map((item, key) => {
+                  if (item.status == "LIVE" || item.status == "UNPLAYED") {
+                    let mId1 = item.feed_game_id + "-" + item.home_team_id;
+                    let mId2 = item.feed_game_id + "-" + item.away_team_id;
+                    let allTeamsTodisplay = [];
+                    if (currentAction == "minus") {
                       if (
-                        currentTeams.indexOf(mId1) > -1 &&
-                        currentTeams.indexOf(mId2) > -1
-                      ) {
-                        return "";
-                      } else if (currentTeams.indexOf(mId1) > -1) {
-                        return (
-                          <ListGroupItem
-                            href=""
-                            onClick={() =>
-                              this.onUpdateTeamSelectionClicked(
-                                item.away_team_id,
-                                item.feed_game_id,
-                                item.isMyTeamAway,
-                                item.status,
-                                item.away_score
-                              )
-                            }
-                          >
-                            <div>
-                              <p className="match-details">
-                                {"Match: " +
-                                  item.home_team +
-                                  " VS " +
-                                  item.away_team}
-                              </p>
-                              <p className="team-details">{item.away_team}</p>
-                            </div>
-                          </ListGroupItem>
-                        );
-                      } else {
-                        return (
-                          <ListGroupItem
-                            href=""
-                            onClick={() =>
-                              this.onUpdateTeamSelectionClicked(
-                                item.home_team_id,
-                                item.feed_game_id,
-                                item.isMyTeamHome,
-                                item.status,
-                                item.home_score
-                              )
-                            }
-                          >
-                            <div>
-                              <p className="match-details">
-                                {"Match: " +
-                                  item.home_team +
-                                  " VS " +
-                                  item.away_team}
-                              </p>
-                              <p className="team-details">{item.home_team}</p>
-                            </div>
-                          </ListGroupItem>
-                        );
-                      }
-                    } else {
-                      return (
-                        <>
-                          <ListGroupItem
-                            href=""
-                            onClick={() =>
-                              this.onUpdateTeamSelectionClicked(
-                                item.home_team_id,
-                                item.feed_game_id,
-                                item.isMyTeamHome,
-                                item.status,
-                                item.home_score
-                              )
-                            }
-                          >
-                            <div>
-                              <p className="match-details">
-                                {"Match: " +
-                                  item.home_team +
-                                  " VS " +
-                                  item.away_team}
-                              </p>
-                              <p className="team-details">{item.home_team}</p>
-                            </div>
-                          </ListGroupItem>
-                          <ListGroupItem
-                            href=""
-                            onClick={() =>
-                              this.onUpdateTeamSelectionClicked(
-                                item.away_team_id,
-                                item.feed_game_id,
-                                item.isMyTeamAway,
-                                item.status,
-                                item.away_score
-                              )
-                            }
-                          >
-                            <div className="div-team">
-                              <p className="match-details">
-                                {"Match: " +
-                                  item.home_team +
-                                  " VS " +
-                                  item.away_team}
-                              </p>
-                              <p className="team-details">{item.away_team}</p>
-                            </div>
-                          </ListGroupItem>
-                        </>
-                      );
-                    }
-                  } else {
-                    if (
-                      mPicks.indexOf(mId1) > -1 ||
-                      mPicks.indexOf(mId2) > -1
-                    ) {
-                      if (
-                        mPicks.indexOf(mId1) > -1 &&
+                        mPicks.indexOf(mId1) > -1 ||
                         mPicks.indexOf(mId2) > -1
                       ) {
-                        return (
-                          <>
-                            <ListGroupItem
+                        if (
+                          currentTeams.indexOf(mId1) > -1 &&
+                          currentTeams.indexOf(mId2) > -1
+                        ) {
+                          return "";
+                        } else if (currentTeams.indexOf(mId1) > -1) {
+                          return (
+                            <tr
                               href=""
                               onClick={() =>
-                                this.onUpdateTeamSelectionClicked(
-                                  item.home_team_id,
-                                  item.feed_game_id,
-                                  item.isMyTeamHome,
-                                  item.status,
-                                  item.home_score
-                                )
-                              }
-                            >
-                              <div>
-                                <p className="match-details">
-                                  {"Match: " +
-                                    item.home_team +
-                                    " VS " +
-                                    item.away_team}
-                                </p>
-                                <p className="team-details">{item.home_team}</p>
-                              </div>
-                            </ListGroupItem>
-                            <ListGroupItem
-                              href=""
-                              onClick={() =>
-                                this.onUpdateTeamSelectionClicked(
+                                this.onSelectedTeamToSwap(
                                   item.away_team_id,
                                   item.feed_game_id,
                                   item.isMyTeamAway,
@@ -1872,80 +1808,181 @@ class LiveScore extends Component {
                                 )
                               }
                             >
-                              <div className="div-team">
-                                <p className="match-details">
-                                  {"Match: " +
-                                    item.home_team +
-                                    " VS " +
-                                    item.away_team}
-                                </p>
-                                <p className="team-details">{item.away_team}</p>
-                              </div>
-                            </ListGroupItem>
-                          </>
-                        );
-                      } else if (currentTeams.indexOf(mId2) > -1) {
-                        return (
-                          <ListGroupItem
-                            href=""
-                            onClick={() =>
-                              this.onUpdateTeamSelectionClicked(
-                                item.away_team_id,
-                                item.feed_game_id,
-                                item.isMyTeamAway,
-                                item.status,
-                                item.away_score
-                              )
-                            }
-                          >
-                            <div>
-                              <p className="match-details">
-                                {"Match: " +
-                                  item.home_team +
-                                  " VS " +
-                                  item.away_team}
-                              </p>
-                              <p className="team-details">{item.away_team}</p>
-                            </div>
-                          </ListGroupItem>
-                        );
+                              <td>{item.away_team}</td>
+                              <td>{item.away_score}</td>
+                              <td>
+                                <span className="radio_team"></span>
+                              </td>
+                            </tr>
+                          );
+                        } else {
+                          return (
+                            <tr
+                              href=""
+                              onClick={() =>
+                                this.onSelectedTeamToSwap(
+                                  item.home_team_id,
+                                  item.feed_game_id,
+                                  item.isMyTeamHome,
+                                  item.status,
+                                  item.home_score
+                                )
+                              }
+                            >
+                              <td>{item.home_team}</td>
+                              <td>{item.home_score}</td>
+                              <td>
+                                <span className="radio_team"></span>
+                              </td>
+                            </tr>
+                          );
+                        }
                       } else {
                         return (
-                          <ListGroupItem
-                            href=""
-                            onClick={() =>
-                              this.onUpdateTeamSelectionClicked(
-                                item.home_team_id,
-                                item.feed_game_id,
-                                item.isMyTeamHome,
-                                item.status,
-                                item.home_score
-                              )
-                            }
-                          >
-                            <div>
-                              <p className="match-details">
-                                {"Match: " +
-                                  item.home_team +
-                                  " VS " +
-                                  item.away_team}
-                              </p>
-                              <p className="team-details">{item.home_team}</p>
-                            </div>
-                          </ListGroupItem>
+                          <>
+                            <tr
+                              href=""
+                              onClick={() =>
+                                this.onSelectedTeamToSwap(
+                                  item.home_team_id,
+                                  item.feed_game_id,
+                                  item.isMyTeamHome,
+                                  item.status,
+                                  item.home_score
+                                )
+                              }
+                            >
+                              <td>{item.home_team}</td>
+                              <td>{item.home_score}</td>
+                              <td>
+                                <span className="radio_team"></span>
+                              </td>
+                            </tr>
+                            <tr
+                              href=""
+                              onClick={() =>
+                                this.onSelectedTeamToSwap(
+                                  item.away_team_id,
+                                  item.feed_game_id,
+                                  item.isMyTeamAway,
+                                  item.status,
+                                  item.away_score
+                                )
+                              }
+                            >
+                              <td>{item.away_team}</td>
+                              <td>{item.away_score}</td>
+                              <td>
+                                <span className="radio_team"></span>
+                              </td>
+                            </tr>
+                          </>
                         );
                       }
                     } else {
+                      if (
+                        mPicks.indexOf(mId1) > -1 ||
+                        mPicks.indexOf(mId2) > -1
+                      ) {
+                        if (
+                          mPicks.indexOf(mId1) > -1 &&
+                          mPicks.indexOf(mId2) > -1
+                        ) {
+                          return (
+                            <>
+                              <tr
+                                href=""
+                                onClick={() =>
+                                  this.onSelectedTeamToSwap(
+                                    item.home_team_id,
+                                    item.feed_game_id,
+                                    item.isMyTeamHome,
+                                    item.status,
+                                    item.home_score
+                                  )
+                                }
+                              >
+                                <td>{item.home_team}</td>
+                                <td>{item.home_score}</td>
+                                <td>
+                                  <span className="radio_team"></span>
+                                </td>
+                              </tr>
+                              <tr
+                                href=""
+                                onClick={() =>
+                                  this.onSelectedTeamToSwap(
+                                    item.away_team_id,
+                                    item.feed_game_id,
+                                    item.isMyTeamAway,
+                                    item.status,
+                                    item.away_score
+                                  )
+                                }
+                              >
+                                <td>{item.away_team}</td>
+                                <td>{item.away_score}</td>
+                                <td>
+                                  <span className="radio_team"></span>
+                                </td>
+                              </tr>
+                            </>
+                          );
+                        } else if (currentTeams.indexOf(mId2) > -1) {
+                          return (
+                            <tr
+                              href=""
+                              onClick={() =>
+                                this.onSelectedTeamToSwap(
+                                  item.away_team_id,
+                                  item.feed_game_id,
+                                  item.isMyTeamAway,
+                                  item.status,
+                                  item.away_score
+                                )
+                              }
+                            >
+                              <td>{item.away_team}</td>
+                              <td>{item.away_score}</td>
+                              <td>
+                                <span className="radio_team"></span>
+                              </td>
+                            </tr>
+                          );
+                        } else {
+                          return (
+                            <tr
+                              href=""
+                              onClick={() =>
+                                this.onSelectedTeamToSwap(
+                                  item.home_team_id,
+                                  item.feed_game_id,
+                                  item.isMyTeamHome,
+                                  item.status,
+                                  item.home_score
+                                )
+                              }
+                            >
+                              <td>{item.home_team}</td>
+                              <td>{item.home_score}</td>
+                              <td>
+                                <span className="radio_team"></span>
+                              </td>
+                            </tr>
+                          );
+                        }
+                      } else {
+                      }
                     }
                   }
-                }
-              })}
-            </ListGroup>
+                })}
+              </tbody>
+            </table>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleCloseTeams}>
-              Close
-            </Button>
+            <div className="swap_team_footer_wrapper">
+              {this.state.currentSelectedTeamToSwap ? "":"Select a team to Swap"}
+            </div>
           </Modal.Footer>
         </Modal>
 
@@ -1959,25 +1996,11 @@ class LiveScore extends Component {
                       ? "game-arrow-wraper game-arrow-left"
                       : "game-arrow-wraper game-arrow-left arrow-disabled"
                   }
-                >
-                  <a
-                    onClick={() => this.onLeftArrow("r")}
-                    className={hasGamesOnLeft ? "" : "arrow-disabled"}
-                  >
-                    <img
-                      src={require("./../../assets/images/swap/main-prev.png")}
-                      className={
-                        hasGamesOnLeft
-                          ? "game-arrow img-responsive"
-                          : "game-arrow img-responsive arrow-disabled"
-                      }
-                    />
-                  </a>
-                </div>
+                />
                 <div className="caption box_one_ply" id="top-div">
                   <img
                     src={
-                      "http://mypowerplaygames.com/api/sport_league/get_image.php?id=" +
+                      "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
                       game.association_id +
                       "&type=header"
                     }
@@ -1985,680 +2008,204 @@ class LiveScore extends Component {
                   />
                 </div>
                 <div className="game-arrow-wraper game-arrow-right">
-                  <a onClick={() => this.onRightArrow("r")}>
+                  {/* <a onClick={() => this.onRightArrow("r")}>
                     <img
                       src={require("./../../assets/images/swap/main-next.png")}
                       className="game-arrow img-responsive"
                     />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
           </div>
           <div className="container-fluid">
             <div className="container">
-              <div className="col-md-12">
-                {(() => {
-                  if (this.state.meta.gameStatus == "FINISHED") {
-                    return (
-                      <div className="top-text">
-                        <h3>
-                          Gameset # {this.state.meta.setNumber} -{" "}
-                          {activeGame.name}
-                        </h3>
-                        <h1>THE GAMESET IS NOW FINAL</h1>
-                        <h2>Results are at the bottom of the page</h2>
-                        <a
-                          onClick={() =>
-                            this.props.history.push("/live-sports")
-                          }
-                        >
-                          CLICK HERE TO PLAY AGAIN
-                        </a>
-                      </div>
-                    );
-                  } else if (this.state.meta.gameStatus == "LIVE") {
-                    return (
-                      <div className="top-text">
-                        <h3>
-                          Gameset # {this.state.meta.setNumber} -{" "}
-                          {activeGame.name}
-                        </h3>
-                        <h1>YOUR GAMESET HAS STARTED</h1>
-                        <h2>GOOD LUCK</h2>
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div className="top-text">
-                        <h3>
-                          Gameset # {this.state.meta.setNumber} -{" "}
-                          {activeGame.name}
-                        </h3>
-                        <h1>
-                          {"Your game set starts at  " +
-                            this.getGamesetStartTime()}
-                        </h1>
-                        <h2> {"You Selected " + teamCount + " Teams"} </h2>
-                        {(() => {
-                          let obj = prize.find(
-                            obj => obj.no_of_team == teamCount
-                          );
-                          let currPrize = 0;
-                          if (obj) {
-                            currPrize = obj.prize;
-                          }
-
-                          return (
-                            <p>
-                              <span className="fa fa-info-circle infobtn" />
-                              {"You will win " +
-                                (game.prize_type == "cash"
-                                  ? "$" + currPrize
-                                  : currPrize + " Points") +
-                                " " +
-                                game.gametype_prize_text}
-                            </p>
-                          );
-                        })()}
-                      </div>
-                    );
-                  }
-                })()}
-              </div>
-            </div>
-          </div>
-          <div className="container-fluid live_midle_cont">
-            <div className="container">
-              <div className="col-md-9">
-                <div className="right_side_live">
-                  <div className="score-all">
-                    {this.state.allMatches.map((item, key) => {
-                      return (
-                        <div
-                          className="score_live_box"
-                          id={"match-" + item.feed_game_id}
-                        >
-                          <div className="right_top_head">
-                            <h1>
-                              {"Game " + (key + 1) + " "}
-                              <span className="span1">{item.home_team}</span>
-                              Vs.
-                              <span className="span1">{item.away_team}</span>
-                              <br />
-                              <span className="span2">
-                                {item.location} |
-                                {item.start_time.split("T")[0] +
-                                  " " +
-                                  this.tConv24(
-                                    item.start_time
-                                      .split("T")[1]
-                                      .replace(":00.000Z", "")
-                                  )}
-                              </span>
-                            </h1>
-                          </div>
-                          {(() => {
-                            var isHomeLocked = item.isHomeLocked;
-                            var isAwayLocked = item.isAwayLocked;
-                            if (item.isMyTeamHome && item.my_score_home == 1) {
-                              mTotlaScore = mTotlaScore + 1;
-                            }
-                            if (item.isMyTeamAway && item.my_score_away == 1) {
-                              mTotlaScore = mTotlaScore + 1;
-                            }
-
-                            return (
-                              <div>
-                                <div
-                                  className={
-                                    item.isMyTeamHome
-                                      ? isTeamNumberOkay
-                                        ? "boxes"
-                                        : mPick == item.home_team_id
-                                        ? "boxes not-select not-saved"
-                                        : "boxes"
-                                      : "boxes not-select"
-                                  }
-                                >
-                                  <div className="plus-icons"> VS </div>
-                                  <div className="minus-icons">
-                                    <span
-                                      className={
-                                        item.isMyTeamHome
-                                          ? "fa fa-minus"
-                                          : "fa fa-plus"
-                                      }
-                                      onClick={() =>
-                                        this.onUpdateTeamSelectionClicked(
-                                          item.home_team_id,
-                                          item.feed_game_id,
-                                          item.isMyTeamHome,
-                                          item.status,
-                                          item.home_score
-                                        )
-                                      }
-                                    />
-                                  </div>
-                                  <div className="col-xs-5 p-o">
-                                    <div className="boxes-cont">
-                                      <div className="iner-box">
-                                        <h1> {item.home_team} </h1>
-                                        <h2> {item.home_score} </h2>
-                                        <p className="goalie-name">
-                                          {item.status == "UNPLAYED"
-                                            ? "Starting: "
-                                            : "Pitching: "}
-                                          <span>
-                                            {item.current_pitcher_home ==
-                                              null ||
-                                            item.current_pitcher_home == ""
-                                              ? "--"
-                                              : item.current_pitcher_home.split(
-                                                  " "
-                                                )[0][0] +
-                                                "." +
-                                                item.current_pitcher_home.split(
-                                                  " "
-                                                )[1]}
-                                          </span>
-                                          /
-                                          <span>
-                                            {item.current_pitcher_home_era ==
-                                            null
-                                              ? "--"
-                                              : parseFloat(
-                                                  item.current_pitcher_home_era
-                                                ).toFixed(2)}
-                                          </span>
-                                          ERA
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="col-xs-5 p10">
-                                    <div className="boxes-cont">
-                                      <div className="iner-box ">
-                                        <h1> Live Score Actions </h1>
-                                        <ul
-                                          className={
-                                            item.status == "LIVE"
-                                              ? item.isMyTeamHome
-                                                ? ""
-                                                : "div-disabled"
-                                              : "div-disabled"
-                                          }
-                                        >
-                                          <li>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.home_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_home,
-                                                    "referesh",
-                                                    item.isMyTeamHome
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/referesh.png")}
-                                                className="img-responsive"
-                                              />
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.home_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_home,
-                                                    "lock",
-                                                    item.isMyTeamHome
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/lock.png")}
-                                                id="locked"
-                                                className="img-responsive"
-                                              />
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.home_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_home,
-                                                    "bust",
-                                                    item.isMyTeamHome
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/bust.png")}
-                                                className="img-responsive"
-                                              />
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.home_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_home,
-                                                    "super-bust",
-                                                    item.isMyTeamHome
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/super-bust.png")}
-                                                className="img-responsive"
-                                              />
-                                            </a>
-                                          </li>
-                                        </ul>
-                                        <h6 className="livescore-action-text">
-                                          {item.status == "UNPLAYED"
-                                            ? "Available at " +
-                                              this.tConv24(
-                                                item.powerplay_activation
-                                                  .split("T")[1]
-                                                  .replace(":00.000Z", "")
-                                              )
-                                            : ""}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="col-xs-2 p-o">
-                                    <div className="boxes-cont">
-                                      <div className="iner-box">
-                                        <h1> My Score </h1>
-                                        {item.isMyTeamHome ? (
-                                          <div>
-                                            <h2> {item.my_score_home} </h2>
-                                            <span className="locked-text">
-                                              {isHomeLocked ? "Locked" : ""}
-                                            </span>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.home_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_home,
-                                                    "undo",
-                                                    item.isMyTeamHome
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/undo.png")}
-                                                className={
-                                                  item.status == "LIVE"
-                                                    ? item.isMyTeamHome
-                                                      ? "img-responsive action-undo"
-                                                      : "img-responsive action-undo div-disabled"
-                                                    : " img-responsive action-undo div-disabled"
-                                                }
-                                              />
-                                            </a>
-                                          </div>
-                                        ) : (
-                                          <p>Team Not Selected</p>
-                                        )}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  className={
-                                    item.isMyTeamAway
-                                      ? isTeamNumberOkay
-                                        ? "boxes"
-                                        : mPick == item.away_team_id
-                                        ? "boxes not-select not-saved"
-                                        : "boxes"
-                                      : "boxes not-select"
-                                  }
-                                >
-                                  <div className="minus-icons">
-                                    <span
-                                      className={
-                                        item.isMyTeamAway
-                                          ? "fa fa-minus"
-                                          : "fa fa-plus"
-                                      }
-                                      onClick={() =>
-                                        this.onUpdateTeamSelectionClicked(
-                                          item.away_team_id,
-                                          item.feed_game_id,
-                                          item.isMyTeamAway,
-                                          item.status,
-                                          item.away_score
-                                        )
-                                      }
-                                    />
-                                  </div>
-                                  <div className="col-xs-5 p-o">
-                                    <div className="boxes-cont">
-                                      <div className="iner-box">
-                                        <h1> {item.away_team} </h1>
-                                        <h2> {item.away_score} </h2>
-                                        <p className="goalie-name">
-                                          {item.status == "UNPLAYED"
-                                            ? "Starting: "
-                                            : "Pitching: "}
-                                          <span>
-                                            {item.current_pitcher_away ==
-                                              null ||
-                                            item.current_pitcher_away == ""
-                                              ? "--"
-                                              : item.current_pitcher_away.split(
-                                                  " "
-                                                )[0][0] +
-                                                "." +
-                                                item.current_pitcher_away.split(
-                                                  " "
-                                                )[1]}
-                                          </span>
-                                          /
-                                          <span>
-                                            {item.current_pitcher_away_era ==
-                                            null
-                                              ? "--"
-                                              : parseFloat(
-                                                  item.current_pitcher_away_era
-                                                ).toFixed(2)}
-                                          </span>
-                                          ERA
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="col-xs-5 p10">
-                                    <div className="boxes-cont">
-                                      <div className="iner-box">
-                                        <h1> Live Score Actions </h1>
-                                        <ul
-                                          className={
-                                            item.status == "LIVE"
-                                              ? item.isMyTeamAway
-                                                ? ""
-                                                : "div-disabled"
-                                              : "div-disabled"
-                                          }
-                                        >
-                                          <li>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.away_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_away,
-                                                    "referesh",
-                                                    item.isMyTeamAway
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/referesh.png")}
-                                                className="img-responsive"
-                                              />
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.away_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_away,
-                                                    "lock",
-                                                    item.isMyTeamAway
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/lock.png")}
-                                                id="locked"
-                                                className="img-responsive"
-                                              />
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.away_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_away,
-                                                    "bust",
-                                                    item.isMyTeamAway
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/bust.png")}
-                                                className="img-responsive"
-                                              />
-                                            </a>
-                                          </li>
-                                          <li>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.away_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_away,
-                                                    "super-bust",
-                                                    item.isMyTeamAway
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/super-bust.png")}
-                                                className="img-responsive"
-                                              />
-                                            </a>
-                                          </li>
-                                        </ul>
-                                        <h6 className="livescore-action-text">
-                                          {item.status == "UNPLAYED"
-                                            ? "Available at " +
-                                              this.tConv24(
-                                                item.powerplay_activation
-                                                  .split("T")[1]
-                                                  .replace(":00.000Z", "")
-                                              )
-                                            : ""}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="col-xs-2 p-o">
-                                    <div className="boxes-cont">
-                                      <div className="iner-box">
-                                        <h1> My Score </h1>
-                                        {item.isMyTeamAway ? (
-                                          <div>
-                                            <h2> {item.my_score_away} </h2>
-                                            <span className="locked-text">
-                                              {isAwayLocked ? "Locked" : ""}
-                                            </span>
-                                            <a>
-                                              <img
-                                                onClick={() =>
-                                                  this.onPowerplayClicked(
-                                                    item.away_team_id,
-                                                    item.feed_game_id,
-                                                    item.my_score_away,
-                                                    "undo",
-                                                    item.isMyTeamAway
-                                                  )
-                                                }
-                                                src={require("./../../assets/images/livescore/undo.png")}
-                                                className={
-                                                  item.status == "LIVE"
-                                                    ? item.isMyTeamAway
-                                                      ? "img-responsive action-undo"
-                                                      : "img-responsive action-undo div-disabled"
-                                                    : " img-responsive action-undo div-disabled"
-                                                }
-                                              />
-                                            </a>
-                                          </div>
-                                        ) : (
-                                          <p>Team Not Selected</p>
-                                        )}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <button className="scor_live">
-                                  {this.getInning(
-                                    item.current_inning,
-                                    item.current_inning_half,
-                                    item.current_intermission,
-                                    item.status,
-                                    this.tConv24(
-                                      item.start_time
-                                        .split("T")[1]
-                                        .replace(":00.000Z", "")
-                                    )
-                                  )}
-                                </button>
-                              </div>
-                            );
-                          })()}
-                        </div>
-                      );
-                    })}
+              <div className="select_game_description">
+                Sponsored by: &nbsp; &nbsp; &nbsp;
+                <img
+                  className="select_teams_sponsor_img"
+                  src={require("./../../assets/images/live_sports/Logo.png")}
+                />
+                <div className="select_teams_game_title">{activeGame.name}</div>
+                {this.state.meta.gameStatus == "UNPLAYED" ? (
+                  <div className="select_teams_game_time">
+                    Game Set Start Date&nbsp;
+                    <span>
+                      {Functions.getStringDate(activeGame.stat_time) +
+                        ", " +
+                        Functions.getStringTime(activeGame.stat_time)}
+                    </span>
+                  </div>
+                ) : (
+                  <div>Game Set Started!</div>
+                )}
+                <div className="select_teams_header_buttons_wrapper">
+                  <div
+                    className="select_team_button_rules"
+                    onClick={e => this.updateRulesModalState(true)}
+                  >
+                    Game Rules
+                  </div>
+                  <div
+                    className="select_team_button_grid"
+                    onClick={e => this.handleShowPrize()}
+                  >
+                    Prize Grid
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
-                <div className="left_side_live">
-                  <h1>
-                    <span className="fa fa-info-circle infobtn" /> Live Score
-                    Powerplays
-                  </h1>
-                  <ul>
-                    {this.state.powerplays.map((element, key) => {
-                      if (element.powerplay_id == 13) {
+              <center>
+                {this.state.meta.gameStatus == "UNPLAYED" ? (
+                  <div>
+                    <div class="row lotto-even-details_draw_box">
+                      <div>
+                        <p>{Functions.getDays(activeGame.stat_time)}</p>
+                        Days
+                      </div>
+                      <div>
+                        <p>{Functions.getHours(activeGame.stat_time)}</p>
+                        hours
+                      </div>
+                      <div>
+                        <p>{Functions.getMinuts(activeGame.stat_time)}</p>
+                        Mins
+                      </div>
+                      <span>left</span>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                <div className="live_score_main_wapper">
+                  <div className="live_score_all_games_box">
+                    <p>Live Score</p>
+                    <div className="live_score_all_games">
+                      {this.state.allMatches.map((item, key) => {
                         return (
-                          <li id="refersh">
-                            {element.powerplay_name} &nbsp; &nbsp;
-                            <span className="spans">
-                              {element.amount_available}
-                            </span>
-                          </li>
+                          <div
+                            className="live_score_match_details_box"
+                            id={"match-" + item.feed_game_id}
+                          >
+                            {item.status == "COMPLETED" ? (
+                              <div className="live_score_match_status">
+                                Game Ended
+                              </div>
+                            ) : (
+                              <div></div>
+                            )}
+                            <div className="live_score_match_details_top">
+                              <div className="live_score_match_details_left">
+                                {item.isMyTeamHome ? (
+                                  <TeamComponent.TeamSelected
+                                    data={item}
+                                    powerplays={this.state.powerplays}
+                                    type={"home"}
+                                    onClickPowerplay={this.onPowerplayClicked}
+                                    onSwapClicked={
+                                      this.onUpdateTeamSelectionClicked
+                                    }
+                                  />
+                                ) : (
+                                  <TeamComponent.TeamNotSelected
+                                    data={item}
+                                    type={"home"}
+                                    onClickPowerplay={this.onPowerplayClicked}
+                                    onSwapClicked={
+                                      this.onUpdateTeamSelectionClicked
+                                    }
+                                  />
+                                )}
+                              </div>
+                              <div className="live_score_match_details_divider">
+                                <p>VS.</p>
+                                <div className="team_divider" />
+                              </div>
+                              <div className="live_score_match_details_right">
+                                {item.isMyTeamAway ? (
+                                  <TeamComponent.TeamSelected
+                                    powerplays={this.state.powerplays}
+                                    data={item}
+                                    type={"away"}
+                                  />
+                                ) : (
+                                  <TeamComponent.TeamNotSelected
+                                    data={item}
+                                    type={"away"}
+                                  />
+                                )}
+                              </div>
+                            </div>
+                            <div className="live_score_match_details_botom">
+                              <div className="live_score_match_details_botom_item_wrapper">
+                                <div className="live_score_match_details_botom_item">
+                                  <img
+                                    className="live_score_match_details_botom_img"
+                                    src={require("./../../assets/images/select_team/clock.png")}
+                                  />
+                                  <div className="live_score_match_details_botom_text">
+                                    {item.status == "COMPLETED"
+                                      ? "Ended"
+                                      : item.status == "LIVE"
+                                      ? "Live"
+                                      : "Not Started"}
+                                  </div>
+                                </div>
+                                <div className="live_score_match_details_botom_item">
+                                  <img
+                                    className="live_score_match_details_botom_img"
+                                    src={require("./../../assets/images/select_team/calendar.png")}
+                                  />
+                                  <div className="live_score_match_details_botom_text">
+                                    {item.start_time.split("T")[0]}
+                                  </div>
+                                </div>
+                                <div className="live_score_match_details_botom_item">
+                                  <img
+                                    className="live_score_match_details_botom_img"
+                                    src={require("./../../assets/images/select_team/stadium.png")}
+                                  />
+                                  <div className="live_score_match_details_botom_text">
+                                    {item.location}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         );
+                      })}
+                    </div>
+                  </div>
+                  <div className="live_score_my_scores_box">
+                    <p>My Scores</p>
+                    <TeamComponent.MyScores
+                      matches={this.state.allMatches}
+                      gameStatus={this.state.meta.gameStatus}
+                    />
+                    <div className="live_score_current_score_details">
+                      {
+                        <TeamComponent.TeamDetails
+                          meta={this.state.meta}
+                          gameStatus={this.state.meta.gameStatus}
+                          mTotlaScore={mTotlaScore}
+                        />
                       }
-                      if (element.powerplay_id == 1) {
-                        return (
-                          <li id="lock">
-                            {element.powerplay_name} &nbsp; &nbsp;
-                            <span class="spans">
-                              {element.amount_available}
-                            </span>
-                          </li>
-                        );
-                      }
-                      if (element.powerplay_id == 19) {
-                        return (
-                          <li id="bust">
-                            {element.powerplay_name} &nbsp; &nbsp;
-                            <span class="spans">
-                              {element.amount_available}
-                            </span>
-                          </li>
-                        );
-                      }
-                      if (element.powerplay_id == 18) {
-                        return (
-                          <li id="superbust">
-                            {element.powerplay_name} &nbsp; &nbsp;
-                            <span class="spans">
-                              {element.amount_available}
-                            </span>
-                          </li>
-                        );
-                      }
-                      if (element.powerplay_id == 4) {
-                        return (
-                          <li id="minus">
-                            {element.powerplay_name} &nbsp; &nbsp;
-                            <span class="spans">
-                              {element.amount_available}
-                            </span>
-                          </li>
-                        );
-                      }
-                      if (element.powerplay_id == 5) {
-                        return (
-                          <li id="add">
-                            {element.powerplay_name} &nbsp; &nbsp;
-                            <span class="spans">
-                              {element.amount_available}
-                            </span>
-                          </li>
-                        );
-                      }
-                      if (element.powerplay_id == 21) {
-                        return (
-                          <li id="undo">
-                            {element.powerplay_name} &nbsp; &nbsp;
-                            <span class="spans">
-                              {element.amount_available}
-                            </span>
-                          </li>
-                        );
-                      }
-                      if (element.powerplay_id == 24) {
-                        return (
-                          <li id="swap">
-                            {element.powerplay_name} &nbsp; &nbsp;
-                            <span class="spans">
-                              {element.amount_available}
-                            </span>
-                          </li>
-                        );
-                      }
-                    })}
-                  </ul>
-                  {this.state.meta.canPlay ? (
-                    ""
-                  ) : (
-                    <button
-                      onClick={() =>
-                        this.props.history.push("/powerplay-store")
-                      }
-                    >
-                      Add Live Scores
-                    </button>
-                  )}
+                    </div>
+                    <p>PowerPlay Inventory</p>
+                    <TeamComponent.MyPowerplaysInventory
+                      powerplays={this.state.powerplays}
+                    />
+                  </div>
                 </div>
-              </div>
+              </center>
+              <TeamComponent.GameRules
+                shouldShow={this.state.rulesModal}
+                updateModalState={this.updateRulesModalState}
+              />
             </div>
           </div>
-          <div className="container-fluid p-o">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-9 live-score-selected-teams-num">
-                  <h1>
-                    You Selected <span>{this.state.meta.myPicksCount}</span>{" "}
-                    Teams
-                  </h1>
-                </div>
-              </div>
-              <div className="col-md-9 bottom_btn_live">
-                <div className="col-xs-8">
-                  <button className="btn_one_live">Teams with 1 run </button>
-                </div>
-                <div className="col-xs-4">
-                  <button className="btn_two_live">{mTotlaScore} </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          {(() => {
+
+          {/* {(() => {
             var text = "";
             var hasLost = false;
             if (this.state.meta.gameStatus == "FINISHED") {
@@ -2706,7 +2253,7 @@ class LiveScore extends Component {
                 </div>
               </div>
             );
-          })()}
+          })()} */}
         </div>
         <Footer />
       </div>

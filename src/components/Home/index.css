@@ -1,5 +1,5 @@
 .home_first_row .header-main {
-  width: 1057px;
+  width: 1110px;
   height: 146px;
   font-family: Poppins;
   font-size: 52px;
@@ -143,6 +143,7 @@
 .home_offers_item {
   float: left;
   margin: 16px;
+  height: 300px;
 }
 .home_offer_icon {
   width: 114px;
@@ -150,8 +151,8 @@
   object-fit: contain;
 }
 .home_offer_heading {
-  width: 337px;
-  height: 68px;
+  width: 378px;
+ 
   font-family: Poppins;
   font-size: 22px;
   font-weight: 600;
@@ -161,7 +162,7 @@
 }
 .home_offer_heading_small {
   width: 187px;
-  height: 68px;
+ 
   font-family: Poppins;
   font-size: 22px;
   font-weight: 600;

@@ -15,7 +15,7 @@ class ResponsibleGaming extends Component {
     };
   }
   componentDidMount() {
-    fetch("https://mypowerplaygames.com/api/website_footer/getone.php?id=2")
+    fetch("https://powerplaysystems.com/api/website_footer/getone.php?id=2")
       .then(res => res.json())
       .then(
         result => {

@@ -85,7 +85,7 @@ class Header extends Component {
                     </a>
                   </li>
                   <li className="c-p">
-                    <a onClick={() => this.props.history.push("/select-games")}>
+                    <a  onClick={() => this.props.history.push("/partner")}>
                       Partner With Us
                     </a>
                   </li>
@@ -180,7 +180,7 @@ class Header extends Component {
                   </li>
 
                   <li className="c-p">
-                    <a onClick={() => this.props.history.push("/select-games")}>
+                    <a  onClick={() => this.props.history.push("/partner")}>
                       Partner With Us
                     </a>
                   </li>

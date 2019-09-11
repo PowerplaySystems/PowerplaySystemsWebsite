@@ -63,15 +63,12 @@ var MySelections = props => {
           </div>
 
           <div className="total_teams_selected_info">
-            {props.teams.length +
-              "/" +
-              props.gameData.max_teams_allowed +
-              "Teams Selected"}
+            {props.teams.length + " Team(s) Selected"}
           </div>
           <div className="max_teams_selected_info">
             {props.teams.length == props.gameData.max_teams_allowed
               ? "Maximum Teams Selected"
-              : ""}
+              : "Maximum Teams = " + props.gameData.max_teams_allowed}
           </div>
           <div className="select_teams_game_info">{createPrizeText()}</div>
           <div
@@ -96,10 +93,7 @@ var MySelections = props => {
               Your selected teams will appear here{" "}
             </div>
             <div className="total_teams_selected_info">
-              {props.teams.length +
-                "/" +
-                props.gameData.max_teams_allowed +
-                "Teams Selected"}
+              {props.teams.length + " Teams Selected"}
             </div>
             <div className="selected_a_team_info">
               Select at least 1 team to sumbit your picks
@@ -228,7 +222,7 @@ class CTA extends Component {
       });
       xhr.open(
         "POST",
-        " https://www.mypowerplaygames.com/public_api/schedule/setmypicks.php"
+        " https://www.powerplaysystems.com/public_api/schedule/setmypicks.php"
       );
       xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
       xhr.send(data);
@@ -247,7 +241,7 @@ class CTA extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     fetch(
-      "https://mypowerplaygames.com/public_api/schedule/getschedule.php?date=" +
+      "https://powerplaysystems.com/public_api/schedule/getschedule.php?date=" +
         this.props.location.state.date +
         "&gameset_id=" +
         this.state.gameData.gameset_id +
@@ -277,7 +271,7 @@ class CTA extends Component {
         }
       );
     fetch(
-      "https://mypowerplaygames.com/public_api/schedule/prize.php?id=" +
+      "https://powerplaysystems.com/public_api/schedule/prize.php?id=" +
         this.state.gameData.prize_id
     )
       .then(res => res.json())
@@ -300,7 +294,7 @@ class CTA extends Component {
       const cookies = new Cookies();
       const jwt = cookies.get("jwt");
       fetch(
-        "https://mypowerplaygames.com/public_api/schedule/mypicks.php?jwt=" +
+        "https://powerplaysystems.com/public_api/schedule/mypicks.php?jwt=" +
           jwt +
           "&entry=" +
           this.state.gameData.id
@@ -963,14 +957,17 @@ class CTA extends Component {
             </Modal.Body>
           </Modal>
           <div className="">
-            <img
-              src={
-                "http://mypowerplaygames.com/api/sport_league/get_image.php?id=" +
-                this.state.gameData.association_id +
-                "&type=header"
-              }
-              style={{ width: "100%" }}
-            />
+            <div class="caption box_one_ply" id="top-div">
+              <img
+                src={
+                  "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
+                  this.state.gameData.association_id +
+                  "&type=header"
+                }
+                class="img-responsive livescore-header-img"
+              />
+            </div>
+
             <div className="select_game_description">
               Sponsored by: &nbsp; &nbsp; &nbsp;
               <img

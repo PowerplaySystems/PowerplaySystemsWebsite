@@ -57,7 +57,7 @@ class Login extends Component {
                 }
             }
         });
-        xhr.open("POST", " https://www.mypowerplaygames.com/public_api/auth/login.php");
+        xhr.open("POST", " https://www.powerplaysystems.com/public_api/auth/login.php");
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         xhr.send(data);
 
@@ -75,7 +75,7 @@ class Login extends Component {
                                         <div className="welcome-sec">
                                             <div className="welcome-sec-content">
                                                 <h2>Welcome Back to</h2>
-                                                <h3>PowePlay Games</h3>
+                                                <h3>PowePlay Systems</h3>
                                             </div>
                                         </div>
                                         <div className="login-sec-form">

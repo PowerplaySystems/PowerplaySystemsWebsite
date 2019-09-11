@@ -111,6 +111,9 @@
   width: 972px;
   height: 115px;
 }
+.live_sports_game_tabs.tab_smaller {
+  width: 487px;
+}
 .live_sports_game_tabs > img {
   width: 227px;
   height: 114px;

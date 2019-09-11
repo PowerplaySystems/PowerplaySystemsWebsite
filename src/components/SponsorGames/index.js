@@ -17,7 +17,7 @@ class SponsorGames extends Component {
       componentDidMount() {
         window.scrollTo(0, 0);
         fetch(
-          "https://mypowerplaygames.com/api/website_corporate/get.php?type=lotto"
+          "https://powerplaysystems.com/api/website_corporate/get.php?type=lotto"
         )
           .then(res => res.json())
           .then(

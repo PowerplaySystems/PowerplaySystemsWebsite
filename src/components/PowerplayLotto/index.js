@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
+import * as Functions from "./../common/functions";
 import "./index.css";
 import Cookies from "universal-cookie";
 
@@ -43,6 +44,7 @@ class PowerplayLotto extends Component {
     this.onAllGames = this.onAllGames.bind(this);
     this.handleShowPrize = this.handleShowPrize.bind(this);
     this.handleClosePrize = this.handleClosePrize.bind(this);
+    this.liveDraw = this.liveDraw.bind(this);
   }
   handleClosePrize() {
     this.setState({
@@ -51,7 +53,7 @@ class PowerplayLotto extends Component {
   }
 
   handleShowPrize(game_type) {
-    let prizesToShow = [];
+    var prizesToShow = [];
     if (game_type == "747") {
       prizesToShow = this.state.game747.prize;
     } else if (game_type == "sweet16") {
@@ -64,6 +66,10 @@ class PowerplayLotto extends Component {
     if (prizesToShow.length == 0) {
       return;
     }
+    prizesToShow.sort(function(a, b) {
+      return parseFloat(b.prize) - parseFloat(a.prize);
+    });
+
     this.setState({
       showPrize: true,
       prizes: prizesToShow
@@ -72,7 +78,7 @@ class PowerplayLotto extends Component {
   getLotteryGames() {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    var link = "https://mypowerplaygames.com/public_api/lottery_games/data.php";
+    var link = "https://powerplaysystems.com/public_api/lottery_games/data.php";
     if (jwt) {
       link = link + "?jwt=" + jwt;
     }
@@ -165,8 +171,9 @@ class PowerplayLotto extends Component {
   }
   getJackpot(prizeArray) {
     if (prizeArray) {
-      prizeArray.sort((a, b) => parseFloat(a.hits) - parseFloat(b.hits));
-      return "$" + prizeArray[prizeArray.length - 1].prize;
+      // prizeArray.sort((a, b) => parseFloat(a.hits) - parseFloat(b.hits));
+      //return "$" + prizeArray[prizeArray.length - 1].prize;
+      return "$" + prizeArray[0].prize;
     } else {
       return "Coming soon";
     }
@@ -182,18 +189,21 @@ class PowerplayLotto extends Component {
     } else if (path == "/elite8") {
       action = this.state.elite8.entry ? "game_center" : "pick";
     }
-    if (action == "pick") {
-      this.props.history.push({
-        pathname: path,
-        state: {
-          gameData: game
-        }
-      });
-    } else {
-      this.props.history.push({
-        pathname: "/game-central"
-      });
-    }
+
+    this.props.history.push({
+      pathname: path,
+      state: {
+        gameData: game
+      }
+    });
+  }
+  liveDraw(path, game) {
+    this.props.history.push({
+      pathname: path,
+      state: {
+        gameData: game
+      }
+    });
   }
   getStringDate(mDate) {
     if (mDate == null) {
@@ -264,12 +274,23 @@ class PowerplayLotto extends Component {
               </div>
 
               <div className="lotto-section-2-heading">
-                <span>
-                  Enter one of our exciting lottery games utilizing our
-                  revolutionary interactive lottery platform.
-                </span>
+                <p>
+                  {" "}
+                  Imagine being able to change your lottery selections{" "}
+                  <span>LIVE during the draw!</span>
+                </p>
+                <div className="lotto-section-2-heading-note">
+                  Utilizing our revolutionary interactive lottery platform, you
+                  can do just that! try one of our Demo games below or enter one
+                  of our promotional contests (coming soon).
+                </div>
+                <div className="lotto-section-2-heading-pointer">
+                  <img
+                    src={require("./../../assets/images/lotto/group.png")}
+                    className="img-responsive"
+                  />
+                </div>
               </div>
-              <div className="lotto-divider" />
               <div className="lotto-block-even" id="explore-games">
                 <div className="lotto-even-image">
                   <img
@@ -297,7 +318,11 @@ class PowerplayLotto extends Component {
                   </div>
                   <div className="lotto-even-details-amount">
                     <div>
-                      <span>{this.getJackpot(this.state.game747.prize)}</span>
+                      <span>
+                        {Functions.numberWithCommas(
+                          this.getJackpot(this.state.game747.prize)
+                        )}
+                      </span>
                     </div>
                     <div style={mDivStyle}>
                       <button
@@ -321,42 +346,40 @@ class PowerplayLotto extends Component {
 
                   <div class="lotto-even-details-draw">
                     <div className="lotto-game-date-wrapper">
-                      <div className="lotto-game-date-text">
-                        Next game start date
-                      </div>
+                      <div className="lotto-game-date-text">Next Draw date</div>
                       <div className="lotto-game-date">
                         {this.getStringDate(this.state.game747.start_datetime)}
+                        {this.getStringTime(this.state.game747.start_datetime)}
+                        &nbsp;
+                        <span>EST</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="lotto-deadline-wrapper">
+                        <p>Entry Deadline</p>
                         <span>
-                          {this.getStringTime(
-                            this.state.game747.start_datetime
-                          )}
+                          {this.getStringTime(this.state.game747.deadline)}
+                          <s> EST</s>
                         </span>
                       </div>
                     </div>
                     <div>
-                      <div class="row lotto-even-details_draw_box">
-                        <div>
-                          <p>
-                            {this.getDays(this.state.game747.start_datetime)}
-                          </p>
-                          Days
-                        </div>
-                        <div>
-                          <p>
-                            {this.getHours(this.state.game747.start_datetime)}
-                          </p>
-                          hours
-                        </div>
-                        <div>
-                          <p>
-                            {this.getMinuts(this.state.game747.start_datetime)}
-                          </p>
-                          Mins
-                        </div>
-                        <span>left</span>
-                      </div>
-                    </div>
-                    <div>
+                      <button
+                        className={
+                          this.state.game747.entry ? "btn-draw" : "invisible"
+                        }
+                        onClick={e =>
+                          this.liveDraw("/747-draw", this.state.game747)
+                        }
+                        style={
+                          this.state.game747.id == null ||
+                          !this.state.game747.entry
+                            ? { display: "none" }
+                            : { display: "block" }
+                        }
+                      >
+                        Go To Live Draw
+                      </button>
                       <button
                         className={
                           this.state.game747.entry ? "btn_edit_numbers" : ""
@@ -371,7 +394,7 @@ class PowerplayLotto extends Component {
                         }
                       >
                         {this.state.game747.entry
-                          ? "View In Game Center"
+                          ? "Edit My Numbers"
                           : "Pick your Numbers now"}
                       </button>
                     </div>
@@ -484,6 +507,23 @@ class PowerplayLotto extends Component {
                         {this.state.elite8.entry
                           ? "View In Game Center"
                           : "Pick your Numbers now"}
+                      </button>
+                      <button
+                        className={
+                          this.state.game747.entry
+                            ? "btn_edit_numbers  smaller-button"
+                            : "invisible"
+                        }
+                        onClick={e =>
+                          this.liveDraw("/elite8-draw", this.state.elite8)
+                        }
+                        style={
+                          this.state.game747.id == null
+                            ? { display: "none" }
+                            : { display: "block" }
+                        }
+                      >
+                        Go To Live Draw
                       </button>
                     </div>
                   </div>
@@ -745,7 +785,7 @@ class PowerplayLotto extends Component {
                             <p> {prize.hits} </p>
                           </td>
                           <td>
-                            <p>{"$" + prize.prize}</p>
+                            <p>{"$" + Functions.numberWithCommas(prize.prize)}</p>
                           </td>
                         </tr>
                       );

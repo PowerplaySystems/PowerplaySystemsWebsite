@@ -32,7 +32,7 @@ class Inventory extends Component {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
     fetch(
-      "https://mypowerplaygames.com/public_api/subscription/my_subscriptions.php?jwt=" +
+      "https://powerplaysystems.com/public_api/subscription/my_subscriptions.php?jwt=" +
         jwt
     )
       .then(res => res.json())

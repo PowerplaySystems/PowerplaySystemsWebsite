@@ -28,6 +28,7 @@ import LiveScore from './components/LiveScore'
 import MyAccount from './components/MyAccount'
 import Page747 from './components/Page747'
 import Page747Draw from './components/Page747Draw'
+import PartnerWithUs from './components/PartenerWithUs'
 import Sweet16 from './components/Sweet16'
 import Sweet16Draw from './components/Sweet16Draw'
 import Elite8 from './components/Elite8'
@@ -76,6 +77,7 @@ class App extends Component {
             <Route path="/my-account" component={MyAccount} />
             <Route path="/sport-platform" component={LotteryPlatform} />
             <Route path="/live-sports" component={LiveSports} />
+            <Route path="/partner" component={PartnerWithUs} />
           </div>
         </Router>
       </Provider>

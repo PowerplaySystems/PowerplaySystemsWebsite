@@ -40,7 +40,7 @@ class PowerplayStore extends Component {
     }
   }
   componentDidMount() {
-    fetch("https://www.mypowerplaygames.com/api/store_subscription/read.php")
+    fetch("https://www.powerplaysystems.com/api/store_subscription/read.php")
       .then(res => res.json())
       .then(
         response => {

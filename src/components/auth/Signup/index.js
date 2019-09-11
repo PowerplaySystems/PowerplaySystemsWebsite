@@ -123,7 +123,7 @@ class Signup extends Component {
                 }
             }
         });
-        xhr.open("POST", " https://www.mypowerplaygames.com/public_api/auth/signup.php");
+        xhr.open("POST", " https://www.powerplaysystems.com/public_api/auth/signup.php");
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         xhr.send(data);
      
@@ -141,7 +141,7 @@ class Signup extends Component {
                                     <div className="register-inner-section">
                                         <div className="register-title-sec">
                                             <div className="title-sec-content">
-                                                <h2>Register now for the ULTIMATE INTERACTIVE SPORTS EXPERIENCE!</h2>
+                                                <h2>Register now for the ULTIMATE INTERACTIVE EXPERIENCE!</h2>
                                             </div>
                                         </div>
                                         <div className="register-sec-form">

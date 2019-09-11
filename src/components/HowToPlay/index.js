@@ -25,7 +25,7 @@ class HowToPlay extends Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0);
-        fetch("https://mypowerplaygames.com/api/select_game/read_all_how_to.php")
+        fetch("https://powerplaysystems.com/api/select_game/read_all_how_to.php")
             .then(res => res.json())
             .then((xx) => {
                 let results = xx.records;
@@ -50,7 +50,7 @@ class HowToPlay extends Component {
                     });
                 }
             )
-            fetch("https://mypowerplaygames.com/api/images/read.php?type=promo")
+            fetch("https://powerplaysystems.com/api/images/read.php?type=promo")
             .then(res => res.json())
             .then((xx) => {
                 this.setState({
@@ -108,7 +108,7 @@ class HowToPlay extends Component {
                                                 <a onClick={() => this.onLeftArrow("r")} ><img src={require("./../../assets/images/swap/main-prev.png")} className="game-arrow img-responsive" /></a>
                                             </div>
                                             <div className="caption box_one_ply pro-img">
-                                            <img src={"https://mypowerplaygames.com/api/images/readimage.php?id=" + currentPromo.id} className="htp-title-img img-responsive" />
+                                            <img src={"https://powerplaysystems.com/api/images/readimage.php?id=" + currentPromo.id} className="htp-title-img img-responsive" />
                                             </div>
                                             <div className="pro-arrow-wraper game-arrow-right">
                                                 <a onClick={() => this.onRightArrow("r")}><img src={require("./../../assets/images/swap/main-next.png")} className="game-arrow img-responsive" /></a>

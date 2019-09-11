@@ -52,7 +52,7 @@ var Gametypes = props => {
     <a onClick={props.onClick}>
       <img
         src={
-          "http://mypowerplaygames.com/api/sport_league/get_image.php?id=" +
+          "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
           props.data.association_id +
           "&type=image"
         }
@@ -284,13 +284,13 @@ class SelectGames extends Component {
     if (jwt == undefined || jwt == "") {
       Promise.all([
         fetch(
-          "https://mypowerplaygames.com/public_api/association/read.php?id=" +
+          "https://powerplaysystems.com/public_api/association/read.php?id=" +
             id
         ),
         fetch(
-          "https://www.mypowerplaygames.com/api/select_game/read.php?id=" + id
+          "https://www.powerplaysystems.com/api/select_game/read.php?id=" + id
         ),
-        fetch("https://mypowerplaygames.com/api/prize/read.php")
+        fetch("https://powerplaysystems.com/api/prize/read.php")
       ])
         .then(([res1, res2, res3]) =>
           Promise.all([res1.json(), res2.json(), res3.json()])
@@ -321,15 +321,15 @@ class SelectGames extends Component {
     } else {
       Promise.all([
         fetch(
-          "https://mypowerplaygames.com/public_api/association/read.php?id=" +
+          "https://powerplaysystems.com/public_api/association/read.php?id=" +
             id
         ),
         fetch(
-          "https://www.mypowerplaygames.com/api/select_game/read.php?id=" + id
+          "https://www.powerplaysystems.com/api/select_game/read.php?id=" + id
         ),
-        fetch("https://mypowerplaygames.com/api/prize/read.php"),
+        fetch("https://powerplaysystems.com/api/prize/read.php"),
         fetch(
-          "https://mypowerplaygames.com/public_api/entry/read.php?jwt=" + jwt
+          "https://powerplaysystems.com/public_api/entry/read.php?jwt=" + jwt
         )
       ])
         .then(([res1, res2, res3, res4]) =>
@@ -441,7 +441,7 @@ class SelectGames extends Component {
           });
           xhr.open(
             "POST",
-            " https://www.mypowerplaygames.com/public_api/entry/create.php"
+            " https://www.powerplaysystems.com/public_api/entry/create.php"
           );
           xhr.setRequestHeader(
             "content-type",
@@ -618,19 +618,35 @@ class SelectGames extends Component {
                     className="how_to_item_img"
                     src={require("./../../assets/images/select-game/group_19.png")}
                   />
-                  <div className="how_to_item_text">
-                    <div className="how_to_item_header">Pick Teams</div>
+                   <div className="how_to_item_text">
+                    <div className="how_to_item_header">
+                      Enter a Sponsored Contest
+                    </div>
                     <div className="how_to_item_sub">
-                      Pick your teams on the Team Selection page
+                      See all prizes details on Explore games page
                     </div>
                   </div>
+               
                 </div>
                 <div className="how_to_item how_to_item_2">
                   <img
                     className="how_to_item_img"
                     src={require("./../../assets/images/select-game/group_19_2.png")}
                   />
-                  <div className="how_to_item_text">
+                     <div className="how_to_item_text">
+                    <div className="how_to_item_header">Pick Teams</div>
+                    <div className="how_to_item_sub">
+                      Pick your teams on the Team Selection page
+                    </div>
+                  </div>
+               
+                </div>
+                <div className="how_to_item how_to_item_3">
+                  <img
+                    className="how_to_item_img"
+                    src={require("./../../assets/images/select-game/group_19_3.png")}
+                  />
+                     <div className="how_to_item_text">
                     <div className="how_to_item_header">
                       Manipulate Live Scores
                     </div>
@@ -639,30 +655,17 @@ class SelectGames extends Component {
                       Score page.
                     </div>
                   </div>
-                </div>
-                <div className="how_to_item how_to_item_3">
-                  <img
-                    className="how_to_item_img"
-                    src={require("./../../assets/images/select-game/group_19_3.png")}
-                  />
-                  <div className="how_to_item_text">
-                    <div className="how_to_item_header">Win!</div>
-                    <div className="how_to_item_sub">
-                      Explore all games on the Explore Games page
-                    </div>
-                  </div>
+               
                 </div>
                 <div className="how_to_item how_to_item_4">
                   <img
                     className="how_to_item_img"
                     src={require("./../../assets/images/select-game/group_19_4.png")}
                   />
-                  <div className="how_to_item_text">
-                    <div className="how_to_item_header">
-                      Enter a Sponsored Contest
-                    </div>
+                    <div className="how_to_item_text">
+                    <div className="how_to_item_header">Win!</div>
                     <div className="how_to_item_sub">
-                      See all prizes details on Explore games page
+                      Explore all games on the Explore Games page
                     </div>
                   </div>
                 </div>
@@ -671,7 +674,7 @@ class SelectGames extends Component {
                 <center>
                   <div className="select_game_row_2_header">OUR GAMES</div>
                 </center>
-                <div className="autoplay">
+                <div className="autoplay mSlick">
                   <div>
                     <div className="our_games_item">
                       <div className="our_games_inner_leaf">High 5</div>

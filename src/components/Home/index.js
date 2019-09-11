@@ -108,8 +108,8 @@ class Home extends Component {
               <div className="home_first_row" style={firstRowStyle}>
                 <center>
                   <div className="header-main">
-                    Revolutionary new concept for interactive live sports and
-                    lottery games.*
+                    Revolutionary New Concept For Interactive Live Sports And
+                    Lottery Games.*
                   </div>
                   <div className="first_row_details_container">
                     <div className="home_first_row_details">
@@ -140,10 +140,15 @@ class Home extends Component {
                       </div>
                     </div>
                   </div>
-                  <button className="first_row_button">Partner With Us</button>
+                  <button
+                    onClick={() => this.props.history.push("/partner")}
+                    className="first_row_button"
+                  >
+                    Partner With Us
+                  </button>
                 </center>
                 <div className="first_row_extra_info">
-                *International Patents Pending
+                  *International Patents Pending
                 </div>
               </div>
               <div class="home_first_row" style={secondRows}>
@@ -153,7 +158,7 @@ class Home extends Component {
                     Imagine offering lottery and sports games where players can
                     adjust selections in real time during the live event! Now,
                     that is EXCITEMENT! Available exclusively from Powerplay
-                    Games.
+                    Systems.
                   </div>
                 </center>
               </div>
@@ -167,8 +172,8 @@ class Home extends Component {
                     leagues
                   </div>
                   <div className="row_3_items_container">
-                    <div className="row_3_item">Promotional Contest</div>
-                    <div className="row_3_item">Charity contests</div>
+                    <div className="row_3_item">Promotional Contests</div>
+                    <div className="row_3_item">Charity Contests</div>
                     <div className="row_3_item">State run sports betting</div>
                     <div className="row_3_item">
                       Casino based sports betting
@@ -177,8 +182,10 @@ class Home extends Component {
                       Local sports bar - interactive games / contests
                     </div>
                   </div>
-                  <button className="row_3_button"
-                   onClick={() => this.props.history.push("/live-sports")}>
+                  <button
+                    className="row_3_button"
+                    onClick={() => this.props.history.push("/live-sports")}
+                  >
                     Explore Our Live Sports Games Now !
                   </button>
                 </div>
@@ -195,10 +202,14 @@ class Home extends Component {
                     <div className="row_3_item">Charity lotteries</div>
                     <div className="row_3_item">State run lotteries</div>
                     <div className="row_3_item">Casino based lotteries</div>
+                    <div className="row_3_item">50/50 Raffles</div>
                   </div>
-                  <button className="row_3_button" style = {{width: "550px"}}
-                  onClick={() => this.props.history.push("/powerplay-lotto")}>
-                      Explore Our Interactive Lottery Games Now!
+                  <button
+                    className="row_3_button"
+                    style={{ width: "550px" }}
+                    onClick={() => this.props.history.push("/powerplay-lotto")}
+                  >
+                    Explore Our Interactive Lottery Games Now!
                   </button>
                 </div>
               </div>
@@ -213,12 +224,11 @@ class Home extends Component {
                       src={require("./../../assets/images/home/group-18.png")}
                     />
                     <div className="home_offer_heading">
-                      Full service promotional/charity contests
+                      Full Service Promotional/Charity Contests
                     </div>
                     <div className="home_offer_details">
-                      We will take care of everything for you. Any legal
-                      requirements will be covered and all the behind the scenes
-                      administrative work will be done by us.
+                      We take care of all legal requirements and administrative
+                      tasks leaving you to focus on your business or charity.
                     </div>
                   </center>
                 </div>
@@ -229,12 +239,12 @@ class Home extends Component {
                       src={require("./../../assets/images/home/group-18_5.png")}
                     />
                     <div className="home_offer_heading_small">
-                      State run lottery offering
+                      State Run Lottery Offering
                     </div>
                     <div className="home_offer_details">
-                      We will take care of everything for you. Any legal
-                      requirements will be covered and all the behind the scenes
-                      administrative work will be done by us.
+                      Using our game changing Platform, your state run lottery
+                      can offer fully integrated, mobile friendly interactive
+                      lottery options.
                     </div>
                   </center>
                 </div>
@@ -242,15 +252,15 @@ class Home extends Component {
                   <center>
                     <img
                       className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_9.png")}
+                      src={require("./../../assets/images/home/group_18.png")}
                     />
                     <div className="home_offer_heading">
-                      For Canadian businesses, Quebec ready promotions!
+                      Lead <br />
+                      Generation
                     </div>
                     <div className="home_offer_details">
-                      We will take care of everything for you. Any legal
-                      requirements will be covered and all the behind the scenes
-                      administrative work will be done by us.
+                      Utilize our platform to generate 100% true leads by
+                      driving customer behavior through the use of PowerPlays
                     </div>
                   </center>
                 </div>
@@ -264,7 +274,8 @@ class Home extends Component {
                       Mobile Geo-Fencing
                     </div>
                     <div className="home_offer_details">
-                      Entice players to play at your location
+                      Using our Geo-Fencing technology, you can entice players
+                      to play at your establishment. Great for sports bars!
                     </div>
                   </center>
                 </div>
@@ -280,8 +291,7 @@ class Home extends Component {
                     <div className="home_offer_details">
                       Prize indemnity gives you the ability to offer special
                       contests and promotions while transferring the risk to an
-                      experienced and financially bound insurer. Instead of
-                      keeping cash,
+                      experienced and financially bound insurer.
                     </div>
                   </center>
                 </div>
@@ -292,18 +302,22 @@ class Home extends Component {
                       src={require("./../../assets/images/home/group-18_11.png")}
                     />
                     <div className="home_offer_heading_small">
-                      Compliance with the law
+                      Compliance With The Law
                     </div>
                     <div className="home_offer_details">
-                      Each sweepstakes or contest must include a set of official
-                      rules that identify the material terms and conditions that
-                      govern the promotion, and various laws provide that they
-                      must meet certain requirements.
+                      Each contest will include a set of official rules that
+                      identify the material terms and conditions that govern the
+                      promotion. These will cover all aplicabale regional laws.
                     </div>
                   </center>
                 </div>
                 <center>
-                  <button className="home_offer_button">Partner With Us</button>
+                  <button
+                    onClick={() => this.props.history.push("/partner")}
+                    className="home_offer_button"
+                  >
+                    Partner With Us
+                  </button>
                 </center>
               </div>
               <div className="home_offers">
@@ -328,9 +342,7 @@ class Home extends Component {
                       className="home_offer_icon"
                       src={require("./../../assets/images/home/group-18_6.png")}
                     />
-                    <div className="home_offer_heading_small">
-                      Results analysis
-                    </div>
+                    <div className="home_offer_heading_small">Analysis</div>
                     <div className="home_offer_details">
                       When you run a promotion, you will want to know how
                       successful it was. Our analysis will do just that.
@@ -344,7 +356,7 @@ class Home extends Component {
                       src={require("./../../assets/images/home/group-18_10.png")}
                     />
                     <div className="home_offer_heading_small">
-                      Email campaign
+                      Email Campaign
                     </div>
                     <div className="home_offer_details">
                       As part of each contest, we also offer email campaign
@@ -359,7 +371,7 @@ class Home extends Component {
                       src={require("./../../assets/images/home/group-18_4.png")}
                     />
                     <div className="home_offer_heading_small">
-                      White label options
+                      White Label Options
                     </div>
                     <div className="home_offer_details">
                       Would you like to host a game on your site with your
@@ -375,7 +387,7 @@ class Home extends Component {
                       src={require("./../../assets/images/home/group-18_8.png")}
                     />
                     <div className="home_offer_heading_small">
-                      Custom game development
+                      Custom Game Development
                     </div>
                     <div className="home_offer_details">
                       Want to design an interactive game that’s more suited to
@@ -400,7 +412,12 @@ class Home extends Component {
                   </center>
                 </div>
                 <center>
-                  <button className="home_offer_button">Partner With Us</button>
+                  <button
+                    onClick={() => this.props.history.push("/partner")}
+                    className="home_offer_button"
+                  >
+                    Partner With Us
+                  </button>
                 </center>
               </div>
             </div>

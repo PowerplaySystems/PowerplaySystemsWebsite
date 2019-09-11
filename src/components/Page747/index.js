@@ -5,6 +5,7 @@ import Footer from "./../common/Footer";
 
 import "./index.css";
 import * as Constants from "./../common/constants";
+import * as Functions from "./../common/functions";
 import Cookies from "universal-cookie";
 
 //import Modal from 'react-modal'
@@ -18,7 +19,13 @@ var popupHader = "Sorry!";
 let ballsTotal = 47;
 let allowedToSelect = 7;
 let ballElements = [];
-let selectedNumbers = [];
+
+var bg = require("./../../assets/images/747_live/circle.png");
+let mCircleStyles = {
+  backgroundImage: "url(" + bg + ")",
+  backgroundSize: "cover",
+  overflow: "hidden"
+};
 
 class Page747 extends Component {
   constructor(props) {
@@ -29,16 +36,22 @@ class Page747 extends Component {
       isLoaded: false,
       content: "",
       gameData: this.props.location.state.gameData,
-      show: false
+      show: false,
+      selected: [],
+      prizes: [],
+      confirm: false
     };
     this.canSelectMore = this.canSelectMore.bind(this);
     this.getJackpot = this.getJackpot.bind(this);
-    this.getDays = this.getDays.bind(this);
-    this.getHours = this.getHours.bind(this);
-    this.getMinuts = this.getMinuts.bind(this);
     this.scrollToNumbers = this.scrollToNumbers.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.onBallClicked = this.onBallClicked.bind(this);
+    this.handleShowPrize = this.handleShowPrize.bind(this);
+    this.handleClosePrize = this.handleClosePrize.bind(this);
+    this.handleCloseConfirm = this.handleCloseConfirm.bind(this);
+    this.handleShowConfirm = this.handleShowConfirm.bind(this);
+    this.submitBalls = this.submitBalls.bind(this);
   }
   handleClose() {
     this.setState({
@@ -51,10 +64,20 @@ class Page747 extends Component {
       show: true
     });
   }
+  handleCloseConfirm() {
+    this.setState({
+      confirm: false
+    });
+  }
+  handleShowConfirm() {
+    this.state.selected.sort(function(a, b){return a-b});
+    this.setState({
+      confirm: true
+    });
+  }
   getJackpot(prizeArray) {
     if (prizeArray) {
-      prizeArray.sort((a, b) => parseFloat(a.hits) - parseFloat(b.hits));
-      return "$" + prizeArray[prizeArray.length - 1].prize;
+      return "$" + Functions.numberWithCommas(prizeArray[0].prize);
     } else {
       return "Coming soon";
     }
@@ -65,70 +88,36 @@ class Page747 extends Component {
       gameTable.scrollIntoView({ block: "start", behavior: "smooth" });
     }
   }
-  getDays(timestamp) {
-    if (!timestamp) {
-      return "-";
+  onBallClicked(mNumber) {
+    console.log(mNumber);
+    var selectedNumbers = this.state.selected;
+    var index = selectedNumbers.indexOf(mNumber);
+    if (index > -1) {
+      var filtered = selectedNumbers.filter(function(value, index, arr) {
+        return value != mNumber;
+      });
+      this.setState({
+        selected: [...filtered]
+      });
+    } else {
+      if (this.canSelectMore()) {
+        selectedNumbers.push(mNumber);
+        this.setState({
+          selected: selectedNumbers
+        });
+      } else {
+        popupHader = "Selection Limit";
+        popupText = "Cannot select More than " + allowedToSelect;
+        this.handleShow();
+      }
     }
-    const now = new Date();
-    const gameDate = new Date(timestamp);
-    const diffTime = Math.abs(gameDate.getTime() - now.getTime());
-    const diffDays = parseInt(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
-  }
-  getHours(timestamp) {
-    if (!timestamp) {
-      return "-";
-    }
-    const now = new Date();
-    const gameDate = new Date(timestamp);
-    // get total seconds between the times
-    var delta = Math.abs(gameDate - now) / 1000;
-
-    // calculate (and subtract) whole days
-    var days = Math.floor(delta / 86400);
-    delta -= days * 86400;
-
-    // calculate (and subtract) whole hours
-    var hours = Math.floor(delta / 3600) % 24;
-    delta -= hours * 3600;
-    return hours;
-    // // calculate (and subtract) whole minutes
-    // var minutes = Math.floor(delta / 60) % 60;
-    // delta -= minutes * 60;
-
-    // // what's left is seconds
-    // var seconds = delta % 60; // in theory the modulus is not required
-  }
-  getMinuts(timestamp) {
-    if (!timestamp) {
-      return "-";
-    }
-    const now = new Date();
-    const gameDate = new Date(timestamp);
-    // get total seconds between the times
-    var delta = Math.abs(gameDate - now) / 1000;
-
-    // calculate (and subtract) whole days
-    var days = Math.floor(delta / 86400);
-    delta -= days * 86400;
-
-    // calculate (and subtract) whole hours
-    var hours = Math.floor(delta / 3600) % 24;
-    delta -= hours * 3600;
-
-    // // calculate (and subtract) whole minutes
-    var minutes = Math.floor(delta / 60) % 60;
-    delta -= minutes * 60;
-    return minutes;
-    // // what's left is seconds
-    // var seconds = delta % 60; // in theory the modulus is not required
   }
   getMyPickedNumbers() {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
     var that = this;
     fetch(
-      "https://mypowerplaygames.com/public_api/lottery_games/getMyNumbers.php?jwt=" +
+      "https://powerplaysystems.com/public_api/lottery_games/getMyNumbers.php?jwt=" +
         jwt +
         "&game_id=" +
         this.state.gameData.id
@@ -137,10 +126,12 @@ class Page747 extends Component {
       .then(
         result => {
           result = result.records;
-          selectedNumbers = [];
+          var selectedNumbers = [];
           result.forEach(element => {
-            selectedNumbers.push(element.number + "");
-            that.updateButtons(element.number);
+            selectedNumbers.push(element.number);
+            this.setState({
+              selected: [...selectedNumbers]
+            });
           });
 
           this.setState({
@@ -161,31 +152,7 @@ class Page747 extends Component {
     this.getMyPickedNumbers();
     var buttons = document.getElementsByClassName("page747_selection_button");
     var that = this;
-    for (var x = 0; x < buttons.length; x++) {
-      buttons[x].addEventListener("click", function(e) {
-        console.log(selectedNumbers);
-        var mTarget = e.target;
 
-        var number = mTarget.textContent;
-        var index = selectedNumbers.indexOf(number);
-        if (index > -1) {
-          var filtered = selectedNumbers.filter(function(value, index, arr) {
-            return value != number;
-          });
-          selectedNumbers = [...filtered];
-          mTarget.classList.toggle("btn-active");
-        } else {
-          if (that.canSelectMore()) {
-            selectedNumbers.push(number);
-            mTarget.classList.toggle("btn-active");
-          } else {
-            popupHader = "Selection Limit";
-            popupText = "Cannot select More than " + allowedToSelect;
-            that.handleShow();
-          }
-        }
-      });
-    }
     document
       .getElementById("submit_selection_ball")
       .addEventListener("click", function(e) {
@@ -199,42 +166,35 @@ class Page747 extends Component {
         }
       });
   }
-
-  updateButtons(text) {
-    var allBalls = document.getElementsByClassName("page747_selection_button");
-    var searchText = text + "";
-    var found;
-
-    for (var i = 0; i < allBalls.length; i++) {
-      if (allBalls[i].textContent == searchText) {
-        found = allBalls[i];
-        break;
-      }
-    }
-    if (found) {
-      found.classList.toggle("btn-active");
-    }
-  }
   canSelectMore() {
-    if (selectedNumbers.length >= allowedToSelect) {
+    if (this.state.selected.length >= allowedToSelect) {
       return false;
     } else {
       return true;
     }
   }
   canSubmit() {
-    if (selectedNumbers.length == allowedToSelect) {
+    if (this.state.selected.length == allowedToSelect) {
       return true;
     } else {
       return false;
     }
   }
   submitUserSelections() {
+    this.handleShowConfirm();
+  }
+  submitBalls() {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
+    if (jwt == "" || jwt == undefined) {
+      popupText = "Please Login First";
+      popupHader = "Authentication Failed!";
+      this.handleShow();
+      return false;
+    }
     var data =
       "numbers=" +
-      selectedNumbers +
+      this.state.selected +
       "&jwt=" +
       jwt +
       "&game_id=" +
@@ -261,24 +221,46 @@ class Page747 extends Component {
     });
     xhr.open(
       "POST",
-      " https://www.mypowerplaygames.com/public_api/lottery_games/setMyNumbers.php"
+      " https://www.powerplaysystems.com/public_api/lottery_games/setMyNumbers.php"
     );
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
   }
   setBalls() {
-    var allBalls = document.getElementsByClassName("page747_selection_button");
+    var allElements = [];
 
-    if (allBalls.length > 0) {
-      return;
-    }
-    for (var i = 1; i <= ballsTotal; i++) {
-      ballElements.push(
-        <div className="page747_selection_button" id={"ball-" + i}>
-          {i}
+    for (let counter = 1; counter <= ballsTotal; counter++) {
+      const x = counter;
+      allElements.push(
+        <div
+          className={
+            "page747_selection_button" +
+            (this.state.selected.indexOf(counter) == -1 ? "" : " btn-active")
+          }
+          onClick={() => this.onBallClicked(x)}
+        >
+          {counter}
         </div>
       );
     }
+    return allElements;
+  }
+  handleClosePrize() {
+    this.setState({
+      showPrize: false
+    });
+  }
+
+  handleShowPrize(game_type) {
+    var prizesToShow = this.state.gameData.prize;
+    prizesToShow.sort(function(a, b) {
+      return parseFloat(b.prize) - parseFloat(a.prize);
+    });
+
+    this.setState({
+      showPrize: true,
+      prizes: prizesToShow
+    });
   }
   render() {
     return (
@@ -295,11 +277,75 @@ class Page747 extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
+        <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
+          <Modal.Header closeButton>
+            <Modal.Title>Prizes</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="grid-body">
+            {
+              <table className="modal-prize-table">
+                <thead>
+                  <tr>
+                    <th scope="col"> Matches </th>
+                    <th scope="col"> Prize </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.prizes.map((prize, key) => {
+                    return (
+                      <tr className="prize-row" key={key}>
+                        <td>
+                          <p> {prize.hits} </p>
+                        </td>
+                        <td>
+                          <p>{"$" + Functions.numberWithCommas(prize.prize)}</p>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            }
+          </Modal.Body>
+        </Modal>
+        <Modal
+          className="modal-confirm"
+          show={this.state.confirm}
+          onHide={this.handleCloseConfirm}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Review my numbers</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="grid-body">
+            <div className="confirm_submit_header">My Numbers</div>
+            <div className="row confirm_submit_numbers">
+              {this.state.selected.map((number, key) => {
+                return (
+                  <div className="confirm_submit_circle" style={mCircleStyles}>
+                    {number}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="confirm_submit_footer">
+              <button
+                className="footer_btn_cancel"
+                onClick={this.handleCloseConfirm}
+              >
+                Cancel
+              </button>
+              <button className="footer_btn_submit" onClick={this.submitBalls}>
+                Submit
+              </button>
+            </div>
+          </Modal.Body>
+        </Modal>
         <div className="container-fluid _faq_wrap">
           <div className="container">
             <div className="row page747_rows">
               <div className="col-md-12">
                 <img
+                  style={{ margin: "0 auto", width: "1400px" }}
                   className="img-responsive"
                   src={require("./../../assets/images/747/747_header.png")}
                 />
@@ -327,14 +373,16 @@ class Page747 extends Component {
                           <div>
                             <p>
                               {" "}
-                              {this.getDays(this.state.gameData.start_datetime)}
+                              {Functions.getDays(
+                                this.state.gameData.start_datetime
+                              )}
                             </p>
                             Days
                           </div>
                           <div>
                             <p>
                               {" "}
-                              {this.getHours(
+                              {Functions.getHours(
                                 this.state.gameData.start_datetime
                               )}
                             </p>
@@ -343,7 +391,7 @@ class Page747 extends Component {
                           <div>
                             <p>
                               {" "}
-                              {this.getMinuts(
+                              {Functions.getMinuts(
                                 this.state.gameData.start_datetime
                               )}
                             </p>
@@ -377,40 +425,56 @@ class Page747 extends Component {
                     <div className="page747_prize_content">
                       <div class="page747_prize_header row">
                         <div className="row">
-                          <span>Prizes</span>
+                          <span>Top Prizes</span>{" "}
+                          <div className="button_show_prize_wrapper">
+                            <button
+                              className="button_show_prize"
+                              onClick={e => this.handleShowPrize("747")}
+                            >
+                              View All Prizes
+                            </button>
+                          </div>
                         </div>
                       </div>
                       <div className="row">
                         <div className="page747-prize-box-wrapper">
                           <div className="page747-prize-box">
-                            {this.state.gameData.prize[0].hits + " Number of 7"}{" "}
-                            <br />
+                            {this.state.gameData.prize[0].hits + "/7"} <br />
                             <span>
-                              {"$" + this.state.gameData.prize[0].prize}
+                              {"$" +
+                                Functions.numberWithCommas(
+                                  this.state.gameData.prize[0].prize
+                                )}
                             </span>
                           </div>
                         </div>
                         <div className="page747-prize-box-wrapper">
                           <div className="page747-prize-box">
-                            {this.state.gameData.prize[1].hits + " Number of 7"}{" "}
+                            {this.state.gameData.prize[1].hits + "/7"}
                             <br />
                             <span>
-                              {"$" + this.state.gameData.prize[1].prize}
+                              {"$" +
+                                Functions.numberWithCommas(
+                                  this.state.gameData.prize[1].prize
+                                )}
                             </span>
                           </div>
                         </div>
                         <div className="page747-prize-box-wrapper">
                           <div className="page747-prize-box">
-                            {this.state.gameData.prize[2].hits + " Number of 7"}{" "}
+                            {this.state.gameData.prize[2].hits + "/7"}
                             <br />
                             <span>
-                              {"$" + this.state.gameData.prize[2].prize}
+                              {"$" +
+                                Functions.numberWithCommas(
+                                  this.state.gameData.prize[2].prize
+                                )}
                             </span>
                           </div>
                         </div>
                         <div className="page747-prize-box-wrapper">
                           <div className="page747-prize-box">
-                            {this.state.gameData.prize[3].hits + " Number of 7"}{" "}
+                            {this.state.gameData.prize[3].hits + "/7"}
                             <br />
                             <span>
                               {"$" + this.state.gameData.prize[3].prize}
@@ -470,7 +534,7 @@ class Page747 extends Component {
                         </div>
                         <div className="col-md-6 power_content_box_right">
                           <span>
-                            Use force match to change your pick to match the
+                            Use Power Match to change your pick to match the
                             drawn #
                           </span>
                         </div>
@@ -530,21 +594,27 @@ class Page747 extends Component {
                         <div>
                           <p>
                             {" "}
-                            {this.getDays(this.state.gameData.start_datetime)}
+                            {Functions.getDays(
+                              this.state.gameData.start_datetime
+                            )}
                           </p>
                           Days
                         </div>
                         <div>
                           <p>
                             {" "}
-                            {this.getHours(this.state.gameData.start_datetime)}
+                            {Functions.getHours(
+                              this.state.gameData.start_datetime
+                            )}
                           </p>
                           hours
                         </div>
                         <div>
                           <p>
                             {" "}
-                            {this.getMinuts(this.state.gameData.start_datetime)}
+                            {Functions.getMinuts(
+                              this.state.gameData.start_datetime
+                            )}
                           </p>
                           Mins
                         </div>
@@ -554,13 +624,23 @@ class Page747 extends Component {
                 </div>
                 <div className="col-md-12">
                   <div className="page747_selection_box" id="pick-numbers">
-                    {ballElements}
+                    {this.setBalls()}
                   </div>
                 </div>
                 <div className="col-md-12">
+                  <div className="page747_selection_box_submit_info">
+                    {this.state.selected.length +
+                      " of " +
+                      allowedToSelect +
+                      " Numbers chosen"}
+                  </div>
+
                   <div
                     id="submit_selection_ball"
-                    className="page747_selection_box_submit"
+                    className={
+                      "page747_selection_box_submit" +
+                      (this.canSelectMore() ? " deactivate" : "")
+                    }
                   >
                     SUBMIT!
                   </div>

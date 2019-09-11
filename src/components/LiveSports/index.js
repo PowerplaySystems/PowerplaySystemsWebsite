@@ -49,7 +49,7 @@ class SelectGames extends Component {
     window.scrollTo(0, 0);
   }
   goToSelectGames(sport, leagues, gametype) {
-    console.log("Hi")
+    console.log("Hi");
     let path = "/select-games";
     this.props.history.push({
       pathname: path,
@@ -107,6 +107,24 @@ class SelectGames extends Component {
                   Explore All Games
                 </button>
               </center>
+            </div>
+            <div className="lotto-section-2-heading">
+              <p>
+                {" "}
+                Imagine being able to change your sports selections
+                <span> LIVE during the draw!</span>
+              </p>
+              <div className="lotto-section-2-heading-note">
+                Utilizing our revolutionary interactive live sports platform,
+                you can do just that! Try one of our Demo games below or enter
+                one of our promotional contests (coming soon).
+              </div>
+              <div className="lotto-section-2-heading-pointer">
+                <img
+                  src={require("./../../assets/images/lotto/group.png")}
+                  className="img-responsive"
+                />
+              </div>
             </div>
             <div className="live_sports_heading">The Magic of Power Plays!</div>
             <div className="live_sports_sub_heading">
@@ -190,8 +208,8 @@ class SelectGames extends Component {
                   11 to 1 / 1 to 11
                 </div>
                 <div className="live_sports_powerplay_item_details">
-                  Make an 11 = 1 (good for chase the ace) or make a 1 into an 11
-                  (good for high 50)
+                  Make an 11 = 1 (good for CHASE THE ACE) or make a 1 into an 11
+                  (good for High 5)
                 </div>
               </div>
             </div>
@@ -203,7 +221,7 @@ class SelectGames extends Component {
                 <div className="live_sports_game_name">CHASE THE ACE</div>
                 <div className="live_sports_game_desc">
                   An exciting game where players try to <br />
-                  <span>pick 1 to 10 low scoring games</span> to win!
+                  <span>pick 1 to 10 low scoring teams</span> to win!
                 </div>
                 <div className="live_sports_game_try">
                   Try now by choosing a sport
@@ -325,7 +343,6 @@ class SelectGames extends Component {
                   pick 5 teams you think will have the highest combined score!
                 </span>
                 <br /> You choose how hard you want to make it! <br />
-                <s>*Score ranges vary by sport.</s>
               </div>
               <div className="live_sports_game_try">
                 Try now by choosing a sport
@@ -382,14 +399,14 @@ class SelectGames extends Component {
                 style={{ height: "93px", width: "582px" }}
               >
                 An exciting game where you <br />
-                <span>pick 5 teams to make poke-like hands!</span>
+                <span>pick 5 teams to make poker-like hands!</span>
                 <br />
                 Can you get a high straight?
               </div>
               <div className="live_sports_game_try">
                 Try now by choosing a sport
               </div>
-              <div className="live_sports_game_tabs">
+              <div className="live_sports_game_tabs tab_smaller">
                 <img
                   onClick={() =>
                     this.goToSelectGames(
@@ -398,7 +415,7 @@ class SelectGames extends Component {
                       Constants.GAMETYPE_ID_ZONES
                     )
                   }
-                  src={require("./../../assets/images/live_sports/nhl_zones.png")}
+                  src={require("./../../assets/images/live_sports/nhl_pick5.png")}
                 />
                 <img
                   onClick={() =>
@@ -408,27 +425,7 @@ class SelectGames extends Component {
                       Constants.GAMETYPE_ID_ZONES
                     )
                   }
-                  src={require("./../../assets/images/live_sports/mlb_zones.png")}
-                />
-                <img
-                  onClick={() =>
-                    this.goToSelectGames(
-                      Constants.BASKETBALL_ID,
-                      Constants.LEAGUE_ID_NBA,
-                      Constants.GAMETYPE_ID_ZONES
-                    )
-                  }
-                  src={require("./../../assets/images/live_sports/nba_zones.png")}
-                />
-                <img
-                  onClick={() =>
-                    this.goToSelectGames(
-                      Constants.FOOTBALL_ID,
-                      Constants.LEAGUE_ID_NFL,
-                      Constants.GAMETYPE_ID_ZONES
-                    )
-                  }
-                  src={require("./../../assets/images/live_sports/nfl_zones.png")}
+                  src={require("./../../assets/images/live_sports/mlb_pick5.png")}
                 />
               </div>
             </center>
