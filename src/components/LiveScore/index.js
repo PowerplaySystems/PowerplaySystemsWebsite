@@ -10,7 +10,7 @@ import ListGroup from "react-bootstrap/lib/ListGroup";
 import ListGroupItem from "react-bootstrap/lib/ListGroupItem";
 import Cookies from "universal-cookie";
 import * as Functions from "./../common/functions";
-
+import * as Constants from "./../common/constants";
 const pStyle = {
   fontSize: "15px",
   textAlign: "center"
@@ -92,7 +92,7 @@ class LiveScore extends Component {
     console.log(mGame);
     var entry = this.state.games[index].id;
     fetch(
-      "https://powerplaysystems.com/public_api/livescore/data.php?jwt=" +
+      "https://" + Constants.URL + "/public_api/livescore/data.php?jwt=" +
         jwt +
         "&entry_id=" +
         entry +
@@ -132,7 +132,7 @@ class LiveScore extends Component {
     activeGame = this.state.games[index];
 
     fetch(
-      "https://powerplaysystems.com/public_api/schedule/mypicks.php?jwt=" +
+      "https://" + Constants.URL + "/public_api/schedule/mypicks.php?jwt=" +
         jwt +
         "&entry=" +
         entry
@@ -359,7 +359,7 @@ class LiveScore extends Component {
           });
           xhr.open(
             "POST",
-            " https://www.powerplaysystems.com/public_api/schedule/setmypicks.php"
+            " https://www." + Constants.URL + "/public_api/schedule/setmypicks.php"
           );
           xhr.setRequestHeader(
             "content-type",
@@ -607,7 +607,7 @@ class LiveScore extends Component {
         });
         xhr.open(
           "POST",
-          " https://www.powerplaysystems.com/public_api/livescore/setscore.php"
+          " https://www." + Constants.URL + "/public_api/livescore/setscore.php"
         );
         xhr.setRequestHeader(
           "content-type",
@@ -970,7 +970,7 @@ class LiveScore extends Component {
                 <div className="caption box_one_ply" id="top-div">
                   <img
                     src={
-                      "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
+                      "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
                       game.association_id +
                       "&type=header"
                     }
@@ -2000,7 +2000,7 @@ class LiveScore extends Component {
                 <div className="caption box_one_ply" id="top-div">
                   <img
                     src={
-                      "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
+                      "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
                       game.association_id +
                       "&type=header"
                     }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
-
+import * as Constants from "./../common/constants";
 import "./index.css";
 //import Modal from 'react-modal'
 import Modal from "react-bootstrap/lib/Modal";
@@ -79,7 +79,7 @@ class PartnerWithUs extends Component {
     });
     xhr.open(
       "POST",
-      " https://www.powerplaysystems.com/public_api/partner.php"
+      " https://www." + Constants.URL + "/public_api/partner.php"
     );
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);

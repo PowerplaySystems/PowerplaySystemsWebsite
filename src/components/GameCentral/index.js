@@ -7,7 +7,7 @@ import "./index.css";
 import $ from "jquery";
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
-
+import * as Constants from "./../common/constants";
 import Cookies from "universal-cookie";
 
 var popupText = "Error";
@@ -392,7 +392,7 @@ class GameCentral extends Component {
     var league = this.state.games[index].league_id;
     var that = this;
     fetch(
-      "https://powerplaysystems.com/public_api/entry/game_data.php?prize_id=" +
+      "https://" + Constants.URL + "/public_api/entry/game_data.php?prize_id=" +
         activeGame.prize_id +
         "&jwt=" +
         jwt +
@@ -463,7 +463,7 @@ class GameCentral extends Component {
       }
     });
     fetch(
-      "https://powerplaysystems.com/public_api/entry/readmygames.php?jwt=" + jwt
+      "https://" + Constants.URL + "/public_api/entry/readmygames.php?jwt=" + jwt
     )
       .then(res => res.json())
       .then(

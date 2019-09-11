@@ -5,7 +5,7 @@ import Footer from "./../common/Footer";
 import * as Functions from "./../common/functions";
 import "./index.css";
 import Cookies from "universal-cookie";
-
+import * as Constants from "./../common/constants";
 //import Modal from 'react-modal'
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
@@ -78,7 +78,7 @@ class PowerplayLotto extends Component {
   getLotteryGames() {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    var link = "https://powerplaysystems.com/public_api/lottery_games/data.php";
+    var link = "https://" + Constants.URL + "/public_api/lottery_games/data.php";
     if (jwt) {
       link = link + "?jwt=" + jwt;
     }

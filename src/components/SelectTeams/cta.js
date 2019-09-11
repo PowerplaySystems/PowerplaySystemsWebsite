@@ -8,6 +8,7 @@ import Cookies from "universal-cookie";
 //import Modal from 'react-modal'
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
+import * as Constants from "./../common/constants";
 //Modal.setAppElement('body')
 var path = "";
 var popupText = "Error";
@@ -222,7 +223,7 @@ class CTA extends Component {
       });
       xhr.open(
         "POST",
-        " https://www.powerplaysystems.com/public_api/schedule/setmypicks.php"
+        " https://www." + Constants.URL + "/public_api/schedule/setmypicks.php"
       );
       xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
       xhr.send(data);
@@ -241,7 +242,7 @@ class CTA extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     fetch(
-      "https://powerplaysystems.com/public_api/schedule/getschedule.php?date=" +
+      "https://" + Constants.URL + "/public_api/schedule/getschedule.php?date=" +
         this.props.location.state.date +
         "&gameset_id=" +
         this.state.gameData.gameset_id +
@@ -271,7 +272,7 @@ class CTA extends Component {
         }
       );
     fetch(
-      "https://powerplaysystems.com/public_api/schedule/prize.php?id=" +
+      "https://" + Constants.URL + "/public_api/schedule/prize.php?id=" +
         this.state.gameData.prize_id
     )
       .then(res => res.json())
@@ -294,7 +295,7 @@ class CTA extends Component {
       const cookies = new Cookies();
       const jwt = cookies.get("jwt");
       fetch(
-        "https://powerplaysystems.com/public_api/schedule/mypicks.php?jwt=" +
+        "https://" + Constants.URL + "/public_api/schedule/mypicks.php?jwt=" +
           jwt +
           "&entry=" +
           this.state.gameData.id
@@ -960,7 +961,7 @@ class CTA extends Component {
             <div class="caption box_one_ply" id="top-div">
               <img
                 src={
-                  "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
+                  "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
                   this.state.gameData.association_id +
                   "&type=header"
                 }

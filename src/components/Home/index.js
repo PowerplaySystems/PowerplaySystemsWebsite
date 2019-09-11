@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 // import { connect } from 'react-redux';
+import * as Constants from "./../common/constants";
 import $ from "jquery";
 import "slick-carousel";
 var bgFirst = require("./../../assets/images/home/first.jpg");

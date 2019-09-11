@@ -1,5 +1,6 @@
 import * as Functions from "./../common/functions";
 import React, { Component, useState, useEffect } from "react";
+import * as Constants from "./../common/constants";
 
 export const InPlay = props => {
   var ticker;

@@ -333,7 +333,7 @@ class Page747Draw extends Component {
     const jwt = cookies.get("jwt");
     var that = this;
     fetch(
-      "https://powerplaysystems.com/public_api/live_draw/data.php?jwt=" +
+      "https://" + Constants.URL+ "/public_api/live_draw/data.php?jwt=" +
         jwt +
         "&game_id=" +
         this.state.gameData.id
@@ -442,7 +442,7 @@ class Page747Draw extends Component {
     });
     xhr.open(
       "POST",
-      " https://www.powerplaysystems.com/public_api/live_draw/powerplay_use.php"
+      " https://www." + Constants.URL+ "/public_api/live_draw/powerplay_use.php"
     );
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
@@ -456,7 +456,7 @@ class Page747Draw extends Component {
   getLotteryGames() {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    var link = "https://powerplaysystems.com/public_api/lottery_games/data.php";
+    var link = "https://" + Constants.URL+ "/public_api/lottery_games/data.php";
     if (jwt) {
       link = link + "?jwt=" + jwt;
     }

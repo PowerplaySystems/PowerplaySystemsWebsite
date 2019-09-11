@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import "./index.css";
-
+import * as Constants from "./../common/constants";
 class TrustAndSafety extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +15,7 @@ class TrustAndSafety extends Component {
     };
   }
   componentDidMount() {
-    fetch("https://powerplaysystems.com/api/website_footer/getone.php?id=4")
+    fetch("https://" + Constants.URL + "/api/website_footer/getone.php?id=4")
       .then(res => res.json())
       .then(
         result => {

@@ -4,7 +4,7 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import VirtualCardVideos from "./VirtualCardVideos";
 import "./index.css";
-
+import * as Constants from "./../common/constants";
 class LotteryPlatform extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +17,7 @@ class LotteryPlatform extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     fetch(
-      "https://powerplaysystems.com/api/website_corporate/get.php?type=sport"
+      "https://" + Constants.URL + "/api/website_corporate/get.php?type=sport"
     )
       .then(res => res.json())
       .then(

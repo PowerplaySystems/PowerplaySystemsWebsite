@@ -10,7 +10,7 @@ import Sidebar from './Sidebar'
 import Header from './../common/Header'
 import Footer from './../common/Footer'
 import './index.css'
-
+import * as Constants from "./../common/constants";
 class MyAccount extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);

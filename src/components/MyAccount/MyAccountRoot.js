@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./index.css";
 import Cookies from "universal-cookie";
+import * as Constants from "./../common/constants";
 class MyAccountRoot extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +44,7 @@ class MyAccountRoot extends Component {
   onSaveClicked(inputType){
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    let link = "https://powerplaysystems.com/public_api/account/update.php?jwt=" + jwt;
+    let link = "https://" + Constants.URL + "/public_api/account/update.php?jwt=" + jwt;
     if (inputType == "name") {
      link = link + "&name=" + this.state.name + "&email=" + this.state.data.email;
     }
@@ -83,7 +84,7 @@ class MyAccountRoot extends Component {
   getAccount(){
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    fetch("https://powerplaysystems.com/public_api/account/data.php?jwt=" + jwt)
+    fetch("https://" + Constants.URL + "/public_api/account/data.php?jwt=" + jwt)
       .then(res => res.json())
       .then(
         xx => {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./index.css";
 import { withRouter } from "react-router-dom";
 import Cookies from "universal-cookie";
+import * as Constants from "./../common/constants";
 var hockeyText = "",
   baseballText = "",
   basketballText = "",
@@ -32,7 +33,7 @@ class Inventory extends Component {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
     fetch(
-      "https://powerplaysystems.com/public_api/subscription/my_subscriptions.php?jwt=" +
+      "https://" + Constants.URL + "/public_api/subscription/my_subscriptions.php?jwt=" +
         jwt
     )
       .then(res => res.json())

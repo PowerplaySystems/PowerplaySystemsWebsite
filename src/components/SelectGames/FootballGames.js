@@ -5,6 +5,7 @@ import HowTo from "./HowToPlay";
 import Rules from "./Rules";
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
+import * as Constants from "./../common/constants";
 import "./SelectGame.css";
 var popupText = "Error";
 var popupHader = "Sorry!";
@@ -77,7 +78,7 @@ class FootballGames extends Component {
           if (this.readyState === 4) {
             if (~this.responseText.indexOf("Created")) {
               fetch(
-                "https://www.powerplaysystems.com/api/select_game/read.php?id=4"
+                "https://www." + Constants.URL + "/api/select_game/read.php?id=4"
               )
                 .then(res => res.json())
                 .then(
@@ -103,7 +104,7 @@ class FootballGames extends Component {
         });
         xhr.open(
           "POST",
-          " https://www.powerplaysystems.com/public_api/entry/create.php"
+          " https://www." + Constants.URL + "/public_api/entry/create.php"
         );
         xhr.setRequestHeader(
           "content-type",
@@ -128,7 +129,7 @@ class FootballGames extends Component {
     this.setState({ isHowToPlay: isHowToPlayOpen });
   }
   componentDidMount() {
-    fetch("https://powerplaysystems.com/public_api/association/read.php?id=4")
+    fetch("https://" + Constants.URL + "/public_api/association/read.php?id=4")
       .then(res => res.json())
       .then(
         dd => {
@@ -142,7 +143,7 @@ class FootballGames extends Component {
           });
         }
       );
-    fetch("https://www.powerplaysystems.com/api/select_game/read.php?id=4")
+    fetch("https://www." + Constants.URL + "/api/select_game/read.php?id=4")
       .then(res => res.json())
       .then(
         result => {
@@ -159,7 +160,7 @@ class FootballGames extends Component {
         }
       );
 
-    fetch("https://www.powerplaysystems.com/api/select_game/readhow.php?id=4")
+    fetch("https://www." + Constants.URL + "/api/select_game/readhow.php?id=4")
       .then(res => res.json())
       .then(
         dd => {
@@ -173,7 +174,7 @@ class FootballGames extends Component {
           });
         }
       );
-    fetch("https://www.powerplaysystems.com/api/select_game/readrules.php?id=4")
+    fetch("https://www." + Constants.URL + "/api/select_game/readrules.php?id=4")
       .then(res => res.json())
       .then(
         xx => {
@@ -188,7 +189,7 @@ class FootballGames extends Component {
           });
         }
       );
-    fetch("https://powerplaysystems.com/api/prize/read.php")
+    fetch("https://" + Constants.URL + "/api/prize/read.php")
       .then(res => res.json())
       .then(
         data => {
@@ -209,7 +210,7 @@ class FootballGames extends Component {
     const jwt = (this.mJwt = cookies.get("jwt"));
     if (jwt == undefined || jwt == "") {
     } else {
-      fetch("https://powerplaysystems.com/public_api/entry/read.php?jwt=" + jwt)
+      fetch("https://" + Constants.URL + "/public_api/entry/read.php?jwt=" + jwt)
         .then(res => res.json())
         .then(
           xx => {
@@ -265,7 +266,7 @@ class FootballGames extends Component {
                       >
                         <img
                           src={
-                            "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
+                            "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
                             data.association_id +
                             "&type=image"
                           }

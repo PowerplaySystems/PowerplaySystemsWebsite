@@ -108,7 +108,7 @@ class Sweet16Draw extends Component {
     const jwt = cookies.get("jwt");
     var that = this;
     fetch(
-      "https://powerplaysystems.com/public_api/live_draw/data.php?jwt=" +
+      "https://" + Constants.URL + "/public_api/live_draw/data.php?jwt=" +
         jwt +
         "&game_id=" +
         this.state.gameData.id

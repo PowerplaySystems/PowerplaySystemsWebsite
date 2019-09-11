@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import Modal from "react-bootstrap/lib/Modal";
 import * as Constants from "./../common/constants";
 var text;
+
 export const TeamSelected = props => {
   var item = props.data;
   function passPowerplayClicks(
@@ -715,7 +716,7 @@ export const GameRules = props => {
     }
   });
   async function getData() {
-    fetch("https://www.powerplaysystems.com/api/select_game/readrules.php?id=2")
+    fetch("https://www." + Constants.URL + "/api/select_game/readrules.php?id=2")
       .then(res => res.json())
       .then(xx => {
         let reArranged = [];

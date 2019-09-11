@@ -32,5 +32,5 @@ export const SPORTS_POWERPLAY_SWAP = 24;
 export const SPORTS_POWERPLAY_LOCK = 1;
 
 export const ENK = 1122334455;
-export const URL = "wwww.powerplaysystems.com"
+export const URL = "powerplaysystems.com"
 

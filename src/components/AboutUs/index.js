@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import "./index.css";
-
+import * as Constants from "./../common/constants";
 class AboutUs extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ class AboutUs extends Component {
   }
   componentDidMount() {
     window.scroll(0, 0);
-    fetch("https://powerplaysystems.com/api/website_footer/get_aboutus.php")
+    fetch("https://" + Constants.URL+ "/api/website_footer/get_aboutus.php")
       .then(res => res.json())
       .then(
         result => {

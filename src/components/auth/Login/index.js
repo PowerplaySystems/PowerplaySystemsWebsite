@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Header from './../../common/Header'
 import Footer from './../../common/Footer'
+import * as Constants from "./../../common/constants";
 // import { connect } from 'react-redux';
-
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -57,7 +57,7 @@ class Login extends Component {
                 }
             }
         });
-        xhr.open("POST", " https://www.powerplaysystems.com/public_api/auth/login.php");
+        xhr.open("POST", " https://www." + Constants.URL + "/public_api/auth/login.php");
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         xhr.send(data);
 

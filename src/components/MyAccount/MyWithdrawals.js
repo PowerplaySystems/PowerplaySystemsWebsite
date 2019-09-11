@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./index.css";
 import Cookies from 'universal-cookie';
+import * as Constants from "./../common/constants";
 class MyWithdrawals extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +18,7 @@ class MyWithdrawals extends Component {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
     fetch(
-      "https://powerplaysystems.com/public_api/powerplay/my_powerplays.php?jwt=" +
+      "https://" + Constants.URL + "/public_api/powerplay/my_powerplays.php?jwt=" +
         jwt
     )
       .then(res => res.json())

@@ -10,7 +10,7 @@ import Cookies from "universal-cookie";
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
 // import { connect } from 'react-redux';
-
+import * as Constants from "./../common/constants";
 var bgFirst = require("./../../assets/images/select-game/header.jpg");
 var bg3 = require("./../../assets/images/select-game/row-3.jpg");
 
@@ -52,7 +52,7 @@ var Gametypes = props => {
     <a onClick={props.onClick}>
       <img
         src={
-          "http://powerplaysystems.com/api/sport_league/get_image.php?id=" +
+          "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
           props.data.association_id +
           "&type=image"
         }
@@ -284,13 +284,13 @@ class SelectGames extends Component {
     if (jwt == undefined || jwt == "") {
       Promise.all([
         fetch(
-          "https://powerplaysystems.com/public_api/association/read.php?id=" +
+          "https://" + Constants.URL + "/public_api/association/read.php?id=" +
             id
         ),
         fetch(
-          "https://www.powerplaysystems.com/api/select_game/read.php?id=" + id
+          "https://www." + Constants.URL + "/api/select_game/read.php?id=" + id
         ),
-        fetch("https://powerplaysystems.com/api/prize/read.php")
+        fetch("https://" + Constants.URL + "/api/prize/read.php")
       ])
         .then(([res1, res2, res3]) =>
           Promise.all([res1.json(), res2.json(), res3.json()])
@@ -321,15 +321,15 @@ class SelectGames extends Component {
     } else {
       Promise.all([
         fetch(
-          "https://powerplaysystems.com/public_api/association/read.php?id=" +
+          "https://" + Constants.URL + "/public_api/association/read.php?id=" +
             id
         ),
         fetch(
-          "https://www.powerplaysystems.com/api/select_game/read.php?id=" + id
+          "https://www." + Constants.URL + "/api/select_game/read.php?id=" + id
         ),
-        fetch("https://powerplaysystems.com/api/prize/read.php"),
+        fetch("https://" + Constants.URL + "/api/prize/read.php"),
         fetch(
-          "https://powerplaysystems.com/public_api/entry/read.php?jwt=" + jwt
+          "https://" + Constants.URL + "/public_api/entry/read.php?jwt=" + jwt
         )
       ])
         .then(([res1, res2, res3, res4]) =>
@@ -441,7 +441,7 @@ class SelectGames extends Component {
           });
           xhr.open(
             "POST",
-            " https://www.powerplaysystems.com/public_api/entry/create.php"
+            " https://www." + Constants.URL + "/public_api/entry/create.php"
           );
           xhr.setRequestHeader(
             "content-type",

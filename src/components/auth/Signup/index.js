@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 import Header from './../../common/Header'
 import Footer from './../../common/Footer'
 // import { connect } from 'react-redux';
-
+import * as Constants from "./../../common/constants";
 class Signup extends Component {
     constructor(props) {
         super(props);
@@ -123,7 +123,7 @@ class Signup extends Component {
                 }
             }
         });
-        xhr.open("POST", " https://www.powerplaysystems.com/public_api/auth/signup.php");
+        xhr.open("POST", " https://www." + Constants.URL + "/public_api/auth/signup.php");
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         xhr.send(data);
      

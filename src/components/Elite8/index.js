@@ -105,7 +105,7 @@ class Elite8 extends Component {
     const jwt = cookies.get("jwt");
     var that = this;
     fetch(
-      "https://powerplaysystems.com/public_api/lottery_games/getMyNumbers.php?jwt=" +
+      "https://" + Constants.URL + "/public_api/lottery_games/getMyNumbers.php?jwt=" +
         jwt +
         "&game_id=" +
         this.state.gameData.id
@@ -229,7 +229,7 @@ class Elite8 extends Component {
     });
     xhr.open(
       "POST",
-      " https://www.powerplaysystems.com/public_api/lottery_games/setMyNumbers.php"
+      " https://www." + Constants.URL + "/public_api/lottery_games/setMyNumbers.php"
     );
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);

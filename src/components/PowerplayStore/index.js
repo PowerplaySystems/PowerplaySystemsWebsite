@@ -3,9 +3,11 @@ import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import Invertory from "./../common/inventory";
+import * as Constants from "./../common/constants";
 import { CSSTransitionGroup } from "react-transition-group"; // ES6
 import "./index.css";
 var mTotal = 0.0;
+
 class PowerplayStore extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +42,7 @@ class PowerplayStore extends Component {
     }
   }
   componentDidMount() {
-    fetch("https://www.powerplaysystems.com/api/store_subscription/read.php")
+    fetch("https://www." + Constants.URL + "/api/store_subscription/read.php")
       .then(res => res.json())
       .then(
         response => {
