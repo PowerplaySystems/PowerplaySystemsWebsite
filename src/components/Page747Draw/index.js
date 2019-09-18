@@ -57,7 +57,8 @@ class Page747Draw extends Component {
       secondsTime: 0,
       prizes: [],
       nextGame: [],
-      secondsTimer: 59
+      secondsTimer: 59,
+      ticker: null
     };
     mTotalMatchedLast = 0;
     this.getJackpot = this.getJackpot.bind(this);
@@ -70,6 +71,7 @@ class Page747Draw extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
     this.shouldShowTickTok = this.shouldShowTickTok.bind(this);
+    this.hasWonPrize = this.hasWonPrize.bind(this);
   }
   isAMatch(element) {
     let obj = this.state.draw.find(
@@ -84,19 +86,20 @@ class Page747Draw extends Component {
 
   startTimer() {
     var that = this;
-    if (!ticker)
-      ticker = setInterval(function() {
-        if (that.state.gameData) {
+    if (this.state.ticker == null) {
+      if (that.state.gameData) {
+        this.state.ticker = setInterval(function() {
           that.setState({
             secondsTimer: Functions.getSeconds(
               that.state.gameData.start_datetime
             )
           });
-        }
-      });
+        });
+      }
+    }
   }
   stopTimer() {
-    if (ticker) {
+    if (this.state.ticker) {
       clearInterval(ticker);
       ticker = null;
     }
@@ -122,7 +125,10 @@ class Page747Draw extends Component {
         mTotalMatched = mTotalMatched + 1;
       }
     });
-    document.getElementById("total-matched").innerHTML = mTotalMatched;
+    if (document.getElementById("total-matched")) {
+      document.getElementById("total-matched").innerHTML = mTotalMatched;
+    }
+
     if (mTotalMatchedLast < mTotalMatched) {
       mTotalMatchedLast = mTotalMatched;
       this.showInfo();
@@ -139,48 +145,31 @@ class Page747Draw extends Component {
       });
     }, 3000);
   }
-  startClockTicking() {
-    isClockTicking = true;
-    var timeof = this.state.gameData.start_datetime;
-    var that = this;
-    ticker = setInterval(function() {
-      that.setState({
-        secondsRemaining: Functions.getSeconds(timeof)
-      });
-    });
-  }
-  stopClockTicking() {
-    if (ticker) {
-      clearInterval(ticker);
-      ticker = null;
-    }
-    isClockTicking = false;
-  }
+
   countdownTimer(lastDrawTime, timer, delay) {
-    console.log("In Countdown: " + lastDrawTime);
     var that = this;
     if (countdown) {
       clearInterval(countdown);
       countdown = null;
     }
     if (lastDrawTime == "check") {
-      if (!isClockTicking) {
-        this.startClockTicking();
+      var tempTimeDiff = Functions.getTimeDifferenceEST(
+        this.state.gameData.start_datetime
+      );
+      if (tempTimeDiff > 65000) {
+        var myVar = setTimeout(function() {
+          that.getData();
+        }, tempTimeDiff - 65000);
+      } else {
+        var myVar = setTimeout(function() {
+          that.getData();
+        }, 1000);
       }
-      var myVar = setTimeout(function() {
-        that.getData();
-      }, 1000);
     } else if (lastDrawTime == null) {
-      this.stopClockTicking();
-      this.setState({
-        mtimer: "#"
-      });
-
       var myVar = setTimeout(function() {
         that.getData();
       }, 1000);
     } else {
-      this.stopClockTicking();
       isInDelay = false;
       var dt = new Date(lastDrawTime);
       dt.setSeconds(dt.getSeconds() + timer);
@@ -192,34 +181,18 @@ class Page747Draw extends Component {
         usaTime = new Date(usaTime);
         var now = usaTime.getTime();
         var distance = countDownDate - now;
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
         // If the count down is finished, write some text
         if (distance < 0) {
-          that.setState({
-            mtimer: "0"
-          });
-
           clearInterval(countdown);
           isInDelay = true;
-          console.log(delay * 1000);
           if (
             that.state.gameData.status == "live" ||
             that.state.gameData.status == "In Progress"
           ) {
-            that.setState({
-              mtimer: "#"
-            });
-            var myVar = setTimeout(function() {
-              that.getData();
-            }, 1000);
+            that.getData();
           }
-        } else {
-          that.setState({
-            mtimer: parseInt(distance / 1000, 10)
-          });
         }
-      }, 1000);
+      }, 10);
     }
   }
   getJackpot(prizeArray) {
@@ -333,7 +306,9 @@ class Page747Draw extends Component {
     const jwt = cookies.get("jwt");
     var that = this;
     fetch(
-      "https://" + Constants.URL+ "/public_api/live_draw/data.php?jwt=" +
+      "https://" +
+        Constants.URL +
+        "/public_api/live_draw/data.php?jwt=" +
         jwt +
         "&game_id=" +
         this.state.gameData.id
@@ -344,6 +319,7 @@ class Page747Draw extends Component {
           let myDraws = [...result.draw];
           let myDrawnRow = [...result.draw];
           let myPicks = result.picks;
+
           if (myDraws.length > 0) {
             myDraws.sort(
               (a, b) =>
@@ -366,20 +342,50 @@ class Page747Draw extends Component {
           if (myPicks.length > 0) {
             myPicks.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
           }
-          result.game.status == "unplayed"
-            ? this.startTimer()
-            : this.stopTimer();
-          this.setState({
-            isLoaded: true,
-            drawRaw: result.draw,
-            draw: myDraws,
-            drawNumbersRow: myDrawnRow,
-            picks: myPicks,
-            gameData: result.game,
-            powerplays: result.powerplays,
-            result: result.result
-          });
+          if (this.state.draw.length == myDraws.length) {
+            if (this.state.gameData.status == result.game.status) {
+              this.setState({
+                isLoaded: true,
+                picks: myPicks,
+                powerplays: result.powerplays,
+                result: result.result
+              });
+            } else {
+              this.setState({
+                isLoaded: true,
+                picks: myPicks,
+                gameData: result.game,
+                powerplays: result.powerplays,
+                result: result.result
+              });
+            }
+          } else {
+            if (this.state.gameData.status == result.game.status) {
+              this.setState({
+                isLoaded: true,
+                drawRaw: result.draw,
+                draw: myDraws,
+                drawNumbersRow: myDrawnRow,
+                picks: myPicks,
+                powerplays: result.powerplays,
+                result: result.result
+              });
+            } else {
+              this.setState({
+                isLoaded: true,
+                drawRaw: result.draw,
+                draw: myDraws,
+                drawNumbersRow: myDrawnRow,
+                picks: myPicks,
+                gameData: result.game,
+                powerplays: result.powerplays,
+                result: result.result
+              });
+            }
+          }
+
           that.setTotalMatched();
+          //if started the draw and atlest one number drawn
           if (result.draw.length > 0) {
             that.countdownTimer(
               result.draw[result.draw.length - 1].date_time,
@@ -387,11 +393,13 @@ class Page747Draw extends Component {
               this.state.gameData.delay
             );
           } else if (
+            //if started the draw and and no number drawn
             result.game.status == "live" ||
             result.game.status == "In Progress"
           ) {
             that.countdownTimer(null, null, result.game.delay);
           } else {
+            //if draw not started
             that.countdownTimer("check", null, null);
           }
         },
@@ -442,7 +450,9 @@ class Page747Draw extends Component {
     });
     xhr.open(
       "POST",
-      " https://www." + Constants.URL+ "/public_api/live_draw/powerplay_use.php"
+      " https://www." +
+        Constants.URL +
+        "/public_api/live_draw/powerplay_use.php"
     );
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
@@ -450,13 +460,17 @@ class Page747Draw extends Component {
 
   componentDidMount() {
     document.getElementById("scroller").scrollIntoView(true);
+    this.props.location.state.gameData.status == "unplayed"
+      ? this.startTimer()
+      : this.stopTimer();
     this.getData();
     this.getLotteryGames();
   }
   getLotteryGames() {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    var link = "https://" + Constants.URL+ "/public_api/lottery_games/data.php";
+    var link =
+      "https://" + Constants.URL + "/public_api/lottery_games/data.php";
     if (jwt) {
       link = link + "?jwt=" + jwt;
     }
@@ -476,6 +490,10 @@ class Page747Draw extends Component {
       );
   }
   onPickNumbersClicked(path, game) {
+    if (game.id == null) {
+      alert("No Game Available!");
+      return;
+    }
     let action = "pick";
     action = this.state.nextGame.entry ? "game_center" : "pick";
     this.props.history.push({
@@ -501,6 +519,19 @@ class Page747Draw extends Component {
       showPrize: true,
       prizes: prizesToShow
     });
+  }
+
+  hasWonPrize(matches) {
+    let obj = this.state.prizes.find(obj => obj.hits == matches);
+    if (obj) {
+      if (obj.prize > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
   render() {
     return (
@@ -595,8 +626,6 @@ class Page747Draw extends Component {
                     <DrawComponents.InPlay
                       drawRaw={this.state.drawRaw}
                       gameData={this.state.gameData}
-                      secondsRemaining={this.state.secondsRemaining}
-                      mtimer={this.state.mtimer}
                     />
                     <div className="live_draw_my_numbers">
                       <p>My Numbers</p>
@@ -719,63 +748,40 @@ class Page747Draw extends Component {
                         !this.shouldShowTickTok() ? (
                           <>
                             <div className="live_draw_my_prize">
-                              <div className="page747_live_draw_timer">
-                                <div style={{ textAlign: "center" }}>
-                                  <p style = {{fontSize : "22.4px"}}>Next draw starts in</p>
-                                  <div className="row page747_main_draw_inner secs_draw">
-                                    <div>
-                                      <p>
-                                        {" "}
-                                        {Functions.getDays(
-                                          this.state.gameData.start_datetime
-                                        )}
-                                      </p>
-                                      Days
-                                    </div>
-                                    <div>
-                                      <p>
-                                        {" "}
-                                        {Functions.getHours(
-                                          this.state.gameData.start_datetime
-                                        )}
-                                      </p>
-                                      hours
-                                    </div>
-
-                                    <div>
-                                      <p>
-                                        {" "}
-                                        {Functions.getMinuts(
-                                          this.state.gameData.start_datetime
-                                        )}
-                                      </p>
-                                      Mints
-                                    </div>
-                                    <div>
-                                      <p> {this.state.secondsTimer}</p>
-                                      Sec
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                              <DrawComponents.CountdownTimer
+                                gameData={this.state.gameData}
+                              />
+                              <p className="live_draw_loser_note5">
+                                Draw Date: &nbsp;
+                                {Functions.getStringDate(
+                                  this.state.gameData.start_datetime
+                                )}
+                                {" at "}
+                                {Functions.getStringTime(
+                                  this.state.gameData.start_datetime
+                                )}{" "}
+                                EST
+                              </p>
                             </div>
                           </>
                         ) : (
                           //if game is live and last minute
                           <>
+                            {" "}
                             <div className="live_draw_my_prize">
-                              <div className="live_draw_in_play_timer_bottom">
-                                Next Number Drawn In{" "}
-                                <span id="m-timer">
-                                  {this.state.secondsTimer}
-                                </span>{" "}
-                                sec.
-                              </div>
+                              <p className="live_draw_my_numbers_matched">
+                                Numbers Matched:{" "}
+                                <span id="total-matched">{mTotalMatched}</span>
+                                /7
+                              </p>
+                              <p className="live_draw_my_numbers_notes">
+                                Click a number and use your powerplays to edit!
+                              </p>
                             </div>
                           </>
                         )
                       ) : this.state.result.prize_won ? (
-                        mTotalMatched == 0 ? (
+                        !this.hasWonPrize(mTotalMatched) ? (
                           <div className="live_draw_my_prize">
                             <div className="live_draw_result">
                               <div className="live_draw_result_top">
@@ -786,16 +792,33 @@ class Page747Draw extends Component {
                                   </span>{" "}
                                   of 7 numbers
                                 </p>
-                              </div>
-                              <div className="live_draw_result_bottom">
-                                <img
-                                  className="img-responsive"
-                                  src={require("./../../assets/images/747_live/trophy.png")}
-                                />
-                                <p className="live_draw_my_prize_won_text">
-                                  {"$" + this.state.result.prize_won}
+                                <p className="live_draw_loser_note">
+                                  Sorry You didn't win this time!
+                                </p>
+                                <p className="live_draw_loser_note4">
+                                  Next Draw Date
+                                </p>
+                                <p className="live_draw_loser_note5">
+                                  {Functions.getStringDate(
+                                    this.state.nextGame.start_datetime
+                                  )}
+                                  {Functions.getStringTime(
+                                    this.state.nextGame.start_datetime
+                                  )}{" "}
+                                  EST
                                 </p>
                               </div>
+                              <button
+                                className="live_draw_loser_button"
+                                onClick={e =>
+                                  this.onPickNumbersClicked(
+                                    "/747",
+                                    this.state.nextGame
+                                  )
+                                }
+                              >
+                                Pick Numbers for Next Draw
+                              </button>
                             </div>
                           </div>
                         ) : (
@@ -854,13 +877,11 @@ class Page747Draw extends Component {
                           {" "}
                           <div className="live_draw_my_prize">
                             <p className="live_draw_my_numbers_matched">
-                              Matched{" "}
-                              <span id="total-matched">{mTotalMatched}</span> of
-                              7 numbers
+                              Numbers Matched:{" "}
+                              <span id="total-matched">{mTotalMatched}</span>/7
                             </p>
                             <p className="live_draw_my_numbers_notes">
-                              You havn’t won any prizes so far. Keep matching
-                              numbers!
+                              Click a number and use your powerplays to edit!
                             </p>
                           </div>
                         </>

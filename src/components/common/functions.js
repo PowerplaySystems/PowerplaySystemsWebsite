@@ -6,7 +6,7 @@ export function getDays(timestamp) {
     timeZone: "America/New_York"
   });
   usaTime = new Date(usaTime);
-  var now = usaTime
+  var now = usaTime;
   const gameDate = new Date(timestamp);
   const diffTime = Math.abs(gameDate.getTime() - now.getTime());
   const diffDays = parseInt(diffTime / (1000 * 60 * 60 * 24));
@@ -140,4 +140,16 @@ export function getStringTime(time) {
 }
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+export function getTimeDifferenceEST(from) {
+  var dt = new Date(from);
+  dt.setSeconds(dt.getSeconds());
+  var fromDate = new Date(dt).getTime();
+  var usaTime = new Date().toLocaleString("en-US", {
+    timeZone: "America/New_York"
+  });
+
+  usaTime = new Date(usaTime);
+  var now = usaTime.getTime();
+  return fromDate - now;
 }

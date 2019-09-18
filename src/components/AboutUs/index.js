@@ -23,7 +23,7 @@ class AboutUs extends Component {
   }
   componentDidMount() {
     window.scroll(0, 0);
-    fetch("https://" + Constants.URL+ "/api/website_footer/get_aboutus.php")
+    fetch("https://" + Constants.URL + "/api/website_footer/get_aboutus.php")
       .then(res => res.json())
       .then(
         result => {
@@ -49,24 +49,28 @@ class AboutUs extends Component {
         <div className="container-fluid p-o">
           <div className="about_us_row_one">
             <p className="about_us_heading">
-              <span>Changing</span>the promotional contest/sweepstakes landscape
+              <span>Changing</span> the landscape for interactive games and
+              contests
             </p>
           </div>
           <center>
             <div className="about_us_section_heading">What We Do?</div>
             <div className="about_us_section_sub">
-              Powerplay Games is changing the promotional contest/sweepstakes
-              landscape by offering the worlds first patent pending interactive
-              lottery and sports platform.
+              Powerplay Systems is offering the worlds first patent pending
+              interactive Live Sports and Lottery platform. Our platform can be
+              used for charity fundraising, State run lotteries, lead
+              generation, or promotional contests.
             </div>
             <div className="about_us_row_two" />
             <div className="about_us_row_three">
               <div className="about_us_row_left">
                 <div className="row_three_header">Powerplay Lotto</div>
                 <div className="row_three_text">
-                  Bla bla for powerplay Lotto another bla bla till we fill this
-                  paragraph with all blas blas Bla bla for powerplay lotto
-                  another bla bla till we fill this paragraph with all blas blas
+                  Utilize our Powerful fully customizable lottery platform to
+                  take your lottery offering to the next level. Whether it is a
+                  Sporting event 50/50 draw or a Mega-Millions draw, our
+                  platform will provide your customers with an exceptionally
+                  exciting experience.
                 </div>
                 <button
                   className="row_three_button"
@@ -78,10 +82,11 @@ class AboutUs extends Component {
               <div className="about_us_row_right">
                 <div className="row_three_header">Powerplay Live Sports</div>
                 <div className="row_three_text">
-                  Bla bla for powerplay live sports another bla bla till we fill
-                  this paragraph with all blas blas Bla bla for powerplay live
-                  sports another bla bla till we fill this paragraph with all
-                  blas blas
+                  Would you like to ramp up customer engagement? Use our
+                  interactive live sports platform to drive customer behavior by
+                  offering exciting new fantasy sports games, bar games,
+                  promotional contests, sports betting games, and even sports
+                  based lotteries.
                 </div>
                 <button
                   className="row_three_button"
@@ -93,9 +98,10 @@ class AboutUs extends Component {
             </div>
             <div className="about_us_section_heading">Our Partners</div>
             <div className="about_us_section_sub">
-              This should be a promotional sentence about why i should apply as
-              powerplay partner, maybe some stats about how my sales will
-              increase{" "}
+              Partner with us to engage with your customers and offer exiting
+              new customer interaction points. You will have truly engaged
+              customers, new leads, and access to the mobile generation. Let's
+              get started.{" "}
             </div>
 
             <button
@@ -104,12 +110,12 @@ class AboutUs extends Component {
             >
               Become a Partner
             </button>
-            <div className="about_us_section_heading">Our Players</div>
+            <div className="about_us_section_heading">Our Mission</div>
+            <br/>
             <div className="about_us_section_sub">
-              Powerplay platfrom is used and loved by millions of people around
-              the globe.
+            To have our games used and loved by millions around the globe.
             </div>
-            <div className="about_us_row_players">
+            {/* <div className="about_us_row_players">
               <div className="about_us_player_box">
                 <div className="about_us_player_header">
                   <img src={require("./../../assets/images/about_us/pp.png")} />
@@ -140,7 +146,7 @@ class AboutUs extends Component {
                   wonderful work today.
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="about_us_section_heading">Where to Find Us?</div>
             <div className="about_us_address_row">
               <img

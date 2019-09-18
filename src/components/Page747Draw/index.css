@@ -434,8 +434,47 @@
   width: 160px;
 }
 .live_draw_result {
-  width: 300px;
+  width: 447px;
   margin: 0 auto;
+}
+.live_draw_result_top {
+  text-align: center;
+  margin-top: -20px;
+}
+.live_draw_loser_note {
+  height: 26px;
+  font-family: Poppins;
+  font-size: 18px;
+  line-height: 1.44;
+  text-align: center;
+  color: #e7304e;
+}
+.live_draw_loser_note4 {
+  height: 26px;
+  font-family: Poppins;
+  font-size: 16px;
+  line-height: 1.63;
+  text-align: center;
+  color: #ffffff;
+}
+.live_draw_loser_button {
+  width: 434px;
+  height: 60px;
+  border-radius: 30px;
+  box-shadow: 0 2px 18px -1px #fb6e00;
+  background-color: #fb6e00;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+.live_draw_loser_note5 {
+  height: 31px;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
 }
 .live_draw_result_left {
   float: left;
@@ -453,6 +492,7 @@
   text-align: left;
   color: #ffffff;
   margin-top: -5px !important;
+  text-align: center !important;
 }
 .live_draw_prize_matches span {
   font-size: 30px;
@@ -465,8 +505,8 @@
   height: 17px !important;
   margin: -14px 0px 0px 15px !important;
 }
-.edit_numbers_circle_active.pick_button_active{
-  border:none !important;
+.edit_numbers_circle_active.pick_button_active {
+  border: none !important;
 }
 .edit_numbers_circle_active.pick_button_active .inner-div-select {
   border: 3px solid #fb6e00;
@@ -481,13 +521,11 @@
 .secs_draw {
   width: 275px !important;
   margin: 5px auto;
-  
-    
 }
-.secs_draw > div{
+.secs_draw > div {
   font-size: 18.2px !important;
 }
-.secs_draw p{
+.secs_draw p {
   width: 54.6px !important;
   height: 44.8px !important;
   font-size: 35px !important;
@@ -670,4 +708,7 @@
   float: left;
   border-radius: 19px;
   margin: 5px 10px;
+}
+.prize-none{
+  margin-top: -20px !important;
 }

@@ -78,7 +78,8 @@ class PowerplayLotto extends Component {
   getLotteryGames() {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
-    var link = "https://" + Constants.URL + "/public_api/lottery_games/data.php";
+    var link =
+      "https://" + Constants.URL + "/public_api/lottery_games/data.php";
     if (jwt) {
       link = link + "?jwt=" + jwt;
     }
@@ -290,6 +291,97 @@ class PowerplayLotto extends Component {
                     className="img-responsive"
                   />
                 </div>
+              </div>
+              <div className="lotto-section-3">
+                <div className="lotto-section-3-heading">
+                  The Magic of Power Plays!
+                </div>
+                <div className="lotto-section-3-descr">
+                  All of our exciting interactive games utilize powerplays to
+                  help you win!
+                </div>
+                <div className="lotto-section-3-pwoerplays">
+               
+                      <div className="powerplays_box">
+                        <div className="powerlays_box_image">
+                          <div className="power_content_box_left_image_wrapper">
+                            <img
+                              className="img-responsive power_content_box_left_image"
+                              src={require("./../../assets/images/747/747_2.png")}
+                            />
+                          </div>
+                          <div className="power_content_box_left_text">
+                            Increase/Decrease
+                          </div>
+                        </div>
+                        <div className="powerplays_box_right">
+                          <span>
+                            You can increase or decrease your pick live during
+                            the draw
+                          </span>
+                        </div>
+                      </div>
+                      <div className="powerplays_box">
+                        <div className="powerlays_box_image">
+                          <div className="power_content_box_left_image_wrapper">
+                            <img
+                              className="img-responsive power_content_box_left_image"
+                              src={require("./../../assets/images/747/747_3.png")}
+                            />
+                          </div>
+                          <div className="power_content_box_left_text">
+                            Power Match
+                          </div>
+                        </div>
+                        <div className="powerplays_box_right">
+                          <span>
+                            Use Power Match to change your pick to match the
+                            drawn #
+                          </span>
+                        </div>
+                      </div>
+                      <div className="powerplays_box">
+                        <div className="powerlays_box_image">
+                          <div className="power_content_box_left_image_wrapper">
+                            <img
+                              className="img-responsive power_content_box_left_image"
+                              src={require("./../../assets/images/lotto/shuffle.png")}
+                            />
+                          </div>
+                          <div className="power_content_box_left_text">
+                            Change
+                          </div>
+                        </div>
+                        <div className="powerplays_box_right">
+                          <span>
+                            Use change to replace one # with a random new Number
+                          </span>
+                        </div>
+                      </div>
+                      <div className="powerplays_box">
+                        <div className="powerlays_box_image">
+                          <div className="power_content_box_left_image_wrapper">
+                            <img
+                              className="img-responsive power_content_box_left_image"
+                              src={require("./../../assets/images/747/747_1.png")}
+                            />
+                          </div>
+                          <div className="power_content_box_left_text">
+                            Refresh All
+                          </div>
+                        </div>
+                        <div className="powerplays_box_right">
+                          <span>
+                            Use refresh all to refresh all your numbers with a
+                            random new set.
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+              
+              </div>
+              <div className = "lotto-heading-games">
+              Our Games
               </div>
               <div className="lotto-block-even" id="explore-games">
                 <div className="lotto-even-image">
@@ -785,7 +877,9 @@ class PowerplayLotto extends Component {
                             <p> {prize.hits} </p>
                           </td>
                           <td>
-                            <p>{"$" + Functions.numberWithCommas(prize.prize)}</p>
+                            <p>
+                              {"$" + Functions.numberWithCommas(prize.prize)}
+                            </p>
                           </td>
                         </tr>
                       );
