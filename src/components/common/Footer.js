@@ -9,7 +9,7 @@ class Footer extends Component {
         <div className="container-fluid contact-us">
           <div className="container">
             <div className="row ">
-              <div className="col-sm-4" />
+              <div className="col-sm-5" />
               <div className="col-sm-2">
                 <div className="box">
                   <h2>Legal / Privacy</h2>
@@ -33,7 +33,7 @@ class Footer extends Component {
                   </a>
                 </div>
               </div>
-              <div className="col-sm-2">
+              {/* <div className="col-sm-2">
                 <div className="box">
                   <h2>Company</h2>
                   <a
@@ -56,7 +56,7 @@ class Footer extends Component {
                     About US
                   </a>
                 </div>
-              </div>
+              </div> */}
               <footer>
                 <div className="col-md-12">
                   <p>
