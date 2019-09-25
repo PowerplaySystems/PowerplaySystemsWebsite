@@ -111,9 +111,9 @@ class AboutUs extends Component {
               Become a Partner
             </button>
             <div className="about_us_section_heading">Our Mission</div>
-            <br/>
+            <br />
             <div className="about_us_section_sub">
-            To have our games used and loved by millions around the globe.
+              To have our games used and loved by millions around the globe.
             </div>
             {/* <div className="about_us_row_players">
               <div className="about_us_player_box">
@@ -159,14 +159,19 @@ class AboutUs extends Component {
                   src={require("./../../assets/images/about_us/placeholder.png")}
                 />
 
-                <span>140 Yonge St., S.200 Toronto, Ontario M5C 1X</span>
+                <span>140 Yonge St., S.200 Toronto, Ontario</span>
                 <br />
                 <img
                   src={require("./../../assets/images/about_us/phone_call.png")}
                 />
-                <span>1-833-361-TBD</span>
+                <span>1-844-268-1573</span>
                 <br />
-                <button className="btn_contact_us">Contact Us</button>
+                <button
+                  onClick={() => this.props.history.push("/partner")}
+                  className="btn_contact_us"
+                >
+                  Contact Us
+                </button>
               </div>
             </div>
           </center>
