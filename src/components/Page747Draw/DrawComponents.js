@@ -3,8 +3,8 @@ import React, { Component, useState, useEffect } from "react";
 import * as Constants from "./../common/constants";
 
 export const InPlay = props => {
-  var ticker;
-  var NextDrawTicker;
+  let ticker;
+  var drawInterval = null;
   const [secondsTimer, setsecondsTimer] = useState("59");
   const [nextDrawTime, setnextDrawTime] = useState(
     props.gameData.countdown_timer
@@ -17,29 +17,34 @@ export const InPlay = props => {
   function stopTimer() {
     if (ticker) {
       clearInterval(ticker);
-      ticker = null;
     }
   }
-  function checkIt() {
-    if (props.gameData.status == "live" && props.drawRaw.length == 0) {
-      setnextDrawTime(props.gameData.countdown_timer);
-    } else if (props.gameData.status == "live" && props.drawRaw.length > 0) {
-      if (NextDrawTicker != null) {
-        clearInterval(NextDrawTicker);
-        NextDrawTicker = null;
-      }
-      NextDrawTicker = setInterval(setnextDrawTime(getNextTime()), 1000);
-    } else if (props.gameData.status == "finished") {
-      clearInterval(NextDrawTicker);
-      NextDrawTicker = null;
-      setnextDrawTime(0);
+  function startDrawTimer() {
+    if (drawInterval == null) {
+      drawInterval = setInterval(function() {
+        var remains = getNextTime();
+        console.log(remains);
+        setnextDrawTime(remains);
+      }, 1000);
     }
   }
+  function stopDrawTimer() {
+    if (drawInterval) {
+      clearInterval(drawInterval);
+    }
+  }
+
   function getNextTime() {
     if (props.drawRaw.length < 1) {
       return;
     }
-    var dt = new Date(props.drawRaw[props.drawRaw.length - 1].date_time);
+    if (props.updatedAt == null) {
+      var dt = new Date(props.drawRaw[props.drawRaw.length - 1].date_time);
+    } else {
+      var dt = new Date(props.updatedAt);
+    }
+
+    console.log(dt);
     dt.setSeconds(dt.getSeconds() + props.gameData.countdown_timer);
     var countDownDate = new Date(dt).getTime();
     var usaTime = new Date().toLocaleString("en-US", {
@@ -48,12 +53,28 @@ export const InPlay = props => {
     usaTime = new Date(usaTime);
     var now = usaTime.getTime();
     var distance = countDownDate - now;
+
     if (distance > 0) {
+      if (distance > props.gameData.countdown_timer * 1000) {
+        return props.gameData.countdown_timer;
+      }
       return parseInt(distance / 1000, 10);
     } else {
-      return props.gameData.countdown_timer;
+      if (props.drawRaw.length == 7) {
+        clearInterval(drawInterval);
+        props.getData();
+        return 0;
+      } else {
+        clearInterval(drawInterval);
+        setTimeout(function() {
+          props.getNumbersDraw();
+        }, props.gameData.delay * 1000);
+
+        return props.gameData.countdown_timer;
+      }
     }
   }
+
   function shouldShowTickTok() {
     var dt = new Date(props.gameData.start_datetime);
     var countDownDate = new Date(dt).getTime();
@@ -65,9 +86,7 @@ export const InPlay = props => {
     var distance = countDownDate - now;
     return distance > 59000 ? false : true;
   }
-  useEffect(() => {
-    checkIt();
-  });
+  console.log("In component");
   //if no number drawn
   if (props.drawRaw.length == 0) {
     //if game is unplayed
@@ -148,6 +167,7 @@ export const InPlay = props => {
   }
   //if finished
   else if (props.gameData.status == "finished") {
+    stopDrawTimer();
     return (
       <div className="live_draw_in_play">
         <p>In Play</p>
@@ -168,6 +188,7 @@ export const InPlay = props => {
   }
   //if draw is in prgress with atlest one number drawn
   else {
+    startDrawTimer();
     return (
       <div className="live_draw_in_play">
         <p>In Play</p>
@@ -209,8 +230,10 @@ export const CountdownTimer = props => {
   startTimer();
   return (
     <div className="page747_live_draw_timer">
-      <div className = "prize-none"style={{ textAlign: "center" }}>
-        <p style={{ fontSize: "22.4px", marginTop: "-20px !important" }}>Next draw starts in</p>
+      <div className="prize-none" style={{ textAlign: "center" }}>
+        <p style={{ fontSize: "22.4px", marginTop: "-20px !important" }}>
+          Next draw starts in
+        </p>
         <div className="row page747_main_draw_inner secs_draw">
           <div>
             <p> {Functions.getDays(props.gameData.start_datetime)}</p>

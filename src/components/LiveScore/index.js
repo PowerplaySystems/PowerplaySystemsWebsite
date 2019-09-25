@@ -359,7 +359,7 @@ class LiveScore extends Component {
           });
           xhr.open(
             "POST",
-            " https://www." + Constants.URL + "/public_api/schedule/setmypicks.php"
+            " https://" + Constants.URL + "/public_api/schedule/setmypicks.php"
           );
           xhr.setRequestHeader(
             "content-type",
@@ -607,7 +607,7 @@ class LiveScore extends Component {
         });
         xhr.open(
           "POST",
-          " https://www." + Constants.URL + "/public_api/livescore/setscore.php"
+          " https://" + Constants.URL + "/public_api/livescore/setscore.php"
         );
         xhr.setRequestHeader(
           "content-type",
@@ -970,7 +970,7 @@ class LiveScore extends Component {
                 <div className="caption box_one_ply" id="top-div">
                   <img
                     src={
-                      "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
+                      "https://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
                       game.association_id +
                       "&type=header"
                     }
@@ -2000,7 +2000,7 @@ class LiveScore extends Component {
                 <div className="caption box_one_ply" id="top-div">
                   <img
                     src={
-                      "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
+                      "https://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
                       game.association_id +
                       "&type=header"
                     }

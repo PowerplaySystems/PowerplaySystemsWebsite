@@ -716,7 +716,7 @@ export const GameRules = props => {
     }
   });
   async function getData() {
-    fetch("https://www." + Constants.URL + "/api/select_game/readrules.php?id=2")
+    fetch("https://" + Constants.URL + "/api/select_game/readrules.php?id=2")
       .then(res => res.json())
       .then(xx => {
         let reArranged = [];

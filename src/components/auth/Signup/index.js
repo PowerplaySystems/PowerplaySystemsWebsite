@@ -123,7 +123,7 @@ class Signup extends Component {
                 }
             }
         });
-        xhr.open("POST", " https://www." + Constants.URL + "/public_api/auth/signup.php");
+        xhr.open("POST", " https://" + Constants.URL + "/public_api/auth/signup.php");
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         xhr.send(data);
      

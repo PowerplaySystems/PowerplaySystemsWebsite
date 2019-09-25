@@ -33,7 +33,7 @@ class Privacy extends Component {
                 </p>
                                     <h2>NEED HELP?</h2>
                                     <p>If you have questions or concerns about your own gaming behavior or about that of a friend or family member, please contact <a href>
-                                        NCRG</a> or <a href="http://www.responsiblegambling.org" className="footer-pages-link">RGC</a> .<br /><br />
+                                        NCRG</a> or <a href="http://responsiblegambling.org" className="footer-pages-link">RGC</a> .<br /><br />
                                         You can also contact NCPG 24 Hour Confidential National Helpline  Number in the United States: <a href="tel:+1-833-361-5269"> +1-833-361-5269</a> or <a href="tel:+1-833-361-5269"> +1-833-361-5269</a> to contact RGC in Canadafor additional assistance.
                 </p>
                                     <h2>NCRG</h2>

@@ -78,7 +78,7 @@ class BaseBallGames extends Component {
           if (this.readyState === 4) {
             if (~this.responseText.indexOf("Created")) {
               fetch(
-                "https://www." + Constants.URL + "/api/select_game/read.php?id=2"
+                "https://" + Constants.URL + "/api/select_game/read.php?id=2"
               )
                 .then(res => res.json())
                 .then(
@@ -104,7 +104,7 @@ class BaseBallGames extends Component {
         });
         xhr.open(
           "POST",
-          " https://www." + Constants.URL + "/public_api/entry/create.php"
+          " https://" + Constants.URL + "/public_api/entry/create.php"
         );
         xhr.setRequestHeader(
           "content-type",
@@ -143,7 +143,7 @@ class BaseBallGames extends Component {
           });
         }
       );
-    fetch("https://www." + Constants.URL + "/api/select_game/read.php?id=2")
+    fetch("https://" + Constants.URL + "/api/select_game/read.php?id=2")
       .then(res => res.json())
       .then(
         result => {
@@ -160,7 +160,7 @@ class BaseBallGames extends Component {
         }
       );
 
-    fetch("https://www." + Constants.URL + "/api/select_game/readhow.php?id=2")
+    fetch("https://" + Constants.URL + "/api/select_game/readhow.php?id=2")
       .then(res => res.json())
       .then(
         dd => {
@@ -174,7 +174,7 @@ class BaseBallGames extends Component {
           });
         }
       );
-    fetch("https://www." + Constants.URL + "/api/select_game/readrules.php?id=2")
+    fetch("https://" + Constants.URL + "/api/select_game/readrules.php?id=2")
       .then(res => res.json())
       .then(
         xx => {
@@ -284,7 +284,7 @@ class BaseBallGames extends Component {
                       >
                         <img
                           src={
-                            "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
+                            "https://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
                             data.association_id +
                             "&type=image"
                           }

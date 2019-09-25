@@ -52,7 +52,7 @@ var Gametypes = props => {
     <a onClick={props.onClick}>
       <img
         src={
-          "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
+          "https://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
           props.data.association_id +
           "&type=image"
         }
@@ -211,7 +211,7 @@ class SelectGames extends Component {
     this.fetchSport = this.fetchSport.bind(this);
   }
   goToLogin() {
-    this.props.history.push("../login");
+    //this.props.history.push("../login");
   }
   constructor(props) {
     super(props);
@@ -288,7 +288,7 @@ class SelectGames extends Component {
             id
         ),
         fetch(
-          "https://www." + Constants.URL + "/api/select_game/read.php?id=" + id
+          "https://" + Constants.URL + "/api/select_game/read.php?id=" + id
         ),
         fetch("https://" + Constants.URL + "/api/prize/read.php")
       ])
@@ -325,7 +325,7 @@ class SelectGames extends Component {
             id
         ),
         fetch(
-          "https://www." + Constants.URL + "/api/select_game/read.php?id=" + id
+          "https://" + Constants.URL + "/api/select_game/read.php?id=" + id
         ),
         fetch("https://" + Constants.URL + "/api/prize/read.php"),
         fetch(
@@ -441,7 +441,7 @@ class SelectGames extends Component {
           });
           xhr.open(
             "POST",
-            " https://www." + Constants.URL + "/public_api/entry/create.php"
+            " https://" + Constants.URL + "/public_api/entry/create.php"
           );
           xhr.setRequestHeader(
             "content-type",

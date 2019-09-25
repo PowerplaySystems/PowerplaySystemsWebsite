@@ -57,7 +57,7 @@ class Login extends Component {
                 }
             }
         });
-        xhr.open("POST", " https://www." + Constants.URL + "/public_api/auth/login.php");
+        xhr.open("POST", " https://" + Constants.URL + "/public_api/auth/login.php");
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         xhr.send(data);
 

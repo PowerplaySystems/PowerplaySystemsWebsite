@@ -223,7 +223,7 @@ class CTA extends Component {
       });
       xhr.open(
         "POST",
-        " https://www." + Constants.URL + "/public_api/schedule/setmypicks.php"
+        " https://" + Constants.URL + "/public_api/schedule/setmypicks.php"
       );
       xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
       xhr.send(data);
@@ -390,7 +390,7 @@ class CTA extends Component {
   }
   openLineupWindow() {
     var win = window.open(
-      "https://www.mlb.com/starting-lineups/" +
+      "https://mlb.com/starting-lineups/" +
         this.state.gameData.stat_time.split(" ")[0],
       "_blank"
     );
@@ -961,7 +961,7 @@ class CTA extends Component {
             <div class="caption box_one_ply" id="top-div">
               <img
                 src={
-                  "http://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
+                  "https://" + Constants.URL + "/api/sport_league/get_image.php?id=" +
                   this.state.gameData.association_id +
                   "&type=header"
                 }

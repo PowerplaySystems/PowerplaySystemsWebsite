@@ -153,3 +153,11 @@ export function getTimeDifferenceEST(from) {
   var now = usaTime.getTime();
   return fromDate - now;
 }
+//returns Date object
+export function getCurrentTimeEST(){
+  var usaTime = new Date().toLocaleString("en-US", {
+    timeZone: "America/New_York"
+  });
+  console.log(usaTime)
+  return usaTime;
+}

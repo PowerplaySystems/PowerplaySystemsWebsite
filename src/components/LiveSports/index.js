@@ -61,7 +61,7 @@ class SelectGames extends Component {
     });
   }
   goToLogin() {
-    this.props.history.push("../login");
+    //this.props.history.push("../login");
   }
   constructor(props) {
     super(props);
@@ -426,6 +426,104 @@ class SelectGames extends Component {
                     )
                   }
                   src={require("./../../assets/images/live_sports/mlb_pick5.png")}
+                />
+              </div>
+            </center>
+          </div>
+          <div className="live_sports_game_light_bg">
+            <center>
+              <div className="live_sports_game_name">Draft Day</div>
+              <div
+                className="live_sports_game_desc"
+                style={{ height: "93px", width: "582px" }}
+              >
+                An exciting game where you <br />
+                <span>Pick the exact draft order for Round 1!</span>
+                <br />
+                Are you smarter than Draft Central?
+              </div>
+              <div className="live_sports_game_try">
+                Try now by choosing a sport
+              </div>
+              <div className="live_sports_game_tabs tab_medium">
+                <img
+                  onClick={() =>
+                    this.goToSelectGames(
+                      Constants.HOCKEY_ID,
+                      Constants.LEAGUE_ID_NHL,
+                      Constants.GAMETYPE_ID_DRAFT_DAY
+                    )
+                  }
+                  src={require("./../../assets/images/live_sports/nhl_draft.png")}
+                />
+                <img
+                  onClick={() =>
+                    this.goToSelectGames(
+                      Constants.BASEBALL_ID,
+                      Constants.LEAGUE_ID_NBA,
+                      Constants.GAMETYPE_ID_DRAFT_DAY
+                    )
+                  }
+                  src={require("./../../assets/images/live_sports/nba_draft.png")}
+                />
+                <img
+                  onClick={() =>
+                    this.goToSelectGames(
+                      Constants.BASEBALL_ID,
+                      Constants.LEAGUE_ID_NFL,
+                      Constants.GAMETYPE_ID_DRAFT_DAY
+                    )
+                  }
+                  src={require("./../../assets/images/live_sports/nfl_draft.png")}
+                />
+              </div>
+            </center>
+          </div>
+          <div className="live_sports_game_dark_bg">
+            <center>
+              <div className="live_sports_game_name">Powerplay Fantasy</div>
+              <div
+                className="live_sports_game_desc"
+                style={{ height: "93px", width: "582px" }}
+              >
+                An exciting Fantasy game where you <br />
+                <span>Manage your players in real time!</span>
+                <br />
+                Can you coach your team to to be the best?
+              </div>
+              <div className="live_sports_game_try">
+                Try now by choosing a sport
+              </div>
+              <div className="live_sports_game_tabs tab_medium">
+                <img
+                  onClick={() =>
+                    this.goToSelectGames(
+                      Constants.HOCKEY_ID,
+                      Constants.LEAGUE_ID_NHL,
+                      Constants.GAMETYPE_ID_POWERPLAY
+                    )
+                  }
+                  src={require("./../../assets/images/live_sports/nhl_powerplay.png")}
+                />
+                <img
+                  onClick={() =>
+                    this.goToSelectGames(
+                      Constants.BASEBALL_ID,
+                      Constants.LEAGUE_ID_MLB,
+                      Constants.GAMETYPE_ID_POWERPLAY
+                    )
+                  }
+                  src={require("./../../assets/images/live_sports/mlb_powerplay.png")}
+                />
+                <img
+                  onClick={() =>
+                    this.goToSelectGames(
+                      Constants.BASEBALL_ID,
+                      Constants.LEAGUE_ID_NBA,
+                      Constants.GAMETYPE_ID_POWERPLAY
+                    )
+                  }
+                  src={require("./../../assets/images/live_sports/nba_powerplay.png")}
                 />
               </div>
             </center>

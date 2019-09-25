@@ -46,9 +46,10 @@
   color: #ffffff;
 }
 .partner_row_2_wrapper {
-  margin-top: -180px;
+  margin: -180px auto 0px auto;
   background: #1e1e1e;
   height: 706px;
+  width: 1370px;
   border-bottom: solid 2px black;
 }
 .partner_row_2_left {

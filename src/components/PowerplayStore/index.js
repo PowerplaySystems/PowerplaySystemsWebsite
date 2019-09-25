@@ -42,7 +42,7 @@ class PowerplayStore extends Component {
     }
   }
   componentDidMount() {
-    fetch("https://www." + Constants.URL + "/api/store_subscription/read.php")
+    fetch("https://" + Constants.URL + "/api/store_subscription/read.php")
       .then(res => res.json())
       .then(
         response => {

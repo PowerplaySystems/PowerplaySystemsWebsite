@@ -9,9 +9,11 @@ export const BASKETBALL_ID = 3;
 export const FOOTBALL_ID = 4;
 
 export const GAMETYPE_ID_CTA = 44;
+export const GAMETYPE_ID_POWERPLAY = 49;
 export const GAMETYPE_ID_PICK5 = 45;
 export const GAMETYPE_ID_ZONES = 46;
 export const GAMETYPE_ID_HIGH5 = 48;
+export const GAMETYPE_ID_DRAFT_DAY = 54;
 
 export const LOTTO_747_ID = 1;
 export const SWEET16_ID = 2;
@@ -32,5 +34,6 @@ export const SPORTS_POWERPLAY_SWAP = 24;
 export const SPORTS_POWERPLAY_LOCK = 1;
 
 export const ENK = 1122334455;
-export const URL = "powerplaysystems.com/test"
+export const URL_WEBSITE = "powerplaygames.com"
+export const URL = "powerplaysystems.com"
 

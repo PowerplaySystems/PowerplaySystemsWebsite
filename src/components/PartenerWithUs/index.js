@@ -65,7 +65,7 @@ class PartnerWithUs extends Component {
     var that = this;
     xhr.addEventListener("readystatechange", function() {
       if (this.readyState === 4) {
-        if (~this.responseText.indexOf("Created")) {
+        if (~this.responseText.indexOf("successfully")) {
           popupText = "We will contact you in a short while!";
           popupHader = "Successful!";
           that.handleShow();
@@ -79,7 +79,7 @@ class PartnerWithUs extends Component {
     });
     xhr.open(
       "POST",
-      " https://www." + Constants.URL + "/public_api/partner.php"
+      " https://" + Constants.URL + "/public_api/partner.php"
     );
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
@@ -99,7 +99,7 @@ class PartnerWithUs extends Component {
           </Modal.Footer>
         </Modal>
         <Header />
-        <div className="container">
+        <div className="container" style={{ background: "#1e1e1e" }}>
           <div className="partner_slide_bg_wapper">
             <div className="partner_slide_bg">
               <div className="partner_heading_content">

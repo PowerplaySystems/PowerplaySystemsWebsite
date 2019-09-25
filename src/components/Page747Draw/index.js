@@ -8,6 +8,7 @@ import * as Constants from "./../common/constants";
 import * as Functions from "./../common/functions";
 import Cookies from "universal-cookie";
 import * as DrawComponents from "./DrawComponents";
+import InPlay from "./InPlay";
 
 //import Modal from 'react-modal'
 import Modal from "react-bootstrap/lib/Modal";
@@ -30,8 +31,9 @@ let mLockedCircleStyles = {
 };
 var mTotalMatchedLast = 0;
 var isInDelay = true;
+
 var ballSelected = null;
-var ballChangedTo = null;
+
 var countdown = null;
 var ticker = null;
 var mTotalMatched = 0;
@@ -58,9 +60,12 @@ class Page747Draw extends Component {
       prizes: [],
       nextGame: [],
       secondsTimer: 59,
-      ticker: null
+      ticker: null,
+      updatedAt: null,
+      requestedDraw: false
     };
     mTotalMatchedLast = 0;
+
     this.getJackpot = this.getJackpot.bind(this);
     this.isAMatch = this.isAMatch.bind(this);
     this.onPowerplayClicked = this.onPowerplayClicked.bind(this);
@@ -72,6 +77,8 @@ class Page747Draw extends Component {
     this.stopTimer = this.stopTimer.bind(this);
     this.shouldShowTickTok = this.shouldShowTickTok.bind(this);
     this.hasWonPrize = this.hasWonPrize.bind(this);
+    this.getDraws = this.getDraws.bind(this);
+    this.getData = this.getData.bind(this);
   }
   isAMatch(element) {
     let obj = this.state.draw.find(
@@ -156,10 +163,10 @@ class Page747Draw extends Component {
       var tempTimeDiff = Functions.getTimeDifferenceEST(
         this.state.gameData.start_datetime
       );
-      if (tempTimeDiff > 65000) {
+      if (tempTimeDiff > 1000) {
         var myVar = setTimeout(function() {
           that.getData();
-        }, tempTimeDiff - 65000);
+        }, tempTimeDiff - 1000);
       } else {
         var myVar = setTimeout(function() {
           that.getData();
@@ -168,31 +175,31 @@ class Page747Draw extends Component {
     } else if (lastDrawTime == null) {
       var myVar = setTimeout(function() {
         that.getData();
-      }, 1000);
+      }, 500);
     } else {
       isInDelay = false;
-      var dt = new Date(lastDrawTime);
-      dt.setSeconds(dt.getSeconds() + timer);
-      var countDownDate = new Date(dt).getTime();
-      var countdown = setInterval(function() {
-        var usaTime = new Date().toLocaleString("en-US", {
-          timeZone: "America/New_York"
-        });
-        usaTime = new Date(usaTime);
-        var now = usaTime.getTime();
-        var distance = countDownDate - now;
-        // If the count down is finished, write some text
-        if (distance < 0) {
-          clearInterval(countdown);
-          isInDelay = true;
-          if (
-            that.state.gameData.status == "live" ||
-            that.state.gameData.status == "In Progress"
-          ) {
-            that.getData();
-          }
-        }
-      }, 10);
+      // var dt = new Date(lastDrawTime);
+      // dt.setSeconds(dt.getSeconds() + timer);
+      // var countDownDate = new Date(dt).getTime();
+      // var countdown = setInterval(function() {
+      //   var usaTime = new Date().toLocaleString("en-US", {
+      //     timeZone: "America/New_York"
+      //   });
+      //   usaTime = new Date(usaTime);
+      //   var now = usaTime.getTime();
+      //   var distance = countDownDate - now;
+      //   // If the count down is finished, write some text
+      //   if (distance < 0) {
+      //     clearInterval(countdown);
+      //     isInDelay = true;
+      //     if (
+      //       that.state.gameData.status == "live" ||
+      //       that.state.gameData.status == "In Progress"
+      //     ) {
+      //       that.getData();
+      //     }
+      //   }
+      // }, 10);
     }
   }
   getJackpot(prizeArray) {
@@ -254,7 +261,14 @@ class Page747Draw extends Component {
     var newNumber;
     switch (powerplay) {
       case Constants.LOTETRY_POWERPLAY_CHANGE:
-        newNumber = Math.floor(Math.random() * 47);
+        while (true) {
+          newNumber = Math.floor(Math.random() * 47);
+          let obj = this.state.picks.find(obj => obj.number == newNumber);
+          if (!obj) {
+            break;
+          }
+        }
+
         break;
       case Constants.LOTETRY_POWERPLAY_REFRESH:
         console.log("Hi refresh");
@@ -301,6 +315,59 @@ class Page747Draw extends Component {
 
     this.updatePowerplaysInDatabase(powerplay);
   }
+  getDraws() {
+    console.log("Requesting Draw!");
+
+    this.state.requestedDraw = true;
+    const cookies = new Cookies();
+    const jwt = cookies.get("jwt");
+    var that = this;
+    fetch(
+      "https://" +
+        Constants.URL +
+        "/public_api/live_draw/draws.php?jwt=" +
+        jwt +
+        "&game_id=" +
+        that.state.gameData.id
+    )
+      .then(res => res.json())
+      .then(result => {
+        let myDraws = [...result.draw];
+        let myDrawnRow = [...result.draw];
+        //if there isn't new draw return without doing anything!
+        if (this.state.draw.length == myDraws.length) {
+          return;
+        } else {
+          if (myDraws.length > 0) {
+            myDraws.sort(
+              (a, b) =>
+                parseFloat(a.daw_ball_number) - parseFloat(b.daw_ball_number)
+            );
+          }
+          //for the top row in live draw page
+          if (myDrawnRow.length > 0) {
+            if (
+              this.state.gameData.status == "live" ||
+              this.state.gameData.status == "In Progress"
+            ) {
+              myDrawnRow.pop();
+            }
+
+            myDrawnRow.sort(
+              (a, b) =>
+                parseFloat(a.daw_ball_number) - parseFloat(b.daw_ball_number)
+            );
+          }
+          this.setState({
+            updatedAt: Functions.getCurrentTimeEST(),
+            drawRaw: result.draw,
+            draw: myDraws,
+            drawNumbersRow: myDrawnRow,
+            requestedDraw: false
+          });
+        }
+      });
+  }
   getData() {
     const cookies = new Cookies();
     const jwt = cookies.get("jwt");
@@ -319,7 +386,9 @@ class Page747Draw extends Component {
           let myDraws = [...result.draw];
           let myDrawnRow = [...result.draw];
           let myPicks = result.picks;
-
+          if (result.game.status === "finished") {
+            this.getLotteryGames();
+          }
           if (myDraws.length > 0) {
             myDraws.sort(
               (a, b) =>
@@ -343,7 +412,9 @@ class Page747Draw extends Component {
             myPicks.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
           }
           if (this.state.draw.length == myDraws.length) {
+            console.log("No New Draw");
             if (this.state.gameData.status == result.game.status) {
+              console.log("No New Draw, no new status");
               this.setState({
                 isLoaded: true,
                 picks: myPicks,
@@ -351,6 +422,7 @@ class Page747Draw extends Component {
                 result: result.result
               });
             } else {
+              console.log("No New Draw, new Status");
               this.setState({
                 isLoaded: true,
                 picks: myPicks,
@@ -361,6 +433,7 @@ class Page747Draw extends Component {
             }
           } else {
             if (this.state.gameData.status == result.game.status) {
+              console.log("New Draw, no new Status");
               this.setState({
                 isLoaded: true,
                 drawRaw: result.draw,
@@ -368,9 +441,12 @@ class Page747Draw extends Component {
                 drawNumbersRow: myDrawnRow,
                 picks: myPicks,
                 powerplays: result.powerplays,
-                result: result.result
+                result: result.result,
+                updatedAt: Functions.getCurrentTimeEST(),
+                requestedDraw: false
               });
             } else {
+              console.log("New Draw,new Status");
               this.setState({
                 isLoaded: true,
                 drawRaw: result.draw,
@@ -386,6 +462,7 @@ class Page747Draw extends Component {
 
           that.setTotalMatched();
           //if started the draw and atlest one number drawn
+
           if (result.draw.length > 0) {
             that.countdownTimer(
               result.draw[result.draw.length - 1].date_time,
@@ -450,7 +527,7 @@ class Page747Draw extends Component {
     });
     xhr.open(
       "POST",
-      " https://www." +
+      " https://" +
         Constants.URL +
         "/public_api/live_draw/powerplay_use.php"
     );
@@ -464,7 +541,6 @@ class Page747Draw extends Component {
       ? this.startTimer()
       : this.stopTimer();
     this.getData();
-    this.getLotteryGames();
   }
   getLotteryGames() {
     const cookies = new Cookies();
@@ -623,9 +699,12 @@ class Page747Draw extends Component {
                         </div>
                       </div>
                     </div>
-                    <DrawComponents.InPlay
+                    <InPlay
                       drawRaw={this.state.drawRaw}
                       gameData={this.state.gameData}
+                      getNumbersDraw={this.getDraws}
+                      getData={this.getData}
+                      updatedAt={this.state.updatedAt}
                     />
                     <div className="live_draw_my_numbers">
                       <p>My Numbers</p>

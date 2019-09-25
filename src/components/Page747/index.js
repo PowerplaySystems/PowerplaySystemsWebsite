@@ -221,7 +221,7 @@ class Page747 extends Component {
     });
     xhr.open(
       "POST",
-      " https://www." + Constants.URL + "/public_api/lottery_games/setMyNumbers.php"
+      " https://" + Constants.URL + "/public_api/lottery_games/setMyNumbers.php"
     );
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
