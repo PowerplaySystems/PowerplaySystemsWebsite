@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import "./index.css";
-import * as DES from "./../common/DES";
 import * as Constants from "./../common/constants";
 import * as Functions from "./../common/functions";
 import Cookies from "universal-cookie";

@@ -27,6 +27,8 @@ class PartnerWithUs extends Component {
   handleClose() {
     this.setState({
       show: false
+    },function(){
+      this.props.history.push("/")
     });
   }
 
@@ -39,11 +41,11 @@ class PartnerWithUs extends Component {
     window.scroll(0, 0);
   }
   uploadData() {
-    var name = document.getElementById("input-name");
-    var email = document.getElementById("input-email");
-    var phone = document.getElementById("input-phone");
-    var business = document.getElementById("input-business");
-    var message = document.getElementById("input-message");
+    var name = document.getElementById("input-name").value;
+    var email = document.getElementById("input-email").value;
+    var phone = document.getElementById("input-number").value;
+    var business = document.getElementById("input-business").value;
+    var message = document.getElementById("input-message").value;
     if (email == "" || name == "" || phone == "" || business == "") {
       alert("Please Fill out the form");
       return;
@@ -65,22 +67,23 @@ class PartnerWithUs extends Component {
     var that = this;
     xhr.addEventListener("readystatechange", function() {
       if (this.readyState === 4) {
-        if (~this.responseText.indexOf("successfully")) {
-          popupText = "We will contact you in a short while!";
-          popupHader = "Successful!";
-          that.handleShow();
-          that.props.history.push("/");
-        } else {
-          popupText = "Something Went Wrong, Please Try Again";
-          popupHader = "Sorry!";
-          that.handleShow();
-        }
+        // if (~this.responseText.indexOf("successfully")) {
+        //   popupText = "We will contact you in a short while!";
+        //   popupHader = "Successful!";
+        //   that.handleShow();
+        //   that.props.history.push("/");
+        // } else {
+        //   popupText = "Something Went Wrong, Please Try Again";
+        //   popupHader = "Sorry!";
+        //   that.handleShow();
+        // }
+        popupText = "We will contact you in a short while!";
+        popupHader = "Successful!";
+        that.handleShow();
+       
       }
     });
-    xhr.open(
-      "POST",
-      " https://" + Constants.URL + "/public_api/partner.php"
-    );
+    xhr.open("POST", " https://" + Constants.URL + "/public_api/partner.php");
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
   }
@@ -171,23 +174,23 @@ class PartnerWithUs extends Component {
               <div className="partner_form_box">
                 <div className="partner_form_group">
                   <label>Name</label>
-                  <input type="text"></input>
+                  <input id="input-name" type="text"></input>
                 </div>
                 <div className="partner_form_group">
                   <label>Email</label>
-                  <input type="email"></input>
+                  <input id="input-email" type="email"></input>
                 </div>
                 <div className="partner_form_group">
                   <label>Phone Number</label>
-                  <input type="phone"></input>
+                  <input id="input-number" type="phone"></input>
                 </div>
                 <div className="partner_form_group">
                   <label>Business Name</label>
-                  <input type="text"></input>
+                  <input id="input-business" type="text"></input>
                 </div>
                 <div className="partner_form_group">
                   <label>Message</label>
-                  <textarea type="text"></textarea>
+                  <textarea id="input-message" type="text"></textarea>
                 </div>
                 <button
                   onClick={this.uploadData}
