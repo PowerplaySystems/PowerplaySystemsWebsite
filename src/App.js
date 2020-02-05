@@ -1,42 +1,50 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store/store'
-import Login from './components/auth/Login'
-import Signup from './components/auth/Signup'
-import Home from './components/Home'
-import SelectGames from './components/SelectGames'
-import HowToPlay from './components/HowToPlay'
-import AboutUs from './components/AboutUs'
-import TermsOfUse from './components/TermsOfUse'
-import Privacy from './components/Privacy'
-import FAQ from './components/FAQ'
-import ResponsibleGaming from './components/ResponsibleGaming'
-import TrustAndSafety from './components/TrustAndSafety'
-import AccountSecurity from './components/AccountSecurity'
-import PowerplayStore from './components/PowerplayStore'
-import GameCentral from './components/GameCentral'
-import SponsorGames from './components/SponsorGames'
-import CTA from './components/SelectTeams/cta'
-import PowerplayLotto from './components/PowerplayLotto'
-import Zones from './components/SelectTeams/zones'
-import Powerplay from './components/SelectTeams/powerplay'
-import Pickfive from './components/SelectTeams/pickfive'
-import Highfive from './components/SelectTeams/highfive'
-import Brackets from './components/SelectTeams/brackets'
-import LiveScore from './components/LiveScore'
-import MyAccount from './components/MyAccount'
-import Page747 from './components/Page747'
-import Page747Draw from './components/Page747Draw'
-import PartnerWithUs from './components/PartenerWithUs'
-import Sweet16 from './components/Sweet16'
-import Sweet16Draw from './components/Sweet16Draw'
-import Elite8 from './components/Elite8'
-import Elite8Draw from './components/Elite8Draw'
-import LotteryPlatform from './components/LotteryPlatform'
-import LiveSports from './components/LiveSports'
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
+import Home from "./components/Home";
+import SelectGames from "./components/SelectGames";
+import HowToPlay from "./components/HowToPlay";
+import AboutUs from "./components/AboutUs";
+import TermsOfUse from "./components/TermsOfUse";
+import Privacy from "./components/Privacy";
+import FAQ from "./components/FAQ";
+import ResponsibleGaming from "./components/ResponsibleGaming";
+import TrustAndSafety from "./components/TrustAndSafety";
+import AccountSecurity from "./components/AccountSecurity";
+import PowerplayStore from "./components/PowerplayStore";
+import GameCentral from "./components/GameCentral";
+import SponsorGames from "./components/SponsorGames";
+import CTA from "./components/SelectTeams/cta";
+import PowerplayLotto from "./components/LottoLanding";
+import Zones from "./components/SelectTeams/zones";
+import Powerplay from "./components/SelectTeams/powerplay";
+import Pickfive from "./components/SelectTeams/pickfive";
+import Highfive from "./components/SelectTeams/highfive";
+import Brackets from "./components/SelectTeams/brackets";
+import LiveScore from "./components/LiveScore";
+import MyAccount from "./components/MyAccount";
+import Page747 from "./components/Page747";
+import Page747Draw from "./components/Page747Draw";
+import PartnerWithUs from "./components/PartenerWithUs";
+import Sweet16 from "./components/Sweet16";
+import Sweet16Draw from "./components/Sweet16Draw";
+import Elite8 from "./components/Elite8";
+import Elite8Draw from "./components/Elite8Draw";
+import LotteryPlatform from "./components/LotteryPlatform";
+import LiveSports from "./components/LiveSports";
+import LottoResult from "./components/LottoResult";
+import Elite8Promo from "./components/Elite8Promo";
+//fantasy
+import FantasySelectPlayers from "./components/Fantasy/SelectPlayer";
+import FantasyLive from "./components/Fantasy/Live";
+//draft day
+import DraftDayLanding from "./components/DrafDay/Landing";
+import DraftDaySelect from "./components/DrafDay/Selection";
 
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -51,7 +59,11 @@ class App extends Component {
             <Route exact path="/about-us" component={AboutUs} />
             <Route exact path="/terms-of-use" component={TermsOfUse} />
             <Route exact path="/privacy" component={Privacy} />
-            <Route exact path="/responsible-gaming" component={ResponsibleGaming} />
+            <Route
+              exact
+              path="/responsible-gaming"
+              component={ResponsibleGaming}
+            />
             <Route exact path="/faq" component={FAQ} />
             <Route exact path="/powerplay-lotto" component={PowerplayLotto} />
             <Route exact path="/trust-and-safety" component={TrustAndSafety} />
@@ -78,6 +90,12 @@ class App extends Component {
             <Route path="/sport-platform" component={LotteryPlatform} />
             <Route path="/live-sports" component={LiveSports} />
             <Route path="/partner" component={PartnerWithUs} />
+            <Route path="/lotto-result" component={LottoResult} />
+            <Route exact path="/elite8-promo" component={Elite8Promo} />
+            <Route path="/fantasy-players" component={FantasySelectPlayers} />
+            <Route path="/fantasy-live" component={FantasyLive} />
+            <Route path="/draft-day" component={DraftDayLanding} />
+            <Route path="/draft-day-teams" component={DraftDaySelect} />
           </div>
         </Router>
       </Provider>

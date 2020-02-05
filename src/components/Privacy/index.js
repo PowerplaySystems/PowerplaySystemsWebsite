@@ -4,6 +4,7 @@ import Header from "./../common/Header";
 import Footer from "./../common/Footer";
 import "./index.css";
 import * as Constants from "./../common/constants";
+import DrawTimer from "./../common/DrawTimer";
 class ResponsibleGaming extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +36,8 @@ class ResponsibleGaming extends Component {
   render() {
     return (
       <div>
-        <Header />
+       <Header />
+        <DrawTimer/>
 
         <div className="container-fluid _faq_wrap">
           <div className="container">

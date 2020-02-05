@@ -64,7 +64,7 @@ class AboutUs extends Component {
             <div className="about_us_row_two" />
             <div className="about_us_row_three">
               <div className="about_us_row_left">
-                <div className="row_three_header">Powerplay Lotto</div>
+                <div className="row_three_header header_1">Powerplay Lotto</div>
                 <div className="row_three_text">
                   Utilize our Powerful fully customizable lottery platform to
                   take your lottery offering to the next level. Whether it is a
@@ -76,11 +76,13 @@ class AboutUs extends Component {
                   className="row_three_button"
                   onClick={() => this.props.history.push("/powerplay-lotto")}
                 >
-                  Explore Games
+                  Explore
                 </button>
               </div>
               <div className="about_us_row_right">
-                <div className="row_three_header">Powerplay Live Sports</div>
+                <div className="row_three_header header_2">
+                  Powerplay Live Sports
+                </div>
                 <div className="row_three_text">
                   Would you like to ramp up customer engagement? Use our
                   interactive live sports platform to drive customer behavior by
@@ -92,7 +94,7 @@ class AboutUs extends Component {
                   className="row_three_button"
                   onClick={() => this.props.history.push("/live-sports")}
                 >
-                  Explore Games
+                  Explore
                 </button>
               </div>
             </div>
@@ -113,7 +115,8 @@ class AboutUs extends Component {
             <div className="about_us_section_heading">Our Mission</div>
             <br />
             <div className="about_us_section_sub">
-              To have our games used and loved by millions around the globe.
+              To drive exceptional consumer engagement and create significant
+              new revenue streams for our clients.
             </div>
             {/* <div className="about_us_row_players">
               <div className="about_us_player_box">
@@ -165,6 +168,11 @@ class AboutUs extends Component {
                   src={require("./../../assets/images/about_us/phone_call.png")}
                 />
                 <span>1-844-268-1573</span>
+                <br />
+                <img
+                  src={require("./../../assets/images/about_us/phone_call.png")}
+                />
+                <span>647-499-5746 (local)</span>
                 <br />
                 <button
                   onClick={() => this.props.history.push("/partner")}

@@ -346,45 +346,51 @@
   text-align: center;
   color: #ffffff;
   margin: 0 auto !important;
+  max-width: 100%;
 }
 .about_us_heading > span {
   color: #fb6e00;
 }
 .about_us_section_heading {
   width: 450px;
-  height: 50px;
   font-family: Poppins;
   font-size: 50px;
   font-weight: 600;
   text-align: center;
   color: #fb6e00;
   margin: 80px 0px 10px;
+  max-width: 100%;
 }
 .about_us_section_sub {
   width: 830px;
-  height: 59px;
   font-family: Poppins;
   font-size: 20px;
   text-align: center;
   color: #ffffff;
   margin-bottom: 30px;
+  max-width: 100%;
 }
 .about_us_row_two {
   background: url("./../../assets/images/about_us/images.png");
   height: 489px;
   max-width: 1400px;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-rep;
 }
 .about_us_row_three {
   width: 1340px;
-  height: 287px;
+   max-width: 100%;
   background-color: #1e1e1e;
 }
 .about_us_row_left {
-  float: left;
+  float: none;
+  display: inline-block;
   width: 670px;
 }
 .about_us_row_right {
-  float: left;
+  float: none;
+  display: inline-block;
   width: 670px;
 }
 .row_three_header {
@@ -486,18 +492,21 @@
 }
 .about_us_address_img {
   margin: 30px;
-  float: left;
+  float: none;
+  display: inline-block;
   width: 643px;
   height: 339px;
 }
 .about_us_address {
   margin-top: 120px;
-  float: left;
+  float: none;
+  display: inline-block;
   text-align: left;
   line-height: 50px;
 }
 .about_us_address_row {
   width: 1340px;
+  max-width: 100%;
 }
 .about_us_address img {
   float: left;
@@ -523,4 +532,101 @@
   background-color: #fb6e00;
   border: none;
   margin-top: 10px;
+}
+@media screen and (max-width: 700px) {
+  .about_us_row_one {
+    width: 100%;
+    height: unset;
+    padding: 54px 0px;
+  }
+  .about_us_heading {
+    width: 90%;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    height: unset;
+    max-width: 340px;
+  }
+  .about_us_section_heading {
+    height: unset;
+    width: unset;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .about_us_section_sub {
+    height: unset;
+    width: unset;
+    max-width: 85%;
+    font-size: 16px;
+    margin-bottom: 0px;
+  }
+  .about_us_row_two {
+    width: 100%;
+    height: 142px;
+    display: none;
+  }
+  .about_us_row_three {
+    background: transparent;
+    max-width: 100%;
+  }
+  .about_us_row_left {
+    max-width: 100%;
+    background-color: #1e1e1e;
+    padding-bottom: 30px;
+    margin-top: 30px;
+  }
+  .about_us_row_right {
+    max-width: 100%;
+    background-color: #1e1e1e;
+    padding-bottom: 20px;
+  }
+  .row_three_header {
+    height: 142px;
+    line-height: 142px;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    margin: 0px 0px 33px;
+  }
+  .header_1 {
+    background: url("./../../assets/images/about_us/lottohomehero.png");
+  }
+  .header_2 {
+    background: url("./../../assets/images/about_us/sports_header.png");
+  }
+  .row_three_text {
+    font-size: 16px;
+    max-width: 85%;
+    height: unset;
+    margin-bottom: 0px;
+  }
+  .about_us_button_partner {
+    width: 235px;
+    height: 52px;
+    border-radius: 26px;
+    box-shadow: 0 3px 27px -2px #fb6e00;
+    background-color: #fb6e00;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    margin-top: 30px;
+  }
+  .about_us_address_row {
+    max-width: 100%;
+  }
+  .about_us_address_img {
+    max-width: 90%;
+    height: unset;
+  }
+  .about_us_address {
+    margin-top: 0px;
+    text-align: center;
+    padding-bottom: 100px;
+  }
 }

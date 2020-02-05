@@ -1,0 +1,952 @@
+@font-face {
+  font-family: "jibril";
+  src: url(../../assets/fonts/Jibril.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.lotto-section-2 {
+  padding: 50px 50px 100px 50px;
+  background: #fff;
+}
+.lotto-section-2 h1 {
+  text-transform: uppercase;
+  width: 70%;
+}
+.lotto-section-2 img {
+  margin: 20px 0px 20px 0px;
+  cursor: pointer;
+}
+.lotto-header {
+}
+.lotto-header > div {
+  margin: 0 auto;
+}
+.lotto-heading-main,
+lotto-heading-main > span {
+  width: 420px;
+  height: 152px;
+  font-family: jibril;
+  font-size: 62px;
+  line-height: 1.23;
+  text-align: center;
+  color: #ffffff;
+
+  margin: 140px auto 0px auto !important;
+}
+.lotto-heading-sub {
+  width: 861px;
+  
+  font-family: Poppins;
+  font-size: 32px;
+  text-align: center;
+  color: #ffffff;
+  margin: auto !important;
+}
+.lotto-header-button-wrapper {
+  margin: 30px auto !important;
+  width: 414px;
+  height: 69px;
+}
+.lotto-header-button {
+  width: 414px;
+  height: 69px;
+  border-radius: 34.5px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  border: none;
+  font-family: Poppins;
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-section-2-heading {
+  height: 260px;
+}
+.lotto-section-2-heading-note {
+  width: 748px;
+  height: 50px;
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0 auto;
+}
+.lotto-section-2-heading p {
+  margin: 115px auto 15px auto !important;
+  text-align: center;
+  width: 650px;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-section-2-heading p span {
+  color: #fb6e00;
+}
+.lotto-section-2-heading-pointer {
+  margin: 0 auto;
+  width: 58px;
+  height: 58px;
+  margin-top: 40px;
+}
+.lotto-section-3 {
+  height: 630px;
+  margin-top: 80px;
+}
+.lotto-section-3-heading {
+  margin: 0 auto;
+  width: 663px;
+  height: 73px;
+  font-family: Poppins;
+  font-size: 52px;
+  text-align: center;
+  color: #fb6e00;
+}
+.lotto-section-3-descr {
+  margin: 0 auto;
+  width: 700px;
+  height: 28px;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-section-3-pwoerplays {
+  width: 800px;
+  margin: 40px auto 0px auto;
+}
+.powerplays_box {
+  float: left;
+  width: 350px;
+  margin: 20px 0px 20px 40px;
+}
+.powerlays_box_image {
+  float: left;
+  width: 160px;
+  height: 166px;
+  border-radius: 16px;
+  background-color: #1e1e1e;
+}
+.powerplays_box_right {
+  width: 162px;
+  margin-left: 18px;
+  font-family: CenturyGothic;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -0.3px;
+  color: #ffffff;
+  float: left;
+  margin-top: 15px;
+}
+.lotto-heading-games {
+  width: 296px;
+  height: 73px;
+  font-family: Poppins;
+  font-size: 52px;
+  text-align: center;
+  color: #fb6e00;
+  margin: 0px auto -60px;
+}
+.lotto-divider {
+  width: 185px;
+  height: 1px;
+  background: #ffffff;
+  margin: 0 auto;
+}
+.lotto-block-even {
+  height: 760px;
+  padding: 0px 0px 0px 120px;
+}
+.lotto-block-even > div {
+  float: left;
+  margin-top: 130px;
+}
+.lotto-block-odd {
+  background: #1b1b1b;
+  height: 760px;
+  padding-right: 120px;
+}
+.lotto-block-odd > div {
+  float: right;
+  margin-top: 130px;
+}
+.lotto-even-image {
+  width: 366px;
+  height: 366px;
+}
+.lotto-even-details {
+  width: 700px;
+  margin: -15px 0px 20px 100px;
+}
+.lotto-even-details-header {
+  font-family: jibril;
+  font-size: 56px;
+  line-height: 80px;
+  color: #ffffff;
+}
+.lotto-even-details-header > span {
+  font-family: Poppins;
+  font-size: 26px;
+  font-style: italic;
+  color: #fb6e00;
+  vertical-align: middle;
+}
+.lotto-even-details-sub-heading {
+  font-family: Poppins;
+  font-size: 26px;
+  color: #ffffff;
+  margin-top: 25px;
+}
+.lotto-even-details-jackpot {
+  margin-top: 20px;
+  margin-bottom: -5px;
+  width: 64px;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  line-height: 15px;
+  color: #ffffff;
+}
+.lotto-even-details-amount {
+  width: 601px;
+  height: 63px;
+  font-family: Poppins;
+  font-size: 45px;
+  font-weight: bold;
+  color: #fb6e00;
+}
+.lotto-even-details-amount > div {
+  float: left;
+  line-height: 63px;
+}
+.lotto-even-details-amount span {
+  float: left;
+}
+.lotto-even-details-amount button {
+  width: 201px;
+  line-height: 48px;
+  margin-left: 15px;
+  height: 48px;
+  border-radius: 24px;
+  border: solid 2px #ffffff;
+  font-family: Poppins;
+  font-size: 21px;
+  text-align: center;
+  color: #ffffff;
+  background: transparent;
+}
+.lotto-even-details-odds {
+  margin-top: 10px;
+  width: 129px;
+  height: 23px;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-even-details-odds-amount {
+  height: 49px;
+  font-family: Poppins;
+  font-size: 35px;
+  color: #fb6e00;
+}
+.lotto-even-details-draw {
+  margin-top: 26px;
+  line-height: 30px;
+  width: 750px;
+  height: 162px;
+  font-size: 24px;
+  color: #ffffff;
+}
+.lotto-even-details-draw > div {
+  float: left;
+}
+.lotto-even-details-draw > div > p {
+  font-family: Poppins;
+  font-size: 16px;
+  color: #ffffff;
+}
+.lotto-game-date-wrapper {
+  width: 350px;
+  margin-right: 30px;
+  height: 10px;
+}
+.lotto-game-date-text {
+  height: 23px;
+  font-family: Poppins;
+  font-size: 16px;
+  color: #ffffff;
+}
+.lotto-game-date {
+  height: 31px;
+  margin-top: 1px;
+  font-family: Poppins;
+  font-size: 22px;
+  color: #ffffff;
+}
+.lotto-game-date > span {
+  font-size: 16px;
+}
+.lotto-deadline-wrapper {
+  width: 115px;
+  height: 53px;
+}
+.lotto-deadline-wrapper p {
+  font-family: Poppins;
+  font-size: 16px;
+  color: #ffffff;
+}
+.lotto-deadline-wrapper span {
+  font-family: Poppins;
+  color: #fb6e00;
+}
+.btn-draw {
+  float: left;
+  width: 427px !important;
+  margin-right: 20px;
+}
+.lotto-deadline-wrapper s {
+  font-size: 12px;
+}
+.lotto-even-details_draw_box > div {
+  width: 39px;
+  height: 32px;
+  background-color: #595959;
+  float: left;
+  margin: 7px;
+  font-family: Poppins;
+  font-size: 13px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-even-details_draw_box p {
+  font-family: Poppins;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-even-details_draw_box > span {
+  line-height: 55px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: italic;
+  color: #fb6e00;
+  margin-left: 4px;
+}
+.lotto-even-details-draw button {
+  margin-top: 20px;
+  margin-left: 0px;
+  width: 494px;
+  height: 69px;
+  border-radius: 34.5px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  border: none;
+  font-family: Poppins;
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+.btn_edit_numbers {
+  width: 235px !important;
+  border: solid 1.5px #fb6e00;
+  border: solid 1.5px #fb6e00 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  float: left;
+
+  font-size: 22px !important;
+}
+.smaller-button {
+  width: 200px !important;
+  font-size: 18px !important;
+  border: solid 1.5px #fb6e00 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  margin-left: 10px !important;
+}
+.lotto-why-us {
+  height: 737px;
+  background-color: #1e1e1e;
+  padding-top: 60px;
+}
+@media screen and (max-width: 1350px) {
+  .lotto-laptop {
+    display: none;
+  }
+  .lotto-why-us-right {
+    margin: 0 auto;
+    float: none !important;
+
+  }
+  .lotto-why-us-right-header {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .lotto-why-us-note {
+    width: 271px;
+    margin: auto !important;
+  }
+}
+
+.lotto-laptop {
+  object-fit: contain;
+  float: left;
+  height: 650px;;
+}
+.lotto-why-us-right {
+  float: left;
+  width: 630px;
+  text-align: center;
+}
+.lotto-why-us-right-header {
+  width: 340px;
+  height: 56px;
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  color: #fb6e00;
+  margin-bottom: 30px;
+}
+.lotto-why-us-bullet {
+  width: 630px;
+  text-align: left;
+  margin-bottom: 25px;
+}
+.bullet-number {
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  height: 56px;
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  color: #ed7538;
+  margin-right: 20px;
+}
+.bullet-text {
+  width: 560px;
+  float: none;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 24px;
+  color: #ffffff;
+}
+.lotto-button-partner {
+  width: 318px;
+  height: 53px;
+  border-radius: 34.5px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  border: none;
+  margin-left: 70px;
+  margin-top: 30px;
+  font-family: Poppins;
+  font-size: 24px;
+  text-align: center;
+}
+.orange {
+  background-color: #fb6e00;
+  color: white;
+}
+.lotto-why-us-note {
+  font-family: Poppins;
+  font-size: 20px;
+  color: #ffffff;
+  width: 499px;
+  height: 28px;
+  margin-left: 70px !important;
+  margin-top: 15px !important;
+}
+.lotto-why-us-note span {
+  color: #fb740c !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.lotto-industries-header {
+  width: 395px;
+  height: 56px;
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  color: #fb6e00;
+  margin: 60px auto;
+}
+.lotto-industries-items-wrapper {
+  width: 92%;
+  /* height: 350px; */
+  margin: 0 auto;
+  text-align: center;
+}
+.lotto-industries-item {
+  float: none;
+  width: 408px;
+  height: 300px;
+  display: inline-block;
+  vertical-align: top;
+}
+.lotto-industries-icon {
+  width: 126px;
+  height: 126px;
+  margin: 0 auto;
+}
+.lotto-industries-item-header {
+  height: 36px;
+  font-family: Poppins;
+  font-size: 26px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+}
+.lotto-industries-item-text {
+  width: 408px;
+  height: 75px;
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 10px;
+}
+.lotto-industries-buttons-wrapper {
+  width: 671px;
+  /* height: 53px; */
+  margin: 0 auto;
+  text-align: center;
+  max-width: 90%;
+}
+.lotto-industries .lotto-button-partner {
+  float: none;
+  display: inline-block;
+  margin: 0px !important;
+}
+.lotto-button-try {
+  width: 318px;
+  height: 53px;
+  border-radius: 34.5px;
+  border: solid 1.5px #fb6e00;
+  font-family: Poppins;
+  font-size: 24px;
+  text-align: center;
+  color: #fb6e00;
+  background: black;
+  margin-left: 35px;
+  float: none;
+  display: inline-block;
+}
+.lotto-industries-note {
+  height: 28px;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 30px !important;
+  margin-bottom: 70px !important;
+}
+.lotto-industries-note span {
+  color: #fb740c;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.lotto-adventures {
+  height: 385px;
+  background-color: #1e1e1e;
+  padding-top: 70px;
+}
+.lotto-adventures-header {
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  color: #fb6e00;
+  margin-bottom: 20px;
+}
+.lotto-adventures-note {
+  margin: 0 auto;
+  width: 862px;
+  height: 66px;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-adventures-items-wrapper {
+  width: 927px;
+  height: 70px;
+  margin: 30px auto 0px auto;
+}
+.lotto-adventures-item {
+  float: left;
+  margin: 10px;
+  height: 100px;
+  width: 289px;
+}
+.lotto-adventures-icon {
+  float: left;
+  width: 28.5px;
+  height: 28.5px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.lotto-adventures-item-text {
+  float: left;
+  width: 250px;
+  height: 56px;
+  font-family: Poppins;
+  font-size: 20px;
+  letter-spacing: -0.19px;
+  color: #ffffff;
+}
+.lotto-work {
+  padding-top: 80px;
+}
+.lotto-work-header {
+  width: 374px;
+  height: 56px;
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  color: #fb6e00;
+  margin-bottom: 15px;
+}
+.lotto-work-note {
+  width: 862px;
+  height: 66px;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 31px;
+}
+.lotto-work-note span {
+  font-weight: bold;
+  font-style: italic;
+  color: #fb6e00;
+}
+.lotto-work-items-wrapper {
+  width: 822px;
+  margin: 0 auto;
+}
+.lotto-work-item {
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  width: 244px;
+  vertical-align: top;
+  margin: 15px;
+}
+.lotto-work-item-box {
+  width: 150px;
+  height: 135px;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #1e1e1e;
+  margin: 12px auto;
+}
+.lotto-work-icon {
+  width: 55px;
+  margin: 10px auto 0px auto;
+}
+.lotto-work-item-text {
+  font-family: CenturyGothic;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: -0.24px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 10px;
+}
+.lotto-work-item-note {
+  width: 244px;
+  height: 65px;
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-boost {
+  width: 1038px;
+  height: 338px;
+  border-radius: 41px;
+  background-color: #1e1e1e;
+  padding-top: 60px;
+  margin-bottom: 130px;
+}
+.lotto-boost-header {
+  width: 618px;
+  height: 56px;
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 36px;
+}
+.lotto-boost-buttons {
+  width: 700px;
+  height: 53px;
+}
+.lotto-button-partner.white {
+  float: none;
+  display: inline-block;
+  margin: 0px !important;
+  background: white;
+  color: #fb6e00;
+  margin-right: 50px !important;
+}
+.lotto-button-try.white {
+  float: none;
+  margin: 0px !important;
+  background: transparent;
+  border: solid 1.5px #ffffff !important;
+  color: white;
+}
+.lotto-boost-note {
+  width: 499px;
+  height: 28px;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 45px;
+}
+.lotto-boost-note span {
+  color: #fb740c;
+  text-decoration: underline;
+  cursor: pointer;
+}
+@media screen and (max-width: 700px) {
+  .lotto-header-wrapper {
+    height: 261px !important;
+  }
+  .lotto-heading-main {
+    width: 260px;
+    height: 21px;
+    font-size: 24px;
+    margin-top: 50px !important;
+  }
+  .lotto-heading-sub {
+    width: 304px;
+    margin-top: 20px !important;
+    
+    font-size: 22px;
+    line-height: 1.27;
+  }
+  .lotto-header-button-wrapper {
+    width: 247px;
+    height: 43.4px;
+  }
+  .lotto-header-button {
+    width: 247px;
+    height: 43.4px;
+    font-size: 15px;
+  }
+  .lotto-why-us-right {
+    width: 374px;
+    height: 645px;
+    background-color: #1e1e1e;
+  }
+  .lotto-why-us-right-header {
+    width: 204px;
+    height: 33px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .lotto-why-us-bullet {
+    width: 374px;
+    padding: 10px;
+  }
+  .bullet-number {
+    font-size: 30px;
+    font-weight: 500;
+    height: 43px;
+  }
+  .bullet-text {
+    width: 286px;
+
+    font-family: Poppins;
+    font-size: 16px;
+  }
+  .lotto-button-partner {
+    width: 248px;
+    height: 44px;
+    border-radius: 34.5px;
+    box-shadow: 0 3px 27px -2px #fb6e00;
+    font-size: 15px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none;
+    display: inline-block;
+  }
+  .lotto-button-partner.white {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .lotto-why-us-note {
+    width: 192px;
+    height: 40px;
+    font-family: Poppins;
+    font-size: 14px;
+    margin: 30px auto 0px !important;
+  }
+  .lotto-industries-header {
+    width: 236px;
+    height: 33px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .lotto-industries-item {
+    width: 343px;
+    max-width:100%; 
+  }
+  .lotto-industries-icon {
+    width: 126px;
+  }
+  .lotto-industries-item-header {
+    height: 25px;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .lotto-industries-item-text {
+    width: 343px;
+    max-width:100%; 
+    font-family: Poppins;
+    font-size: 16px;
+  }
+  .lotto-industries-note {
+    width: 271px;
+    margin: 20px auto 40px !important;
+    font-size: 14px;
+  }
+  .lotto-button-try {
+    margin-left: 0px !important;
+    margin-top: 20px;
+    width: 248px;
+    height: 44px;
+    border-radius: 34.5px;
+    border: solid 1.5px #fb6e00;
+    font-size: 15px;
+  }
+  .lotto-adventures-header {
+    font-family: Poppins;
+    font-size: 24px;
+  }
+  .lotto-adventures-note {
+    font-size: 16px;
+    width: 90%;
+  }
+  .lotto-adventures-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .lotto-adventures-item{
+    margin: 5px;
+  }
+  .lotto-adventures-item-text {
+    font-size: 16px;
+    margin-top: 8px;
+
+    width: 251px;
+    text-align: left;
+  }
+
+  .lotto-work-header {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .lotto-work-note {
+    font-size: 16px;
+    line-height: 1.44;
+    width: 85%;
+  }
+  .lotto-work-items-wrapper {
+    width: 85%;
+  }
+  .lotto-work-item {
+    background: none;
+    width: unset;
+    height: unset;
+  }
+  .lotto-work-item-box {
+    background: none;
+    width: unset;
+    height: unset;
+  }
+  .lotto-work-item-text {
+    font-size: 20px;
+    font-weight: bold;
+    width: 195px;
+  }
+  .lotto-work-item-note {
+    margin-top: -30px;
+  }
+  .lotto-boost {
+    width: 85%;
+    border-radius: 41px;
+    background-color: #1e1e1e;
+  }
+  .lotto-boost-header {
+    width: 72%;
+    height: 66px;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: -20px;
+  }
+  .lotto-boost-buttons {
+    width: 80%;
+    height: 116px;
+  }
+  .lotto-boost-buttons button {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .lotto-button-try.white {
+    margin-top: 20px !important;
+    border: solid 1.5px #fb6e00 !important;
+  }
+  .lotto-boost-note {
+    width: 192px;
+    height: 40px;
+    font-family: Poppins;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .lotto-adventures-items-wrapper {
+    text-align: center;
+    height: auto;
+    width: 90%;
+  }
+  .lotto-adventures-item {
+    height: 24px;
+    float: none;
+    display: inline-block;
+  }
+  .lotto-adventures-note {
+    width: 90%;
+  }
+  .lotto-work-note {
+    width: 85%;
+  }
+  .lotto-work-items-wrapper {
+    width: 85%;
+  }
+  .lotto-boost {
+    width: 90%;
+  }
+  .lotto-boost-header {
+    width: 72%;
+    height: auto;
+  }
+  .lotto-boost-buttons {
+    margin-top: 0px;
+  }
+}

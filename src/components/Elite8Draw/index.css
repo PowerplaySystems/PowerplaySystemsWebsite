@@ -12,6 +12,7 @@
   padding: 0px 20px;
 }
 .winning_box_circle_elite8 {
+  cursor: pointer;
   background-position: center;
   background-size: cover;
   width: 90px;
@@ -26,16 +27,32 @@
   color: #000000;
 }
 .winning_box_circle_elite8_active {
-  width: 90px;
-  height: 90px;
-  line-height: 90px;
-  float: left;
-  margin: 24px 25px;
-  font-size: 36.8px;
+  width: 50px;
+  cursor: pointer;
+  height: 50px;
+  line-height: 45px;
+  display: inline-block;
+  margin: 5px;
+  font-size: 23px;
   font-weight: 500;
   letter-spacing: -0.2px;
   text-align: center;
   color: #fb6e00;
+  vertical-align: middle;
+}
+.inner-div-select-elite8 {
+  height: 50px;
+  width: 50px;
+  padding-top: 2px;
+  pointer-events: none;
+}
+.lock {
+  display: block;
+  max-width: 66%;
+  height: auto;
+  height: 17px;
+  margin-top: -11px;
+  margin-left: 19px;
 }
 @font-face {
   font-family: "Orbitron";
@@ -48,10 +65,14 @@
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
 }
-
-.mleft .edit_numbers .edit_numbers_circle_elite8 {
+.edit_numbers {
+  text-align: center;
+}
+.edit_numbers_circle_elite8 {
+  cursor: pointer;
   margin: 5px;
-  float: left;
+  border-radius: 25px;
+  display: inline-block;
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -60,10 +81,17 @@
   letter-spacing: -0.1px;
   text-align: center;
   color: #000000;
+  border-radius: 25px;
+  vertical-align: middle;
 }
-.mleft .edit_numbers .edit_numbers_circle_elite8_active {
+.pick_button_active_elite8 {
+  border: 3px solid #fb6e00;
+  line-height: 44px;
+}
+.edit_numbers_circle_elite8_active {
+  border-radius: 25px;
+  cursor: pointer;
   margin: 5px;
-  float: left;
   width: 50px;
   height: 50px;
   padding: 5px;
@@ -74,6 +102,7 @@
   letter-spacing: -0.1px;
   text-align: center;
   color: rgba(0, 0, 0, 0.48);
+  vertical-align: middle;
 }
 .edit_numbers_circle_elite8_active img {
   margin: 0 auto;
@@ -95,7 +124,8 @@
   width: 60px;
   height: 60px;
   line-height: 60px;
-  float: left;
+  float: none;
+  display: inline-block;
   margin: 14px 15px;
   font-size: 26.8px;
   font-weight: 500;
@@ -103,15 +133,40 @@
   text-align: center;
   color: #000000;
 }
-.winning_box_circle_elite8_active {
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  float: left;
-  margin: 14px 15px;
-  font-size: 26.8px;
-  font-weight: 500;
-  letter-spacing: -0.2px;
+
+.winning_box_numbers.elite8 {
+  padding: 10px 0px;
   text-align: center;
-  color: #fb6e00;
+}
+.elite8 .box_0 {
+  margin-left: 28px;
+  margin-top: 4px;
+}
+.elite8 .box_1 {
+  margin-top: 4px;
+  margin-left: 13px;
+}
+.elite8 .box_2 {
+  margin-top: 4px;
+  margin-left: 69px;
+}
+.elite8 .box_3 {
+  margin-top: 4px;
+  margin-left: 132px;
+}
+.elite8 .box_4 {
+  margin-top: 4px;
+  margin-left: 190px;
+}
+.elite8 .box_5 {
+  margin-top: 4px;
+  margin-left: 250px;
+}
+.elite8 .box_6 {
+  margin-top: 4px;
+  margin-left: 231px;
+}
+.elite8 .box_7 {
+  margin-top: 4px;
+  margin-left: 291px;
 }

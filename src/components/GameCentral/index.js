@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
-import Invertory from "./../common/inventory";
+import DrawTimer from "./../common/DrawTimer";
 import "./index.css";
 import $ from "jquery";
 import Modal from "react-bootstrap/lib/Modal";
@@ -233,6 +233,7 @@ class GameCentral extends Component {
       aciveFilters: ["", "", ""],
       prizeTable: [],
       meta: [],
+      activeTab: 0,
       showDetails: false
     };
     this.onPickTeamsClicked = this.onPickTeamsClicked.bind(this);
@@ -243,6 +244,7 @@ class GameCentral extends Component {
     this.getJackpot = this.getJackpot.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.onTabClicked = this.onTabClicked.bind(this);
   }
   getJackpot(prizeArray) {
     if (prizeArray) {
@@ -269,6 +271,12 @@ class GameCentral extends Component {
   updateBalance = ball => {
     this.setState({ balance: ball });
   };
+
+  onTabClicked(tabId) {
+    this.setState({
+      activeTab: tabId
+    });
+  }
   getStringDate(mDate) {
     if (mDate == null) {
       return "";
@@ -379,7 +387,7 @@ class GameCentral extends Component {
         $(target).offset().top - $(".game_center_table").offset().top;
       console.log(distanceFromTableTop);
       const canDropUp = 110 < distanceFromTableTop;
-      console.log(canDropUp)
+      console.log(canDropUp);
       $(".dropdown-menu").toggleClass("menu_up", canDropUp);
     }
   }
@@ -392,7 +400,9 @@ class GameCentral extends Component {
     var league = this.state.games[index].league_id;
     var that = this;
     fetch(
-      "https://" + Constants.URL + "/public_api/entry/game_data.php?prize_id=" +
+      "https://" +
+        Constants.URL +
+        "/public_api/entry/game_data.php?prize_id=" +
         activeGame.prize_id +
         "&jwt=" +
         jwt +
@@ -426,26 +436,7 @@ class GameCentral extends Component {
       aciveFilters: filters
     });
   }
-  onRightArrow() {
-    var index = activeGameIndex;
-    if (this.state.games.length - 1 == index) {
-      index = 0;
-    } else {
-      index++;
-    }
 
-    this.onGameNameClicked(index);
-  }
-  onLeftArrow() {
-    var index = activeGameIndex;
-    if (index == 0) {
-      index = this.state.games.length - 1;
-    } else {
-      index--;
-    }
-
-    this.onGameNameClicked(index);
-  }
   componentDidMount() {
     window.scrollTo(0, 0);
     const cookies = new Cookies();
@@ -463,7 +454,10 @@ class GameCentral extends Component {
       }
     });
     fetch(
-      "https://" + Constants.URL + "/public_api/entry/readmygames.php?jwt=" + jwt
+      "https://" +
+        Constants.URL +
+        "/public_api/entry/readmygames.php?jwt=" +
+        jwt
     )
       .then(res => res.json())
       .then(
@@ -490,7 +484,7 @@ class GameCentral extends Component {
   }
 
   distanceFromBottom() {}
-  
+
   render() {
     totalWithOne = 0;
     rowCounter = 0;
@@ -522,18 +516,19 @@ class GameCentral extends Component {
           buttonClick={this.onLiveScoreCliced}
         />
 
-        <Header />
+       <Header />
+        <DrawTimer/>
         <div>
           <div className="container-fluid game_center">
             <div className="container">
               <div className="game_center_user">
-                <div className="game_center_user_name">
+                {/* <div className="game_center_user_name">
                   {this.state.user.dname}
                 </div>
                 <div className="game_center_user_date">
                   {"Member since " +
                     this.getStringDate(this.state.user.join_date)}
-                </div>
+                </div> */}
               </div>
               <div className="game_center_first_row">
                 <div className="game_center_first_row_item">
@@ -613,13 +608,21 @@ class GameCentral extends Component {
               <div className="game_center_table_header">My Game Summary</div>
               <div className="row">
                 <div className="col-md-12">
-                  <div
-                    // className={
-                    //   (this.state.games.length > 5 ? "do-scroll " : "") +
-                    //   "game_center_table"
-                    // }
-                    className="game_center_table"
-                  >
+                  <div className="game_center_table">
+                    <div className="game-center-tabs">
+                      <div
+                        onClick={() => this.onTabClicked(0)}
+                        className={this.state.activeTab == 0 ? "game-center-tab active" : "game-center-tab"}
+                      >
+                        LIVE SPORTS GAMES
+                      </div>
+                      <div
+                        onClick={() => this.onTabClicked(1)}
+                        className={this.state.activeTab == 1 ? "game-center-tab active" : "game-center-tab"}
+                      >
+                        LOTTO GAMES
+                      </div>
+                    </div>
                     <table className="game-center-table">
                       <thead>
                         <tr>
@@ -750,122 +753,111 @@ class GameCentral extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        {this.state.games.map((data1, key) => {
-                          var filters = this.state.aciveFilters.slice();
+                        {this.state.activeTab == 0
+                          ? this.state.games.map((data1, key) => {
+                              var filters = this.state.aciveFilters.slice();
 
-                          var shouldShowGame = true;
-                          if (
-                            filters[0] != "" &&
-                            data1.gametype_name != filters[0]
-                          ) {
-                            shouldShowGame = false;
-                          }
-                          if (filters[1] != "" && data1.status != filters[1]) {
-                            shouldShowGame = false;
-                          }
-                          if (filters[1] == "" && data1.status == "Archived") {
-                            shouldShowGame = false;
-                          }
-                          if (filters[2] != "") {
-                            if (
-                              filters[2] == "Edit Picks" &&
-                              !data1.has_picks
-                            ) {
-                              shouldShowGame = false;
-                            }
-                            if (filters[2] == "Pick Teams" && data1.has_picks) {
-                              shouldShowGame = false;
-                            }
-                          }
-                          if (shouldShowGame) {
-                            rowCounter = rowCounter + 1;
-                            var text = "";
-                            if (data1.status == "Finished") {
-                              text = "View Results";
-                            } else {
-                              if (data1.has_picks) {
-                                text =
-                                  data1.status == "In Progress"
-                                    ? "Edit Scores"
-                                    : "Edit Picks";
-                              } else {
-                                text = "Pick Teams";
+                              var shouldShowGame = true;
+                              if (
+                                filters[0] != "" &&
+                                data1.gametype_name != filters[0]
+                              ) {
+                                shouldShowGame = false;
                               }
-                            }
+                              if (
+                                filters[1] != "" &&
+                                data1.status != filters[1]
+                              ) {
+                                shouldShowGame = false;
+                              }
+                              if (
+                                filters[1] == "" &&
+                                data1.status == "Archived"
+                              ) {
+                                shouldShowGame = false;
+                              }
+                              if (filters[2] != "") {
+                                if (
+                                  filters[2] == "Edit Picks" &&
+                                  !data1.has_picks
+                                ) {
+                                  shouldShowGame = false;
+                                }
+                                if (
+                                  filters[2] == "Pick Teams" &&
+                                  data1.has_picks
+                                ) {
+                                  shouldShowGame = false;
+                                }
+                              }
+                              if (shouldShowGame) {
+                                rowCounter = rowCounter + 1;
+                                var text = "";
+                                if (data1.status == "Finished") {
+                                  text = "View Results";
+                                } else {
+                                  if (data1.has_picks) {
+                                    text =
+                                      data1.status == "In Progress"
+                                        ? "Edit Scores"
+                                        : "Edit Picks";
+                                  } else {
+                                    text = "Pick Teams";
+                                  }
+                                }
 
-                            return (
-                              <tr key={key}>
-                                <td>
-                                  <a
-                                    className="c-p"
-                                    onClick={() => this.onGameNameClicked(key)}
-                                  >
-                                    {data1.name}
-                                  </a>
-                                </td>
-                                <td>
-                                  <p>{data1.gametype_name}</p>
-                                </td>
-                                <td>
-                                  <p>{data1.status}</p>
-                                </td>
-
-                                <td>
-                                  <p>{data1.stat_time}</p>
-                                </td>
-                                <td>
-                                  <p>
-                                    {data1.prize_type == "cash"
-                                      ? "$" + data1.prize
-                                      : data1.prize + " Pts."}
-                                  </p>
-                                </td>
-                                <td>{data1.entries}</td>
-                                <td>
-                                  {data1.has_picks ? (
-                                    <div class="dropdown dropleft">
-                                      <img
-                                        class="btn btn-secondary dropdown-toggle"
-                                        id="dropdownMenuButton"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        src={require("./../../assets/images/game-center/dots.png")}
-                                      />
-
-                                      <div
-                                        class={
-                                          rowCounter > 1
-                                            ? data1.match_started
-                                              ? "dropdown-menu game_center_action_menu menu_up_short"
-                                              : "dropdown-menu game_center_action_menu menu_up"
-                                            : "dropdown-menu game_center_action_menu"
+                                return (
+                                  <tr key={key}>
+                                    <td>
+                                      <a
+                                        className="c-p"
+                                        onClick={() =>
+                                          this.onGameNameClicked(key)
                                         }
-                                        aria-labelledby="dropdownMenuButton"
                                       >
-                                        <div
-                                          className="dropdown-item action_menu_item"
-                                          onClick={() =>
-                                            this.onPickTeamsClicked(
-                                              data1.gametype_name,
-                                              data1.stat_time,
-                                              data1,
-                                              "Edit Live Score"
-                                            )
-                                          }
-                                        >
+                                        {data1.name}
+                                      </a>
+                                    </td>
+                                    <td>
+                                      <p>{data1.gametype_name}</p>
+                                    </td>
+                                    <td>
+                                      <p>{data1.status}</p>
+                                    </td>
+
+                                    <td>
+                                      <p>{data1.stat_time}</p>
+                                    </td>
+                                    <td>
+                                      <p>
+                                        {data1.prize_type == "cash"
+                                          ? "$" + data1.prize
+                                          : data1.prize + " Pts."}
+                                      </p>
+                                    </td>
+                                    <td>{data1.entries}</td>
+                                    <td>
+                                      {data1.has_picks ? (
+                                        <div class="dropdown dropleft">
                                           <img
-                                            className="action_menu_item_img"
-                                            src={require("./../../assets/images/game-center/group_19.png")}
+                                            class="btn btn-secondary dropdown-toggle"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                            src={require("./../../assets/images/game-center/dots.png")}
                                           />
-                                          <div className="action_menu_item_text">
-                                            Edit Live Scores
-                                          </div>
-                                        </div>
-                                        <>
-                                          {data1.match_started ? (
-                                            ""
-                                          ) : (
+
+                                          <div
+                                            class={
+                                              rowCounter > 1
+                                                ? data1.match_started
+                                                  ? "dropdown-menu game_center_action_menu menu_up_short"
+                                                  : "dropdown-menu game_center_action_menu menu_up"
+                                                : "dropdown-menu game_center_action_menu"
+                                            }
+                                            aria-labelledby="dropdownMenuButton"
+                                          >
                                             <div
                                               className="dropdown-item action_menu_item"
                                               onClick={() =>
@@ -873,163 +865,192 @@ class GameCentral extends Component {
                                                   data1.gametype_name,
                                                   data1.stat_time,
                                                   data1,
-                                                  "Pick Teams"
+                                                  "Edit Live Score"
                                                 )
                                               }
                                             >
                                               <img
                                                 className="action_menu_item_img"
-                                                src={require("./../../assets/images/game-center/group_19_2.png")}
+                                                src={require("./../../assets/images/game-center/group_19.png")}
                                               />
                                               <div className="action_menu_item_text">
-                                                {data1.has_picks
-                                                  ? "Show my Picks"
-                                                  : "Pick Teams"}
+                                                Edit Live Scores
                                               </div>
                                             </div>
-                                          )}
-                                        </>
+                                            <>
+                                              {data1.match_started ? (
+                                                ""
+                                              ) : (
+                                                <div
+                                                  className="dropdown-item action_menu_item"
+                                                  onClick={() =>
+                                                    this.onPickTeamsClicked(
+                                                      data1.gametype_name,
+                                                      data1.stat_time,
+                                                      data1,
+                                                      "Pick Teams"
+                                                    )
+                                                  }
+                                                >
+                                                  <img
+                                                    className="action_menu_item_img"
+                                                    src={require("./../../assets/images/game-center/group_19_2.png")}
+                                                  />
+                                                  <div className="action_menu_item_text">
+                                                    {data1.has_picks
+                                                      ? "Show my Picks"
+                                                      : "Pick Teams"}
+                                                  </div>
+                                                </div>
+                                              )}
+                                            </>
 
-                                        <div
-                                          className="dropdown-item action_menu_item"
+                                            <div
+                                              className="dropdown-item action_menu_item"
+                                              onClick={() =>
+                                                this.onGameNameClicked(key)
+                                              }
+                                            >
+                                              <img
+                                                className="action_menu_item_img"
+                                                src={require("./../../assets/images/game-center/group_19_3.png")}
+                                              />
+                                              <div className="action_menu_item_text">
+                                                Show My Scores
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      ) : (
+                                        <button
+                                          className="button_pick_teams"
                                           onClick={() =>
-                                            this.onGameNameClicked(key)
+                                            this.onPickTeamsClicked(
+                                              data1.gametype_name,
+                                              data1.stat_time,
+                                              data1,
+                                              "Pick Teams"
+                                            )
                                           }
                                         >
-                                          <img
-                                            className="action_menu_item_img"
-                                            src={require("./../../assets/images/game-center/group_19_3.png")}
-                                          />
-                                          <div className="action_menu_item_text">
-                                            Show My Scores
+                                          Pick My Teams
+                                        </button>
+                                      )}
+                                    </td>
+                                  </tr>
+                                );
+                              }
+                            })
+                          : this.state.lotteryGames.map((data1, key) => {
+                              var filters = this.state.aciveFilters.slice();
+
+                              var shouldShowGame = true;
+                              if (
+                                filters[0] != "" &&
+                                data1.gametype_name != filters[0]
+                              ) {
+                                shouldShowGame = false;
+                              }
+                              if (
+                                filters[1] != "" &&
+                                data1.status != filters[1]
+                              ) {
+                                shouldShowGame = false;
+                              }
+                              if (
+                                filters[1] == "" &&
+                                data1.status == "Archived"
+                              ) {
+                                shouldShowGame = false;
+                              }
+
+                              if (shouldShowGame) {
+                                rowCounter = rowCounter + 1;
+                                return (
+                                  <tr key={key}>
+                                    <td>
+                                      <a className="c-p">{data1.name}</a>
+                                    </td>
+                                    <td>
+                                      <p>{data1.gametype_name}</p>
+                                    </td>
+                                    <td>
+                                      <p>{data1.status}</p>
+                                    </td>
+
+                                    <td>
+                                      <p>{data1.start_datetime}</p>
+                                    </td>
+                                    <td>
+                                      <p>{this.getJackpot(data1.prize)}</p>
+                                    </td>
+                                    <td>--</td>
+                                    <td>
+                                      <div class="dropdown dropleft">
+                                        <img
+                                          class="btn btn-secondary dropdown-toggle"
+                                          id="dropdownMenuButton"
+                                          data-toggle="dropdown"
+                                          aria-haspopup="true"
+                                          aria-expanded="false"
+                                          src={require("./../../assets/images/game-center/dots.png")}
+                                          onClick={this.setDroDown}
+                                        />
+
+                                        <div
+                                          class={
+                                            rowCounter > 1
+                                              ? "dropdown-menu game_center_action_menu menu_up short"
+                                              : "dropdown-menu game_center_action_menu short"
+                                          }
+                                          aria-labelledby="dropdownMenuButton"
+                                        >
+                                          <div
+                                            className="dropdown-item action_menu_item"
+                                            onClick={() =>
+                                              this.onPickBallsClicked(
+                                                data1.name,
+                                                data1.start_datetime,
+                                                data1,
+                                                "live"
+                                              )
+                                            }
+                                          >
+                                            <img
+                                              className="action_menu_item_img"
+                                              src={require("./../../assets/images/game-center/group_19.png")}
+                                            />
+                                            <div className="action_menu_item_text">
+                                              Edit Live Draw
+                                            </div>
+                                          </div>
+
+                                          <div
+                                            className="dropdown-item action_menu_item"
+                                            onClick={() =>
+                                              this.onPickBallsClicked(
+                                                data1.name,
+                                                data1.start_datetime,
+                                                data1,
+                                                "Pick Teams"
+                                              )
+                                            }
+                                          >
+                                            <img
+                                              className="action_menu_item_img"
+                                              src={require("./../../assets/images/game-center/group_19_2.png")}
+                                            />
+                                            <div className="action_menu_item_text">
+                                              Show my Picks
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
-                                  ) : (
-                                    <button
-                                      className="button_pick_teams"
-                                      onClick={() =>
-                                        this.onPickTeamsClicked(
-                                          data1.gametype_name,
-                                          data1.stat_time,
-                                          data1,
-                                          "Pick Teams"
-                                        )
-                                      }
-                                    >
-                                      Pick My Teams
-                                    </button>
-                                  )}
-                                </td>
-                              </tr>
-                            );
-                          }
-                        })}
-                        {this.state.lotteryGames.map((data1, key) => {
-                          var filters = this.state.aciveFilters.slice();
-
-                          var shouldShowGame = true;
-                          if (
-                            filters[0] != "" &&
-                            data1.gametype_name != filters[0]
-                          ) {
-                            shouldShowGame = false;
-                          }
-                          if (filters[1] != "" && data1.status != filters[1]) {
-                            shouldShowGame = false;
-                          }
-                          if (filters[1] == "" && data1.status == "Archived") {
-                            shouldShowGame = false;
-                          }
-
-                          if (shouldShowGame) {
-                            rowCounter = rowCounter + 1;
-                            return (
-                              <tr key={key}>
-                                <td>
-                                  <a className="c-p">{data1.name}</a>
-                                </td>
-                                <td>
-                                  <p>{data1.gametype_name}</p>
-                                </td>
-                                <td>
-                                  <p>{data1.status}</p>
-                                </td>
-
-                                <td>
-                                  <p>{data1.start_datetime}</p>
-                                </td>
-                                <td>
-                                  <p>{this.getJackpot(data1.prize)}</p>
-                                </td>
-                                <td>--</td>
-                                <td>
-                                  <div class="dropdown dropleft">
-                                    <img
-                                      class="btn btn-secondary dropdown-toggle"
-                                      id="dropdownMenuButton"
-                                      data-toggle="dropdown"
-                                      aria-haspopup="true"
-                                      aria-expanded="false"
-                                      src={require("./../../assets/images/game-center/dots.png")}
-                                      onClick={this.setDroDown}
-                                    />
-
-                                    <div
-                                      class={
-                                        rowCounter > 1
-                                          ? "dropdown-menu game_center_action_menu menu_up short"
-                                          : "dropdown-menu game_center_action_menu short"
-                                      }
-                                      aria-labelledby="dropdownMenuButton"
-                                    >
-                                      <div
-                                        className="dropdown-item action_menu_item"
-                                        onClick={() =>
-                                          this.onPickBallsClicked(
-                                            data1.name,
-                                            data1.start_datetime,
-                                            data1,
-                                            "live"
-                                          )
-                                        }
-                                      >
-                                        <img
-                                          className="action_menu_item_img"
-                                          src={require("./../../assets/images/game-center/group_19.png")}
-                                        />
-                                        <div className="action_menu_item_text">
-                                          Edit Live Draw
-                                        </div>
-                                      </div>
-
-                                      <div
-                                        className="dropdown-item action_menu_item"
-                                        onClick={() =>
-                                          this.onPickBallsClicked(
-                                            data1.name,
-                                            data1.start_datetime,
-                                            data1,
-                                            "Pick Teams"
-                                          )
-                                        }
-                                      >
-                                        <img
-                                          className="action_menu_item_img"
-                                          src={require("./../../assets/images/game-center/group_19_2.png")}
-                                        />
-                                        <div className="action_menu_item_text">
-                                          Show my Picks
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                            );
-                          }
-                        })}
+                                    </td>
+                                  </tr>
+                                );
+                              }
+                            })}
                       </tbody>
                     </table>
                   </div>

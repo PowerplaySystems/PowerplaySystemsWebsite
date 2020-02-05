@@ -1,0 +1,213 @@
+.draft_day_heading {
+  text-align: center;
+  height: 525px;
+  object-fit: contain;
+  padding-top: 135px;
+
+  background: url("../../../assets/images/draft_day/group_3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.draft_day_heading_content {
+  display: block;
+  align-items: center;
+  margin-bottom: 135px;
+}
+.draft_day_heading_text1 {
+  font-family: Poppins;
+  font-size: 100px;
+  font-weight: 500;
+  line-height: 0.9;
+  color: #fb6e00;
+}
+.draft_day_heading_text1 span {
+  font-size: 40px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.draft_day_heading_text2 {
+  font-family: Poppins;
+  font-size: 51px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.draft_day_heading_text3 {
+  font-family: Poppins;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fb6e00;
+  margin: 3px 0px 20px;
+}
+.draft_day_heading_button1 {
+  width: 382px;
+  height: 50px;
+  border-radius: 25px;
+
+  background-color: #ff7b00;
+  font-family: Poppins;
+  font-size: 23px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+.draft_day_heading_button1:hover {
+  box-shadow: 0 3px 37px 3px rgba(255, 123, 0, 0.47);
+}
+.draft_day_main {
+  padding: 80px 0px 0px;
+}
+.draft_day_main_row1 {
+  text-align: center;
+}
+.draft_day_main_row1_col1 {
+  display: inline-block;
+  vertical-align: top;
+  width: 568px;
+  margin-top: 65px;
+  position: relative;
+  z-index: 2;
+  text-align: left;
+}
+.draft_day_main_text1 {
+  font-weight: 500;
+  font-family: Poppins;
+  font-size: 32px;
+  color: #ff7b00;
+}
+.draft_day_main_text2 {
+  width: 413px;
+  font-weight: 500;
+  color: #ffffff;
+  font-family: Poppins;
+  font-size: 32px;
+  font-size: 21px;
+  margin-bottom: 40px;
+}
+.draft_day_main_text3 {
+  width: 413px;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+  color: #ff7b00;
+}
+.draft_day_main_text4 {
+  width: 413px;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+.draft_day_main_text5 {
+  width: 413px;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
+}
+.draft_day_main_text5 span {
+  color: #fb6e00;
+}
+.draft_day_main_row1_col2 {
+  display: inline-block;
+  text-align: center;
+  width: 382px;
+  margin-left: -120px;
+}
+.draft_day_main_row_img1 {
+  display: inline-block;
+  width: 300px;
+  height: 443px;
+  background: url("../../../assets/images/draft_day/draft_man.png");
+}
+.draft_day_main_row_img2 {
+  background: url("../../../assets/images/draft_day/group_10.png");
+  width: 662px;
+  height: 404px;
+}
+.draft_day_main_row2 {
+  text-align: center;
+  margin: 150px 0px;
+}
+.draft_day_main_row2_col1 {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+.draft_day_main_row2_col2 {
+  display: inline-block;
+  vertical-align: top;
+  width: 640px;
+  text-align: center;
+  margin-left: -35px;
+}
+.draft_day_main_text6 {
+  text-align: left;
+  font-family: Poppins;
+  font-size: 29px;
+  font-weight: 500;
+  color: #ff7b00;
+  margin: 0px 00px 10px;
+}
+.draft_day_main_text7 {
+  width: 600px;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.draft_day_main_text8 {
+  width: 600px;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 30px 0px 10px;
+}
+.draft_day_main_text8 span {
+  color: #fb6e00;
+}
+.draft_day_imgbox {
+  background: url("../../../assets/images/draft_day/group_13.png") no-repeat;
+  width: 756px;
+  height: 267px;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 60px;
+}
+.draft_day_imgbox_text1 {
+  display: inline-block;
+  width: 595px;
+  padding-top: 64px;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.16;
+  text-align: center;
+  color: #ffffff;
+}
+.draft_day_imgbox_text1 span {
+  color: #ff7b00;
+}
+.draft_day_imgbox_text2 {
+  margin-top: 21px;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+.draft_day_imgbox_text2 span {
+  color: #fb6e00;
+}
+.draft_day_imgbox_text3 {
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+.draft_day_imgbox_text3 span {
+  color: #fb6e00;
+}

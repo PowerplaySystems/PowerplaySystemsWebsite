@@ -1,0 +1,225 @@
+.lotto-result-header {
+  width: 536px;
+  height: 64px;
+  font-family: Poppins;
+  font-size: 45.6px;
+  text-align: center;
+  color: #ffffff;
+  margin: 50px auto;
+}
+.lotto-result-header span {
+  font-style: italic;
+  color: #fb6e00;
+}
+.lotto-result-winning-numbers {
+  width: 992px;
+  height: 167px;
+  border-radius: 9px;
+  background-color: #111111;
+  margin: -5px auto 40px auto;
+  padding: 20px;
+  
+
+}
+.lotto-result-numbers-left {
+  width: 622px;
+  float: left;
+}
+.lotto-result-numbers-left span {
+  height: 23px;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #bababa;
+  margin-left: 15px;
+}
+.lotto-result-balls-wrapper {
+}
+.lotto-result-ball {
+  width: 64.8px;
+  height: 64.8px;
+  line-height: 64.8px;
+  background: white;
+  border-radius: 32.4px;
+  font-family: Poppins;
+  font-size: 25.7px;
+  font-weight: 500;
+  letter-spacing: -0.13px;
+  text-align: center;
+  color: #fb6e00;
+  float: left;
+  margin: 12px;
+}
+.lotto-result-number-right {
+  margin-left: 20px;
+  float: left;
+  width: 300px;
+}
+.lotto-result-number-right span {
+  height: 23px;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #bababa;
+}
+.lotto-result-dropdown {
+  margin-top: 15px;
+  width: 325px;
+  height: 54px;
+  border-radius: 9px;
+  border: solid 2px #fb6e00;
+}
+.lotto-result-dropdown select {
+  background: none;
+  border: none;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  width: 325px;
+  height: 54px;
+  text-align: center;
+}
+.lotto-result-dropdown option {
+  background: #111111;
+  border: none !important;
+  text-align: center;
+}
+.lotto-result-winning-matches {
+  width: 744px;
+  margin: 0 auto;
+  height: 150px;;
+}
+.lotto-result-matches-left {
+  float: left;
+}
+.lotto-result-matched-text {
+  width: 301px;
+  height: 43px;
+  font-family: Poppins;
+  font-size: 24px;
+  color: #ffffff;
+}
+.lotto-result-matched-text span {
+  font-size: 30px;
+  font-weight: bold;
+  color: #fb6e00;
+}
+.lotto-result-matched-outcome {
+  width: 408px;
+  height: 33px;
+  font-family: Poppins;
+  font-size: 24px;
+  color: #28c105;
+}
+.lotto-result-matched-outcome.fail{
+  color: red;
+}
+
+.lotto-result-matches-ball {
+  width: 53.3px;
+  height: 52.9px;
+  line-height: 52.9px;
+  border-radius: 50%;
+  font-family: Poppins;
+  font-size: 18.4px;
+  font-weight: 500;
+  letter-spacing: -0.09px;
+  text-align: center;
+  color: #000000;
+  float: left;
+  background: white;
+  margin: 6.5px;
+}
+.lotto-result-matches-ball.active{
+  color: #868686;
+}
+.lotto-result-matches-ball.active img{
+  width: 18.1px;
+  height: 18.2px;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: 18px;
+}
+.lotto-result-matches-right {
+  float: left;
+  margin-left: 70px;
+}
+.prize-img {
+  margin-top: 16px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  float: left;
+}
+.lotto-result-prize-top-left {
+  float: left;
+  margin-left: 10px;
+}
+.lotto-result-prize-top-left .text-1 {
+  width: 100px;
+  height: 48px;
+  font-family: Poppins;
+  font-size: 22px;
+  line-height: 2.18;
+  color: #c2c2c2;
+}
+.lotto-result-prize-top-left .text-2 {
+  width: 130px;
+  height: 59px;
+  font-family: Poppins;
+  font-size: 42px;
+  font-weight: bold;
+  color: #fb6e00;
+  margin-top: -20px;
+}
+.lotto-result-prize-bottom button {
+  width: 208px;
+  height: 48px;
+  border-radius: 30px;
+  box-shadow: 0 2px 18px -1px #fb6e00;
+  background-color: #fb6e00;
+  border: none;
+}
+.lottery-result-table {
+  height: 391px;
+  width: 744px;
+  margin: 50px auto;
+  border-collapse: collapse;
+  border-radius: 6px;
+  overflow: hidden;
+
+}
+.lottery-result-table thead tr{
+  height: 91px;
+  border-radius: 6px;
+  box-shadow: 0 4px 17px 4px rgba(0, 0, 0, 0.08);
+  background-color: #4d5255;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #ffffff;
+  text-align: center;
+}
+.lottery-result-table thead td{
+  width: 10px;
+}
+.lottery-result-table tbody tr{
+  width: 744px;
+  height: 74px;
+  background-color: #111111;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #ffffff;
+  border-bottom:solid 1px #3e4345;
+}
+.lottery-result-table tbody tr:nth-child(4n) {
+  border-bottom:none !important;
+}
+.row-active{
+  color: #fb6e00 !important;
+  font-weight: bold;
+}

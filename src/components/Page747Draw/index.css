@@ -1,5 +1,5 @@
 .page747_live_rows > div {
-  margin: 30px 0px;
+  margin: 0px 0px 60px;
 }
 .live_draw_header_content {
   text-align: center;
@@ -14,6 +14,10 @@
   font-size: 94.5px;
   font-weight: bold;
   color: #fb6e00;
+}
+.bg_black{
+  background-color: black !important ;
+  color: white !important;
 }
 .live_draw_content {
   width: 1100px;
@@ -47,7 +51,7 @@
   background-color: #1a1a1a;
   border-radius: 23px;
   background-color: #1e1e1e;
-  padding: 0px 25px;
+  text-align: center;
 }
 .winning_box_circle {
   background-position: center;
@@ -55,7 +59,8 @@
   width: 64.8px;
   height: 64.8px;
   line-height: 64.8px;
-  float: left;
+  float: none;
+  display: inline-block;
   margin: 24px 25px;
   font-family: Poppins;
   font-size: 26.3px;
@@ -103,7 +108,7 @@
   width: 86.4px;
   height: 86.4px;
   border: solid 1.9px #fb6e00;
-  background: #ffffff;
+  background-color: #ffffff;
   line-height: 86.4px;
   border-radius: 43.2px;
   margin: 20px auto;
@@ -191,7 +196,8 @@
 }
 .edit_numbers .edit_numbers_circle {
   margin: 4px 10px;
-  float: left;
+  float: none;
+  display: inline-block;
   width: 60px;
   height: 60px;
   line-height: 60px;
@@ -210,7 +216,8 @@
 .edit_numbers .edit_numbers_circle_active {
   pointer-events: none;
   margin: 4px 10px;
-  float: left;
+  float: none;
+  display: inline-block;
   width: 60px;
   height: 60px;
   border-radius: 30px;
@@ -327,6 +334,8 @@
   font-weight: bold;
   font-style: italic;
   color: #ffffff;
+  float: left;
+  width: 275px;
 }
 .live_draw_winner_note4 {
   height: 26px;
@@ -345,7 +354,7 @@
   color: #ffffff;
   text-align: left;
 }
-.live_draw_my_prize.winner button {
+.button_pickNumbers {
   width: 434px;
   height: 60px;
   border-radius: 30px;
@@ -553,8 +562,9 @@
   font-weight: 500 !important;
   letter-spacing: -0.1px !important;
   text-align: center !important;
-  color: #fb6e00 !important;
+  color: #fb6e00;
   margin-top: 20px;
+  cursor: pointer;
 }
 .live_draw_in_play_timer_bottom {
   width: 238px;
@@ -589,6 +599,10 @@
   font-weight: bold;
   color: #fb6e00;
   margin: 0 auto;
+}
+.live_draw_div_jackpot_amount.small {
+  font-size: 24.5px !important;
+  height: 62px !important;
 }
 .live_draw_div_jackpot_odds {
   height: 36px;
@@ -639,12 +653,21 @@
   line-height: 20px;
   padding: 16px 0px;
 }
+.color_orange {
+  color: #fb6e00;
+}
 .powerplay_box {
   width: 235px;
   height: 47.9px;
-  border: 1px solid #fb6e00;
+  text-align: center;
   position: absolute;
-  margin-top: 75px;
+  /* margin-top: 75px; */
+  border: 1px solid #fb6e00;
+  border-radius: 15px;
+  background: #0f0f0f;
+}
+.powerplay_box_wrapper {
+  display: inline-block;
   border-radius: 15px;
 }
 .powerplay_box:before {
@@ -709,6 +732,425 @@
   border-radius: 19px;
   margin: 5px 10px;
 }
-.prize-none{
+.prize-none {
   margin-top: -20px !important;
+}
+.prize-note {
+  font-size: 10px;
+  margin-top: -4px;
+  font-style: italic;
+  color: wheat;
+}
+.live_draw_button_show_result {
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #000000;
+  border: none;
+  width: 144px;
+  height: 38px;
+  border-radius: 30px;
+  box-shadow: 0 2px 18px -1px #212121;
+  background-color: #ffffff;
+}
+.results_wrapper {
+  width: 420px;
+  height: 25px;
+}
+.live_draw_button_show_result.winner {
+  float: left;
+}
+.live_draw_my_numbers_notes.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.play_agian_button {
+  color: wheat;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 17px;
+}
+.with_gif {
+  background-image: url("./../../assets/images/747_live/loader.gif");
+  background-position: center;
+  background-size: cover;
+  /* border: none; */
+  /* background-color: transparent; */
+  background-origin: content-box;
+  padding: 25px;
+  background-repeat: no-repeat;
+}
+.with_replace {
+  background-image: url("./../../assets/images/747_live/refresh.png");
+  background-position: center;
+  background-size: cover;
+  /* border: none; */
+  /* background-color: transparent; */
+  background-origin: content-box;
+  padding: 25px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.mobile_view {
+  display: none;
+}
+.powerplays_used_text {
+  line-height: 47px;
+  color: wheat;
+}
+.mright_powerplays_item:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 999999;
+  margin-left: -47px;
+  margin-top: 50px;
+}
+.begin-text {
+  line-height: 31px;
+}
+.partner_button {
+  cursor: pointer;
+  width: 235px;
+  height: 52px;
+  border-radius: 26px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  line-height: 50px;
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  margin: 15px auto 15px !important;
+}
+.match_text {
+  margin: 10px 0px;
+  color: wheat;
+}
+.match_text span {
+  color: #fb6e00;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 700px) {
+  .tooltiptext {
+    font-size: 10px;
+    margin-left: -76px !important;
+    width: 150px;
+  }
+  .live_draw_my_numbers {
+    width: 100%;
+    margin: 0px;
+    float: none;
+  }
+  .live_draw_div_jackpot {
+    border-radius: 20px;
+    box-shadow: 0 2px 24px 7px rgba(0, 0, 0, 0.32);
+    background-color: #1e1e1e;
+    width: 327px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 40px 0px;
+    color: grey;
+  }
+  .live_draw_div_jackpot_header {
+    font-size: 16px;
+    height: unset;
+    text-align: center;
+    color: #7f7f7f;
+  }
+  .live_draw_div_jackpot_amount {
+    height: unset;
+  }
+  .live_draw_div_jackpot_amount.small {
+    font-size: 20px !important;
+  }
+  .live_draw_div_jackpot_odds {
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+  }
+  .mobile_view {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
+  .live_draw_my_numbers > p {
+    text-align: center;
+    width: unset;
+    font-size: 18px;
+    margin-top: 25px !important;
+  }
+  .live_draw_my_numbers_edit {
+    width: 319px;
+    height: 170px;
+    border-radius: 14px;
+    background-color: #1a1a1a;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .edit_numbers {
+    width: 319px;
+  }
+  .mleft_top_text {
+    display: none;
+  }
+  .edit_numbers .edit_numbers_circle {
+    width: 44.1px;
+    height: 44.1px;
+    line-height: 43px;
+    font-size: 17.5px;
+    font-weight: 500;
+    letter-spacing: -0.09px;
+  }
+  .edit_numbers .edit_numbers_circle_active {
+    width: 44.1px;
+    height: 44.1px;
+    line-height: 40px;
+    font-size: 17.5px;
+    font-weight: 500;
+    letter-spacing: -0.09px;
+  }
+  .pick_button_active {
+    line-height: 40px !important;
+  }
+  .live_draw_in_play {
+    text-align: unset;
+    float: none;
+    width: unset;
+    height: unset;
+  }
+  .live_draw_in_play p {
+    display: none;
+  }
+  .live_draw_in_play_timer {
+    height: 80px;
+    background-color: #1e1e1e;
+    max-width: 100%;
+    width: 360px;
+  }
+  .live_draw_numbers_text {
+    display: inline-block;
+    vertical-align: top;
+    width: 72px;
+    height: 39px;
+    margin: 12px 12px 12px 0px;
+    font-size: 16px;
+    overflow: hidden;
+  }
+  .live_draw_in_play_circle {
+    display: inline-block;
+    vertical-align: top;
+    width: 45px;
+    height: 45px;
+    font-size: 13.5px !important;
+    line-height: 42px;
+    margin: 12px 0px;
+  }
+  .live_draw_in_play_timer_bottom {
+    display: inline-block;
+    vertical-align: top;
+    width: 184px;
+    height: 40px;
+    border-radius: 14px;
+    border: solid 1px #fb6e00;
+    line-height: 22px;
+    margin: 12px 0px 12px 12px;
+    font-size: 14px;
+  }
+  .live_draw_in_play_timer_bottom.text_only {
+    line-height: 40px;
+  }
+  .live_draw_winning_box_content > p {
+    width: unset;
+    font-size: 18px;
+    letter-spacing: -0.09px;
+    text-align: center;
+  }
+  .live_draw_winning_box_content {
+    width: unset;
+    margin: 30px 0px;
+  }
+  .inner-div-select {
+    height: 44px;
+    width: 44px;
+  }
+  .img-checked {
+    margin: -14px 0px 0px 8px !important;
+  }
+  .edit_numbers_circle_active img {
+    margin-left: 13px;
+  }
+  .number_active {
+    font-size: 20px !important;
+    font-weight: bold;
+  }
+  .winning_box_numbers {
+    width: 360px;
+    background-color: #1e1e1e;
+    padding: 12px 0px 6px;
+    height: unset;
+  }
+  .winning_box_circle {
+    width: 41.5px;
+    height: 41.5px;
+    font-size: 16.5px;
+    font-weight: 500;
+    letter-spacing: -0.08px;
+    line-height: 40px;
+    display: inline-block;
+    margin: 3px;
+  }
+  .live_draw_prize_matches {
+    background-color: #1e1e1e;
+    width: 319px;
+    font-size: 16px;
+    padding: 5px 0px 15px 0px;
+    border-radius: 0px 0px 23px 23px;
+    margin-top: -26px !important;
+  }
+  .live_draw_prize_matches span {
+    font-size: 17px;
+  }
+  .mright_top_text {
+    font-size: 18px;
+    margin-top: 30px !important;
+  }
+  .mright_powerplays {
+    width: 319px;
+    height: unset;
+    border-radius: 14px;
+    background-color: #1a1a1a;
+    padding-top: 20px;
+    margin-bottom: 30px;
+  }
+  .mright_powerplays_item {
+    float: none;
+    display: inline-block;
+    width: 80px;
+    background: transparent;
+    vertical-align: top;
+  }
+  .mright_powerplays_item .item_img_wrapper {
+    float: none;
+  }
+  .mright_powerplays_item .item_right {
+    float: none;
+  }
+  .mright_powerplays_item .lotto_live_powerplay_amount {
+    width: 19.4px;
+    height: 19.4px;
+    font-size: 14px;
+    line-height: 19.4px;
+    font-weight: 300;
+    margin-top: -90px;
+    margin-left: 46px;
+
+    position: absolute;
+    z-index: 22;
+  }
+  .with_replace {
+    padding: 10px;
+  }
+  .with_gif {
+    padding: 10px;
+  }
+  .powerplay_box {
+    position: absolute;
+    z-index: 10;
+  }
+  .box_0 {
+    margin-left: 22px;
+  }
+  .box_1 {
+    margin-left: 10px;
+  }
+  .box_2 {
+    margin-left: 70px;
+  }
+  .box_3 {
+    margin-left: 136px;
+  }
+  .box_4 {
+    margin-left: -22px;
+  }
+  .box_5 {
+    margin-left: 41px;
+  }
+  .box_6 {
+    margin-left: 26px;
+  }
+  .begin-text {
+    line-height: 40px !important;
+  }
+  .live_draw_match_info.show {
+    width: 231px;
+    height: 28px;
+    border-radius: 6px;
+    background-color: rgba(40, 193, 5, 0.4);
+    margin: 53px auto 0px;
+    line-height: 28px;
+    text-align: center;
+  }
+}
+
+/* ANIMATIONS */
+.animation_pulse {
+  box-shadow: 0 0 0 0 rgba(251, 110, 0, 1);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(251, 110, 0, 0.4);
+    box-shadow: 0 0 0 0 rgba(251, 110, 0, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 40px rgba(204, 169, 44, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+  }
+}
+#tourstep1{
+  width: 180px;
+  height: 480px;
+  position: absolute;
+  /* left: 186px; */
+  margin-left: 14px;
+  margin-top: 100px;
+  z-index: -1;
+}
+#tourstep2 {
+  width: 72px;
+  height: 75px;
+  position: absolute;
+  margin-left: 82px;
+  bottom: 361px;
+  z-index: -1;
+}
+#tourstep3 {
+  width: 37px;
+  height: 25px;
+  position: absolute;
+  margin-left: 172px;
+  bottom: 304px;
+}
+#tourstep4{
+  width: 243px;
+  height: 50px;
+  position: absolute;
+  margin-left: 19px;
+  margin-top: 178px;
 }
