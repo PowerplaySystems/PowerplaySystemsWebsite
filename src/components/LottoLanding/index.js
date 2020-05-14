@@ -5,7 +5,7 @@ import Footer from "../common/Footer";
 import DrawTimer from "../common/DrawTimer";
 import * as Functions from "../common/functions";
 import "./index.css";
-import "./index2.css";
+
 import Cookies from "universal-cookie";
 import * as Constants from "../common/constants";
 //import Modal from 'react-modal'
@@ -18,10 +18,10 @@ let mCircleStyles = {
   backgroundSize: "cover",
   overflow: "hidden",
   width: "100%",
-  height: "570px"
+  height: "570px",
 };
 let mDivStyle = {
-  lineHeight: "48px"
+  lineHeight: "48px",
 };
 class PowerplayLotto extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class PowerplayLotto extends Component {
       elite8: [],
       content: "",
       showPrize: false,
-      prizes: []
+      prizes: [],
     };
 
     this.onPickNumbersClicked = this.onPickNumbersClicked.bind(this);
@@ -74,7 +74,7 @@ class PowerplayLotto extends Component {
   componentButtonTransparent(text) {
     return (
       <button
-        onClick={e => this.goToDemo()}
+        onClick={(e) => this.goToDemo()}
         className="lotto-landing-button-transparent"
       >
         {text}
@@ -83,7 +83,7 @@ class PowerplayLotto extends Component {
   }
   handleClosePrize() {
     this.setState({
-      showPrize: false
+      showPrize: false,
     });
   }
   handleShowPrize(game_type) {
@@ -106,7 +106,7 @@ class PowerplayLotto extends Component {
 
     this.setState({
       showPrize: true,
-      prizes: prizesToShow
+      prizes: prizesToShow,
     });
   }
   getLotteryGames() {
@@ -118,20 +118,20 @@ class PowerplayLotto extends Component {
       link = link + "?jwt=" + jwt;
     }
     fetch(link)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
-        xx => {
+        (xx) => {
           this.setState({
             game747: xx.records[0],
             sweet16: xx.records[1],
             elite8: xx.records[2],
             gridlock: xx.records[3],
-            isLoaded: true
+            isLoaded: true,
           });
         },
-        error => {
+        (error) => {
           this.setState({
-            error: error
+            error: error,
           });
         }
       );
@@ -166,16 +166,16 @@ class PowerplayLotto extends Component {
     this.props.history.push({
       pathname: path,
       state: {
-        gameData: game
-      }
+        gameData: game,
+      },
     });
   }
   liveDraw(path, game) {
     this.props.history.push({
       pathname: path,
       state: {
-        gameData: game
-      }
+        gameData: game,
+      },
     });
   }
   getStringDate(mDate) {
@@ -195,7 +195,7 @@ class PowerplayLotto extends Component {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ][mydate.getMonth()];
     var str =
       month + " " + mydate.getDate() + ", " + mydate.getFullYear() + " ";
@@ -224,8 +224,8 @@ class PowerplayLotto extends Component {
     this.props.history.push({
       pathname: "/747",
       state: {
-        gameData: "demo"
-      }
+        gameData: "demo",
+      },
     });
   }
   render() {
@@ -234,6 +234,9 @@ class PowerplayLotto extends Component {
         <div>
           <Header />
           <div className="lotto-landing-container">
+            <div className="lotto-landing-heading1">
+              Our Lottery Games Defy Reality.
+            </div>
             <div className="lotto-landing-heading">
               Powerplay Systems offers a Full-Service Interactive Lottery
               Platform{" "}
@@ -249,7 +252,7 @@ class PowerplayLotto extends Component {
             </div>
             <br />
             {this.componentButton("Partner With Us!", "partner")}
-            <div className="div-laptop-img"></div>
+            <div className="div-laptop-img" />
             {this.componentButtonTransparent("Try our Demo Game")}
             <div className="lotto-landing-text3">
               Ultimate Interactive Engagement
@@ -261,7 +264,7 @@ class PowerplayLotto extends Component {
               of <span>‘Powerplays’</span>.
             </div>
             <div className="lotto-landing-ingagement-content">
-              <div className="lotto-landing-people-img"></div>
+              <div className="lotto-landing-people-img" />
               <div className="lotto-landing-ingagement-right">
                 <div className="lotto-landing-ingagement-box1">
                   <div className="lotto-landing-text5">Imagine the Power</div>
@@ -292,6 +295,14 @@ class PowerplayLotto extends Component {
                     place, without boundaries.
                   </div>
                 </div>
+                <button
+                  onClick={() =>
+                    this.props.history.push("/powerplay-lotto-more")
+                  }
+                  className="lotto-landing-read-more"
+                >
+                  Read More&nbsp;&rarr;
+                </button>
               </div>
             </div>
             <div className="lotto-landing-row">
@@ -301,24 +312,33 @@ class PowerplayLotto extends Component {
                   Raise funds for an event or charity?
                 </div>
                 <br />
-                <div className="lotto-landing-breaker"></div>
+                <div className="lotto-landing-breaker" />
                 <br />
                 <div className="lotto-landing-text27">
                   Create additional government revenue?
                 </div>
                 <br />
-                <div className="lotto-landing-breaker"></div>
+                <div className="lotto-landing-breaker" />
                 <br />
                 <div className="lotto-landing-text27">
                   Drive additional revenue for your casino ?
                 </div>
                 <br />
                 {this.componentButton("Partner With Us!", "partner")}
+                <div style={{ height: "35px" }} />
+                <button
+                  className="lotto-landing-read-more"
+                  onClick={() =>
+                    this.props.history.push("/powerplay-lotto-more")
+                  }
+                >
+                  Read More&nbsp;&rarr;
+                </button>
               </div>
               <div className="lotto-landing-want-right">
                 <div className="lotto-landing-boxes-wrapper">
                   <div className="lotto-landing-box2">
-                    <div className="lotto-landing-icon1"></div>
+                    <div className="lotto-landing-icon1" />
                     <div className="lotto-landing-text8">
                       State Run Lotteries
                     </div>
@@ -328,7 +348,7 @@ class PowerplayLotto extends Component {
                     </div>
                   </div>
                   <div className="lotto-landing-box2">
-                    <div className="lotto-landing-icon11"></div>
+                    <div className="lotto-landing-icon11" />
                     <div className="lotto-landing-text8">
                       Fundraising Lotteries
                     </div>
@@ -339,7 +359,7 @@ class PowerplayLotto extends Component {
                     </div>
                   </div>
                   <div className="lotto-landing-box2">
-                    <div className="lotto-landing-icon111"></div>
+                    <div className="lotto-landing-icon111" />
                     <div className="lotto-landing-text8">
                       Promotional Contests
                     </div>
@@ -361,10 +381,15 @@ class PowerplayLotto extends Component {
               </div>
             </div>
             <div className="lotto-landing-elite8">
-              <div className="lotto-landing-text12">Elite 8</div>
+              <div className="lotto-landing-text12">
+                WIN <div className="lotto-landing-text12a">$2000</div>
+                <div className="lotto-landing-text12b">CAD</div>
+              </div>
               <div className="lotto-landing-text13">
-                Try out our mobile friendly interactive lotto game in this
-                promotional contest for a chance to win great prizes.
+                Elite 8 Promotional Contest
+              </div>
+              <div className="lotto-landing-text13a">
+                Starts on Feb 23rd, 2020 @ 9:00PM EST
               </div>
               {this.componentButton("Enter Now", "enter")}
             </div>
@@ -401,8 +426,19 @@ class PowerplayLotto extends Component {
               <br />
               {this.componentButton("Partner With Us!", "partner")}
               <div className="lotto-landing-space"> </div>
-              {this.componentButtonTransparent("Try a Demo Game")}
+              {this.componentButtonTransparent("Try our Demo Game")}
               <br />
+            </div>
+            <div className="lotto-landing-bingo">
+              <div className="lotto-landing-text30">Powerplay Bingo!</div>
+              <div className="lotto-landing-text31">Coming soon...</div>
+              <div className="lotto-landing-text32">
+                {" "}
+                Partner with us and be the first to offer this exciting new
+                game!
+              </div>
+
+              {this.componentButton("Partner With Us", "partner")}
             </div>
             <div className="lotto-landing-text14">Imagine the Power</div>
             <div className="lotto-landing-text17">
@@ -476,7 +512,7 @@ class PowerplayLotto extends Component {
               </div>
             </div>
             <br />
-            {this.componentButtonTransparent("Try a Demo Game")}
+            {this.componentButtonTransparent("Try our Demo Game")}
             <br />
             <div className="lotto-landing-text14">Trust and Security</div>
             <div className="lotto-landing-text15">
@@ -485,26 +521,26 @@ class PowerplayLotto extends Component {
             </div>
             <div className="lotto-landing-trust-items">
               <div className="lotto-landing-trust-item">
-                <div className="lotto-landing-icon3"></div>
+                <div className="lotto-landing-icon3" />
                 <div className="lotto-landing-text18">
                   Ultra-fast,<span> SSL encrypted</span> and digitally secured.
                 </div>
               </div>
               <div className="lotto-landing-trust-item">
-                <div className="lotto-landing-icon3"></div>
+                <div className="lotto-landing-icon3" />
                 <div className="lotto-landing-text18">
                   Customers’<span> personal data</span> is stored{" "}
                   <span>securely</span>
                 </div>
               </div>
               <div className="lotto-landing-trust-item">
-                <div className="lotto-landing-icon3"></div>
+                <div className="lotto-landing-icon3" />
                 <div className="lotto-landing-text18">
                   Completely<span> transparent</span> in all our transactions.
                 </div>
               </div>
               <div className="lotto-landing-trust-item">
-                <div className="lotto-landing-icon3"></div>
+                <div className="lotto-landing-icon3" />
                 <div className="lotto-landing-text18">
                   <span>Instantly</span> Auditable Lottery Number Generation
                 </div>
@@ -529,7 +565,7 @@ class PowerplayLotto extends Component {
                   lottery games.
                 </div>
               </div>
-              <div className="lotto-landing-icon4"></div>
+              <div className="lotto-landing-icon4" />
             </div>
             <br />
             <div className="lotto-landing-text22">

@@ -1,456 +1,787 @@
-.select_sport_heading_sub {
-  width: 1092px;
-  height: 45px;
-  font-family: Poppins;
-  font-size: 32px;
+.live-sports-content {
+  max-width: 100%;
+  overflow: hidden;
   text-align: center;
-  color: #ffffff;
-  margin-top: 20px;
+  background-color: #202124;
+  font-family: Poppins;
 }
-.live_sport_heading {
-  width: 892px;
-  height: 76px;
-  font-family: jibril;
+.live-sports {
+  margin-top: 112px;
   font-size: 62px;
-  line-height: 1.23;
-  text-align: center;
-  color: #ffffff;
-  margin-top: 156px;
-}
-.live_sports_heading {
-  height: 73px;
-  font-family: Poppins;
-  font-size: 52px;
+  max-width: 100%;
+  font-weight: 600;
   text-align: center;
   color: #fb6e00;
-  margin: 60px 0px 8px 0px;
 }
-.live_sports_sub_heading_2 {
-  width: 862px;
-  height: 66px;
-  font-family: Poppins;
-  font-size: 20px;
-  text-align: center;
-  color: #ffffff;
-  margin: 10px auto;
-}
-.live_sports_sub_heading_2 span {
-  font-weight: bold;
-  font-style: italic;
-  color: #fb6e00;
-}
-.live_sports_sub_heading {
-  height: 28px;
-  font-family: Poppins;
-  font-size: 20px;
-  text-align: center;
-  color: #ffffff;
-}
-.live_sports_powerplays {
-  width: 100%;
-  /* height: 350px; */
-  margin: 0 auto;
-  text-align: center;
-}
-.live_sports_powerplay_item {
-  float: none;
+.interactive-live {
+  max-width: 90%;
+  width: 1016px;
   display: inline-block;
-  vertical-align: top;
-  width: 350px;
-  margin: 30px auto;
+  font-size: 42px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.engage {
+  max-width: 90%;
+  width: 945px;
+  display: inline-block;
+  padding: 10px;
+  font-size: 24px;
+  color: #bfbfbf;
+}
+.partner-with-us-button-wrapper {
+  padding: 15px;
+  margin-top: 30px;
+  text-align: center;
+}
+.partner-with-us-button {
+  width: 330px;
+  height: 60px;
+  border-radius: 34.5px;
+
+  background-color: #fb6e00;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+.partner-with-us-button:hover {
+  box-shadow: 0 3px 19px -2px rgba(251, 110, 0, 0.62);
+}
+.partner-with-us-text {
+  font-size: 22px;
+  color: #ffffff;
+  display: inline-block;
+  margin-top: 12px;
+}
+.macbook-air-img-wrapper {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+.mac-img {
+  display: inline-block;
+  text-align: center;
+  margin-top: 60px;
+}
+.mac1-img {
+  display: none;
+}
+.headings-text {
+  font-size: 62px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 190px;
+  max-width: 90%;
+  width: 1049px;
+  display: inline-block;
+}
+.paltform-text {
+  padding: 20px;
+  font-size: 24px;
+  color: #bfbfbf;
+  width: 1049px;
+  max-width: 90%;
+  display: inline-block;
+}
+.text-span {
+  color: #fb6e00;
+}
+.img-text-wrapper {
+  display: inline-block;
+  text-align: center;
+  margin-top: 50px;
   max-width: 100%;
 }
-.live_sports_powerplay_item_img {
-  width: 122px;
-  height: 129px;
-  object-fit: contain;
-  margin: 0 auto;
-}
-.live_sports_powerplay_item_name {
-  height: 33px;
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  color: #ffffff;
-  margin: 10px;
-}
-.live_sports_powerplay_item_details {
-  height: 46px;
-  font-family: Poppins;
-  font-size: 16px;
-  text-align: center;
-  color: #ffffff;
-}
-.live_sports_game_light_bg {
-  height: 466px;
-  background-color: #080808;
-  padding: 70px;
-  text-align: center;
-}
-.live_sports_game_dark_bg {
-  height: 466px;
-  padding: 70px;
-  text-align: center;
-}
-.live_sports_game_name {
-  height: 59px;
-  font-family: Poppins;
-  font-size: 42px;
-  text-align: center;
-  color: #ffffff;
-}
-.live_sports_game_desc {
-  font-family: Poppins;
-  font-size: 22px;
-  text-align: center;
-  color: #ffffff;
-  margin: 10px;
-}
-.live_sports_game_desc > span {
-  font-weight: bold;
-  font-style: italic;
-  color: #fb6e00;
-}
-.live_sports_game_desc > s {
-  font-size: 16px;
-  font-style: italic;
-}
-.live_sports_game_try {
-  width: 308px;
-  height: 31px;
-  font-family: Poppins;
-  font-size: 22px;
-  color: #ffffff;
-  margin: 20px;
-}
-.live_sports_game_tabs {
-  width: 972px;
-  height: 115px;
-}
-.live_sports_game_tabs.tab_smaller {
-  width: 487px;
-}
-.live_sports_game_tabs > img {
-  width: 227px;
-  height: 114px;
-  object-fit: contain;
-  box-shadow: 0 5px 24px 0 rgba(255, 255, 255, 0.18);
-  float: left;
-  margin: 8px;
-  cursor: pointer;
-}
-.live_sports_game_tabs.tab_medium {
-  width: 730px;
-}
-.live-sports-gt {
-  background: url("./../../assets/images/live_sports/background.png");
-  padding: 30px 0px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.live-sports-gt-header {
-  font-family: Poppins;
-  font-size: 40px;
-  font-weight: 500;
-  text-align: center;
-  color: #fb6e00;
-  margin: 30px auto;
-}
-.live-sports-gt-header span{
-  font-size: 26px;
-}
-.live-sports-gt-header-text {
-  margin: 0px auto 0px;
-  width: 367px;
-  height: 45px;
-  font-family: Poppins;
-  font-size: 30px;
-  font-weight: 500;
-  text-align: center;
-  color: #ffffff;
-}
-.live-sports-gt-divider {
-  width: 118.7px;
-  height: 1px;
-  background-color: #979797;
-  margin: 10px auto;
-}
-.live-sports-gt-items-wrapper {
-  width: 100%;
-  margin: 45px auto;
-  text-align: center;
-}
-.live-sports-gt-item {
-  width: 327px;
-  max-width: 95%;
-  height: 154px;
-  border-radius: 25px;
-  background-color: #000000;
-  margin: 0px 10px;
-  float: none;
+.imag1-div {
   display: inline-block;
-  margin-bottom: 20px;
+  max-width: 100%;
+  width: 870px;
 }
-.live-sports-gt-item-header {
-  width: 132px;
-  height: 36px;
-  line-height: 36px;
-  border-radius: 9px;
-  background-color: #fb6e00;
-  font-family: Poppins;
-  font-size: 20px;
-  font-weight: 600;
+.img1 {
+  object-fit: contain;
+  display: inline-block;
   text-align: center;
-  color: #ffffff;
-  margin: -15px auto;
 }
-.live-sports-gt-item-text {
-  width: 278px;
-  height: 75px;
-  font-family: Poppins;
-  font-size: 15px;
-  text-align: center;
-  color: #ffffff;
-  margin: 37px auto;
+.img2 {
+  display: none;
+}
+.textboxes-wrapper {
+  vertical-align: top;
+  display: inline-block;
 }
 
-.live-sports-pr-item {
-  width: 587px;
-  height: 107px;
-  border-radius: 25px;
-  background-color: #000000;
-  margin: 0 auto;
-  float: left;
-}
-.live-sports-pr-item-header {
-  width: 370px;
-  height: 36px;
-  border-radius: 9px;
-  background-color: #fb6e00;
-
-  font-family: Poppins;
-  font-size: 20px;
+.img1-heading1 {
+  font-size: 24px;
   font-weight: 600;
-  line-height: 36px;
-  text-align: center;
   color: #ffffff;
-  margin: -15px auto;
+  display: inline-block;
 }
-.live-sports-pr-item-text {
-  width: 478px;
-  height: 50px;
-  font-family: Poppins;
+.img1-txt {
   font-size: 18px;
-  text-align: center;
   color: #ffffff;
-  margin: 30px auto;
+  display: inline-block;
 }
-.live-sports-pr-item-wapper {
-  width: 587px;
-  margin: 40px auto 70px;
-  height: 107px;
+.img1-wrapper {
+  margin-bottom: 34px;
+  text-align: left;
+  width: 431px;
+
+  border-radius: 17px;
+  box-shadow: 0 3px 27px 7px rgba(0, 0, 0, 0.51);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
 }
-.live-sports-gt-button-wapper {
-}
-.live-sports-gt-button.orange {
-  font-family: Poppins;
-  font-size: 24px;
+.read-more-button {
+  width: 425px;
+  height: 64px;
+  border-radius: 32px;
+  border: solid 1px #fb6e00;
   text-align: center;
-  color: #ffffff;
-  width: 404px;
-  height: 53px;
-  border-radius: 34.5px;
-  box-shadow: 0 3px 27px -2px #fb6e00;
-  background: #fb6e00;
-  border: none;
-  margin: 20px;
-}
-.live-sports-gt-button.transparent {
-  width: 404px;
-  height: 53px;
-  border-radius: 34.5px;
-  border: solid 1.5px #fb6e00;
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  color: #fb6e00;
-  background: none;
-  margin: 20px;
-}
-.live-sports-gt-buttons-wapper {
-  width: 888px;
-  margin: 20px auto;
-}
-.live-sports-adventures-note {
-  width: 862px;
-  height: 90px;
-  font-family: Poppins;
-  font-size: 20px;
-  text-align: center;
-  color: #ffffff;
-  margin: 10px auto;
-}
-.live-sports-adventures-note span {
-  font-weight: bold;
-  font-style: italic;
-  color: #fb6e00;
+  line-height: 64px;
   cursor: pointer;
 }
-.live-sports-adventures {
-  height: auto;
-  background-color: #000;
-  padding-top: 70px;
+.arrow {
+  display: inline-block;
+  width: 26px;
+  height: 18px;
+  color: #fb6e00;
 }
-.lotto-button-try.big {
-  width: 404px !important;
+.read-more-button-txt {
+  display: inline-block;
+  color: #fb6e00;
 }
-.lotto-button-partner.big {
-  width: 404px !important;
-  margin-right: 40px !important;
+.headings-text-try {
+  width: 1120px;
+  font-size: 62px;
+  font-weight: 600;
+  display: inline-block;
+  color: #ffffff;
+  max-width: 100%;
+  margin-top: 200px;
+  margin-bottom: 70px;
 }
-.live-sports-boost-buttons {
-  width: 85%;
+.circle-wrapper {
+  text-align: center;
+  padding: 10px;
+}
+.circle {
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #202124;
+  display: inline-block;
+  line-height: 32px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+.arror {
+  color: #ffffff;
+  font-size: 22px;
+}
+.oval-wrapper {
+  text-align: center;
+  margin-top: 80px;
+}
+.oval-copy {
+  width: 12px;
+  height: 12px;
+  background-color: #ff7b00;
+  display: inline-block;
+  border-radius: 6px;
+  margin: 0px 3px;
+}
+.oval {
+  border-radius: 6px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 123, 0, 0.4);
+  margin: 0px 3px;
+}
+.contest-wrapper {
+  text-align: center;
+}
+.contest-solo-wrapper {
+  max-width: 596px;
+  height: 600px;
+  margin: 0px 20px;
+  vertical-align: top;
+}
+
+.contest-solo-content.fff{
+  background: url('../../assets/images/live_sports/i-stock-626459840.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.contest-solo-content.ccc{
+  background: url('../../assets/images/live_sports/img-yell.png');
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+.contest-solo-content{
+  height: 539px;
+ 
+}
+.text-heading-wrapper {
+  text-align: center;
+  margin-top: 355px;
+  display: inline-block;
+}
+.contest-wrapper-img {
+  display: inline-block !important;
+  height: 539px;
+  object-fit: contain;
+}
+.contest-wrapper-heading1 {
+  font-size: 60px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.contest-wrapper-heading2 {
+  font-size: 31px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+}
+.contest-wrapper-text {
+  height: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fb6e00;
+}
+.contest-wrapper-button-wrapper {
+  
+}
+.contest-wrapper-button {
+  width: 341px;
+  height: 50px;
+  border-radius: 25px;
+  box-shadow: 0 3px 27px -2px rgba(22, 107, 172, 0.5);
+  background-color: #ff7b00;
+}
+.contest-wrapper-btn-text {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  line-height: 50px;
+}
+.sec-2 {
+  width: 100%;
+  text-align: center;
+  margin-top: 200px;
+}
+.sec-2-btn {
+  text-align: left;
+}
+.sec-2-left {
+  display: inline-block;
+  max-width: 100%;
+  text-align: left;
+}
+.sec-2-left-heading {
+  font-size: 62px;
+  font-weight: 600;
+  width: 483px;
+  color: #ffffff;
+  height: 86px;
+  max-width: 100%;
+}
+.sec-2-left-text1 {
+  font-size: 42px;
+  color: #ffffff;
+  width: 500px;
+
+  max-width: 90%;
   margin-bottom: 30px;
 }
-.lotto-button-try.big {
-  width: 404px !important;
+.sec-2-left-hr {
+  border: 2px solid #fb6e00;
+  width: 111px;
+  height: 2px;
+  margin: 12px 0 26px;
 }
-.lotto-button-partner.big {
-  width: 404px !important;
+.sec-2-left-text2 {
+  font-size: 42px;
+  color: #ffffff;
+  width: 516px;
+  max-width: 90%;
 }
-.live-sports-industries-buttons-wrapper {
-  width: 883px;
-  height: 53px;
-  margin: 0 auto;
+.sec-2-right-text1 {
+  width: 720px;
+  font-size: 26px;
+  font-weight: 500;
+  color: #fb6e00;
+  margin-top: 50px;
+
+  display: inline-block;
 }
-.live-sports-gt-item-header.big {
-  width: 226px;
+.sec-2-right-l-wrapper {
+  padding: 25px;
+  display: inline-block;
+  width: 318px;
+  border-radius: 16px;
+  box-shadow: 0 3px 27px 7px rgba(0, 0, 0, 0.51);
+  background-color: rgba(0, 0, 0, 0.8);
 }
-.live-sports-industries-buttons-wrapper {
-  width: 883px;
-  height: 53px;
-  margin: 0 auto;
+.sec-2-right-l-wrapper-first {
+  margin: 35px;
+  margin-left: 1px;
 }
-.sport-laptop {
-  object-fit: contain;
-  float: left;
-  height: 600px;;
+.sec-2-right-l-wrapper-second {
+  margin-top: 165px;
+  vertical-align: middle;
 }
-@media screen and (max-width: 700px) {
-  .select_game_top_row {
-    height: 261px !important;
-  }
-  .live_sport_heading {
-    width: 356px;
-    height: 21px;
-    font-size: 24px;
-    margin-top: 50px !important;
-  }
-  .select_sport_heading_sub {
-    width: 304px;
-    height: 84px;
-    font-family: Poppins;
-    font-size: 22px;
-    line-height: 1.27;
-  }
-  .select_game_top_row_button {
-    width: 247px;
-    height: 43.4px;
-    border-radius: 21.7px;
-    box-shadow: 0 2px 14px -1px #fb6e00;
-    font-size: 15px;
-    font-weight: 500px;
-    margin-top: 20px;
-  }
-  .live-sports-industries-buttons-wrapper {
-    width: 85%;
-    height: auto;
-    text-align: center;
-  }
-  .lotto-button-partner.big {
-    width: 248px !important;
-    height: 44px;
-    border-radius: 34.5px;
-    box-shadow: 0 3px 27px -2px #fb6e00;
-    font-size: 15px;
-    margin-right: 0px !important;
-  }
-  .lotto-button-try.big {
-    width: 248px !important;
-    height: 44px;
-    font-size: 15px;
-  }
-  .live-sports-pr-item-wapper {
-    width: 100%;
-  }
-  .live-sports-pr-item {
-    width: 85%;
-    height: 154px;
-    border-radius: 25px;
-    margin: 0 10%;
-  }
-  .live-sports-pr-item-header {
-    width: 70%;
-    height: 36px;
-    border-radius: 9px;
-    font-size: 17px;
-    font-weight: 600;
-  }
-  .live-sports-pr-item-text {
-    width: 85%;
-    font-family: Poppins;
-    font-size: 15px;
-  }
-  .live-sports-gt-buttons-wapper {
-    margin: 10%;
-    text-align: center;
-    width: 90%;
-  }
-  .live-sports-gt-buttons-wapper button {
-    float: none;
-    display: inline-block;
-    width: 248px !important;
-    height: 44px !important;
-    border-radius: 34.5px !important;
-    font-size: 15px !important;
-    font-weight: 300;
-    margin: 5px !important;
-  }
-  .live-sports-adventures-note {
-    min-width: 282px;
-    font-size: 16px;
-    width: 70%;
-    height: auto;
-  }
-  .live_sports_heading {
-    font-size: 24px;
-    margin-top: 50px;
-  }
-  .live_sports_sub_heading_2 {
-    max-width: 100%;
-    width: 85%;
-    height: auto;
-  }
-  .live-sports-boost-buttons {
-    width: 90%;
-  }
-  .live-sports-gt-header{
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  .live-sports-gt-header span{
-    font-size: 16px;
-  }
-  .live-sports-gt-header-text{
-    font-size: 20px;
-    width: auto;
-  }
+.sec-2-right-l-wrapper-third {
+  margin-top: -61px;
+}
+.sec-2-right-l-wrapper-heading {
+  font-size: 20.8px;
+  font-weight: 500;
+  color: #fb6e00;
+}
+.sec-2-right-l-wrapper-text {
+  font-size: 14.4px;
+  color: #ffffff;
 }
 
-@media screen and (max-width: 1350px) {
-  .sport-laptop{
+.sec-2-right {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  width: 678px;
+  margin-left: 56px;
+  text-align: left;
+}
+.sec-2-right-l {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.player-motivate-img {
+  width: 100%;
+  height: 58px;
+  text-align: center;
+  display: inline-block;
+}
+.player-motivate-wrapper {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+.player-motivate-solo-wrapper {
+  text-align: center;
+  display: inline-block;
+  padding: 30px;
+  vertical-align: top;
+}
+.player-motivate-text1 {
+  width: 278px;
+
+  color: #ffffff;
+  font-size: 22px;
+}
+.player-motivate-text23 {
+  width: 200px;
+  height: 93px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.player-experience-wrapper {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+.player-experience-solo-wrapper {
+  text-align: center;
+  display: inline-block;
+  padding: 30px;
+}
+.player-experience-img {
+  width: 58px;
+  height: 50px;
+  display: inline-block;
+}
+.player-experience-text {
+  width: 180px;
+  height: 56px;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+.cards-wrapper {
+  max-width: 100%;
+}
+.solo-card-wrapper {
+  text-align: center;
+  display: inline-block;
+  padding: 40px;
+}
+.card-img {
+  width: 122px;
+  height: 129px;
+  display: inline-block;
+}
+.card-heading {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  margin: 10px 0px;
+}
+.card-text {
+  width: 254px;
+  height: 46px;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+}
+.shields-wrappers {
+  text-align: center;
+  width: 100%;
+}
+.shield-text-wrapper {
+  display: inline-block;
+  padding: 50px;
+  padding-bottom: 30px;
+  vertical-align: top;
+}
+.shield {
+  width: 44px;
+  height: 52px;
+  object-fit: contain;
+  margin-left: 70px;
+}
+.shield-text {
+  width: 189px;
+  height: 83px;
+  max-width: 90%;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.text-white {
+  font-size: 26px;
+  display: inline-block;
+  color: #ffffff;
+  padding: 30px;
+  max-width: 90%;
+  width: 850px;
+  display: inline-block;
+}
+.text-white-significant1 {
+  font-size: 26px;
+  display: inline-block;
+  color: #ffffff;
+  padding: 30px;
+  max-width: 90%;
+  width: 1030px;
+  display: inline-block;
+}
+.text-white-significant2 {
+  font-size: 26px;
+  display: inline-block;
+  color: #ffffff;
+  padding: 30px;
+  max-width: 90%;
+  width: 1030px;
+  display: inline-block;
+}
+.text-grey {
+  font-size: 26px;
+  display: inline-block;
+  color: #bfbfbf;
+  max-width: 90%;
+  width: 985px;
+  display: inline-block;
+  margin: 30px 0px;
+}
+.text-grey-align {
+  text-align: center;
+}
+.text-grey-power {
+  font-size: 26px;
+  text-align: center;
+  color: #bfbfbf;
+  display: inline-block;
+  max-width: 90%;
+  width: 730px;
+}
+.significant-text {
+  font-size: 42px;
+  font-weight: 600;
+  max-width: 90%;
+  width: 1000px;
+  display: inline-block;
+  color: #ffffff;
+  margin-top: 190px;
+}
+@media screen and (max-width: 550px) {
+  .player-experience-div {
     display: none;
+  }
+  .live-sports {
+    margin-top: 50px;
+
+    padding: 15px;
+    width: 248px;
+    display: inline-block;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+  .interactive-live {
+    max-width: 90%;
+    display: inline-block;
+    width: 264px;
+    height: 112px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .engage {
+    max-width: 90%;
+    display: inline-block;
+    padding-top: 30px;
+    width: 335px;
+    height: 170px;
+    font-size: 17px;
+    line-height: 1.41;
+    text-align: center;
+  }
+  .partner-with-us-button {
+    text-align: center;
+    display: inline-block;
+    width: 247px;
+    height: 43px;
+    border-radius: 21.7px;
+    box-shadow: 0 2px 14px -1px #fb6e00;
+    background-color: #fb6e00;
+  }
+  .partner-with-us-text {
+    display: inline-block;
+    margin-top: 12px;
+    width: 220px;
+    height: 21px;
+
+    font-size: 15px;
+    text-align: center;
+  }
+  .mac-img {
+    display: none;
+  }
+  .mac1-img {
+    display: inline-block;
+    text-align: center;
+    margin-top: 60px;
+    width: 300px;
+    height: 629px;
+  }
+
+  .headings-text {
+    margin-top: 60px;
+    max-width: 90%;
+    display: inline-block;
+    width: 318px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    line-height: 1.33;
+    margin-top: 50px;
+  }
+  .paltform-text {
+    padding: 20px;
+    max-width: 90%;
+    display: inline-block;
+    width: 335px;
+    height: 192px;
+    font-size: 17px;
+    line-height: 1.41;
+  }
+  .img1-heading1 {
+    display: inline-block;
+    width: 175px;
+    height: 25px;
+    font-size: 18.4px;
+    font-weight: 600;
+  }
+  .img1-txt {
+    display: inline-block;
+    width: 314px;
+    height: 84px;
+    font-size: 15px;
+  }
+  .img1-wrapper {
+    width: 330px;
+
+    border-radius: 13px;
+  }
+  .textboxes-wrapper {
+    margin-top: 20px;
+  }
+  .read-more-button {
+    width: 327px;
+    height: 64px;
+  }
+  .sec-2 {
+    margin-top: 150px;
+  }
+  .sec-2-left {
+    text-align: center;
+  }
+  .sec-2-left-heading {
+    height: 32px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+  }
+  .sec-2-left-text1 {
+    font-size: 20px;
+    line-height: 1.25;
+    text-align: center;
+    color: #ffffff;
+    display: inline-block;
+  }
+  .sec-2-left-hr {
+    border: 2px solid #fb6e00;
+    width: 111px;
+    height: 2px;
+    margin: 12px 0 26px;
+    display: inline-block;
+  }
+  .sec-2-btn {
+    text-align: center;
+  }
+  .sec-2-right {
+    text-align: center;
+    margin-left: 0px;
+  }
+  .sec-2-right-l-wrapper-first {
+    margin: 35px 0px;
+  }
+  .sec-2-right-l-wrapper-second {
+    margin-top: 0px;
+  }
+  .sec-2-right-l-wrapper-third {
+    margin-top: 35px;
+  }
+  .sec-2-left-text2 {
+    height: 50px;
+    font-size: 20px;
+    line-height: 1.25;
+    display: inline-block;
+    width: 294px;
+  }
+  .sec-2-right-text1 {
+    display: none;
+  }
+  .text-grey {
+    max-width: 90%;
+    display: inline-block;
+    width: 335px;
+    height: 135px;
+    font-size: 17px;
+  }
+  .player-motivate-text1 {
+    width: 278px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 18px;
+  }
+  .text-grey-power {
+    width: 335px;
+    height: 106px;
+    font-size: 17px;
+  }
+  .significant-text {
+    width: 318px;
+    height: 128px;
+    font-size: 24px;
+    margin-top: 150px;
+  }
+  .text-white-significant1 {
+    font-size: 17px;
+    width: 335px;
+    height: 145px;
+    padding: 30px 0px;
+  }
+  .text-white-significant2 {
+    font-size: 17px;
+    width: 335px;
+    height: 145px;
+    padding: 0px 0px 30px 0px;
+  }
+  .img1 {
+    display: none;
+  }
+  .img2 {
+    width: 375px;
+    height: 284px;
+    display: inline-block;
+    text-align: center;
+  }
+  .player-motivate-solo-wrapper {
+    margin: 25px 0px;
+    padding: 0px;
+  }
+  .player-experience-solo-wrapper {
+    padding: 50px;
+  }
+  .headings-text-try {
+    display: none;
+  }
+  .shield-text-wrapper {
+    padding: 0px;
+    margin: 25px 0px;
+  }
+  .player-experience-div {
+    display: none;
+  }
+  .contest-solo-content{
+    height: 265px;
+    width: inherit;
+    background-size: cover;
+   
+    
+  }
+  .contest-wrapper{
+    margin-top: 150px;
+  }
+  .contest-wrapper-heading1{
+    font-size: 42px;
+    line-height: 1.5;
+  }
+  .contest-wrapper-heading2{
+    font-size: 21.7px;
+  }
+  .contest-wrapper-text{
+    font-size: 12.6px;
+    margin-bottom: 13px;
+  }
+  .contest-wrapper-button{
+    width: 239px;
+  height: 35px;
+  line-height: 35px;
+  }
+  .contest-wrapper-btn-text{
+    line-height: 35px;
+    font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  }
+  .text-heading-wrapper {
+    margin-top: 120px;
+  }
+  .contest-solo-wrapper{
+    height: 290px;
   }
 }

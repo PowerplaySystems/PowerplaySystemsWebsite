@@ -59,14 +59,22 @@ class Header extends Component {
             </div>
             <div className="col-xs-4 pull-rights" id="burger">
               <div className="_burger">
-                <button type="button" class="navbar-toggle ham-burger " data-toggle="collapse" data-target="#myNavbar">
-                 
-                </button>
+                <button
+                  type="button"
+                  class="navbar-toggle ham-burger "
+                  data-toggle="collapse"
+                  data-target="#myNavbar"
+                ></button>
               </div>
             </div>
             <div className="col-md-10  main_navigation pull-right">
               <div className="nav-bar " id="myNavbar">
                 <ul className="nav navbar-nav">
+                  <li className="c-p">
+                    <a onClick={() => this.props.history.push("/live-sports")}>
+                      Powerplay Live Sports
+                    </a>
+                  </li>
                   <li className="c-p">
                     <a
                       onClick={() =>
@@ -77,12 +85,7 @@ class Header extends Component {
                     </a>
                   </li>
                   <li className="c-p">
-                    <a onClick={() => this.props.history.push("/live-sports")}>
-                      Powerplay Live Sports
-                    </a>
-                  </li>
-                  <li className="c-p">
-                    <a  onClick={() => this.props.history.push("/partner")}>
+                    <a onClick={() => this.props.history.push("/partner")}>
                       Partner With Us
                     </a>
                   </li>
@@ -150,15 +153,22 @@ class Header extends Component {
             </div>
             <div className="col-xs-4 pull-rights" id="burger">
               <div className="_burger">
-                <button type="button"class="navbar-toggle  ham-burger" data-toggle="collapse" data-target="#myNavbar">
-                 
-                 
-                </button>
+                <button
+                  type="button"
+                  class="navbar-toggle  ham-burger"
+                  data-toggle="collapse"
+                  data-target="#myNavbar"
+                ></button>
               </div>
             </div>
             <div className="col-md-10  main_navigation pull-right">
               <div className="nav-bar" id="myNavbar">
                 <ul className="nav navbar-nav">
+                  <li className="c-p">
+                    <a onClick={() => this.props.history.push("/live-sports")}>
+                      Powerplay Live Sports
+                    </a>
+                  </li>
                   <li className="c-p">
                     <a
                       onClick={() =>
@@ -166,11 +176,6 @@ class Header extends Component {
                       }
                     >
                       Powerplay Lotto
-                    </a>
-                  </li>
-                  <li className="c-p">
-                    <a onClick={() => this.props.history.push("/live-sports")}>
-                      Powerplay Live Sports
                     </a>
                   </li>
 
@@ -193,7 +198,7 @@ class Header extends Component {
                       Sign In
                     </a>
                   </li>
-                  <li className="c-p">
+                  <li className="c-p btn-singup">
                     <a
                       className="header_li_button_start"
                       onClick={() => this.props.history.push("/register")}

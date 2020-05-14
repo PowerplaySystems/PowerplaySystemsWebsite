@@ -18,7 +18,7 @@ import PowerplayStore from "./components/PowerplayStore";
 import GameCentral from "./components/GameCentral";
 import SponsorGames from "./components/SponsorGames";
 import CTA from "./components/SelectTeams/cta";
-import PowerplayLotto from "./components/LottoLanding";
+
 import Zones from "./components/SelectTeams/zones";
 import Powerplay from "./components/SelectTeams/powerplay";
 import Pickfive from "./components/SelectTeams/pickfive";
@@ -34,15 +34,22 @@ import Sweet16Draw from "./components/Sweet16Draw";
 import Elite8 from "./components/Elite8";
 import Elite8Draw from "./components/Elite8Draw";
 import LotteryPlatform from "./components/LotteryPlatform";
-import LiveSports from "./components/LiveSports";
+
 import LottoResult from "./components/LottoResult";
 import Elite8Promo from "./components/Elite8Promo";
+//sports landing
+import LiveSports from "./components/LiveSports";
+import LiveSportsMore from "./components/LiveSports/ReadMore";
+//lotto landing
+import PowerplayLotto from "./components/LottoLanding";
+import PowerplayLottoMore from "./components/LottoLanding/ReadMore";
 //fantasy
 import FantasySelectPlayers from "./components/Fantasy/SelectPlayer";
 import FantasyLive from "./components/Fantasy/Live";
 //draft day
 import DraftDayLanding from "./components/DrafDay/Landing";
 import DraftDaySelect from "./components/DrafDay/Selection";
+import DraftDayLive from "./components/DrafDay/Live";
 
 import "./App.css";
 
@@ -66,6 +73,12 @@ class App extends Component {
             />
             <Route exact path="/faq" component={FAQ} />
             <Route exact path="/powerplay-lotto" component={PowerplayLotto} />
+            <Route
+              exact
+              path="/powerplay-lotto-more"
+              component={PowerplayLottoMore}
+            />
+
             <Route exact path="/trust-and-safety" component={TrustAndSafety} />
             <Route exact path="/account-security" component={AccountSecurity} />
             <Route exact path="/login" component={Login} />
@@ -89,6 +102,7 @@ class App extends Component {
             <Route path="/my-account" component={MyAccount} />
             <Route path="/sport-platform" component={LotteryPlatform} />
             <Route path="/live-sports" component={LiveSports} />
+            <Route path="/live-sports-more" component={LiveSportsMore} />
             <Route path="/partner" component={PartnerWithUs} />
             <Route path="/lotto-result" component={LottoResult} />
             <Route exact path="/elite8-promo" component={Elite8Promo} />
@@ -96,6 +110,7 @@ class App extends Component {
             <Route path="/fantasy-live" component={FantasyLive} />
             <Route path="/draft-day" component={DraftDayLanding} />
             <Route path="/draft-day-teams" component={DraftDaySelect} />
+            <Route path="/draft-day-live" component={DraftDayLive} />
           </div>
         </Router>
       </Provider>
