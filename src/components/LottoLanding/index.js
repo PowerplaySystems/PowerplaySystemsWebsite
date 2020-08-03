@@ -60,7 +60,7 @@ class PowerplayLotto extends Component {
           {text}
         </button>
       );
-    } else {
+    } else if (action == "partner") {
       return (
         <button
           onClick={() => this.props.history.push("/elite8")}
@@ -69,6 +69,8 @@ class PowerplayLotto extends Component {
           {text}
         </button>
       );
+    } else {
+      return <button className="lotto-landing-button">{text}</button>;
     }
   }
   componentButtonTransparent(text) {
@@ -143,14 +145,10 @@ class PowerplayLotto extends Component {
     }
   }
   componentDidMount() {
-    document.getElementsByTagName("META")[2].content =
-      "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
     window.scrollTo(0, 0);
     this.getLotteryGames();
   }
-  componentWillUnmount() {
-    document.getElementsByTagName("META")[2].content = "width=1400";
-  }
+  componentWillUnmount() {}
   onPickNumbersClicked(path, game) {
     let action = "pick";
     if (path == "/747") {
@@ -235,7 +233,9 @@ class PowerplayLotto extends Component {
           <Header />
           <div className="lotto-landing-container">
             <div className="lotto-landing-heading1">
-              Our Lottery Games Defy Reality.
+              Our Lottery Games
+              <div className="desktop-break" /> Defy Reality.
+              <span class="heading-subtext">TM</span>
             </div>
             <div className="lotto-landing-heading">
               Powerplay Systems offers a Full-Service Interactive Lottery
@@ -277,13 +277,11 @@ class PowerplayLotto extends Component {
                 <div className="lotto-landing-ingagement-box1">
                   <div className="lotto-landing-text5">Eyes on-screen</div>
                   <div className="lotto-landing-text7">
-                    we are ultimately focused on interactive sessions, which
+                    We are ultimately focused on interactive sessions, which
                     means ‘eyes on-screen’ during our events. Our interactive
-                    lottery platform is designed to keep player engagement high,
-                    therefore,
-                    <span>
-                      increasing the number of players in every event.
-                    </span>
+                    lottery platform is designed to keep player engagement high
+                    and as a result we get 
+                    <span> a great number of repeat visitors.</span>
                   </div>
                 </div>
                 <div className="lotto-landing-ingagement-box1">
@@ -388,10 +386,8 @@ class PowerplayLotto extends Component {
               <div className="lotto-landing-text13">
                 Elite 8 Promotional Contest
               </div>
-              <div className="lotto-landing-text13a">
-                Starts on Feb 23rd, 2020 @ 9:00PM EST
-              </div>
-              {this.componentButton("Enter Now", "enter")}
+              <div className="lotto-landing-text13a">Starts Fall 2020</div>
+              {this.componentButton("Coming Soon", "")}
             </div>
             <div className="lotto-landing-text14">Player Experience</div>
             <div className="lotto-landing-text15">
@@ -574,7 +570,7 @@ class PowerplayLotto extends Component {
             </div>
             <br />
             <div className="lotto-landing-text23">
-              <span>Do you want to tap into the mobile generation?</span>{" "}
+              <span>Do you want to tap into the mobile generation?</span> <br />
               Partner with us and start your customized experience that is
               perfectly tailored to meet your needs.
             </div>

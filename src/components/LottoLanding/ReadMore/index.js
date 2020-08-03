@@ -37,7 +37,7 @@ class PowerplayLottoMore extends Component {
                 <br />
                 <br />
                 Our platform is built to offer a fantastic set of gameplay
-                options. At powerplay systems, we provide a platform where you
+                options. At PowerPlay Systems, we provide a platform where you
                 can run promotional, charity, state-run, or casino-based
                 lotteries/raffles.
                 <br />
@@ -67,7 +67,7 @@ class PowerplayLottoMore extends Component {
                 performing tasks that increase engagement with your business!
                 <br />
                 <br />
-                At Powerplay Systems, we are ultimately focused on interactive
+                At PowerPlay Systems, we are ultimately focused on interactive
                 sessions, which means ‘eyes on-screen’ during our events. Our
                 interactive lottery platform is designed to keep player
                 engagement high, therefore, increasing the number of players in

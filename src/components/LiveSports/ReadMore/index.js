@@ -20,7 +20,7 @@ class LiveSportsMore extends Component {
         <div className="ls-rm">
           <div className="ls-rm-content-wrapper">
             <div className="ls-rm-header">
-              Powerplay <span className="ls-rm-text-Hide"> Systems </span>Live
+              PowerPlay <span className="ls-rm-text-Hide"> Systems </span>Live
               Sports
             </div>
             <div className="ls-rm-engage-wrapper">
@@ -41,7 +41,7 @@ class LiveSportsMore extends Component {
                 North American Sports leagues - NHL/NFL/NBA/MLB.
                 <br />
                 <br />
-                Powerplay live sports offers you unique and engaging
+                PowerPlay Live Sports offers you unique and engaging
                 sports-based experiences with an interactive twist. Our platform
                 can be utilized for promotional contests that are fully
                 customized and integrated with your existing website. You can
@@ -65,7 +65,7 @@ class LiveSportsMore extends Component {
                 </div>
                 <br />
                 Our platform allows players to utilize Powerplays to boost their
-                point total live during the game. With powerplays, participants
+                point total live during the game. With Powerplays, participants
                 can access many exciting and interactive actions during the live
                 game. If a player runs out of Powerplays, we can motivate them
                 to earn more by completing a marketing focused task that is

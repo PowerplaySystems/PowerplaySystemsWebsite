@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
+import Notify from "./../Home/Notify";
 import DrawTimer from "./../common/DrawTimer";
 import "./index.css";
 import $ from "jquery";
@@ -49,22 +50,7 @@ let row3bg = {
 
 class SelectGames extends Component {
   componentDidMount() {
-   
     window.scrollTo(0, 0);
-    $("#slider").slick({
-      dots: true,
-      centerMode: true,
-      slidesToShow: 1,
-      variableWidth: true,
-      initialSlide: 1,
-    
-      swipe: true,
-      infinite: true,
-      dotsClass: "slider-dots",
-      prevArrow: $(".corousal-arrow-left"),
-      nextArrow: $(".corousal-arrow-right"),
-      // appendDots: $('.slider-dots')
-    });
   }
   goToSelectGames(sport, leagues, gametype) {
     console.log("Hi");
@@ -87,7 +73,7 @@ class SelectGames extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      activeTab: 0,
+      sportsActive: "nfl",
     };
 
     //alerts
@@ -102,9 +88,74 @@ class SelectGames extends Component {
     //   explore.scrollIntoView({ block: "start", behavior: "smooth" });
     // }
   }
+  componentDidMount() {
+    if (document.getElementById("slider")) {
+      window.scrollTo(0, 0);
+      $("#slider").not('.slick-initialized').slick({
+        dots: true,
+        centerMode: true,
+        slidesToShow: 1,
+        variableWidth: true,
+        initialSlide: 1,
+        swipe: true,
+        infinite: false,
+        dotsClass: "slider-dots",
+        prevArrow: $(".corousal-arrow-left"),
+        nextArrow: $(".corousal-arrow-right"),
+        // appendDots: $('.slider-dots')
+      });
+    }
+  }
+  componentWillUnmount() {}
+  componentDidUpdate() {
+    if (document.getElementById("slider")) {
+      $("#slider").not('.slick-initialized').slick({
+        dots: true,
+        centerMode: true,
+        slidesToShow: 1,
+        variableWidth: true,
+        initialSlide: 1,
+        swipe: true,
+        infinite: false,
+        dotsClass: "slider-dots",
+        prevArrow: $(".corousal-arrow-left"),
+        nextArrow: $(".corousal-arrow-right"),
+        // appendDots: $('.slider-dots')
+      });
+    }
+  }
+  componentWillUpdate() {
+    if (typeof Node === "function" && Node.prototype) {
+      const originalRemoveChild = Node.prototype.removeChild;
+      Node.prototype.removeChild = function(child) {
+        if (child.parentNode !== this) {
+          if (console) {
+            console.error(
+              "Cannot remove a child from a different parent",
+              child,
+              this
+            );
+          }
+          return child;
+        }
+        return originalRemoveChild.apply(this, arguments);
+      };
 
-  componentWillUnmount() {
-    // document.getElementsByTagName("META")[2].content = "width=1400";
+      const originalInsertBefore = Node.prototype.insertBefore;
+      Node.prototype.insertBefore = function(newNode, referenceNode) {
+        if (referenceNode && referenceNode.parentNode !== this) {
+          if (console) {
+            console.error(
+              "Cannot insert before a reference node from a different parent",
+              referenceNode,
+              this
+            );
+          }
+          return newNode;
+        }
+        return originalInsertBefore.apply(this, arguments);
+      };
+    }
   }
   ////////////////////////////
   //PAGE COMPONENTS
@@ -142,6 +193,234 @@ class SelectGames extends Component {
       </div>
     );
   }
+  componentSportsTab() {
+    if (this.state.sportsActive == "nfl") {
+      return (
+        <div>
+          <div className={"slider-wrapper"} id="slider">
+            <div class="corousal-img-wrapper">
+              <div class="corousal-img img-1">
+                <div className="corousal-content-wrapper">
+                  <div className="corousal-content-text3">
+                    TDN NFL Fantasy Football
+                  </div>
+                  <div className="corousal-content-text2">Comming Soon</div>
+                  <div className="corousal-content-text4">Sept 2020</div>
+                  <div className="corousal-content-text5">
+                    Prizes will be announced soon!
+                  </div>
+                </div>
+              </div>
+              <Notify
+              buttonClass={"corousal-button-active"}
+              property={"TDN Fantasy"}
+            />
+              {/* <button className="corousal-button-active">Notify Me</button> */}
+            </div>
+            <div class="corousal-img-wrapper">
+              <div class="corousal-img img-2">
+                <div className="corousal-content-wrapper">
+                  <div className="corousal-content-text6">
+                    WIN <span>$2000</span>
+                    <div className="corousal-content-text6a">USD</div>
+                  </div>
+                  <div className="corousal-content-text7">NFL PowerLine</div>
+                  <div className="corousal-content-text8">Coming Fall 2020</div>
+                  <div className="corousal-content-text9">
+                    Progressive Powerplay Contest
+                  </div>
+                  <div className="corousal-content-text10">
+                    Each week a Powerplay will be added until we have a winner!
+                  </div>
+                </div>
+              </div>
+              <Notify
+              buttonClass={"corousal-button-active"}
+              property={"PowerLine"}
+            />
+              {/* <button className="corousal-button-active">Notify Me</button> */}
+            </div>
+            <div class="corousal-img-wrapper">
+              <div class="corousal-img img-3">
+                <div className="corousal-content-wrapper">
+                  <div className="corousal-content-img-wrapper">
+                    <div className="corousal-content-img" />
+                  </div>
+                  <div className="corousal-content-text1">
+                    WIN <span>$25k</span>
+                    <div className="corousal-content-text1a">USD</div>
+                  </div>
+                  <div className="corousal-content-text2">
+                    TDN 2020 Mock Draft Contest
+                  </div>
+                </div>
+              </div>
+              <button className="corousal-button-incative">
+                Contest Complete
+              </button>
+            </div>
+            <div class="corousal-img-wrapper">
+              <div class="corousal-img img-4">
+                <div className="corousal-content-wrapper">
+                  <div className="corousal-content-text11">
+                    Integrate one of our NFL Games into your site and watch your
+                    site visits <span>soar!</span>
+                  </div>
+                  <div className="corousal-content-text12">Games available</div>
+                  <div className="corousal-content-text13">
+                    NFL Fantasy, PowerLine, Chase the Ace, Zones, High 5, and
+                    Power Draft
+                  </div>
+                </div>
+              </div>
+              <button
+                className="corousal-button-active"
+                onClick={() => this.props.history.push("/partner")}
+              >
+                Partner With Us
+              </button>
+            </div>
+          </div>
+          <div className="corousal-arrows">
+            <div className="corousal-arrow-left" />
+            <div className="corousal-arrow-right" />
+          </div>
+        </div>
+      );
+    } else if (this.state.sportsActive == "nhl") {
+      return (
+        <div className="home-sports-tab-wrapper">
+          <div className="home-sports-tab-header">
+            Get your game up and running for the 2020 season.
+          </div>
+          <div className="home-sports-tab  h-sports-tab-nhl">
+            <div className="home-sports-tab-text">
+              <div className="home-sports-tab-text1">
+                Integrate one of our NHL Games into your site and watch your
+                site visits soar!
+              </div>
+              <div className="home-sports-tab-text2">Games available</div>
+              <div className="home-sports-tab-text3">
+                Fantasy, PowerLine, Chase the Ace, Power Draft.
+              </div>
+            </div>
+            <button
+              className="home-sports-tab-button"
+              onClick={() => this.props.history.push("/partner")}
+            >
+              Partner With us
+            </button>
+          </div>
+        </div>
+      );
+    } else if (this.state.sportsActive == "mlb") {
+      return (
+        <div className="home-sports-tab-wrapper">
+          <div className="home-sports-tab-header">
+            Get your game up and running for the 2020 season.
+          </div>
+          <div className="home-sports-tab   h-sports-tab-mlb">
+            <div className="home-sports-tab-text">
+              <div className="home-sports-tab-text1">
+                Integrate one of our MLB Games into your site and watch your
+                traffic <span>soar!</span>
+              </div>
+              <div className="home-sports-tab-text2">Games available</div>
+              <div className="home-sports-tab-text3">
+                MLB Fantasy, PowerLine, Chase the Ace, Zones, Pick 5, and Power
+                Draft
+              </div>
+            </div>
+            <button
+              className="home-sports-tab-button"
+              onClick={() => this.props.history.push("/partner")}
+            >
+              Partner With us
+            </button>
+          </div>
+        </div>
+      );
+    } else if (this.state.sportsActive == "nba") {
+      return (
+        <div className="home-sports-tab-wrapper">
+          <div className="home-sports-tab-header">
+            Get your game up and running for the 2020 season.
+          </div>
+          <div className="home-sports-tab  h-sports-tab-nba">
+            <div className="home-sports-tab-text">
+              <div className="home-sports-tab-text1">
+                Integrate one of our NBA Games into your site and watch your
+                traffic <span>soar!</span>
+              </div>
+              <div className="home-sports-tab-text2">Games available</div>
+              <div className="home-sports-tab-text3">
+                NBA Fantasy, PowerLine, Chase the Ace, High 5, Zones, and Power
+                Draft.
+              </div>
+            </div>
+            <button
+              className="home-sports-tab-button"
+              onClick={() => this.props.history.push("/partner")}
+            >
+              Partner With us
+            </button>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  componentSportsButtons() {
+    return (
+      <div className="tryone-buttons-wrapper">
+        <button
+          className={
+            "tryone-button" +
+            (this.state.sportsActive == "nfl" ? " tryone-active " : "")
+          }
+          onClick={() =>
+            this.state.sportsActive != "nfl"
+              ? this.setState({ sportsActive: "nfl" })
+              : ""
+          }
+        >
+          <div className="tryone-img t-m3" />
+          <span className="tryone-button-text">NFL</span>
+        </button>
+        <button
+          className={
+            "tryone-button" +
+            (this.state.sportsActive == "nba" ? " tryone-active " : "")
+          }
+          onClick={() => this.setState({ sportsActive: "nba" })}
+        >
+          <div className="tryone-img t-m2" />
+          <span className="tryone-button-text">NBA</span>
+        </button>
+        <button
+          className={
+            "tryone-button" +
+            (this.state.sportsActive == "mlb" ? " tryone-active " : "")
+          }
+          onClick={() => this.setState({ sportsActive: "mlb" })}
+        >
+          <div className="tryone-img t-m1" />
+          <span className="tryone-button-text">MLB</span>
+        </button>
+
+        <button
+          className={
+            "tryone-button" +
+            (this.state.sportsActive == "nhl" ? " tryone-active " : "")
+          }
+          onClick={() => this.setState({ sportsActive: "nhl" })}
+        >
+          <div className="tryone-img t-m4" />
+          <span className="tryone-button-text">NHL</span>
+        </button>
+      </div>
+    );
+  }
   ////////////////////////////
   //PAGE COMPONENTS END
   ////////////////////////////
@@ -154,6 +433,7 @@ class SelectGames extends Component {
           <div className="live-sports">
             Our Live Sports Games <br />
             Defy Reality.
+            <span class="heading-subtext">TM</span>
           </div>
           <br />
           <div className="interactive-live">
@@ -268,7 +548,7 @@ class SelectGames extends Component {
             </div>
             <div className="sec-2-right">
               <div className="sec-2-right-text1">
-                Powerplay live sports offers you unique and engaging
+                Powerplay Live Sports offers you unique and engaging
                 sports-based experiences with an interactive twist.
               </div>
               <div className="sec-2-right-l">
@@ -320,67 +600,9 @@ class SelectGames extends Component {
           <div className="headings-text-try">
             Try one of our promotional contests
           </div>
-        
-          <div id="slider">
-            <div class="corousal-img-wrapper">
-              <div className="contest-solo-wrapper">
-                <div className="contest-solo-content fff">
-                  <div className="text-heading-wrapper">
-                    <div className="contest-wrapper-heading1">
-                      WIN <span className="text-span"> $25k </span>
-                    </div>
-                    <div className="contest-wrapper-heading2">
-                      Chase The Ace
-                    </div>
-                    <div className="contest-wrapper-text">
-                      April 23rd, 2020 @ 8:00PM EST
-                    </div>
-                    {this.componentEnterButton()}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="corousal-img-wrapper">
-              <div className="contest-solo-wrapper">
-                <div className="contest-solo-content ccc">
-                  <div className="text-heading-wrapper">
-                    <div className="contest-wrapper-heading1">
-                      WIN <span className="text-span"> $25k </span>
-                    </div>
-                    <div className="contest-wrapper-heading2">
-                      2020 NFL Power Draft
-                    </div>
-                    <div className="contest-wrapper-text">
-                      April 23rd, 2020 @ 8:00PM EST
-                    </div>
-                    {this.componentEnterButton()}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="corousal-img-wrapper">
-              <div className="contest-solo-wrapper">
-                <div className="contest-solo-content fff">
-                  <div className="text-heading-wrapper">
-                    <div className="contest-wrapper-heading1">
-                      WIN <span className="text-span"> $25k </span>
-                    </div>
-                    <div className="contest-wrapper-heading2">
-                      Chase The Ace
-                    </div>
-                    <div className="contest-wrapper-text">
-                      April 23rd, 2020 @ 8:00PM EST
-                    </div>
-                    {this.componentEnterButton()}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="corousal-arrows">
-            <div className="corousal-arrow-left" />
-            <div className="corousal-arrow-right" />
-          </div>
+          {this.componentSportsButtons()}
+          <div className={"outer-div-slider"}>{this.componentSportsTab()}</div>
+
           <div className="headings-text">
             Motivate players to complete a marketing focused task
           </div>
@@ -392,6 +614,14 @@ class SelectGames extends Component {
           <div className="player-motivate-wrapper">
             <div className="player-motivate-solo-wrapper">
               <div className="player-motivate-img">
+                <img src={require("../../assets/images/live_sports/www.png")} />
+              </div>
+              <div className="player-motivate-text23">
+                Visit your website or any other media platform.
+              </div>
+            </div>
+            <div className="player-motivate-solo-wrapper">
+              <div className="player-motivate-img">
                 <img
                   src={require("../../assets/images/live_sports/social-media.png")}
                 />
@@ -399,14 +629,6 @@ class SelectGames extends Component {
               <div className="player-motivate-text1">
                 Visit your social media pages &amp; engage with your social
                 media activities.
-              </div>
-            </div>
-            <div className="player-motivate-solo-wrapper">
-              <div className="player-motivate-img">
-                <img src={require("../../assets/images/live_sports/www.png")} />
-              </div>
-              <div className="player-motivate-text23">
-                Visit your website or any other media platform.
               </div>
             </div>
             <div className="player-motivate-solo-wrapper">
@@ -533,8 +755,7 @@ class SelectGames extends Component {
               </div>
               <div className="card-heading">11 to 1 / 1 to 11</div>
               <div className="card-text">
-                Make an 11 = 1 (good for chase the ace) or make a 1 into an 11
-                (good for high 50)
+                Magically swap score values for added excitement.
               </div>
             </div>
           </div>
@@ -592,6 +813,7 @@ class SelectGames extends Component {
               {" "}
               Do you want to tap into the mobile generation?{" "}
             </span>{" "}
+            <br />
             Partner with us and start your customized experience that is
             perfectly tailored to meet your needs.
           </div>

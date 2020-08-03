@@ -6,18 +6,18 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        <div className="footer-contaier">
+        {/* <div className="footer-contaier">
           <div>
             <div className="footer-left">
               <div className="box">
                 <h2>Legal / Privacy</h2>
 
-                {/* <a
+                <a
                     className="c-p"
                     onClick={() => this.props.history.push("/terms-of-use")}
                   >
                     Term Of Use
-                  </a> */}
+                  </a>
                 <a
                   className="c-p"
                   onClick={() => this.props.history.push("/privacy")}
@@ -64,7 +64,7 @@ class Footer extends Component {
               </div>
             </footer>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

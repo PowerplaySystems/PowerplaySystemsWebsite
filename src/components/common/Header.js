@@ -179,11 +179,11 @@ class Header extends Component {
                     </a>
                   </li>
 
-                  <li className="c-p">
+                  {/* <li className="c-p">
                     <a onClick={() => this.props.history.push("/partner")}>
                       Partner With Us
                     </a>
-                  </li>
+                  </li> */}
                   <li className="c-p">
                     <a
                       className="c-p"
@@ -191,19 +191,19 @@ class Header extends Component {
                     >
                       About Us
                     </a>
-                    <a
+                    {/* <a
                       className="header_li_signin"
                       onClick={() => this.props.history.push("/login")}
                     >
                       Sign In
-                    </a>
+                    </a> */}
                   </li>
                   <li className="c-p btn-singup">
                     <a
                       className="header_li_button_start"
-                      onClick={() => this.props.history.push("/register")}
+                      onClick={() => this.props.history.push("/partner")}
                     >
-                      Get Started
+                      Partner With Us
                     </a>
                   </li>
                 </ul>
