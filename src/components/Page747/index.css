@@ -37,7 +37,6 @@
 }
 .main_bar_button {
   width: 100%;
-  margin-top: -45px;
 }
 .main_bar_button > button {
   margin-top: -24px;
@@ -334,6 +333,7 @@
   letter-spacing: -0.3px;
   text-align: center;
   color: #ffffff;
+  margin-top: 100px;
 }
 .page747_number_rules {
   margin: 20px auto 30px auto;
@@ -530,7 +530,7 @@
 .page747_main_power {
   width: 1166px;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 60px auto;
 }
 .pick_numbers_mobile_box {
   display: none;

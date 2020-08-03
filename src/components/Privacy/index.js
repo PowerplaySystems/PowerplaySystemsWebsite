@@ -22,7 +22,7 @@ class ResponsibleGaming extends Component {
         result => {
           result = result.records;
           this.setState({
-            content: result[0].content
+            content: result[1].content
           });
         },
         error => {

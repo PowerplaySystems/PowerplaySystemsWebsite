@@ -33,9 +33,14 @@ export const SPORTS_POWERPLAY_11_TO_1 = 13;
 export const SPORTS_POWERPLAY_SWAP = 24;
 export const SPORTS_POWERPLAY_LOCK = 1;
 
+export const DRAFT_POWERPLAY_UP = 1;
+export const DRAFT_POWERPLAY_DOWN = 2;
+export const DRAFT_POWERPLAY_SWAP = 3;
+export const DRAFT_POWERPLAY_UNDO = 4;
+
 export const ENK = 1122334455;
 export const URL_WEBSITE = "powerplaysystems.com";
-export const URL = "35.231.47.215";
+export const URL = "test.powerplaysystems.com";
 
 export var DEMO_PICKS = [];
 export var DEMO_DRAW = [];
@@ -63,4 +68,3 @@ export var DEMO_GAME_DATA = {
   deadline: "2019-12-30 12:59:00",
   entry: 109
 };
-

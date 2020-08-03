@@ -2,465 +2,970 @@ import React, { Component } from "react";
 import "./index.css";
 import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
+import Notify from "./Notify";
 import Footer from "./../common/Footer";
 import DrawTimer from "./../common/DrawTimer";
 // import { connect } from 'react-redux';
 import * as Constants from "./../common/constants";
 import $ from "jquery";
 import "slick-carousel";
-var bgFirst = require("./../../assets/images/home/first.jpg");
-var bgSecond = require("./../../assets/images/home/second.jpg");
-var bgThird = require("./../../assets/images/home/third.jpg");
-var bgFourth = require("./../../assets/images/home/fourth.jpg");
-let firstRowStyle = {
-  backgroundImage: "url(" + bgFirst + ")",
-  backgroundSize: "cover",
-  overflow: "hidden",
-  width: "100%",
-  height: "805px"
-};
-let secondRows = {
-  backgroundImage: "url(" + bgSecond + ")",
-  backgroundSize: "cover",
-  overflow: "hidden",
-  width: "100%",
-  height: "550px"
-};
-
-let thirdRows = {
-  backgroundImage: "url(" + bgThird + ")",
-  backgroundSize: "cover",
-  overflow: "hidden",
-  width: "100%",
-  height: "550px"
-};
-
-let fourthRows = {
-  backgroundImage: "url(" + bgFourth + ")",
-  backgroundSize: "cover",
-  overflow: "hidden",
-  width: "100%",
-  height: "550px"
-};
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    window.scrollTo(0, 0);
+    this.state = {
+      tabActive: "sports",
+      sportsActive: "nfl",
+    };
+  }
+
+  ///////////////////////////////////
+  ////// FUNCTIONAL COMPONENT //////
+  //////////////////////////////////
+
+  componentDraftDayBox() {
+    return (
+      <>
+        <div className="home-draft-day-box">
+          <div className="home-draft-day-box-left">
+            <div className="home-draf-day-img1" />
+          </div>
+          <div className="home-draft-day-box-right">
+            <div className="home-draf-day-text1">WIN $25k</div>
+            <div className="home-draf-day-text2">USD</div>
+
+            <div className="home-draf-day-text3">2020 NFL Power Draft</div>
+
+            <div className="home-draf-day-text4">
+              April 23rd, 2020 @ 8:00PM EST
+            </div>
+
+            <div
+              className="home-draf-day-btn1"
+              onClick={() => this.props.history.push("/draft-day")}
+            >
+              Enter Now!
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+  componentSportsTab() {
+    if (this.state.tabActive == "sports") {
+      if (this.state.sportsActive == "nfl") {
+        return (
+          <div>
+            <div className={"slider-wrapper"} id="slider">
+              <div class="corousal-img-wrapper">
+                <div class="corousal-img img-1">
+                  <div className="corousal-content-wrapper">
+                    <div className="corousal-content-text3">
+                      TDN NFL Fantasy Football
+                    </div>
+                    <div className="corousal-content-text2">Comming Soon</div>
+                    <div className="corousal-content-text4">Sept 2020</div>
+                    <div className="corousal-content-text5">
+                      Prizes will be announced soon!
+                    </div>
+                  </div>
+                </div>
+                <Notify
+                  buttonClass={"corousal-button-active"}
+                  property={"TDN Fantasy"}
+                />
+                {/* <button className="corousal-button-active">Notify Me</button> */}
+              </div>
+              <div class="corousal-img-wrapper">
+                <div class="corousal-img img-2">
+                  <div className="corousal-content-wrapper">
+                    <div className="corousal-content-text6">
+                      WIN <span>$2000</span>
+                      <div className="corousal-content-text6a">USD</div>
+                    </div>
+                    <div className="corousal-content-text7">NFL PowerLine</div>
+                    <div className="corousal-content-text8">
+                      Coming Fall 2020
+                    </div>
+                    <div className="corousal-content-text9">
+                      Progressive Powerplay Contest
+                    </div>
+                    <div className="corousal-content-text10">
+                      Each week a Powerplay will be added until we have a
+                      winner!
+                    </div>
+                  </div>
+                </div>
+                <Notify
+                  buttonClass={"corousal-button-active"}
+                  property={"Powerline"}
+                />
+                {/* <button className="corousal-button-active">Notify Me</button> */}
+              </div>
+              <div class="corousal-img-wrapper">
+                <div class="corousal-img img-3">
+                  <div className="corousal-content-wrapper">
+                    <div className="corousal-content-img-wrapper">
+                      <div className="corousal-content-img" />
+                    </div>
+                    <div className="corousal-content-text1">
+                      WIN <span>$25k</span>
+                      <div className="corousal-content-text1a">USD</div>
+                    </div>
+                    <div className="corousal-content-text2">
+                      TDN 2020 Mock Draft Contest
+                    </div>
+                  </div>
+                </div>
+                <button className="corousal-button-incative">
+                  Contest Complete
+                </button>
+              </div>
+              <div class="corousal-img-wrapper">
+                <div class="corousal-img img-4">
+                  <div className="corousal-content-wrapper">
+                    <div className="corousal-content-text11">
+                      Integrate one of our NFL Games into your site and watch
+                      your site visits <span>soar!</span>
+                    </div>
+                    <div className="corousal-content-text12">
+                      Games available
+                    </div>
+                    <div className="corousal-content-text13">
+                      NFL Fantasy, PowerLine, Chase the Ace, Zones, High 5, and
+                      Power Draft
+                    </div>
+                  </div>
+                </div>
+                <button
+                  className="corousal-button-active"
+                  onClick={() => this.props.history.push("/partner")}
+                >
+                  Partner With Us
+                </button>
+              </div>
+            </div>
+            <div className="corousal-arrows">
+              <div className="corousal-arrow-left" />
+              <div className="corousal-arrow-right" />
+            </div>
+          </div>
+        );
+      } else if (this.state.sportsActive == "nhl") {
+        return (
+          <div className="home-sports-tab-wrapper">
+            <div className="home-sports-tab-header">
+              Get your game up and running for the 2020 season.
+            </div>
+            <div className="home-sports-tab  h-sports-tab-nhl">
+              <div className="home-sports-tab-text">
+                <div className="home-sports-tab-text1">
+                  Integrate one of our NHL Games into your site and watch your
+                  site visits soar!
+                </div>
+                <div className="home-sports-tab-text2">Games available</div>
+                <div className="home-sports-tab-text3">
+                  Fantasy, PowerLine, Chase the Ace, Power Draft.
+                </div>
+              </div>
+              <button
+                className="home-sports-tab-button"
+                onClick={() => this.props.history.push("/partner")}
+              >
+                Partner With us
+              </button>
+            </div>
+          </div>
+        );
+      } else if (this.state.sportsActive == "mlb") {
+        return (
+          <div className="home-sports-tab-wrapper">
+            <div className="home-sports-tab-header">
+              Get your game up and running for the 2020 season.
+            </div>
+            <div className="home-sports-tab   h-sports-tab-mlb">
+              <div className="home-sports-tab-text">
+                <div className="home-sports-tab-text1">
+                  Integrate one of our MLB Games into your site and watch your
+                  traffic <span>soar!</span>
+                </div>
+                <div className="home-sports-tab-text2">Games available</div>
+                <div className="home-sports-tab-text3">
+                  MLB Fantasy, PowerLine, Chase the Ace, Zones, Pick 5, and
+                  Power Draft
+                </div>
+              </div>
+              <button
+                className="home-sports-tab-button"
+                onClick={() => this.props.history.push("/partner")}
+              >
+                Partner With us
+              </button>
+            </div>
+          </div>
+        );
+      } else if (this.state.sportsActive == "nba") {
+        return (
+          <div className="home-sports-tab-wrapper">
+            <div className="home-sports-tab-header">
+              Get your game up and running for the 2020 season.
+            </div>
+            <div className="home-sports-tab  h-sports-tab-nba">
+              <div className="home-sports-tab-text">
+                <div className="home-sports-tab-text1">
+                  Integrate one of our NBA Games into your site and watch your
+                  traffic <span>soar!</span>
+                </div>
+                <div className="home-sports-tab-text2">Games available</div>
+                <div className="home-sports-tab-text3">
+                  NBA Fantasy, PowerLine, Chase the Ace, High 5, Zones, and
+                  Power Draft.
+                </div>
+              </div>
+              <button
+                className="home-sports-tab-button"
+                onClick={() => this.props.history.push("/partner")}
+              >
+                Partner With us
+              </button>
+            </div>
+          </div>
+        );
+      }
+    }
+  }
+  componentSportsButtons() {
+    return (
+      <div className="tryone-buttons-wrapper">
+        <button
+          className={
+            "tryone-button" +
+            (this.state.sportsActive == "nfl" ? " tryone-active " : "")
+          }
+          onClick={() =>
+            this.state.sportsActive != "nfl"
+              ? this.setState({ sportsActive: "nfl" })
+              : ""
+          }
+        >
+          <div className="tryone-img t-m3" />
+          <span className="tryone-button-text">NFL</span>
+        </button>
+        <button
+          className={
+            "tryone-button" +
+            (this.state.sportsActive == "nba" ? " tryone-active " : "")
+          }
+          onClick={() => this.setState({ sportsActive: "nba" })}
+        >
+          <div className="tryone-img t-m2" />
+          <span className="tryone-button-text">NBA</span>
+        </button>
+        <button
+          className={
+            "tryone-button" +
+            (this.state.sportsActive == "mlb" ? " tryone-active " : "")
+          }
+          onClick={() => this.setState({ sportsActive: "mlb" })}
+        >
+          <div className="tryone-img t-m1" />
+          <span className="tryone-button-text">MLB</span>
+        </button>
+
+        <button
+          className={
+            "tryone-button" +
+            (this.state.sportsActive == "nhl" ? " tryone-active " : "")
+          }
+          onClick={() => this.setState({ sportsActive: "nhl" })}
+        >
+          <div className="tryone-img t-m4" />
+          <span className="tryone-button-text">NHL</span>
+        </button>
+      </div>
+    );
+  }
+  componentLottoTab() {
+    return (
+      <div>
+        <div
+          className={
+            "home-lotto-items" +
+            (this.state.tabActive == "sports" ? " home-hidden" : "")
+          }
+        >
+          <div className="home-lotto-item-wrapper hl-item1">
+            <div className="home-lotto-item-text">
+              <div className="home-lotto-item-text1">
+                Integrate one of our interactive lottery games with your charity
+                and watch your donations <span>soar!</span>
+              </div>
+              <div className="home-lotto-item-text2">Games available</div>
+              <div className="home-lotto-item-text3">
+                50/50 Power, a variety interactive Lottery ball games and
+                Powerplay Bingo
+              </div>
+              <div className="home-lotto-item-text4">#GenR8™ Technology</div>
+            </div>
+            <button
+              onClick={() => this.props.history.push("/partner")}
+              className="home-lotto-item-button"
+            >
+              Partner With Us
+            </button>
+          </div>
+          <div className="home-lotto-item-wrapper hl-item2">
+            <div className="home-lotto-item-text">
+              <div className="home-lotto-item-text5">
+                WIN <span>$2000 CAD</span>
+              </div>
+              <div className="home-lotto-item-text6">
+                Elite 8 Promotional Contest
+              </div>
+              <div className="home-lotto-item-text7">
+                A progressive Powerplay Lotto
+              </div>
+            </div>
+            <Notify
+              buttonClass={"home-lotto-item-button2"}
+              property={"Elite 8"}
+            />
+            {/* <button className="home-lotto-item-button2">Notify Me</button> */}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  ///////////////////////////////////
+  //-----------------------------////
+  //////////////////////////////////
+
+  ////////////////////////////////////
+  // CORE REACT COMPONENT FUCNTIONS //
+  ///////////////////////////////////
+
   componentDidMount() {
-    document.getElementsByTagName("META")[2].content =
-      "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
     $("._burger").click(function(e) {
       $(".nav-bar").slideToggle();
     });
-
-    $(".zone-sel").click(function(e) {
-      $(this).css("background", "#39b54a ");
-      $(this).text("Selected");
-      $(this).css("color", "#FFF");
-    });
-    $("#sports-slider").slick({
-      dots: false,
-      infinite: true,
-      speed: 1000,
-      autoplay: false,
-      autoplaySpeed: 2500,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-
-      prevArrow: $(".sports-left"),
-      nextArrow: $(".sports-right"),
-      responsive: [
-        {
-          breakpoint: 991,
-          settings: {
-            slidesToShow: 3
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1
-          }
-        }
-      ]
-    });
-
-    $("#main-slider").slick({
-      dots: false,
-      infinite: true,
-      speed: 1500,
-      autoplay: true,
-      autoplaySpeed: 5000,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-
-      prevArrow: $(".main-left"),
-      nextArrow: $(".main-right")
-    });
+    if (document.getElementById("slider")) {
+      $("#slider").not('.slick-initialized').slick({
+        dots: true,
+        centerMode: true,
+        slidesToShow: 1,
+        variableWidth: true,
+        initialSlide: 1,
+        swipe: true,
+        infinite: false,
+        dotsClass: "slider-dots",
+        prevArrow: $(".corousal-arrow-left"),
+        nextArrow: $(".corousal-arrow-right"),
+        // appendDots: $('.slider-dots')
+      });
+    }
   }
   componentWillUnmount() {}
+  componentDidUpdate() {
+    if (document.getElementById("slider")) {
+      $("#slider").not('.slick-initialized').slick({
+        dots: true,
+        centerMode: true,
+        slidesToShow: 1,
+        variableWidth: true,
+        initialSlide: 1,
+        swipe: true,
+        infinite: false,
+        dotsClass: "slider-dots",
+        prevArrow: $(".corousal-arrow-left"),
+        nextArrow: $(".corousal-arrow-right"),
+        // appendDots: $('.slider-dots')
+      });
+    }
+  }
+  componentWillUpdate() {
+    if (typeof Node === "function" && Node.prototype) {
+      const originalRemoveChild = Node.prototype.removeChild;
+      Node.prototype.removeChild = function(child) {
+        if (child.parentNode !== this) {
+          if (console) {
+            console.error(
+              "Cannot remove a child from a different parent",
+              child,
+              this
+            );
+          }
+          return child;
+        }
+        return originalRemoveChild.apply(this, arguments);
+      };
+
+      const originalInsertBefore = Node.prototype.insertBefore;
+      Node.prototype.insertBefore = function(newNode, referenceNode) {
+        if (referenceNode && referenceNode.parentNode !== this) {
+          if (console) {
+            console.error(
+              "Cannot insert before a reference node from a different parent",
+              referenceNode,
+              this
+            );
+          }
+          return newNode;
+        }
+        return originalInsertBefore.apply(this, arguments);
+      };
+    }
+  }
+  //////////////////////////////////
+  //-----------------------------//
+  //////////////////////////////////
+
   render() {
     return (
       <>
         <Header />
         <DrawTimer />
-        <div className="container-fluid">
-          <div className="container-fluid">
-            <div class="container-fluid">
-              <div className="home_first_row" style={firstRowStyle}>
-                <center>
-                  <div className="header-main">
-                    Leverage Our Revolutionary Interactive Platform to
-                    Maximize Customer Engagement*
-                  </div>
-                  <div className="first_row_details_container">
-                    <div className="home_first_row_details">
-                      <img
-                        className="main_img_icon"
-                        src={require("./../../assets/images/home/correct_icon.png")}
-                      />
-                      <div className="main_icon_text">
-                        Exceptional User Engagement
-                      </div>
-                    </div>
-                    <div className="home_first_row_details">
-                      <img
-                        className="main_img_icon"
-                        src={require("./../../assets/images/home/correct_icon.png")}
-                      />
-                      <div className="main_icon_text">
-                        Real time interactive excitement
-                      </div>
-                    </div>
-                    <div className="home_first_row_details">
-                      <img
-                        className="main_img_icon"
-                        src={require("./../../assets/images/home/correct_icon.png")}
-                      />
-                      <div className="main_icon_text">
-                        Wide Variety of Experiences
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => this.props.history.push("/partner")}
-                    className="first_row_button"
-                  >
-                    Partner With Us
-                  </button>
-                </center>
-                <div className="first_row_extra_info">
-                  *International Patents Pending
+        <div className="content-wrapper">
+          <div className="home-header">
+            <div className="header-heading">
+              Our Games Defy Reality.{" "}
+              <span className="heading-subtext">TM</span>
+            </div>
+            <br />
+            <div className="header-heading1">
+              Revolutionary new concept for
+              <br />
+              interactive live sports and lottery games.*
+            </div>
+            <div className="header-text-wrapper">
+              <div className="header-text-solo-wrapper">
+                <div className="header-text-solo-wrapper-image">
+                  <img
+                    className="header-img"
+                    src={require("../../assets/images/home/correct-copy-3.png")}
+                  />
+                </div>
+                <div className="header-text-solo-wrapper-text">
+                  Exceptional <div className="desktop-break" />
+                  User Engagement
                 </div>
               </div>
-              <div class="home_first_row" style={secondRows}>
-                <center>
-                  <div className="header_row_2">
-                    Provide Your Customers with Real Excitement !
-                  </div>
-                  <div className="detail_row_2">
-                    Utilizing our platform your customers will be fully engaged.
-                    They can utilize Powerplays to boost their point total live
-                    during a game or change selections live during a lottery
-                    draw. Now that is EXCITEMENT! <br />
-                    Available exclusively from PowerPlay Systems.
-                  </div>
-                </center>
-              </div>
-              <div class="home_first_row" style={thirdRows}>
-                <div className="home_row_3_content">
-                  <div className="header_row_3">
-                    Powerplay Live Sports Platform
-                  </div>
-                  <div className="detail_row_3">
-                    Leverage our platform to offer experiences covering all
-                    major North American sports leagues.
-                  </div>
-                  <div className="row_3_items_container">
-                    <div className="row_3_item">Promotional Contests</div>
-                    <div className="row_3_item">Charity Contests</div>
-                    <div className="row_3_item">State Level Solutions</div>
-                    <div className="row_3_item">Casino Solutions</div>
-                    <div className="row_3_item">
-                      Local sports bar - interactive games / contests
-                    </div>
-                  </div>
-                  <button
-                    className="row_3_button"
-                    onClick={() => this.props.history.push("/live-sports")}
-                  >
-                    Explore Our Live Sports Platform Now!
-                  </button>
+              <div className="header-text-solo-wrapper">
+                <div className="header-text-solo-wrapper-image">
+                  <img
+                    className="header-img"
+                    src={require("../../assets/images/home/correct-copy-3.png")}
+                  />
+                </div>
+                <div className="header-text-solo-wrapper-text">
+                  Real Time <div className="desktop-break" />
+                  Interactive Excitement
                 </div>
               </div>
-              <div class="home_first_row" style={fourthRows}>
-                <div className="home_row_3_content">
-                  <div className="header_row_3">Powerplay Lotto Platform</div>
-                  <div className="detail_row_3">
-                    Utilize our Interactive Lottery platform to offer your
-                    customers an exceptional interactive experience.
-                  </div>
-                  <div className="row_3_items_container">
-                    <div className="row_3_item">Promotional lotteries</div>
-                    <div className="row_3_item">Charity lotteries</div>
-                    <div className="row_3_item">State run lotteries</div>
-                    <div className="row_3_item">Casino Solutions</div>
-                    <div className="row_3_item">50/50 Raffles</div>
-                  </div>
-                  <button
-                    className="row_3_button"
-                    style={{ width: "550px" }}
-                    onClick={() => this.props.history.push("/powerplay-lotto")}
-                  >
-                    Explore Our Interactive Platform Now!
-                  </button>
+              <div className="header-text-solo-wrapper">
+                <div className="header-text-solo-wrapper-image">
+                  <img
+                    className="header-img"
+                    src={require("../../assets/images/home/correct-copy-3.png")}
+                  />
+                </div>
+                <div className="header-text-solo-wrapper-text">
+                  Wide Variety <br />
+                  of Games.
                 </div>
               </div>
-              <div className="home_sub_heading">
-                <center>What We Offer</center>
-              </div>
-              <div className="home_offers">
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18.png")}
-                    />
-                    <div className="home_offer_heading">
-                      Full Service Promotional/Charity Contests
-                    </div>
-                    <div className="home_offer_details">
-                      Utilize our platform to run an interactive
-                      promotional/charity contest that is fully tailored to your
-                      needs. With our interactive platform, we offer your
-                      players an exciting and unmatched excitement. We also take
-                      care of all legal requirements and administrative tasks
-                      leaving you to focus on your business or charity.
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_5.png")}
-                    />
-                    <div className="home_offer_heading">
-                      State Run Lottery<br/> Offering
-                    </div>
-                    <div className="home_offer_details">
-                      Using our game changing Platform, state-run lotteries can
-                      offer fully integrated, mobile friendly interactive
-                      lottery options. Our solution is designed to keep player
-                      engagement high, therefore, increasing the number of
-                      players in every event while offering you a high revenue
-                      stream
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group_18.png")}
-                    />
-                    <div className="home_offer_heading">
-                      Lead <br />
-                      Generation
-                    </div>
-                    <div className="home_offer_details">
-                      Utilize our platform to generate 100% true leads by
-                      steering customer behavior through the use of Powerplays.
-                      You can steer consumer behavior to obtain more powerplays
-                      either before the game starts or even during the game by
-                      performing any customized action you can think of.
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_3.png")}
-                    />
-                    <div className="home_offer_heading_small">
-                      Mobile Geo-Fencing
-                    </div>
-                    <div className="home_offer_details">
-                      Using our Geo-Fencing technology, we will help you set up
-                      a geofence right around your business or event to entice
-                      players to play at your establishment. Great for sports
-                      bars!
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_7.png")}
-                    />
-                    <div className="home_offer_heading_small">
-                      Prize Indemnity Insurance
-                    </div>
-                    <div className="home_offer_details">
-                      Prize indemnity gives you the ability to offer special
-                      contests and promotions while transferring the risk to an
-                      experienced and financially bound insurer. We offer you a
-                      prize indemnification coverage on your contests and
-                      promotions as this will increase traffic, excitement, and
-                      sales during your event.
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_11.png")}
-                    />
-                    <div className="home_offer_heading_small">
-                      Compliance With The Law
-                    </div>
-                    <div className="home_offer_details">
-                      Each contest will include a set of official rules that
-                      identify the material terms and conditions that govern the
-                      promotion. We will ensure that your event complied with
-                      all applicable regional laws, policies, and regulations.
-                    </div>
-                  </center>
-                </div>
-                <center>
-                  <button
-                    onClick={() => this.props.history.push("/partner")}
-                    className="home_offer_button"
-                  >
-                    Partner With Us
-                  </button>
-                </center>
-              </div>
-              <div className="home_offers">
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_2.png")}
-                    />
-                    <div className="home_offer_heading">
-                      Security! Security! Security!
-                    </div>
-                    <div className="home_offer_details">
-                      Our platform is built using an Industry Leading Technology
-                      that is scalable, ultra-fast, SSL encrypted and digitally
-                      secured. We have put in place multilevel security measures
-                      to protect the integrity of our games so you don’t have to
-                      worry.
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_6.png")}
-                    />
-                    <div className="home_offer_heading_small">Analysis</div>
-                    <div className="home_offer_details">
-                      When you run a promotion, you will want to know how
-                      successful it was. We will analyze your promotion and
-                      relevant gaming variables to determine when your promotion
-                      was most successful and how to improve on it. Our analysis
-                      will do just that.
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_10.png")}
-                    />
-                    <div className="home_offer_heading_small">
-                      Email Campaign
-                    </div>
-                    <div className="home_offer_details">
-                      When you run a promotion, you will want to know how
-                      successful it was. We will analyze your promotion and
-                      relevant gaming variables to determine when your promotion
-                      was most successful and how to improve on it. Our analysis
-                      will do just that.
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_4.png")}
-                    />
-                    <div className="home_offer_heading_small">
-                      White Label Options
-                    </div>
-                    <div className="home_offer_details">
-                      All of our solutions are fully customized to be integrated
-                      with your brand. We offer full white label integration
-                      where we will deploy our unique solution and make it
-                      seamless with your brand’s purposes and objectives.
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/group-18_8.png")}
-                    />
-                    <div className="home_offer_heading_small">
-                      Custom Game Development
-                    </div>
-                    <div className="home_offer_details">
-                      Want to design an interactive game that’s more suited to
-                      your brand? If you can imagine it, we can make it happen!
-                      We will work with you to create a unique and special game
-                      to meet your exact technical specifications and marketing
-                      needs.
-                    </div>
-                  </center>
-                </div>
-                <div className="home_offers_item">
-                  <center>
-                    <img
-                      className="home_offer_icon"
-                      src={require("./../../assets/images/home/mobile-app.png")}
-                    />
-                    <div className="home_offer_heading_small">
-                      Mobile App (coming soon!)
-                    </div>
-                    <div className="home_offer_details">
-                      We are working on a mobile app that will make it very easy
-                      for all participants to access their games at any time and
-                      in any place without limitations. Our mobile app will
-                      offer exciting and more interactive options to
-                      contest/lottery participants. Stay tuned!
-                    </div>
-                  </center>
-                </div>
-                <center>
-                  <button
-                    onClick={() => this.props.history.push("/partner")}
-                    className="home_offer_button"
-                  >
-                    Partner With Us
-                  </button>
-                </center>
+            </div>
+            <button
+              className="header-button"
+              onClick={() => this.props.history.push("/partner")}
+            >
+              <span className="header-button-text">Partner With Us</span>
+            </button>
+            <br />
+            <div className="header-text">
+              <div className="header-subtext">
+                *International Patent Pending
               </div>
             </div>
           </div>
+          <div className="real-excitement-wrapper">
+            <div className="real-excitement-text1">Real Excitement !</div>
+            <br />
+            <div className="real-excitement-text2">
+              Utilizing our platform your customers will be fully engaged.
+              <br />
+              <br className="brr" />
+              They can utilize Powerplays to boost their point total live during
+              a game or change selections live during a lottery draw.
+              <div className="mobile-break" />
+              <span className="orange-text"> Now that is EXCITEMENT!</span>
+              <br />
+              <br className="brr" />
+              <span className="real-span">
+                Available exclusively from PowerPlay Systems.
+              </span>
+            </div>
+            <br />
+            <button
+              className="header-button"
+              id="real-btn"
+              onClick={() => this.props.history.push("/partner")}
+            >
+              <span className="header-button-text">Partner With Us</span>
+            </button>
+          </div>
+          <div className="powerplay-wrapper">
+            <div className="powerplay-left-container">
+              <div className="powerplay-wrapper-left">
+                <div className="powerplay-wrapper-left-img desktop-break">
+                  <img src={require("../../assets/images/home/group-11.png")} />
+                </div>
+                <br />
+                <div className="powerplay-wrapper-left-heading">
+                  Powerplay Live Sports Platform
+                </div>
+                <br />
+                <div className="powerplay-wrapper-left-text">
+                  Interactive games covering all major North American Sports
+                  leagues
+                </div>
+                <br />
+                <div className="powerplay-wrapper-left-btns">
+                  <button className="powerplay-solo-btn-1">
+                    <span className="powerplay-solo-btn-text">
+                      Promotional Contest
+                    </span>
+                  </button>
+                  <button className="powerplay-solo-btn-2">
+                    <span className="powerplay-solo-btn-text">
+                      Charity contests
+                    </span>
+                  </button>
+                  <button className="powerplay-solo-btn-3">
+                    <span className="powerplay-solo-btn-text">
+                      Casino based sports betting
+                    </span>
+                  </button>
+                  <button className="powerplay-solo-btn-4">
+                    <span className="powerplay-solo-btn-text">
+                      State run sports betting
+                    </span>
+                  </button>
+                  <button className="powerplay-solo-btn-5">
+                    <span className="powerplay-solo-btn-text">
+                      Local sports bar - interactive games / contests
+                    </span>
+                  </button>
+                </div>
+                <br />
+                <div className="powerplay-wrapper-left-img mobile">
+                  <img src={require("../../assets/images/home/group-11.png")} />
+                </div>
+                <div className="break-mobile" />
+                <button
+                  className="powerplay-wrapper-left-orange-btn"
+                  onClick={() => this.props.history.push("/live-sports")}
+                >
+                  <span className="powerplay-btn-text">
+                    Explore Powerplay Live Sports!
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div className="powerplay-right-container">
+              <div className="powerplay-wrapper-right">
+                <div className="powerplay-wrapper-right-img desktop-break">
+                  <img
+                    src={require("../../assets/images/home/lottery-orig-copy.png")}
+                  />
+                </div>
+                <br />
+                <div className="powerplay-wrapper-right-heading">
+                  Powerplay Lotto Platform
+                </div>
+                <br />
+                <div className="powerplay-wrapper-right-text">
+                  Interactive lottery format where players can
+                  <br />
+                  adjust selections during the live draw
+                </div>
+                <br />
+                <div className="powerplay-wrapper-right-btns">
+                  <button className="powerplay-solo-btn-right-1">
+                    <span className="powerplay-solo-btn-right-text">
+                      State run lotteries
+                    </span>
+                  </button>
+                  <button className="powerplay-solo-btn-right-2">
+                    <span className="powerplay-solo-btn-right-text">
+                      Casino based lotteries
+                    </span>
+                  </button>
+                  <button className="powerplay-solo-btn-right-3">
+                    <span className="powerplay-solo-btn-right-text">
+                      Promotional lotteries
+                    </span>
+                  </button>
+                  <button className="powerplay-solo-btn-right-4">
+                    <span className="powerplay-solo-btn-right-text">
+                      Charity lotteries
+                    </span>
+                  </button>
+                </div>
+                <br />
+                <div className="powerplay-wrapper-right-img mobile">
+                  <img
+                    src={require("../../assets/images/home/lottery-orig-copy.png")}
+                  />
+                </div>
+                <button
+                  id="btn-height-change"
+                  className="powerplay-wrapper-left-orange-btn"
+                  onClick={() => this.props.history.push("/powerplay-lotto")}
+                >
+                  <span className="powerplay-btn-text">
+                    Explore Powerplay Lotto!
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div className="tryone-wrapper">
+            <div className="tryone-heading">
+              Try one of our <br />
+              promotional contests
+            </div>
+            <br />
+            <div className="tryone-tabs-wrapper">
+              <div
+                className={
+                  "tryone-tab-left" +
+                  (this.state.tabActive == "sports" ? " home_tab_active " : "")
+                }
+                onClick={() => this.setState({ tabActive: "sports" })}
+              >
+                Powerplay Live Sports
+                {this.state.tabActive == "sports" ? (
+                  <div className="tryone-selected-line" />
+                ) : (
+                  ""
+                )}
+              </div>
+              <div
+                className={
+                  "tryone-tab-right" +
+                  (this.state.tabActive == "lotto" ? " home_tab_active " : "")
+                }
+                onClick={() => this.setState({ tabActive: "lotto" })}
+              >
+                Powerplay Lotto
+                {this.state.tabActive == "lotto" ? (
+                  <div className="tryone-selected-line" />
+                ) : (
+                  ""
+                )}
+              </div>
+              <br />
+              {this.state.tabActive == "sports"
+                ? this.componentSportsButtons()
+                : ""}
+            </div>
+            <div
+              className={
+                "outer-div-slider" +
+                (this.state.tabActive == "sports" ? "" : " home-hidden")
+              }
+            >
+              {this.componentSportsTab()}
+            </div>
+            {this.componentLottoTab()}
+          </div>
+          <div>
+            <br />
+            <div className="whatweoffer-wrapper">
+              <div className="whatweoffer-heading">What We Offer</div>
+              <br />
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/service.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Full service promotional/
+                    <br />
+                    charity contests
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    We will take care of everything for you. Any legal
+                    requirements will be covered and all the behind the scenes
+                    administrative work will be done by us.
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/state.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    State run
+                    <br />
+                    lottery offering
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    We will take care of everything for you. Any legal
+                    requirements will be covered and all the behind the scenes
+                    administrative work will be done by us.
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/lead.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Lead
+                    <br />
+                    Generation
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    Utilize our platform to generate 100% true leads by driving
+                    customer behavior through the use of PowerPlays
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/prize.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Prize Indemnity
+                    <br />
+                    Insurance
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    Prize indemnity gives you the ability to offer special
+                    contests and promotions while transferring the risk to an
+                    experienced and financially bound insurer.
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/location.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Mobile
+                    <br />
+                    Geo-Fencing
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    Our Geo-Fencing technology, we will help you set up a
+                    geofence right around your business or event to entice
+                    players to play at your establishment. Great for sports
+                    bars!
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/law.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Compliance with
+                    <br />
+                    the law
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    We will ensure that your event complied with all applicable
+                    regional laws, policies, and regulations.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <button
+              className="whatweoffer-button mobile"
+              onClick={() => this.props.history.push("/partner")}
+            >
+              <span className="whatweoffer-button-text">Partner With Us</span>
+            </button>
+            <br />
+            <div className="customized-wrapper">
+              <div className="whatweoffer-heading desktop-break">
+                All options are fully customizable
+              </div>
+              <br />
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/security.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Security! Security!
+                    <br />
+                    Security!
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    Multilevel security measures in place to protect the
+                    integrity of our games so you don’t have to worry.
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/result.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Results
+                    <br />
+                    analysis
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    When you run a promotion, you will want to know how
+                    successful it was. Our analysis will do just that.
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/email.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Email
+                    <br />
+                    campaign
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    As part of each contest, we also offer email campaign
+                    options tailored to your needs.
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/white.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    White label
+                    <br />
+                    options
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    Would you like to host a game on your site with your
+                    branding? No problem. We offer full white label integration.
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img src={require("../../assets/images/home/game.svg")} />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Custom game
+                    <br />
+                    development
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    Want to design an interactive game that’s more suited to
+                    your brand? If you can imagine it, we can make it happen!
+                  </div>
+                </div>
+              </div>
+              <div className="whatweoffer-solo-wrapper">
+                <div className="whatweoffer-solo-wrapper-img">
+                  <img
+                    src={require("../../assets/images/home/mobile-app.svg")}
+                  />
+                </div>
+                <br className="brr" />
+                <div className="whatweoffer-solo-right">
+                  <div className="whatweoffer-solo-wrapper-heading">
+                    Mobile App
+                    <br />
+                    <span style={{ fontStyle: "italic" }}>(coming soon!)</span>
+                  </div>
+                  <br />
+                  <div className="whatweoffer-solo-wrapper-text">
+                    We are working on a mobile app to let offer even more
+                    interactive options to contest/lottery participants. Stay
+                    tuned!
+                  </div>
+                </div>
+              </div>
+              <br />
+              <button
+                className="whatweoffer-button"
+                onClick={() => this.props.history.push("/partner")}
+              >
+                <span className="whatweoffer-button-text">Partner With Us</span>
+              </button>
+              <br />
+            </div>
+            <br />
+            <div className="significant-wrapper">
+              <div className="significant-wrapper-heading">
+                Significantly boost and expand your existing <br />
+                revenue generating strategy.
+              </div>
+              <br />
+              <div className="significant-wrapper-text">
+                <span className="orange-text">
+                  Do you want to tap into the mobile generation?&nbsp;
+                </span>
+                Partner with us and start your customized experience that is
+                perfectly tailored to meet your needs.
+              </div>
+              <br />
+              <div className="significant-wrapper-text">
+                Let us help you with your licensing and legal requirements,
+                business strategy, game design, and integrated marketing to
+                ensure you stay ahead of the competition.
+              </div>
+              <br />
+              <br />
+              <button
+                className="whatweoffer-button"
+                onClick={() => this.props.history.push("/partner")}
+              >
+                <span className="whatweoffer-button-text">Partner With Us</span>
+              </button>
+            </div>
+          </div>
         </div>
+
         <Footer />
       </>
     );

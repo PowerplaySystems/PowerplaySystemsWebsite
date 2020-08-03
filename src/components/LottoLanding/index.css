@@ -5,8 +5,20 @@
   font-family: Poppins;
   padding: 122px 0px 255px;
 }
+.lotto-landing-heading1 {
+  font-family: Poppins;
+  font-size: 62px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.48;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fb6e00;
+  margin-bottom: 20px;
+}
 .lotto-landing-heading {
-  width: 864px;
+  width: 1269px;
   max-width: 100%;
   display: inline-block;
   font-family: Poppins;
@@ -155,7 +167,7 @@
 }
 .lotto-landing-ingagement-content {
   margin-top: 46px;
-  text-align: left;
+  text-align: center;
   max-width: 100%;
 }
 .lotto-landing-people-img {
@@ -180,6 +192,18 @@
   padding: 20px;
   margin-bottom: 34px;
 }
+.lotto-landing-read-more {
+  width: 203px;
+  height: 64px;
+  border-radius: 32px;
+  border: solid 1px #fb6e00;
+  background: transparent;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fb6e00;
+  margin-top: -30px;
+}
 .lotto-landing-text5 {
   font-family: Poppins;
   font-size: 24px;
@@ -196,7 +220,7 @@
   color: #fb6e00;
 }
 .lotto-landing-row {
-  text-align: left;
+  text-align: center;
   margin-top: 200px;
   max-width: 100%;
 }
@@ -204,6 +228,7 @@
   display: inline-block;
   padding: 0px 0px 0px 80px;
   max-width: 100%;
+  text-align: left;
 }
 .lotto-landing-text6 {
   font-family: Poppins;
@@ -229,6 +254,7 @@
   display: inline-block;
   width: 706px;
   margin-left: 56px;
+  text-align: left;
   vertical-align: top;
   max-width: 100%;
 }
@@ -310,18 +336,32 @@
 }
 .lotto-landing-text12 {
   font-family: Poppins;
-  font-size: 62px;
-  font-weight: 900;
+  font-size: 100px;
+  font-weight: 500;
   color: #ffffff;
+  line-height: 0.9;
+}
+.lotto-landing-text12a {
+  display: inline-block;
+  color: #fb6e00;
+}
+.lotto-landing-text12b {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 500;
 }
 .lotto-landing-text13 {
-  width: 585px;
   max-width: 100%;
   font-family: Poppins;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 51px;
+  font-weight: 500;
   color: #ffffff;
-  margin-bottom: 20px;
+}
+.lotto-landing-text13a {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fb6e00;
 }
 .lotto-landing-text14 {
   font-family: Poppins;
@@ -331,6 +371,39 @@
   text-align: center;
   color: #ffffff;
   margin: 200px 0px 30px;
+}
+.lotto-landing-bingo {
+  max-width: 100%;
+  padding-top: 120px;
+  height: 395px;
+  text-align: center;
+  margin-top: 200px;
+  /* width: 1440px;
+  height: 420px; */
+  object-fit: contain;
+  background: url("../../assets/images/lotto/bing-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.lotto-landing-text30 {
+  font-family: Poppins;
+  font-size: 62px;
+  font-weight: 600;
+  color: #fb6e00;
+  line-height: 1.32;
+}
+.lotto-landing-text31 {
+  font-family: Poppins;
+  font-size: 42px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.lotto-landing-text32 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 53px;
+  margin-bottom: 22px;
 }
 .lotto-landing-text15 {
   width: 992px;
@@ -375,6 +448,7 @@
   text-align: center;
   color: #ffffff;
 }
+
 .lotto-landing-text17 {
   width: 791px;
   max-width: 100%;
@@ -568,6 +642,12 @@
   }
 }
 @media screen and (max-width: 550px) {
+  .lotto-landing-heading1 {
+    font-size: 24px;
+    font-weight: 600;
+    width: 248px;
+    display: inline-block;
+  }
   .lotto-landing-button {
     width: 247px;
     height: 43px;
@@ -601,8 +681,7 @@
     width: 328px;
   }
   .div-laptop-img {
-    height: 597px;
-    background-image: url("../../assets/images/lotto/img_mbile.jpg");
+    background-image: url("../../assets/images/lotto/img_mobile.png");
     background-size: cover;
     width: 300px;
     display: inline-block;
@@ -700,19 +779,25 @@
     text-align: center;
   }
   .lotto-landing-text12 {
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 1;
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 0.9;
     text-align: center;
   }
+  .lotto-landing-text12b {
+    font-size: 20px;
+    font-weight: 500;
+  }
   .lotto-landing-text13 {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 1.33;
     text-align: center;
-    width: 300px;
-    margin: 20px 0px;
-    display: inline-block;
+    margin: 15px 0px;
+  }
+  .lotto-landing-text13a {
+    font-size: 14px;
+    font-weight: bold;
   }
   .lotto-landing-text14 {
     font-size: 24px;
@@ -721,6 +806,25 @@
     text-align: center;
     margin-top: 100px;
     margin-bottom: 0px;
+  }
+  .lotto-landing-bingo {
+    height: 336px;
+  }
+  .lotto-landing-text30 {
+    font-size: 31px;
+    font-weight: 600;
+    line-height: 1.33;
+    text-align: center;
+
+    margin-bottom: 0px;
+  }
+  .lotto-landing-text31 {
+    font-size: 21px;
+    font-weight: 500;
+  }
+  .lotto-landing-text32 {
+    font-size: 16px;
+    font-weight: bold;
   }
   .lotto-landing-text15 {
     font-size: 17px;
@@ -825,5 +929,9 @@
     text-align: center;
     color: #bfbfbf;
   }
-
+  .lotto-landing-read-more {
+    border-radius: 21.7px;
+    height: 43px;
+    font-size: 15px;
+  }
 }

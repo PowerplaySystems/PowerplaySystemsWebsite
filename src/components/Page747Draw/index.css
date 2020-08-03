@@ -831,6 +831,21 @@
   color: #ffffff;
   margin: 15px auto 15px !important;
 }
+.lotto-button-partner.orange{
+  cursor: pointer;
+  width: 235px;
+  height: 52px;
+  border-radius: 26px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  line-height: 50px;
+  font-family: Poppins;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  margin: 5px auto 15px !important;
+  border: none;
+}
 .match_text {
   margin: 10px 0px;
   color: wheat;

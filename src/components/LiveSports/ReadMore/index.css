@@ -1,0 +1,402 @@
+.ls-rm div {
+
+
+}
+.ls-rm-content-wrapper {
+  text-align: center;
+  background-color: #202124;
+  height: 100%;
+  width: 100%;
+}
+.ls-rm-header {
+  max-width: 100%;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 62px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.16;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  padding-top: 149px;
+}
+.ls-rm-engage-wrapper {
+  text-align: center;
+  display: inline-block;
+  padding-top: 84px;
+  width: 100%;
+}
+.ls-rm-engage-wrapper-left {
+  display: inline-block;
+  text-align: left;
+  padding-left: 132px;
+  width: 639px;
+  max-width: 100%;
+  font-family: Poppins;
+  font-size: 20px;
+ 
+  line-height: 1.4;
+ 
+  color: #ffffff;
+}
+.ls-rm-engage-wrapper-right {
+  background-image: url("../../../assets/images/live_sports/group-4(1).png");
+  margin-left: 80px;
+  vertical-align: top;
+  width: 457px;
+  height: 434px;
+  object-fit: contain;
+  box-shadow: 3px 17px 59px 0 rgba(255, 123, 0, 0.2);
+  background-position: center;
+  display: inline-block;
+  margin-top: 44px;
+}
+.ls-rm-partner-with-us-btn {
+  display: inline-block;
+  margin-top: 24px;
+  width: 345px;
+  height: 65px;
+  border-radius: 40.5px;
+  box-shadow: 0 3px 27px 0 rgba(251, 110, 0, 0.48);
+  background-color: #fb6e00;
+  border: none;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+.ls-rm-ultimate-wrapper {
+  display: inline-block;
+  text-align: center;
+  padding-top: 176px;
+  width: 100%;
+}
+.ls-rm-ultimate-wrapper-left {
+  display: inline-block;
+  vertical-align: top;
+  width: 457px;
+  height: 434px;
+  object-fit: contain;
+  box-shadow: 3px 17px 59px 0 rgba(255, 123, 0, 0.2);
+  background-position: center;
+  background-image: url("../../../assets/images/live_sports/group-4\(5\).png");
+  margin-left: 132px;
+  margin-top: 65px;
+}
+.ls-rm-heading {
+  width: 447px;
+  display: inline-block;
+  padding-bottom: 24px;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  color: #fb6e00;
+}
+.ls-rm-ultimate-wrapper-right {
+  width: 643px;
+  max-width: 100%;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: left;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: #ffffff;
+  display: inline-block;
+  padding-left: 80px;
+}
+.ls-rm-powerplay-wrapper {
+  text-align: center;
+  display: inline-block;
+  padding-top: 176px;
+  width: 100%;
+}
+.ls-rm-powerplay-wrapper-left {
+  display: inline-block;
+  padding-left: 132px;
+  width: 639px;
+  max-width: 100%;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: left;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+.ls-rm-powerplay-wrapper-right {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 80px;
+  width: 457px;
+  height: 434px;
+  object-fit: contain;
+  box-shadow: 3px 17px 59px 0 rgba(255, 123, 0, 0.2);
+  background-position: center;
+  background-image: url("../../../assets/images/live_sports/group-4\(2\).png");
+}
+.ls-rm-trust-wrapper {
+  display: inline-block;
+  text-align: center;
+  padding-top: 176px;
+  width: 100%;
+}
+.ls-rm-trust-wrapper-left {
+  display: inline-block;
+  margin-left: 132px;
+  vertical-align: top;
+  width: 457px;
+  height: 434px;
+  object-fit: contain;
+  box-shadow: 3px 17px 59px 0 rgba(255, 123, 0, 0.2);
+  background-position: center;
+  background-image: url("../../../assets/images/live_sports/group-4\(3\).png");
+}
+.ls-rm-trust-wrapper-right {
+  padding-left: 80px;
+  display: inline-block;
+  width: 639px;
+  max-width: 100%;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: left;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+.ls-rm-partner-wrapper {
+  display: inline-block;
+  text-align: center;
+  padding-top: 176px;
+  width: 100%;
+  padding-bottom: 176px;
+}
+.ls-rm-partner-wrapper-left {
+  display: inline-block;
+  padding-left: 132px;
+  width: 669px;
+  max-width: 100%;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: left;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+.ls-rm-partner-wrapper-right {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 80px;
+}
+.ls-rm-orange-text {
+  font-size: 28px;
+  font-weight: 500;
+  color: #fb6e00;
+}
+.ls-rm-engage-wrapper-media {
+  display: none;
+}
+.ls-rm-partner-wrapper-media {
+  display: none;
+}
+.ls-rm-engage-br {
+  display: none;
+}
+@media screen and (max-width: 550px) {
+  .ls-rm-text-Hide {
+    display: none;
+  }
+  .ls-rm-header {
+    width: 318px;
+    font-size: 24px;
+    font-weight: 600;
+    padding-top: 50px;
+    line-height: 1.33;
+    padding-bottom: 39px;
+  }
+  .ls-rm-orange-text {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.23;
+    color: #fb6e00;
+  }
+  .ls-rm-engage-wrapper {
+    text-align: center;
+    display: inline-block;
+    padding-top: 39px;
+    width: 100%;
+  }
+  .ls-rm-engage-wrapper-media {
+    display: inline-block;
+    width: 326px;
+    height: 310px;
+    display: inline-block;
+    vertical-align: top;
+    object-fit: contain;
+    box-shadow: 3px 17px 59px 0 rgba(255, 123, 0, 0.2);
+    background-position: center;
+    background-image: url("../../../assets/images/live_sports/group-4.png");
+  }
+  .ls-rm-engage-wrapper-left {
+    display: inline-block;
+    padding-left: 0px;
+    text-align: left;
+    width: 327px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    color: #ffffff;
+    padding-top: 35px;
+  }
+  .ls-rm-engage-wrapper-right {
+    display: none;
+  }
+  .ls-rm-img-media {
+    width: 326px;
+    height: 310px;
+  }
+  .ls-rm-partner-with-us-btn {
+    display: inline-block;
+    margin-top: 24px;
+    width: 327px;
+    height: 52px;
+    border-radius: 40.5px;
+    border: none;
+    font-size: 18px;
+  }
+  .ls-rm-ultimate-wrapper {
+    display: inline-block;
+    text-align: center;
+    padding-top: 96px;
+    width: 100%;
+  }
+  .ls-rm-ultimate-wrapper-left {
+    margin-left: 0px;
+    display: inline-block;
+    width: 326px;
+    height: 310px;
+    vertical-align: top;
+    object-fit: contain;
+    box-shadow: 3px 17px 59px 0 rgba(255, 123, 0, 0.2);
+    background-position: center;
+    background-image: url("../../../assets/images/live_sports/group-4\(4\).png");
+  }
+  .ls-rm-heading {
+    width: 327px;
+    font-size: 22px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.55;
+    letter-spacing: normal;
+    color: #fb6e00;
+    padding-top: 32px;
+    padding-bottom: 24px;
+  }
+  .ls-rm-ultimate-wrapper-right {
+    width: 327px;
+    text-align: left;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.44;
+    letter-spacing: normal;
+    color: #ffffff;
+    padding-right: 0px;
+    display: inline-block;
+    padding-left: 0px;
+  }
+  .ls-rm-powerplay-wrapper {
+    text-align: center;
+    display: inline-block;
+    padding-top: 96px;
+    width: 100%;
+  }
+  .ls-rm-powerplay-wrapper-left {
+    display: inline-block;
+    padding-left: 0px;
+    text-align: left;
+    width: 327px;
+    font-size: 16px;
+  }
+  .ls-rm-powerplay-wrapper-media {
+    display: inline-block;
+    width: 326px;
+    height: 310px;
+    display: inline-block;
+    vertical-align: top;
+    object-fit: contain;
+    box-shadow: 3px 17px 59px 0 rgba(255, 123, 0, 0.2);
+    background-position: center;
+    background-image: url("../../../assets/images/live_sports/group-4\(6\).png");
+  }
+  .ls-rm-powerplay-wrapper-right {
+    display: none;
+  }
+  .ls-rm-trust-wrapper {
+    display: inline-block;
+    text-align: center;
+    padding-top: 96px;
+    width: 100%;
+  }
+  .ls-rm-trust-wrapper-left {
+    display: inline-block;
+    padding-left: 0px;
+    margin-left: 0px;
+    width: 326px;
+    height: 310px;
+    display: inline-block;
+    vertical-align: top;
+    object-fit: contain;
+    box-shadow: 3px 17px 59px 0 rgba(255, 123, 0, 0.2);
+    background-position: center;
+    background-image: url("../../../assets/images/live_sports/group-4\(7\).png");
+  }
+  .ls-rm-trust-wrapper-right {
+    padding-right: 0px;
+    display: inline-block;
+    padding-left: 0px;
+    text-align: left;
+    width: 327px;
+    font-size: 16px;
+  }
+  .ls-rm-partner-wrapper {
+    display: inline-block;
+    text-align: center;
+    padding-top: 96px;
+    width: 100%;
+    padding-bottom: 96px;
+  }
+  .ls-rm-partner-wrapper-left {
+    display: inline-block;
+    padding-left: 0px;
+    text-align: left;
+    width: 327px;
+    font-size: 16px;
+  }
+  .ls-rm-partner-wrapper-right {
+    display: none;
+  }
+  .ls-rm-partner-wrapper-media {
+    display: inline-block;
+  }
+  .ls-rm-partner-img {
+    width: 326px;
+    height: 310px;
+  }
+  .ls-rm-engage-br {
+    display: inline-block;
+  }
+}

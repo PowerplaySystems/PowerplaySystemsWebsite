@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
+import $ from "jquery";
+import "jquery-ui-bundle";
 import "./index.css";
 import * as Constants from "../../common/constants";
 import * as Functions from "../../common/functions";
@@ -15,6 +17,9 @@ var popupHader = "Sorry!";
 
 /////////MODAL IMPORTS AND VARIABLES END////////
 
+//drag variables
+var indexBeforeDrag = 0;
+var indexAfterDrag = 0;
 var prizeArray = [
   {
     id: 1,
@@ -51,6 +56,7 @@ class DrafDay extends Component {
       isLoaded: false,
       show: false,
       data: [],
+      rawData: [],
       prizes: prizeArray,
       show_confirm_dialog: false,
       showPrize: false,
@@ -60,69 +66,135 @@ class DrafDay extends Component {
   ////////////////////////
   //BUTTON CLICK FUNCTIONS
   ////////////////////////
-  onUpClicked(element) {
+  onUpClicked(e, element) {
     let oldRanking = 0,
       newRanking = 0,
       oldTeam = "",
-      newTeam = "";
+      oldTeamGear = "",
+      newTeam = "",
+      newTeamGear = "";
     for (var i in this.state.data) {
       if (this.state.data[i].id == element.id) {
         oldRanking = this.state.data[i].my_ranking;
         oldTeam = this.state.data[i].projected_team;
+        oldTeamGear = this.state.data[i].team_gear_link;
         newRanking = this.state.data[i].my_ranking - 1;
         for (var z in this.state.data) {
           if (this.state.data[z].my_ranking == newRanking) {
             this.state.data[z].my_ranking = oldRanking;
             newTeam = this.state.data[z].projected_team;
+            newTeamGear = this.state.data[z].team_gear_link;
             this.state.data[z].projected_team = oldTeam;
+            this.state.data[z].team_gear_link = oldTeamGear;
 
             break; //Stop this loop, we found it!
           }
         }
         this.state.data[i].my_ranking = newRanking;
         this.state.data[i].projected_team = newTeam;
+        this.state.data[i].team_gear_link = newTeamGear;
 
         break; //Stop this loop, we found it!
       }
     }
     this.sortData();
-    this.setState({
-      data: this.state.data
-    });
+    if (e == null) {
+      return;
+    } else {
+      var row = $(e.target)
+        .parent()
+        .parent();
+      var prevRow = row.prev();
+
+      var fadeSpeed = 300;
+      prevRow.fadeTo(fadeSpeed, 0.1, () => {
+        row.fadeTo(fadeSpeed, 0.1, () => {
+          row.fadeTo(400, 1);
+        });
+        prevRow.fadeTo(400, 1);
+
+        this.setState({
+          data: this.state.data
+        });
+      });
+    }
   }
-  onDownClicked(element) {
+  onDownClicked(e, element) {
+    console.log(element);
     let oldRanking = 0,
       newRanking = 0,
       oldTeam = "",
-      newTeam = "";
+      oldTeamGear = "",
+      newTeam = "",
+      newTeamGear = "";
     for (var i in this.state.data) {
       if (this.state.data[i].id == element.id) {
         oldRanking = this.state.data[i].my_ranking;
         oldTeam = this.state.data[i].projected_team;
+        oldTeamGear = this.state.data[i].team_gear_link;
         newRanking = this.state.data[i].my_ranking + 1;
         for (var z in this.state.data) {
           if (this.state.data[z].my_ranking == newRanking) {
             this.state.data[z].my_ranking = oldRanking;
             newTeam = this.state.data[z].projected_team;
+            newTeamGear = this.state.data[z].team_gear_link;
             this.state.data[z].projected_team = oldTeam;
+            this.state.data[z].team_gear_link = oldTeamGear;
             break; //Stop this loop, we found it!
           }
         }
         this.state.data[i].my_ranking = newRanking;
         this.state.data[i].projected_team = newTeam;
+        this.state.data[i].team_gear_link = newTeamGear;
         break; //Stop this loop, we found it!
       }
     }
     this.sortData();
-    this.setState({
-      data: this.state.data
-    });
+    if (e == null) {
+      return;
+    } else {
+      var row = $(e.target)
+        .parent()
+        .parent();
+      var nextRow = row.next();
+
+      var fadeSpeed = 300;
+      nextRow.fadeTo(fadeSpeed, 0.1, () => {
+        row.fadeTo(fadeSpeed, 0.1, () => {
+          row.fadeTo(400, 1);
+        });
+        nextRow.fadeTo(400, 1);
+        this.setState({
+          data: this.state.data
+        });
+      });
+    }
   }
   onSubmitClicked() {
-    this.showModal();
+    if (this.state.show_confirm_dialog) {
+      this.postData();
+    } else {
+      this.showModal();
+    }
   }
   onBackClicked() {
     this.hideModal();
+  }
+  onDragged() {
+    var dragLength = indexAfterDrag - indexBeforeDrag;
+
+    if (dragLength > 0) {
+      for (var x = indexBeforeDrag; x < indexAfterDrag; x++) {
+        console.log(x);
+        this.onDownClicked(null, this.state.data[x]);
+      }
+    } else {
+      for (var x = indexBeforeDrag; x > indexAfterDrag; x--) {
+        console.log(x);
+        this.onUpClicked(null, this.state.data[x]);
+      }
+    }
+    // this.setState(this.state);
   }
   ////////////////////////////
   //BUTTON CLICK FUNCTIONS END
@@ -132,51 +204,105 @@ class DrafDay extends Component {
   //PAGE COMPONENTS
   ////////////////////////////
   componentDraftTable() {
-    if (this.state.entry_data.length > 0) {
-      this.updateDraftSequence();
-    }
     return (
-      <table className="draft_day_table">
-        <thead>
-          <tr>
-            <td>DraftSite Ranking</td>
-            <td>My Ranking</td>
-            <td>Projected Team</td>
-            <td>Player</td>
-            <td>Pos</td>
-            <td>Ht</td>
-            <td>Wt</td>
-            <td>School</td>
-            <td>Actions</td>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.data.map((element, key) => {
-            return (
-              <tr className={key > 31 ? "bg-light" : ""}>
-                <td>{element.pre_draft_rank}</td>
-                <td>{element.my_ranking}</td>
-                <td>{element.projected_team}</td>
-                <td>{element.player_name}</td>
-                <td>{element.player_pos}</td>
-                <td>{element.player_ht}</td>
-                <td>{element.player_wt}</td>
-                <td>{element.player_school}</td>
-                <td>
-                  <div
-                    onClick={e => this.onUpClicked(element)}
-                    className="draft_day_table_icon_up"
-                  ></div>
-                  <div
-                    onClick={e => this.onDownClicked(element)}
-                    className="draft_day_table_icon_down"
-                  ></div>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="twin-table-wrapper">
+        <table className="draft_day_table-left">
+          <thead>
+            <tr>
+              <td>Pick #</td>
+              <td>Projected Team</td>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.data.map((element, key) => {
+              return (
+                <tr className={key > 31 ? "bg-light" : ""}>
+                  <td>{element.my_ranking}</td>
+                  <td>
+                    {element.projected_team}
+                    <br />
+                    <div className="draft_day_table_gear_wrpper">
+                      <div className="draft_day_table_gear_icon"></div>
+                      <a
+                        // onClick={e => this.goTolink(element.team_gear_link)}
+                        target="_blank"
+                        href={"//" + element.team_gear_link}
+                        className="draft_day_table_gear_text1"
+                      >
+                        {" "}
+                        Get {element.projected_team} gear
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <table className="draft_day_table">
+          <thead>
+            <tr>
+              <td>Draft Ranking</td>
+              <td>Player</td>
+              <td>Pos</td>
+              <td>Ht</td>
+              <td>Wt</td>
+              <td>School</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody id="tb-body">
+            {this.state.data.map((element, key) => {
+              return (
+                <tr className={key > 31 ? "bg-light" : ""}>
+                  <td>{element.pre_draft_rank}</td>
+                  <td>{element.player_name}</td>
+                  <td>{element.player_pos}</td>
+                  <td>{element.player_ht}</td>
+                  <td>{element.player_wt}</td>
+                  <td>
+                    {element.player_school}
+                    <br />
+                    <div className="draft_day_table_gear_wrpper">
+                      <div className="draft_day_table_gear_icon"></div>
+                      <a
+                        // onClick={e => this.goTolink(element.team_gear_link)}
+                        target="_blank"
+                        href={
+                          element.school_gear_link == null
+                            ? "//fanatics.ncw6.net/c/2068372/612772/9663"
+                            : "//" + element.school_gear_link
+                        }
+                        className="draft_day_table_gear_text1"
+                      >
+                        {" "}
+                        {element.school_gear_link == null
+                          ? "Get NCAA Gear"
+                          : "Get " + element.player_school + " gear"}
+                      </a>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div
+                      // onClick={e => this.onDownClicked(e, element)}
+                      className="draft_day_table_icon_drag"
+                    ></div>
+                    {/* <div
+                      onClick={e => this.onUpClicked(e, element)}
+                      className="draft_day_table_icon_up move_up"
+                    ></div>
+                    <div
+                      onClick={e => this.onDownClicked(e, element)}
+                      className="draft_day_table_icon_down move_down"
+                    ></div> */}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     );
   }
   componentConfirmDialog() {
@@ -184,6 +310,12 @@ class DrafDay extends Component {
       <div className="confirm_dialog_wrapper">
         <div className="confirm_dialog_content">
           <div className="confirm_dialog_header">
+            <div
+              className="confirm_dialog_close_icon"
+              onClick={e => this.onBackClicked()}
+            >
+              X
+            </div>
             <div className="confirm_dialog_header_text1">
               Confirm your selections
             </div>
@@ -191,7 +323,7 @@ class DrafDay extends Component {
               My Final Draft list for 2020 NFL Power Draft
             </div>
             <div className="confirm_dialog_header_text3">
-              Dont forget during the live draft you can edit your selections in
+              Don't forget during the live draft you can edit your selections in
               real time
             </div>
           </div>
@@ -201,7 +333,7 @@ class DrafDay extends Component {
                 if (key < 32)
                   return (
                     <div className="confirm_dialog_main_player">
-                      {key + 1}
+                      {element.my_ranking}
                       <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                       {element.player_name}
                     </div>
@@ -280,6 +412,91 @@ class DrafDay extends Component {
       </Modal>
     );
   }
+  componentMobileItemBox() {
+    return (
+      <div className="draft-mobile-box">
+        {this.state.data.map((element, key) => {
+          if (element) {
+            return (
+              <>
+                <div
+                  className={
+                    key > 31
+                      ? "draft-mobile-box-item bg-light opacity-50"
+                      : "draft-mobile-box-item"
+                  }
+                >
+                  <div className="draft-mobile-box-item-left">
+                    <div className="draft-mobile-box-item-text1">
+                      Draft Ranking {element.pre_draft_rank}
+                    </div>
+                    <div className="draft-mobile-box-item-inner1">
+                      <div className="draft-mobile-box-item-text1a">
+                        {element.my_ranking}
+                      </div>
+                    </div>
+                    <div className="draft-mobile-box-item-inner2">
+                      <div className="draft-mobile-box-item-text2">
+                        {element.player_name}
+                      </div>
+                      <div className="draft-mobile-box-item-text3">
+                        &nbsp;&nbsp;(
+                        {element.player_pos
+                          ? element.player_pos.match(/\b([A-Z])/g).join("")
+                          : ""}
+                        )
+                      </div>
+                      <div className="draft-mobile-box-item-text4">
+                        {element.projected_team}
+                      </div>
+                      <div className="draft_day_table_gear_wrpper align-left">
+                        <div className="draft_day_table_gear_icon"></div>
+                        <a
+                          // onClick={e => this.goTolink(element.team_gear_link)}
+                          target="_blank"
+                          href={"//" + element.team_gear_link}
+                          className="draft_day_table_gear_text1"
+                        >
+                          {" "}
+                          Get {element.projected_team} gear
+                          {/* Get Bengals gear */}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="draft-mobile-box-item-right">
+                    <div
+                      onClick={e => this.onUpClicked(e, element)}
+                      className="draft_day_table_icon_up move_up draft-mobile-icon-up"
+                    ></div>
+                    <div
+                      onClick={e => this.onDownClicked(e, element)}
+                      className="draft_day_table_icon_down move_down draft-mobile-icon-down"
+                    ></div>
+                  </div>
+                </div>
+                {key == 31 ? (
+                  <div className="draft-mobile-divider">
+                    <div class="separator">Top 32 will be submitted</div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </>
+            );
+          } else {
+            return "";
+          }
+        })}
+        <button
+          className="draft-mobile-button"
+          onClick={e => this.onSubmitClicked()}
+        >
+          Submit my Draft Picks
+        </button>
+      </div>
+    );
+  }
   ////////////////////////////
   //PAGE COMPONENTS END
   ////////////////////////////
@@ -287,7 +504,11 @@ class DrafDay extends Component {
   ////////////////////////////
   //HELPING FUNCTIONS
   ////////////////////////////
-
+  goTolink(url) {
+    var win = window.open(url, "_blank");
+    win.focus();
+    //window.location.href = "www." + link;
+  }
   sortData() {
     this.state.data.sort(function(a, b) {
       return a.my_ranking - b.my_ranking;
@@ -309,7 +530,35 @@ class DrafDay extends Component {
     return arr;
   }
 
-  updateDraftSequence() {}
+  updateDraftSequence(draft_data, entry_data) {
+    if (entry_data) {
+      entry_data.forEach(element => {
+        var player_id = element.player_id;
+        var projected_team = element.projected_team;
+        var my_ranking = element.my_ranking;
+
+        var old_ranking = "";
+        var old_team = "";
+        var old_team_gear = "";
+
+        let draftObject = draft_data.find(o => o.player_id === player_id);
+        let draftObjectIndex = draft_data.findIndex(
+          o => o.player_id === player_id
+        );
+
+        old_ranking = draft_data[draftObjectIndex].my_ranking;
+        old_team = draft_data[draftObjectIndex].projected_team;
+        old_team_gear = draft_data[draftObjectIndex].team_gear_link;
+        draft_data[draftObjectIndex].my_ranking = my_ranking;
+        draft_data[draftObjectIndex].projected_team = projected_team;
+      });
+      draft_data.sort(function(a, b) {
+        return a.my_ranking - b.my_ranking;
+      });
+    }
+    return draft_data;
+  }
+
   showModal() {
     this.setState({
       show_confirm_dialog: true
@@ -358,11 +607,21 @@ class DrafDay extends Component {
       .then(res => res.json())
       .then(
         xx => {
-          this.setState({
-            data: xx.draf_day_data,
-            entry_data: xx.entry_details ? xx.entry_details : [],
-            isLoaded: true
-          });
+          var data;
+          if (xx.entry_details) {
+            data = this.updateDraftSequence(xx.draf_day_data, xx.entry_details);
+          }else{
+            data = xx.draf_day_data;
+          }
+
+          this.setState(
+            {
+              data: data,
+              entry_data: xx.entry_details ? xx.entry_details : [],
+              isLoaded: true
+            },
+            this.afterLoadingData()
+          );
         },
         error => {
           this.setState({
@@ -403,12 +662,12 @@ class DrafDay extends Component {
     console.log(data);
     xhr.addEventListener("readystatechange", function() {
       if (this.readyState === 4) {
-        if (~this.responseText.indexOf("Successful")) {
+        if (~this.responseText.indexOf("Submitted")) {
           popupHader = "Successful";
           popupText = "Your Selected Numbers Have been saved!";
           that.shoInfoModal();
           that.props.history.push({
-            pathname: "/"
+            pathname: "/game-central"
           });
         } else {
         }
@@ -416,19 +675,51 @@ class DrafDay extends Component {
     });
     xhr.open("POST", link);
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
     xhr.send(data);
   }
-
+  afterLoadingData() {
+    this.sortData();
+  }
   ////////////////////////////
   //FUNCTION TO GET/POST DATA END
   ////////////////////////////
+  attachListeners() {
+    var that = this;
+    $("#tb-body").sortable({
+      handle: ".draft_day_table_icon_drag",
+      start: function(e, ui) {
+        var elements = ui.item
+          .siblings(".selected.hidden")
+          .not(".ui-sortable-placeholder");
+        ui.item.data("items", elements);
+        // $(this).addClass("bg_grey");
+        $(ui.helper).addClass("bg_grey");
+        indexBeforeDrag = ui.item.index();
+      },
+      update: function(e, ui) {
+        ui.item.after(ui.item.data("items"));
+        indexAfterDrag = ui.item.index();
 
+        $(ui.helper).removeClass("bg_grey");
+        that.onDragged();
+      },
+      stop: function(e, ui) {
+        ui.item.siblings(".selected").removeClass("hidden");
+        $("tr.selected").removeClass("selected");
+        $("tr.bg_grey").removeClass("bg_grey");
+        // $(ui.helper).removeClass('bg_grey');
+      }
+    });
+    $("#tb-body").disableSelection();
+  }
   ////////////////////////////
   //HELPING FUNCTIONS END
   ////////////////////////////
   componentDidMount() {
     window.scroll(0, 0);
     //if comming back from signup/login
+
     if (this.props.location.state) {
       this.setState({
         data: this.props.location.state.selected,
@@ -439,14 +730,18 @@ class DrafDay extends Component {
       this.getData();
     }
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isLoaded !== this.state.isLoaded) {
+      this.attachListeners();
+    }
+  }
   render() {
     if (this.state.isLoaded) {
       return (
         <div>
-          {this.componentConfirmDialog}
           <Header />
           {this.componentPrizeModal()}
-          <div className="container container-main">
+          <div className="draft-container">
             <div className="draft_day_header">
               <div className="draft_day_header_content">
                 <div className="draft_day_text1">2020 NFL Power Draft</div>
@@ -463,7 +758,7 @@ class DrafDay extends Component {
                     className="draft_day_buton2"
                     onClick={e => this.handleShowPrize()}
                   >
-                    Prize Grid
+                    View All Prizes
                   </button>
                 </div>
               </div>
@@ -473,9 +768,13 @@ class DrafDay extends Component {
                 Correctly <span>pick</span> the first round of the 2020 NFL
                 Entry Draft
               </div>
+              <div className="draft_day_text5a">
+                Use <span></span> to drag and drop players
+              </div>
               <div className="draft_day_table_wrapper">
                 {this.componentDraftTable()}
               </div>
+              {this.componentMobileItemBox()}
               <br />
               <button
                 onClick={e => this.onSubmitClicked()}
@@ -496,7 +795,7 @@ class DrafDay extends Component {
                 <ul className="draft_day_list">
                   <li>
                     {" "}
-                    Four (4) prizes to be won. See full rules for complete
+                    Five (5) prizes to be won. See full rules for complete
                     details of all prizes.
                   </li>
                   <li> One entry per person.</li>

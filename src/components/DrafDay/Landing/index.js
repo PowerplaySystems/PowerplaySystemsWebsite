@@ -8,20 +8,49 @@ import "./index.css";
 import * as Constants from "./../../common/constants";
 import * as TeamComponent from "./../../LiveScore/team";
 import Cookies from "universal-cookie";
+import * as Functions from "../../common/functions";
 //import Modal from 'react-modal'
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
 var popupText = "Error";
 var popupHader = "Sorry!";
-
+var prizeArray = [
+  {
+    id: 1,
+    hits: 32,
+    prize: 25000
+  },
+  {
+    id: 2,
+    hits: 31,
+    prize: 1000
+  },
+  {
+    id: 1,
+    hits: 30,
+    prize: 500
+  },
+  {
+    id: 1,
+    hits: 29,
+    prize: 200
+  },
+  {
+    id: 1,
+    hits: 28,
+    prize: 100
+  }
+];
 class DraftDayLanding extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       hasError: false,
       error: "",
-      isLoaded: false
+      isLoaded: false,
+      prizes: prizeArray,
+      showPrize: false,
+      entry_id: false
     };
   }
   ////////////////////////////////////////////
@@ -53,7 +82,7 @@ class DraftDayLanding extends Component {
         }
         className="draft_day_heading_button1"
       >
-        Enter Now!
+        {this.state.entry_id ? "View My Mock Draft Selections" : "Enter Now!"}
       </button>
     );
   }
@@ -92,7 +121,7 @@ class DraftDayLanding extends Component {
           <ul className="draft_day_list">
             <li>
               {" "}
-              Four (4) prizes to be won. See full rules for complete details of
+              Five (5) prizes to be won. See full rules for complete details of
               all prizes.
             </li>
             <li> One entry per person.</li>
@@ -103,6 +132,13 @@ class DraftDayLanding extends Component {
             <li> Skill-testing question must be correctly answered to win.</li>
           </ul>
         </div>
+        <br />
+        <button
+          className="draft_day_buton2"
+          onClick={e => this.handleShowPrize()}
+        >
+          View All Prizes
+        </button>
       </>
     );
   }
@@ -163,19 +199,153 @@ class DraftDayLanding extends Component {
       </div>
     );
   }
-  render() {
+  componentPrizeModal() {
     return (
-      <>
-        <Header />
-        <div className="container-fluid p-o" style={{ "text-align": "center" }}>
-          <>{this.componentHeader()}</>
-          <>{this.componentDraftMain()}</>
-          <>{this.componentDraftImageBox()}</>
-          <>{this.componentBottom()}</>
-        </div>
-        <Footer />
-      </>
+      <Modal show={this.state.showPrize} onHide={e => this.handleClosePrize()}>
+        <Modal.Header closeButton>
+          <Modal.Title>Prizes</Modal.Title>
+          <div className="prize-note">
+            *Note: All Prizes Will be divided equally among Winners
+          </div>
+        </Modal.Header>
+        <Modal.Body className="grid-body">
+          {
+            <table className="modal-prize-table">
+              <thead>
+                <tr>
+                  <th scope="col"> Matches </th>
+                  <th scope="col"> Prize </th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.prizes.map((prize, key) => {
+                  return (
+                    <tr className="prize-row" key={key}>
+                      <td>
+                        <p> {prize.hits} </p>
+                      </td>
+                      <td>
+                        <p>{"$" + Functions.numberWithCommas(prize.prize)}</p>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          }
+        </Modal.Body>
+      </Modal>
     );
+  }
+  /////////////////////////////////////////////
+  /////////////END COMPONENTS/////////////////
+  /////////////////////////////////////////////
+
+  //------------------------------------------//
+  //------------------------------------------//
+  //------------------------------------------//
+  //------------------------------------------//
+
+  /////////////////////////////////////////////
+  ////////// STATE CHANGING FUNCTIONS ////////
+  /////////////////////////////////////////////
+
+  handleClosePrize() {
+    this.setState({
+      showPrize: false
+    });
+  }
+  handleShowPrize() {
+    this.setState({
+      showPrize: true
+    });
+  }
+  /////////////////////////////////////////////
+  ///////// END STATE CHANGING FUNCTIONS /////
+  /////////////////////////////////////////////
+
+  //------------------------------------------//
+  //------------------------------------------//
+  //------------------------------------------//
+  //------------------------------------------//
+
+  /////////////////////////////////////////////
+  /////////////// API FUNTIONS ///////////////
+  /////////////////////////////////////////////
+  getData() {
+    const cookies = new Cookies();
+    const jwt = cookies.get("jwt");
+    if (jwt) {
+      var link =
+        "https://" +
+        Constants.URL +
+        "/public_api/draft_day/check_entry.php?jwt=" +
+        jwt;
+      fetch(link)
+        .then(res => res.json())
+        .then(
+          xx => {
+            this.setState({
+              entry_id: xx.entry_id,
+              isLoaded: true
+            });
+          },
+          error => {
+            this.setState({
+              error: error
+            });
+          }
+        );
+    } else {
+      this.setState({
+        isLoaded: true
+      });
+    }
+  }
+  /////////////////////////////////////////////
+  //////////// API FUNTIONS END //////////////
+  /////////////////////////////////////////////
+
+  //------------------------------------------//
+  //------------------------------------------//
+  //------------------------------------------//
+  //------------------------------------------//
+
+  /////////////////////////////////////////////
+  //////////// CORE COMPONENT FNCTIONS ////////
+  /////////////////////////////////////////////
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  render() {
+    if (this.state.isLoaded) {
+      return (
+        <>
+          <Header />
+          {this.componentPrizeModal()}
+          <div
+            className="container-fluid p-o"
+            style={{ "text-align": "center" }}
+          >
+            <>{this.componentHeader()}</>
+            <>{this.componentDraftMain()}</>
+
+            <>{this.componentDraftImageBox()}</>
+            <br />
+            <>{this.componentBottom()}</>
+          </div>
+          <Footer />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Header />
+        </>
+      );
+    }
   }
 }
 
