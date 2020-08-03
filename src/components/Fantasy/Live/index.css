@@ -1,0 +1,385 @@
+.fantasy-live-main {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.fantasy_live_scores {
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px 18px 0px 0px;
+}
+.fantasy_live_scores_heading {
+  font-family: Poppins;
+  font-size: 24px;
+  color: #ffffff;
+  height: 46px;
+}
+.fantasy_live_scores_main {
+  border-radius: 11px;
+  background-color: #1a1a1a;
+  height: 945px;
+  overflow: auto;
+  padding: 0px 20px;
+}
+
+.fantasy_score_match_details_box {
+  width: 870px;
+  height: 307px;
+  border-radius: 5px;
+  background-color: #0f0f0f;
+  margin-top: 20px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.fantasy_score_match_status {
+  width: 74px;
+  height: 65px;
+  border-radius: 26px;
+  background-color: #fb6e00;
+  display: inline-block;
+  top: -36px;
+  line-height: 98px;
+  position: absolute;
+  left: 402px;
+  font-family: Poppins;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.fantasy_scor_match_details_left {
+  display: inline-block;
+}
+.fantasy_scor_match_details_right {
+  display: inline-block;
+}
+.fantasy_score_match_details_heading {
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  color: #fb6e00;
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 55px;
+  margin-bottom: -5px;
+}
+.fantasy_score_match_details_top_row {
+  width: 362px;
+  height: 60px;
+  background-image: url("./../../../assets/images/livescore/name_bg.png");
+  line-height: 65px;
+  margin: 0px 30px 10px 30px;
+}
+.fantasy_score_match_details_team_name {
+  width: 200px;
+  height: 55px;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  color: #fb6e00;
+  float: left;
+  margin-left: 50px;
+  overflow: hidden;
+}
+
+.fantasy_scor_match_details_right .fantasy_score_match_details_team_name {
+  font-weight: 400;
+  color: #fff;
+}
+.fantasy_score_match_details_team_score {
+  width: 25px;
+  height: 45px;
+  margin-left: 50px;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  color: #fb6e00;
+  float: left;
+}
+.fantsy_powerplay_1 {
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background: url("../../../assets/images/fantasy/live/star.png") no-repeat;
+}
+.fantsy_powerplay_2 {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background: url("../../../assets/images/fantasy/live/x2.png") no-repeat;
+}
+.fantsy_powerplay_3 {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background: url("../../../assets/images/fantasy/live/x3.png") no-repeat;
+}
+.fantasy_scor_match_details_right .fantsy_powerplay_1 {
+  background: url("../../../assets/images/fantasy/live/redo.png") no-repeat;
+}
+.fantasy_scor_match_details_right .fantsy_powerplay_2 {
+  background: url("../../../assets/images/fantasy/live/flash.png") no-repeat;
+}
+.fantasy_scor_match_details_right .fantsy_powerplay_3 {
+  background: url("../../../assets/images/fantasy/live/player.png") no-repeat;
+}
+.fantasy_scor_match_details_right .fantasy_score_match_details_team_score {
+  font-weight: 400;
+  color: #fff;
+}
+.fantasy_score_match_details_second_row {
+  text-align: right;
+  margin: 7px;
+  font-family: Poppins;
+  font-size: 16px;
+  color: #fb6e00;
+  padding: 0px 30px;
+}
+.fantasy_score_team {
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
+  margin-right: 40px;
+  margin-left: 10px;
+}
+.fantasy_score_player_details {
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #fb6e00;
+}
+.fantasy_score_player_details span {
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
+}
+.fantasy_score_match_details_row3 {
+  text-align: right;
+  padding: 0px 30px;
+}
+.fantasy_live_powerplay {
+  display: inline-block;
+  width: 40px;
+  height: 48px;
+  margin: 4px;
+}
+.fantasy_score_match_details_my_score_wrapper {
+  width: 96px;
+  height: 58px;
+  border-radius: 17px;
+  background-color: #fb6e00;
+  font-family: Poppins;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+  overflow: hidden;
+  margin-left: 10px;
+}
+.fantasy_score_match_details_my_score_txt {
+  font-family: Poppins;
+  font-size: 12px;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: 300;
+  text-align: left;
+  margin-right: 10px;
+}
+.fantasy_score_match_details_my_score {
+  display: inline-block;
+}
+
+.fantasy_score_match_details_row4 {
+  text-align: center;
+  padding: 20px 10px;
+  border-top: solid 1px #232323;
+  border-right: solid 1px #232323;
+  margin-top: 30px;
+}
+.fantasy_scor_match_details_right .fantasy_score_match_details_row4 {
+  border-right: none;
+}
+.fantasy_details_row4_item {
+  display: inline-block;
+}
+.fantasy_details_row4_item_text {
+  margin-left: 6px;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 12px;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.fantasy_details_row4_item_img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: inline-block;
+  margin-left: 26px;
+}
+.fantasy_my_scores {
+  width: 374px;
+  display: inline-block;
+}
+.fantasy_live_main_right {
+  display: inline-block;
+  vertical-align: top;
+}
+.fantasy_my_scores_heading {
+  text-align: center;
+}
+.fantasy_live_scores_heading_text1 {
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 24px;
+  color: #ffffff;
+}
+.fantasy_live_scores_heading_text2 {
+  display: inline-block;
+  margin-left: 25px;
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background-color: #ff7b00;
+  font-family: Poppins;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  line-height: 46px;
+}
+.fantasy_my_scores_main {
+  width: 374px;
+  height: 632px;
+  border-radius: 16px;
+  background-color: #1a1a1a;
+  text-align: right;
+  padding: 20px 45px 20px 0px;
+}
+.fantasy_live_player_score_wrapper {
+  display: inline-block;
+  text-align: center;
+  margin: 4px 0px;
+}
+.fantasy_live_player_score_text1 {
+  font-family: Poppins;
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0px 10px;
+  display: inline-block;
+}
+.fantasy_live_player_score_score_box {
+  width: 220px;
+  height: 58px;
+  border-radius: 13px;
+  background-color: #0f0f0f;
+  display: inline-block;
+}
+.fantasy_live_player_score_text2 {
+  display: inline-block;
+
+  line-height: 50px;
+  font-family: Poppins;
+  font-size: 16px;
+  color: #fb6e00;
+}
+.fantasy_live_player_score_text3 {
+  display: inline-block;
+
+  line-height: 50px;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  color: #ff7b00;
+  margin-left: 21px;
+}
+.fantasy_live_invetory_heading{
+  font-family: Poppins;
+  font-size: 24px;
+  color: #ffffff;
+  margin-top: 10px;
+}
+.fantasy_live_invetory_main {
+  width: 372px;
+  border-radius: 16px;
+  background-color: #1a1a1a;
+  padding: 27px 12px;
+  font-size: 16px;
+  line-height: 1.06;
+  text-align: center;
+  color: #ffffff;
+  text-align: left;
+}
+.fantasy_live_invetory_main > div {
+  display: inline-block;
+  width: 61px;
+  vertical-align: top;
+  margin: 0px 10px 20px;
+  text-align: center;
+}
+.fantasy_live_powerplay_item_1 .fantasy_live_powerplay_item_img {
+  background: url("../../../assets/images/fantasy/live/star.png") no-repeat;
+  width: 44px;
+  height: 52px;
+  display: inline-block;
+}
+.fantasy_live_powerplay_item_2 .fantasy_live_powerplay_item_img {
+  background: url("../../../assets/images/fantasy/live/x2.png") no-repeat;
+  width: 44px;
+  display: inline-block;
+  height: 52px;
+}
+.fantasy_live_powerplay_item_3 .fantasy_live_powerplay_item_img {
+  background: url("../../../assets/images/fantasy/live/x3.png") no-repeat;
+  width: 44px;
+  height: 52px;
+  display: inline-block;
+}
+.fantasy_live_powerplay_item_4 .fantasy_live_powerplay_item_img {
+  background: url("../../../assets/images/fantasy/live/redo.png") no-repeat;
+  width: 44px;
+  height: 52px;
+  display: inline-block;
+}
+.fantasy_live_powerplay_item_5 .fantasy_live_powerplay_item_img {
+  background: url("../../../assets/images/fantasy/live/player.png") no-repeat;
+  width: 44px;
+  height: 52px;
+  display: inline-block;
+}
+.fantasy_live_powerplay_item_6 .fantasy_live_powerplay_item_img {
+  background: url("../../../assets/images/fantasy/live/flash.png") no-repeat;
+  width: 44px;
+  height: 52px;
+
+  display: inline-block;
+}
+.fantasy_live_powerplay_item_7 .fantasy_live_powerplay_item_img {
+  background: url("../../../assets/images/fantasy/live/doodle.png") no-repeat;
+  width: 44px;
+  height: 52px;
+  display: inline-block;
+}
+.fantasy_live_powerplay_item_number {
+  width: 28px;
+  height: 28px;
+  background-color: #fb6e00;
+  position: absolute;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 14px;
+  line-height: 28px;
+  margin-top: -65px;
+  /* right: 181px; */
+  margin-left: 30px;
+}

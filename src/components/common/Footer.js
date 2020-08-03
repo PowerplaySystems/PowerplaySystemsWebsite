@@ -6,9 +6,9 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        {/* <div className="container-fluid contact-us">
+        <div className="container-fluid contact-us">
           <div className="container">
-            <div className="row ">
+            <div>
               <div className="col-sm-4" />
               <div className="col-sm-2">
                 <div className="box">
@@ -68,7 +68,7 @@ class Footer extends Component {
             </div>
           </div>
         </div>
-        <div className="container-fluid p-o" /> */}
+        <div className="container-fluid p-o" />
       </div>
     );
   }

@@ -5,6 +5,7 @@ import Footer from "../common/Footer";
 import VirtualCardVideos from "./VirtualCardVideos";
 import "./index.css";
 import * as Constants from "./../common/constants";
+import DrawTimer from "./../common/DrawTimer";
 class LotteryPlatform extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,8 @@ class LotteryPlatform extends Component {
     if (this.state.steps.length == 0) {
       return (
         <div>
-          <Header />
+         <Header />
+        <DrawTimer/>
           <Footer />
         </div>
       );

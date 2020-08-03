@@ -41,99 +41,96 @@ class Header extends Component {
   render() {
     //if user logged IN
     if (this.state.isLogedin) {
-      // return (
-      //   <div className="container-fluid p-o">
-      //     <header>
-      //       <div className="col-md-2 col-sm-3 col-xs-7">
-      //         <div
-      //           onClick={() => this.props.history.push("/")}
-      //           className="logo c-p"
-      //         >
-      //           <a>
-      //             <img
-      //               className="logo_img"
-      //               src={require("./../../assets/images/logo.png")}
-      //             />
-      //           </a>
-      //         </div>
-      //       </div>
-      //       <div className="col-xs-4 pull-rights" id="burger">
-      //         <div className="_burger">
-      //           <button type="button" className="navbar-toggle collapsed">
-      //             <span className="sr-only">Toggle navigation</span>
-      //             <span className="icon-bar" />
-      //             <span className="icon-bar" />
-      //             <span className="icon-bar" />
-      //           </button>
-      //         </div>
-      //       </div>
-      //       <div className="col-md-10  main_navigation pull-right">
-      //         <div className="nav-bar">
-      //           <ul className="nav navbar-nav">
-      //             <li className="c-p">
-      //               <a
-      //                 onClick={() =>
-      //                   this.props.history.push("/powerplay-lotto")
-      //                 }
-      //               >
-      //                 Powerplay Lotto
-      //               </a>
-      //             </li>
-      //             <li className="c-p">
-      //               <a onClick={() => this.props.history.push("/live-sports")}>
-      //                 Powerplay Live Sports
-      //               </a>
-      //             </li>
-      //             <li className="c-p">
-      //               <a  onClick={() => this.props.history.push("/partner")}>
-      //                 Partner With Us
-      //               </a>
-      //             </li>
-      //             <li className="c-p">
-      //               <a
-      //                 className="header_li_button"
-      //                 onClick={() => this.props.history.push("/game-central")}
-      //               >
-      //                 My Game Center
-      //               </a>
-      //             </li>
-      //             <li className="c-p" style={{ marginLeft: "-10px" }}>
-      //               <a
-      //                 href="#"
-      //                 class="dropdown-toggle"
-      //                 data-toggle="dropdown"
-      //                 role="button"
-      //                 aria-haspopup="true"
-      //                 aria-expanded="false"
-      //               >
-      //                 <img
-      //                   src={require("./../../assets/images/pp.png")}
-      //                   className="header_user_img"
-      //                 />{" "}
-      //                 <span class="caret" />
-      //               </a>
-      //               <ul
-      //                 className="drop-down header_dropdown_list"
-      //                 style={{ left: "-90px" }}
-      //               >
-      //                 <ul className="c-p header_dropdown_menu_item">
-      //                   <a
-      //                     onClick={() => this.props.history.push("/my-account")}
-      //                   >
-      //                     My Account
-      //                   </a>
-      //                 </ul>
-      //                 <ul className="c-p header_dropdown_menu_item">
-      //                   <a onClick={() => this.logout()}>Logout</a>
-      //                 </ul>
-      //               </ul>
-      //             </li>
-      //           </ul>
-      //         </div>
-      //       </div>
-      //     </header>
-      //   </div>
-      // );
+      return (
+        <div className="container-fluid p-o">
+          <header>
+            <div className="col-md-2 col-sm-3 col-xs-7">
+              <div
+                onClick={() => this.props.history.push("/")}
+                className="logo c-p"
+              >
+                <a>
+                  <img
+                    className="logo_img"
+                    src={require("./../../assets/images/logo.png")}
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="col-xs-4 pull-rights" id="burger">
+              <div className="_burger">
+                <button type="button" class="navbar-toggle ham-burger " data-toggle="collapse" data-target="#myNavbar">
+                 
+                </button>
+              </div>
+            </div>
+            <div className="col-md-10  main_navigation pull-right">
+              <div className="nav-bar " id="myNavbar">
+                <ul className="nav navbar-nav">
+                  <li className="c-p">
+                    <a
+                      onClick={() =>
+                        this.props.history.push("/powerplay-lotto")
+                      }
+                    >
+                      Powerplay Lotto
+                    </a>
+                  </li>
+                  <li className="c-p">
+                    <a onClick={() => this.props.history.push("/live-sports")}>
+                      Powerplay Live Sports
+                    </a>
+                  </li>
+                  <li className="c-p">
+                    <a  onClick={() => this.props.history.push("/partner")}>
+                      Partner With Us
+                    </a>
+                  </li>
+                  <li className="c-p">
+                    <a
+                      className="header_li_button"
+                      onClick={() => this.props.history.push("/game-central")}
+                    >
+                      My Game Center
+                    </a>
+                  </li>
+                  <li className="c-p" style={{ marginLeft: "-10px" }}>
+                    <a
+                      href="#"
+                      class="dropdown-toggle"
+                      data-toggle="dropdown"
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <img
+                        src={require("./../../assets/images/pp.png")}
+                        className="header_user_img"
+                      />{" "}
+                      <span class="caret" />
+                    </a>
+                    <ul
+                      className="drop-down header_dropdown_list profile_dropdown"
+                      style={{ left: "-90px" }}
+                    >
+                      <ul className="c-p header_dropdown_menu_item">
+                        <a
+                          onClick={() => this.props.history.push("/my-account")}
+                        >
+                          My Account
+                        </a>
+                      </ul>
+                      <ul className="c-p header_dropdown_menu_item">
+                        <a onClick={() => this.logout()}>Logout</a>
+                      </ul>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </header>
+        </div>
+      );
     } else {
       return (
         <div className="container-fluid p-o">
@@ -153,16 +150,14 @@ class Header extends Component {
             </div>
             <div className="col-xs-4 pull-rights" id="burger">
               <div className="_burger">
-                <button type="button" className="navbar-toggle collapsed">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
+                <button type="button"class="navbar-toggle  ham-burger" data-toggle="collapse" data-target="#myNavbar">
+                 
+                 
                 </button>
               </div>
             </div>
             <div className="col-md-10  main_navigation pull-right">
-              <div className="nav-bar">
+              <div className="nav-bar" id="myNavbar">
                 <ul className="nav navbar-nav">
                   <li className="c-p">
                     <a
@@ -189,22 +184,22 @@ class Header extends Component {
                       className="c-p"
                       onClick={() => this.props.history.push("/about-us")}
                     >
-                      About US
+                      About Us
                     </a>
-                    {/* <a
+                    <a
                       className="header_li_signin"
                       onClick={() => this.props.history.push("/login")}
                     >
                       Sign In
-                    </a> */}
+                    </a>
                   </li>
                   <li className="c-p">
-                    {/* <a
+                    <a
                       className="header_li_button_start"
                       onClick={() => this.props.history.push("/register")}
                     >
                       Get Started
-                    </a> */}
+                    </a>
                   </li>
                 </ul>
               </div>

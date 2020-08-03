@@ -81,7 +81,6 @@ p {
   max-width: 100% !important;
   width: 100%;
   padding: 0px !important;
-  min-width: 1347px;
 }
 .p-o {
   padding: 0px;
@@ -113,7 +112,7 @@ header {
 .nav > li {
   margin: 0px 0px 0px 20px;
   padding: 0px;
-  display: inline-block;
+  display: block;
   text-align: left;
   position: relative;
 }
@@ -191,7 +190,6 @@ li.block-btn:hover a {
   float: right;
   background: #dba343;
   margin: 0px !important;
-  padding: 10px !important;
 }
 #burger {
   display: none;
@@ -263,20 +261,20 @@ li.block-btn:hover a {
     margin: 0px;
   }
   .nav > li {
-    margin: 0px;
     padding: 0px;
     width: 100%;
     float: none;
-    display: inline-block !important;
+    display: block !important;
     text-align: center;
+    margin: 10px;
   }
   .nav > li > a {
     display: block;
-    padding: 10px 0px;
+    padding: 0px 0px;
   }
   .navbar-nav {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 0px;
     background: #191919;
   }
 }
@@ -3449,7 +3447,7 @@ body,
   max-width: 62%;
 }
 input::placeholder {
-  color: #fff !important;
+  color: grey;
   font-size: 18px;
   font-style: oblique;
   font-family: lato;
@@ -3458,7 +3456,7 @@ input::placeholder {
 }
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #fff !important;
+  color: grey;
   font-size: 18px;
   font-style: oblique;
   font-family: lato;

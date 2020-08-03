@@ -1,0 +1,331 @@
+.draft_day_header {
+  height: 304px;
+  background-color: rgba(0, 0, 0, 0.36);
+  background-image: url("../../../assets/images/draft_day/header.png");
+  text-align: center;
+}
+.draft_day_header_content {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 40px;
+}
+.draft_day_text1 {
+  font-family: Poppins;
+  font-size: 44px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+}
+.draft_day_text2 {
+  font-family: Poppins;
+  font-size: 26.9px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+}
+.draft_day_text2a {
+  text-align: center;
+  width: 130px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 7.1px;
+  background-image: linear-gradient(to right, #fb6e00 11%, #fa3800 94%);
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 27px;
+  font-weight: 600;
+  font-style: italic;
+  color: #ffffff;
+}
+.draft_day_text3 {
+  margin-top: 15px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+.draft_day_text3 span {
+  color: #fb6e00;
+}
+
+.draft_day_text4 {
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+.draft_day_header_buttons {
+  margin: 10px 0px;
+}
+.draft_day_buton1 {
+  width: 170px;
+  height: 42px;
+  border-radius: 21px;
+  border: solid 1px #ffffff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  background: none;
+  margin: 10px;
+}
+.draft_day_buton2 {
+  width: 170px;
+  height: 42px;
+  border-radius: 21px;
+  border: solid 1px #ffffff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  background: none;
+  margin: 10px;
+}
+.draf_day_main {
+  text-align: center;
+  padding: 50px 0px;
+}
+.draft_day_text5 {
+  font-family: Poppins;
+  font-size: 26px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+.draft_day_text5 span {
+  color: #fb6e00;
+  font-style: italic;
+}
+.draft_day_table_wrapper {
+  width: 1125px;
+  display: inline-block;
+  height: 600px;
+  overflow-y: auto;
+  max-width: 100%;
+}
+.draft_day_table {
+  border-radius: 11px;
+  background-color: #1a1a1a;
+}
+.draft_day_table thead tr {
+  height: 64px;
+  border-radius: 5px;
+  background-color: #c7c7c7;
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.18;
+  color: #000000;
+}
+.draft_day_table tbody tr {
+  height: 69px;
+  font-family: Poppins;
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.draft_day_table tbody tr:first-child .draft_day_table_icon_up {
+  filter: grayscale(100%);
+  pointer-events: none;
+}
+.draft_day_table tr td:first-child {
+  width: 80px;
+}
+.draft_day_table tr td:nth-child(2) {
+  width: 80px;
+}
+.draft_day_table tr td:nth-child(6) {
+  width: 80px;
+}
+.draft_day_table tr td:nth-child(7) {
+  width: 60px;
+}
+.draft_day_table tr td:last-child {
+  width: 200px;
+  border-bottom: none;
+
+}
+.draft_day_table tr {
+  border-bottom: solid 1px #595959;
+}
+
+.draft_day_table td {
+  padding: 0px 15px;
+}
+.draft_day_table_icon_up {
+  width: 33px;
+  display: inline-block;
+  margin: 0px 5px;
+  cursor: pointer;
+  height: 33px;
+  background: url("../../../assets/images/draft_day/up_active.png");
+}
+.draft_day_table_icon_up.inactive {
+  filter: grayscale(100%);
+}
+.draft_day_table_icon_down {
+  width: 33px;
+  height: 33px;
+  display: inline-block;
+  margin: 0px 5px;
+  cursor: pointer;
+  background: url("../../../assets/images/draft_day/down_active.png");
+}
+.bg-light{
+  background: #3e3e3e ;
+}
+.draft_day_buton3 {
+  width: 389px;
+  height: 50px;
+  border-radius: 25px;
+
+  background-color: #ff7b00;
+  border: none;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #f1f3f6;
+  margin: 20px 0px;
+}
+.draft_day_buton3 span {
+}
+.draft_day_buton3:hover {
+  box-shadow: 0 3px 27px -2px rgba(22, 107, 172, 0.5);
+}
+.draft_day_text6 {
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 30px;
+  width: 704px;
+}
+.draft_day_text7 {
+  font-family: Poppins;
+  font-size: 14px;
+  color: #ffffff;
+}
+.draft_day_bottom_box {
+  display: inline-block;
+  border-radius: 9px;
+  background-color: #0c0c0c;
+  width: 605px;
+  padding: 15px 0px 15px 66px;
+  margin-top: 20px;
+  margin-bottom: 120px;
+}
+.draft_day_list {
+  text-align: left;
+}
+.draft_day_list li {
+  color: #ffffff;
+  list-style: none; /* Remove default bullets */
+  margin: 10px 0px;
+}
+.draft_day_list li::before {
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #fb6e00; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+.confirm_dialog_wrapper {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+.confirm_dialog_content {
+  margin-top: 15px;
+  display: inline-block;
+  width: 455px;
+}
+.confirm_dialog_header {
+  background-color: #35363a;
+  padding-top: 20px;
+  border-radius: 10px;
+}
+.confirm_dialog_header_text1 {
+  font-family: Poppins;
+  font-size: 27px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+}
+.confirm_dialog_header_text2 {
+  font-family: Poppins;
+  font-size: 17px;
+  text-align: center;
+  color: #ffffff;
+}
+.confirm_dialog_header_text3 {
+  background-color: rgba(255, 123, 0, 0.6);
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  padding: 5px 29px;
+  margin-top: 16px;
+}
+.confirm_dialog_main_Players {
+  background-color: #1a1a1a;
+  height: 400px;
+  overflow-y: auto;
+}
+.confirm_dialog_main_player {
+  width: 200px;
+  display: inline-block;
+  padding: 9px 0px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  border-bottom: solid 1px #424242;
+  padding-left: 30px;
+  text-align: left;
+}
+.confirm_dialog_main_player:nth-child(even) {
+  border-left: solid 2px #424242;
+}
+.confirm_dialog_btn1 {
+  width: 456px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ff7b00;
+  margin: 8px 0px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #f1f3f6;
+}
+.confirm_dialog_btn1:hover {
+  box-shadow: 0 3px 27px -2px rgba(22, 107, 172, 0.5);
+}
+.confirm_dialog_btn2 {
+  width: 456px;
+  height: 50px;
+  border-radius: 25px;
+  background: transparent;
+  border: solid 1.5px #ffffff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #f1f3f6;
+}
+.confirm_dialog_btn2:hover {
+  box-shadow: 0 3px 27px -2px rgba(22, 107, 172, 0.5);
+}

@@ -1,6 +1,9 @@
+.home_first_row {
+  height: unset !important;
+  padding: 10px 0px;
+}
 .home_first_row .header-main {
-  width: 1110px;
-  height: 146px;
+  width: 81%;
   font-family: Poppins;
   font-size: 52px;
   letter-spacing: -0.5px;
@@ -26,12 +29,14 @@
   margin-left: 20px;
 }
 .home_first_row_details {
-  float: left;
+  float: none;
+  display: inline-block;
   margin: 30px 0px 0px 30px;
 }
 .first_row_details_container {
-  width: 1050px;
+  width: 77%;
   margin: 0 auto;
+  text-align: center;
 }
 .first_row_button {
   width: 578px;
@@ -59,8 +64,7 @@
 }
 .header_row_2 {
   margin: 160px 0px 20px 0px;
-  width: 372px;
-  height: 59px;
+
   font-family: Poppins;
   font-size: 42px;
   font-weight: bold;
@@ -69,11 +73,12 @@
 }
 .detail_row_2 {
   width: 868px;
-  height: 132px;
+  max-width: 100%;
   font-family: Poppins;
   font-size: 24px;
   text-align: center;
   color: #ffffff;
+  margin-bottom: 100px;
 }
 .home_row_3_content {
   margin-left: 80px;
@@ -81,7 +86,7 @@
 .header_row_3 {
   margin-top: 134px;
   width: 726px;
-  height: 50px;
+  max-width: 100%;
   font-family: Poppins;
   font-size: 42px;
   font-weight: bold;
@@ -91,18 +96,19 @@
 }
 .detail_row_3 {
   width: 978px;
-  height: 33px;
+  max-width: 100%;
   font-family: Poppins;
   font-size: 24px;
   color: #ffffff;
 }
 .row_3_items_container {
-  margin: 20px 0px;
+  margin: 20px 0px 0px;
   width: 1000px;
-  height: 100px;
+  max-width: 100%;
 }
 .row_3_item {
-  float: left;
+  float: none;
+  display: inline-block;
   width: fit-content;
   line-height: 35px;
   padding: 0px 20px 0px 20px;
@@ -138,12 +144,14 @@
 }
 .home_offers {
   margin: 0 auto;
-  width: 1347px;
+  text-align: center;
+  width: 100%;
 }
 .home_offers_item {
-  float: left;
+  float: none;
+  display: inline-block;
+  vertical-align: top;
   margin: 16px;
-  height: 300px;
 }
 .home_offer_icon {
   width: 114px;
@@ -152,7 +160,7 @@
 }
 .home_offer_heading {
   width: 378px;
- 
+
   font-family: Poppins;
   font-size: 22px;
   font-weight: 600;
@@ -162,7 +170,7 @@
 }
 .home_offer_heading_small {
   width: 187px;
- 
+
   font-family: Poppins;
   font-size: 22px;
   font-weight: 600;
@@ -172,7 +180,6 @@
 }
 .home_offer_details {
   width: 402px;
-  height: 92px;
   font-family: Poppins;
   font-size: 16px;
   text-align: center;
@@ -190,4 +197,141 @@
   text-align: center;
   color: #ffffff;
   border: none;
+}
+@media screen and (max-width: 700px) {
+  .home_first_row {
+    height: unset !important;
+    background-position: top;
+  }
+  .home_first_row .header-main {
+    font-size: 20px !important;
+    font-weight: bold;
+    margin-top: 45px;
+    height: unset;
+    margin-bottom: 40px;
+  }
+  .first_row_details_container {
+    width: 100%;
+  }
+  .home_first_row .main_icon_text {
+    font-size: 16px;
+    font-weight: 500;
+    height: unset;
+    margin-left: 10px;
+  }
+  .home_first_row_details {
+    margin-top: 10px;
+  }
+  .home_first_row .main_img_icon {
+    width: 19.9px;
+    height: 19.9px;
+    margin-top: 0px;
+  }
+  .first_row_button {
+    width: 65%;
+    height: 43.4px;
+    font-size: 15px;
+    font-weight: 400px;
+  }
+  .first_row_extra_info {
+    font-size: 12px;
+    margin: 20px auto;
+    width: unset;
+    float: none;
+
+    text-align: center;
+  }
+  .header_row_2 {
+    font-size: 18px;
+    width: 160px;
+    margin-top: 74px;
+    margin-bottom: 24px;
+  }
+  .detail_row_2 {
+    width: 95%;
+    font-size: 16px;
+    text-align: center;
+  }
+  .header_row_3 {
+    font-size: 20px;
+  }
+  .home_row_3_content {
+    margin: 0px;
+    width: 100%;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+  .header_row_3 {
+    font-size: 20px;
+    max-width: 100%;
+    width: 319px;
+    text-align: center;
+    margin: 50px auto 10px;
+  }
+  .detail_row_3 {
+    font-size: 18px;
+    text-align: center;
+    width: 236px;
+    max-width: 80%;
+    margin: 0px auto;
+    height: unset;
+  }
+  .row_3_items_container {
+    text-align: center;
+    width: 100%;
+    height: unset;
+  }
+  .row_3_item {
+    float: none;
+    display: inline-block;
+    font-size: 14.4px;
+    height: 32.8px;
+    line-height: 30.8px;
+    padding: 0px 5px;
+  }
+  .row_3_button {
+    width: 75% !important;
+    height: 43.4px;
+    font-size: 14px;
+    font-weight: 400;
+    min-width: 200px;
+  }
+  .home_sub_heading {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 50px auto 20px;
+  }
+  .home_offers {
+    width: 100%;
+    padding: 40px 0px;
+  }
+  .home_offers_item {
+    width: 278px;
+    max-width: 100%;
+  }
+  .home_offer_icon {
+    width: 91.2px;
+    height: 91.2px;
+  }
+  .home_offer_heading {
+    font-size: 18px;
+    font-weight: 600;
+    width: 277px;
+    max-width: 100%;
+  }
+  .home_offer_details {
+    width: 278px;
+    font-size: 16px;
+    max-width: 100%;
+  }
+  .home_offer_button {
+    width: 328px;
+    height: 44px;
+    font-size: 15px;
+    font-weight: 400;
+    margin: unset;
+    margin-top: 30px;
+    max-width: 100%;
+  }
 }

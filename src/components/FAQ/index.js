@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Header from './../common/Header'
 import Footer from './../common/Footer'
+import DrawTimer from "./../common/DrawTimer";
 import './index.css'
 import * as Constants from "./../common/constants";
 class FAQ extends Component {
@@ -35,7 +36,8 @@ class FAQ extends Component {
     render() {
         return (
             <div>
-                <Header />
+               <Header />
+        <DrawTimer/>
                 <div className="container-fluid _faq_wrap">
                     <div className="container">
                         <div className="row">

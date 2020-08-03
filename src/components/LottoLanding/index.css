@@ -1,0 +1,829 @@
+.lotto-landing-container {
+  background-color: #202124;
+  text-align: center;
+  width: 100%;
+  font-family: Poppins;
+  padding: 122px 0px 255px;
+}
+.lotto-landing-heading {
+  width: 864px;
+  max-width: 100%;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 62px;
+  font-weight: 600;
+  line-height: 1.16;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-landing-heading-fancy {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.71;
+  color: #ffffff;
+  border-radius: 6.8px;
+  background-image: linear-gradient(to right, #fb6e00 11%, #fa3800 94%);
+  padding: 6px;
+}
+.lotto-landing-text2 {
+  font-family: Poppins;
+  font-size: 24px;
+  line-height: 1.25;
+  text-align: center;
+  color: #bfbfbf;
+  width: 934px;
+  max-width: 100%;
+  display: inline-block;
+  margin: 40px 0px;
+}
+.lotto-landing-button {
+  width: 363px;
+  height: 61px;
+  border-radius: 34.5px;
+  border: none;
+  background-color: #fb6e00;
+  font-family: Poppins;
+  font-size: 22px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  font-family: Poppins;
+}
+.lotto-landing-button:hover {
+  box-shadow: 0 3px 19px -2px rgba(251, 110, 0, 0.62);
+}
+.lotto-landing-button-transparent {
+  width: 363px;
+  height: 61px;
+  border-radius: 34.5px;
+  border: solid 1.5px #fb6e00;
+  font-family: Poppins;
+  font-size: 22px;
+  text-align: center;
+  color: #ffffff;
+  background: none;
+}
+.lotto-work-items-wrapper {
+  width: 822px;
+  margin: 0px auto 40px;
+  max-width: 100%;
+}
+.lotto-work-item {
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  width: 244px;
+  vertical-align: top;
+  margin: 15px;
+}
+.lotto-work-item-box {
+  width: 150px;
+  height: 135px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 3px 27px 7px rgba(0, 0, 0, 0.51);
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 12px auto;
+}
+.lotto-work-icon {
+  width: 55px;
+  margin: 10px auto 0px auto;
+}
+.lotto-work-item-text {
+  font-family: CenturyGothic;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: -0.24px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 10px;
+}
+.lotto-work-item-note {
+  width: 200px;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-work-item:nth-child(2) .lotto-work-item-note {
+  width: 250px;
+}
+.lotto-work-item:nth-child(3) .lotto-work-item-note {
+  width: 250px;
+}
+.lotto-work-item:nth-child(5) .lotto-work-item-note {
+  width: 178px;
+}
+.div-laptop-img {
+  background: url("../../assets/images/lotto/laptop.png");
+  width: auto;
+  height: 633px;
+  margin: 80px 0px 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.lotto-landing-text3 {
+  margin-top: 200px;
+  font-family: Poppins;
+  font-size: 62px;
+  font-weight: 600;
+  line-height: 0.9;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-landing-text4 {
+  margin-top: 30px;
+  max-width: 100%;
+  width: 1048px;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 24px;
+  line-height: 1.25;
+  text-align: center;
+  color: #bfbfbf;
+}
+.lotto-landing-text4 span {
+  color: #fb6e00;
+}
+.lotto-landing-ingagement-content {
+  margin-top: 46px;
+  text-align: left;
+  max-width: 100%;
+}
+.lotto-landing-people-img {
+  max-width: 100%;
+  width: 829px;
+  height: 672px;
+  object-fit: contain;
+  background: url("../../assets/images/lotto/group_4.png");
+  display: inline-block;
+}
+.lotto-landing-ingagement-right {
+  display: inline-block;
+  margin-left: 50px;
+  vertical-align: top;
+}
+.lotto-landing-ingagement-box1 {
+  width: 431px;
+  border-radius: 17px;
+  box-shadow: 0 3px 27px 7px rgba(0, 0, 0, 0.51);
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: left;
+  padding: 20px;
+  margin-bottom: 34px;
+}
+.lotto-landing-text5 {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0px 0px 10px;
+}
+.lotto-landing-text7 {
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
+}
+.lotto-landing-text7 span {
+  color: #fb6e00;
+}
+.lotto-landing-row {
+  text-align: left;
+  margin-top: 200px;
+  max-width: 100%;
+}
+.lotto-landing-want {
+  display: inline-block;
+  padding: 0px 0px 0px 80px;
+  max-width: 100%;
+}
+.lotto-landing-text6 {
+  font-family: Poppins;
+  font-size: 62px;
+  font-weight: 600;
+  line-height: 0.9;
+  color: #ffffff;
+}
+.lotto-landing-text27 {
+  font-family: Poppins;
+  font-size: 42px;
+  line-height: 1.33;
+  color: #ffffff;
+  width: 483px;
+  margin-bottom: 31px;
+}
+.lotto-landing-breaker {
+  width: 111px;
+  border: solid 2px #fb6e00;
+  margin: 12px 0px 26px;
+}
+.lotto-landing-want-right {
+  display: inline-block;
+  width: 706px;
+  margin-left: 56px;
+  vertical-align: top;
+  max-width: 100%;
+}
+.lotto-landing-box2 {
+  padding: 25px;
+  display: inline-block;
+  width: 318px;
+  border-radius: 16px;
+  box-shadow: 0 3px 27px 7px rgba(0, 0, 0, 0.51);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.lotto-landing-box2:nth-child(1) {
+  margin: 35px;
+}
+.lotto-landing-box2:nth-child(2) {
+  margin-top: 65px;
+  vertical-align: middle;
+}
+.lotto-landing-box2:nth-child(3) {
+  margin-top: -61px;
+  /* margin-left: 40px; */
+}
+.lotto-landing-icon1 {
+  background: url("../../assets/images/lotto/white.png");
+  width: 64px;
+  height: 54px;
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+.lotto-landing-icon11 {
+  background: url("../../assets/images/lotto/group_2_2.png");
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 54px;
+  object-fit: contain;
+}
+.lotto-landing-icon111 {
+  background: url("../../assets/images/lotto/group_2_3.png");
+  width: 64px;
+  height: 54px;
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+.lotto-landing-text8 {
+  font-family: Poppins;
+  font-size: 20.8px;
+  font-weight: 500;
+  color: #fb6e00;
+  margin-top: 10px;
+}
+.lotto-landing-text9 {
+  font-family: Poppins;
+  font-size: 14.4px;
+  color: #ffffff;
+}
+.lotto-landing-text10 {
+  font-family: Poppins;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #bfbfbf;
+  margin-top: 28px;
+}
+.lotto-landing-text11 {
+  font-family: Poppins;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #fb6e00;
+}
+.lotto-landing-elite8 {
+  max-width: 100%;
+  padding: 98px 90px;
+  text-align: left;
+  margin-top: 200px;
+  /* width: 1440px;
+  height: 420px; */
+  object-fit: contain;
+  background: url("../../assets/images/lotto/group_16.png");
+  background-size: cover;
+}
+.lotto-landing-text12 {
+  font-family: Poppins;
+  font-size: 62px;
+  font-weight: 900;
+  color: #ffffff;
+}
+.lotto-landing-text13 {
+  width: 585px;
+  max-width: 100%;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+.lotto-landing-text14 {
+  font-family: Poppins;
+  font-size: 62px;
+  font-weight: 600;
+  line-height: 0.9;
+  text-align: center;
+  color: #ffffff;
+  margin: 200px 0px 30px;
+}
+.lotto-landing-text15 {
+  width: 992px;
+  max-width: 100%;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 24px;
+  line-height: 1.25;
+  text-align: center;
+  color: #bfbfbf;
+}
+.lotto-landing-experince {
+  margin: 40px 0px 70px;
+}
+.lotto-landing-experince-item {
+  text-align: center;
+  display: inline-block;
+}
+.lotto-landing-icon21 {
+  background: url("../../assets/images/lotto/responsive.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 52px;
+}
+.lotto-landing-icon22 {
+  background: url("../../assets/images/lotto/support.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 52px;
+}
+.lotto-landing-icon23 {
+  background: url("../../assets/images/lotto/tap.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 52px;
+}
+.lotto-landing-text16 {
+  width: 223px;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+}
+.lotto-landing-text17 {
+  width: 791px;
+  max-width: 100%;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 26px;
+  font-weight: 500;
+  text-align: center;
+  color: #bfbfbf;
+  margin-bottom: 77px;
+}
+.lotto-landing-text17 span {
+  color: #fb6e00;
+}
+.lotto-landing-trust-items {
+  margin: 40px;
+}
+.lotto-landing-trust-item {
+  display: inline-block;
+  margin: 0px 40px;
+}
+.lotto-landing-icon3 {
+  background: url("../../assets/images/lotto/shield.png");
+  height: 52px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.lotto-landing-text18 {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  width: 205px;
+  margin-top: 10px;
+}
+.lotto-landing-text18 span {
+  color: #fb6e00;
+}
+.lotto-landing-genr8 {
+  text-align: left;
+  margin-top: 200px;
+  max-width: 100%;
+}
+.lotto-landing-genr8-left {
+  display: inline-block;
+  margin-left: 129px;
+  margin-right: 40px;
+  max-width: 100%;
+}
+.lotto-landing-text19 {
+  width: 507px;
+
+  object-fit: contain;
+  border-radius: 17px;
+  background-image: linear-gradient(to right, #fb6e00 11%, #fa3800 94%);
+  font-family: Poppins;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.43;
+  text-align: center;
+  color: #ffffff;
+  padding: 11px;
+}
+.lotto-landing-text20 {
+  font-family: Poppins;
+  width: 844px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 30px 0px 20px;
+  max-width: 100%;
+}
+.lotto-landing-text21 {
+  font-family: Poppins;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #ffffff;
+  width: 730px;
+  max-width: 100%;
+}
+.lotto-landing-icon4 {
+  display: inline-block;
+  height: 276px;
+  width: 300px;
+  background: url("../../assets/images/lotto/patent.png");
+  background-repeat: no-repeat;
+}
+.lotto-landing-text22 {
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.43;
+  text-align: center;
+  color: #ffffff;
+  width: 979px;
+  max-width: 100%;
+  display: inline-block;
+  margin-top: 200px;
+}
+.lotto-landing-text23 {
+  width: 800px;
+  max-width: 100%;
+  font-family: Poppins;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+  display: inline-block;
+  margin: 40px 0px;
+  color: #ffffff;
+}
+.lotto-landing-text23 span {
+  color: #fb6e00;
+}
+.lotto-landing-text24 {
+  width: 852px;
+  max-width: 100%;
+  font-family: Poppins;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+  margin: 0px 0px 40px 0px;
+}
+.lotto-landing-text14a {
+  font-family: Poppins;
+  font-size: 26px;
+  font-weight: 500;
+  text-align: center;
+  color: #bfbfbf;
+  width: 441px;
+  margin: 70px 0px 30px;
+  display: inline-block;
+  max-width: 100%;
+}
+.lotto-landing-text14a span {
+  color: #fb6e00;
+}
+.lotto-landing-space {
+  display: inline-block;
+  width: 20px;
+}
+
+@media screen and (max-width: 1300px) {
+  .lotto-landing-ingagement-content {
+    text-align: center;
+  }
+  .lotto-landing-people-img {
+    margin-bottom: 30px;
+  }
+  .lotto-landing-ingagement-box1 {
+    display: inline-block;
+    margin: 20px;
+  }
+  .lotto-landing-row {
+    max-width: 100%;
+    text-align: center;
+  }
+  .lotto-landing-want {
+    padding: 0px;
+    text-align: center;
+  }
+  .lotto-landing-text6 {
+    margin-bottom: 30px;
+    display: inline-block;
+  }
+  .lotto-landing-breaker {
+    display: inline-block;
+  }
+  .lotto-landing-icon4 {
+    display: none;
+  }
+  .lotto-landing-genr8 {
+    text-align: center;
+  }
+  .lotto-landing-genr8-left {
+    margin-left: 0px;
+  }
+  .lotto-landing-text19 {
+    display: inline-block;
+  }
+  .lotto-landing-text21 {
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 750px) {
+  .lotto-landing-space {
+    display: block;
+    height: 20px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .lotto-landing-button {
+    width: 247px;
+    height: 43px;
+    border-radius: 21.7px;
+    font-size: 15px;
+  }
+  .lotto-landing-button-transparent {
+    width: 247px;
+    height: 43px;
+    border-radius: 21.7px;
+    font-size: 15px;
+    border: solid 1.5px #fb6e00;
+  }
+  .lotto-landing-container {
+    padding: 50px 0px;
+  }
+  .lotto-landing-heading {
+    margin: 0px 28px 0px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    width: 318px;
+  }
+  .lotto-landing-heading-fancy {
+    display: none;
+  }
+  .lotto-landing-text2 {
+    font-size: 17px;
+    line-height: 1.41;
+    margin: 20px 0px;
+    width: 328px;
+  }
+  .div-laptop-img {
+    height: 597px;
+    background-image: url("../../assets/images/lotto/img_mbile.jpg");
+    background-size: cover;
+    width: 300px;
+    display: inline-block;
+    border-radius: 16px;
+    box-shadow: 0 3px 27px 7px rgba(0, 0, 0, 0.51);
+  }
+  .lotto-landing-text3 {
+    width: 318px;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    margin-top: 100px;
+  }
+  .lotto-landing-text4 {
+    width: 318px;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 1.41;
+    margin-top: 20px;
+  }
+  .lotto-landing-people-img {
+    height: 284px;
+    margin-bottom: 26px;
+    background-size: cover;
+  }
+  .lotto-landing-ingagement-right {
+    margin: 0px;
+    text-align: center;
+  }
+  .lotto-landing-ingagement-box1 {
+    width: 330px;
+    border-radius: 13px;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+  .lotto-landing-text5 {
+    font-size: 18.4px;
+    font-weight: 600;
+    margin: 0px;
+  }
+  .lotto-landing-text7 {
+    font-size: 15px;
+    margin-top: 6px;
+  }
+  .lotto-landing-row {
+    margin-top: 100px;
+  }
+  .lotto-landing-want {
+    padding: 0px;
+    text-align: center;
+  }
+  .lotto-landing-text6 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+  }
+  .lotto-landing-text27 {
+    font-size: 20px;
+    line-height: 1.25;
+    text-align: center;
+    width: 307px;
+    display: inline-block;
+    margin: 20px;
+  }
+  .lotto-landing-breaker {
+    display: inline-block;
+  }
+  .lotto-landing-want-right {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+  }
+  .lotto-landing-boxes-wrapper {
+    display: inline-block;
+  }
+  .lotto-landing-box2 {
+    display: inline-block;
+    width: 318px;
+    margin: 10px !important;
+    text-align: left;
+  }
+  .lotto-landing-text10 {
+    display: none;
+  }
+  .lotto-landing-text11 {
+    display: none;
+  }
+  .lotto-landing-elite8 {
+    background-image: url("../../assets/images/lotto/man_mobile.png");
+    margin-top: 100px;
+    padding: 89px 0px;
+    text-align: center;
+  }
+  .lotto-landing-text12 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+  }
+  .lotto-landing-text13 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    text-align: center;
+    width: 300px;
+    margin: 20px 0px;
+    display: inline-block;
+  }
+  .lotto-landing-text14 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 0px;
+  }
+  .lotto-landing-text15 {
+    font-size: 17px;
+    line-height: 1.41;
+    text-align: center;
+    margin: 20px 0px 30px;
+    width: 335px;
+  }
+  .lotto-landing-text16 {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    width: 162px;
+    display: inline-block;
+  }
+  .lotto-landing-experince-item {
+    margin-bottom: 40px;
+    text-align: center;
+    width: 350px;
+  }
+  .lotto-landing-text17 {
+    font-size: 17px;
+    line-height: 1.41;
+    width: 335px;
+    margin: 20px 0px 30px;
+  }
+  .lotto-landing-trust-item {
+    margin: 20px 0px;
+  }
+  .lotto-landing-trust-items {
+    margin: 0px;
+  }
+  .lotto-landing-genr8-left {
+    text-align: center;
+    margin: 0px;
+  }
+  .lotto-landing-genr8 {
+    margin-top: 100px;
+  }
+  .lotto-landing-text19 {
+    display: inline-block;
+    object-fit: contain;
+    border-radius: 10.7px;
+    font-size: 26.5px;
+    font-weight: 600;
+    line-height: 1.43;
+    text-align: center;
+    width: 319px;
+    background-image: linear-gradient(to right, #fb6e00 11%, #fa3800 94%);
+  }
+  .lotto-landing-text20 {
+    width: 320px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 30px 0px 20px;
+    display: inline-block;
+  }
+  .lotto-landing-text21 {
+    margin: 0px;
+    display: inline-block;
+    width: 320px;
+    font-size: 18px;
+    line-height: 1.67;
+  }
+  .lotto-landing-text22 {
+    width: 318px;
+
+    margin-top: 100px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    text-align: center;
+  }
+  .lotto-landing-text23 {
+    width: 335px;
+    font-size: 17px;
+    line-height: 1.41;
+    text-align: center;
+    color: #bfbfbf;
+    display: inline-block;
+    margin: 30 0px;
+  }
+  .lotto-landing-text24 {
+    font-size: 17px;
+    line-height: 1.41;
+    text-align: center;
+    color: #bfbfbf;
+    width: 335px;
+  }
+  .lotto-landing-icon4 {
+    display: none;
+  }
+  .lotto-landing-text14a {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-family: Poppins;
+    font-size: 19px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.26;
+    text-align: center;
+    color: #bfbfbf;
+  }
+
+}

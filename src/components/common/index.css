@@ -29,26 +29,26 @@ header > div {
   height: 41px;
   object-fit: contain;
 }
-.header_dropdown:hover{ 
+.header_dropdown:hover {
   background-color: #fb6e00;
   color: #ffffff !important;
 }
-.header_dropdown_list{
+.header_dropdown_list {
   line-height: 50px;
 
   padding: 0px !important;
-  width:171.5px !important; 
+  width: 171.5px !important;
 }
 .header_dropdown_menu_item {
   background-color: #fb6e00;
   color: #ffffff;
   text-align: center;
 }
-.header_dropdown_menu_item :hover{
+.header_dropdown_menu_item :hover {
   background-color: #c05400;
   color: #ffffff !important;
 }
-.header_li_button_start{
+.header_li_button_start {
   width: 170px;
   height: 52px;
   border-radius: 34.5px;
@@ -61,7 +61,7 @@ header > div {
   margin-left: -20px !important;
   line-height: 54px !important;
 }
-.header_li_signin{
+.header_li_signin {
   width: 67px;
   height: 28px;
   font-family: Poppins;
@@ -112,4 +112,127 @@ header > div {
   font-family: Poppins;
   font-size: 14px;
   color: #ffffff;
+}
+@media screen and (max-width: 998px) {
+  .c-p {
+    display: block;
+  }
+  .header_li_button {
+    margin: 0 auto !important;
+  }
+  .profile_dropdown {
+    left: 0px !important;
+  }
+  .header_li_signin {
+    display: none !important;
+  }
+  .header_li_button_start {
+    display: none !important;
+  }
+}
+._burger {
+  margin-top: 30px !important;
+}
+.ham-burger {
+  background: url("../../assets/images/group_4.png") !important;
+  width: 26px;
+  height: 16px;
+  object-fit: contain;
+  padding: 0px !important;
+  border: none;
+}
+.global_timer_wrapper {
+  width: 231px;
+  border-radius: 25px 0px 0px 0px;
+  box-shadow: 0 3px 27px -2px #fb6e00;
+  background-color: #fb6e00;
+  text-align: center;
+  position: fixed;
+  right: 50px;
+  bottom: 0px;
+  z-index: 100;
+}
+.global_timer_icon_close {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+  background: url("../../assets/images/common/group_8.svg");
+  right: -10px;
+  top: -10px;
+  position: absolute;
+}
+.icon_expand {
+  width: 21px;
+  height: 11px;
+  margin: 5px 0px;
+  display: inline-block;
+  cursor: pointer;
+  background: url("../../assets/images/common/up_arrow.png");
+}
+.icon_contract {
+  width: 21px;
+  height: 11px;
+  margin: 5px 0px;
+  display: inline-block;
+  cursor: pointer;
+  background: url("../../assets/images/common/up_arrow.svg");
+}
+.global_timer_header {
+  font-weight: 500;
+  letter-spacing: -0.11px;
+  text-align: center;
+  color: #ffffff;
+  text-align: center;
+  font-size: 22px;
+}
+.global_timer_main {
+}
+.global_timer_main_text {
+  font-family: Poppins;
+  font-size: 16px;
+  color: #ffffff;
+}
+.global_timer_main_watch {
+  text-align: center;
+}
+.global_timer_main_item {
+  display: inline-block;
+}
+.global_timer_main_item_box {
+  width: 39px;
+  height: 32px;
+  background-color: #000000;
+  font-family: Poppins;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  margin: 7px;
+}
+.global_timer_main_item_text {
+  font-family: Poppins;
+  font-size: 13px;
+  text-align: center;
+  color: #ffffff;
+}
+.global_timer_button {
+  width: 193px;
+  height: 42px;
+  border-radius: 21px;
+  box-shadow: 0 3px 27px -2px #8c8c8c;
+  background-color: #ffffff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #000000;
+  line-height: 42px;
+  display: inline-block;
+  margin-bottom: 39px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.div_hide {
+  display: none;
 }

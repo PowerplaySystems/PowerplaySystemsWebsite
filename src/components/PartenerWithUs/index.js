@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
+import DrawTimer from "./../common/DrawTimer";
 import * as Constants from "./../common/constants";
 import "./index.css";
 //import Modal from 'react-modal'
@@ -101,8 +102,9 @@ class PartnerWithUs extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-        <Header />
-        <div className="container" style={{ background: "#1e1e1e" }}>
+       <Header />
+        <DrawTimer/>
+        <div className="container-fluid" style={{ background: "#1e1e1e" }}>
           <div className="partner_slide_bg_wapper">
             <div className="partner_slide_bg">
               <div className="partner_heading_content">

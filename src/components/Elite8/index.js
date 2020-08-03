@@ -2,36 +2,167 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
+import DrawTimer from "./../common/DrawTimer";
 import "./index.css";
 import * as Constants from "./../common/constants";
+import * as Functions from "./../common/functions";
 import Cookies from "universal-cookie";
+//import Modal from 'react-modal'
+import Modal from "react-bootstrap/lib/Modal";
+import Button from "react-bootstrap/lib/Button";
 
-let ballsTotal = 48;
+var DEMO_PICKS = [];
+var DEMO_DRAW = [];
+var DEMO_GAME_DATA = {
+  id: 122,
+  game_type: 1,
+  start_datetime: "2020-12-30 12:59:00",
+  prize_id: 44,
+  prize: [
+    { hits: 8, prize: 5000 },
+    { hits: 7, prize: 1000 },
+    { hits: 6, prize: 400 },
+    { hits: 5, prize: 200 },
+    { hits: 4, prize: 100 },
+    { hits: 3, prize: 50 },
+    { hits: 2, prize: 25 },
+    { hits: 1, prize: 15 }
+  ],
+  countdown_timer: 30,
+  delay: 1,
+  game_text: "1",
+  rules: "undefined",
+  odds_text: "1 in 10,000",
+  code: null,
+  status: "unplayed",
+  deadline: "2020-12-30 12:59:00",
+  entry: 109
+};
+
+//Popup variables
+var popupText = "Error";
+var popupHader = "Sorry!";
+
+//game Defaults
+let ballsTotal = 50 ;
 let allowedToSelect = 8;
 let ballElements = [];
-let selectedNumbers = [];
+
+var bg = require("./../../assets/images/747_live/circle.png");
+let mCircleStyles = {
+  backgroundImage: "url(" + bg + ")",
+  backgroundSize: "cover",
+  overflow: "hidden"
+};
+
 class Elite8 extends Component {
   constructor(props) {
     super(props);
-
+    // // if (this.props.location.state.gameData == "demo") {
+    // this.state = {
+    //   isDemo: true,
+    //   error: null,
+    //   isLoaded: false,
+    //   content: "",
+    //   gameData: DEMO_GAME_DATA,
+    //   show: false,
+    //   selected: [],
+    //   prizes: [],
+    //   confirm: false
+    // };
+    // } else {
     this.state = {
+      isDemo: false,
       error: null,
       isLoaded: false,
       content: "",
-      gameData: this.props.location.state.gameData
+      gameData: DEMO_GAME_DATA,
+      show: false,
+      selected: [],
+      prizes: [],
+      confirm: false
     };
-    this.setBalls();
+    // }
+
     this.canSelectMore = this.canSelectMore.bind(this);
     this.getJackpot = this.getJackpot.bind(this);
-    this.getDays = this.getDays.bind(this);
-    this.getHours = this.getHours.bind(this);
-    this.getMinuts = this.getMinuts.bind(this);
     this.scrollToNumbers = this.scrollToNumbers.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.onBallClicked = this.onBallClicked.bind(this);
+    this.handleShowPrize = this.handleShowPrize.bind(this);
+    this.handleClosePrize = this.handleClosePrize.bind(this);
+    this.handleCloseConfirm = this.handleCloseConfirm.bind(this);
+    this.handleShowConfirm = this.handleShowConfirm.bind(this);
+    this.submitBalls = this.submitBalls.bind(this);
+    this.getContestData = this.getContestData.bind(this);
+  }
+  getContestData() {
+    const cookies = new Cookies();
+    const jwt = cookies.get("jwt");
+    var link =
+      "https://" + Constants.URL + "/public_api/lottery_games/data.php";
+    if (jwt) {
+      link = link + "?jwt=" + jwt;
+    }
+    fetch(link)
+      .then(res => res.json())
+      .then(
+        xx => {
+          if (xx.records) {
+            this.setState({
+              gameData: xx.records[2],
+              isLoaded: true
+            });
+            this.getMyPickedNumbers();
+          } else {
+            this.setState({
+              gameData: [],
+              isLoaded: false
+            });
+          }
+        },
+        error => {
+          this.setState({
+            error: error
+          });
+        }
+      );
+  }
+  handleClose() {
+    this.setState({
+      show: false
+    });
+  }
+  handleShow() {
+    this.setState({
+      show: true
+    });
+  }
+  handleCloseConfirm() {
+    this.setState({
+      confirm: false
+    });
+  }
+  handleShowConfirm() {
+    if (this.state.gameData.prize) {
+      this.state.selected.sort(function(a, b) {
+        return a - b;
+      });
+      this.setState({
+        confirm: true
+      });
+    } else {
+      popupText = "There is no game Available At the moment!";
+      popupHader = "Sorry!";
+      this.setState({
+        show: true
+      });
+    }
   }
   getJackpot(prizeArray) {
     if (prizeArray) {
-      prizeArray.sort((a, b) => parseFloat(a.hits) - parseFloat(b.hits));
-      return "$" + prizeArray[prizeArray.length - 1].prize;
+      return "$" + Functions.numberWithCommas(prizeArray[0].prize);
     } else {
       return "Coming soon";
     }
@@ -42,485 +173,750 @@ class Elite8 extends Component {
       gameTable.scrollIntoView({ block: "start", behavior: "smooth" });
     }
   }
-  getDays(timestamp) {
-    if (!timestamp) {
-      return "-";
-    }
-    const now = new Date();
-    const gameDate = new Date(timestamp);
-    const diffTime = Math.abs(gameDate.getTime() - now.getTime());
-    const diffDays = parseInt(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
-  }
-  getHours(timestamp) {
-    if (!timestamp) {
-      return "-";
-    }
-    const now = new Date();
-    const gameDate = new Date(timestamp);
-    // get total seconds between the times
-    var delta = Math.abs(gameDate - now) / 1000;
-
-    // calculate (and subtract) whole days
-    var days = Math.floor(delta / 86400);
-    delta -= days * 86400;
-
-    // calculate (and subtract) whole hours
-    var hours = Math.floor(delta / 3600) % 24;
-    delta -= hours * 3600;
-    return hours;
-    // // calculate (and subtract) whole minutes
-    // var minutes = Math.floor(delta / 60) % 60;
-    // delta -= minutes * 60;
-
-    // // what's left is seconds
-    // var seconds = delta % 60; // in theory the modulus is not required
-  }
-  getMinuts(timestamp) {
-    if (!timestamp) {
-      return "-";
-    }
-    const now = new Date();
-    const gameDate = new Date(timestamp);
-    // get total seconds between the times
-    var delta = Math.abs(gameDate - now) / 1000;
-
-    // calculate (and subtract) whole days
-    var days = Math.floor(delta / 86400);
-    delta -= days * 86400;
-
-    // calculate (and subtract) whole hours
-    var hours = Math.floor(delta / 3600) % 24;
-    delta -= hours * 3600;
-
-    // // calculate (and subtract) whole minutes
-    var minutes = Math.floor(delta / 60) % 60;
-    delta -= minutes * 60;
-    return minutes;
-    // // what's left is seconds
-    // var seconds = delta % 60; // in theory the modulus is not required
-  }
-  getMyPickedNumbers() {
-    const cookies = new Cookies();
-    const jwt = cookies.get("jwt");
-    var that = this;
-    fetch(
-      "https://" + Constants.URL + "/public_api/lottery_games/getMyNumbers.php?jwt=" +
-        jwt +
-        "&game_id=" +
-        this.state.gameData.id
-    )
-      .then(res => res.json())
-      .then(
-        result => {
-          result = result.records;
-          result.forEach(element => {
-            selectedNumbers.push(element.number + "");
-            that.updateButtons(element.number);
-          });
-
-          this.setState({
-            isLoaded: true
-          });
-        },
-        error => {
-          this.setState({
-            hasError: true,
-            error: error
-          });
-        }
-      );
-  }
-  updateButtons(text) {
-    var allBalls = document.getElementsByClassName("elite8_selection_button");
-    var searchText = text + "";
-    var found;
-
-    for (var i = 0; i < allBalls.length; i++) {
-      if (allBalls[i].textContent == searchText) {
-        found = allBalls[i];
-        break;
+  onBallClicked(mNumber) {
+    console.log(mNumber);
+    var selectedNumbers = this.state.selected;
+    var index = selectedNumbers.indexOf(mNumber);
+    if (index > -1) {
+      var filtered = selectedNumbers.filter(function(value, index, arr) {
+        return value != mNumber;
+      });
+      this.setState({
+        selected: [...filtered]
+      });
+    } else {
+      if (this.canSelectMore()) {
+        selectedNumbers.push(mNumber);
+        this.setState({
+          selected: selectedNumbers
+        });
+      } else {
+        popupHader = "Selection Limit";
+        popupText = "Cannot select More than " + allowedToSelect;
+        this.handleShow();
       }
     }
-    if (found) {
-      found.classList.toggle("btn-active");
+  }
+  getMyPickedNumbers() {
+    if (this.state.isDemo) {
+    } else {
+      const cookies = new Cookies();
+      const jwt = cookies.get("jwt");
+      var that = this;
+      fetch(
+        "https://" +
+          Constants.URL +
+          "/public_api/lottery_games/getMyNumbers.php?jwt=" +
+          jwt +
+          "&game_id=" +
+          this.state.gameData.id
+      )
+        .then(res => res.json())
+        .then(
+          result => {
+            result = result.records;
+            var selectedNumbers = [];
+            result.forEach(element => {
+              selectedNumbers.push(element.number);
+              this.setState({
+                selected: [...selectedNumbers]
+              });
+            });
+
+            this.setState({
+              isLoaded: true
+            });
+          },
+          error => {
+            this.setState({
+              hasError: true,
+              error: error
+            });
+          }
+        );
     }
   }
   componentDidMount() {
-    window.scroll(0, 0);
-    this.getMyPickedNumbers();
-    var buttons = document.getElementsByClassName("elite8_selection_button");
-    var that = this;
-    for (var x = 0; x < buttons.length; x++) {
-      buttons[x].addEventListener("click", function(e) {
-        var mTarget = e.target;
+    this.getContestData();
 
-        var number = mTarget.textContent;
-        var index = selectedNumbers.indexOf(number);
-        if (index > -1) {
-          var filtered = selectedNumbers.filter(function(value, index, arr) {
-            return value != number;
-          });
-          selectedNumbers = [...filtered];
-          mTarget.classList.toggle("btn-active");
-        } else {
-          if (that.canSelectMore()) {
-            selectedNumbers.push(number);
-            mTarget.classList.toggle("btn-active");
-          } else {
-            alert("Cannot select More than " + allowedToSelect);
-          }
-        }
+    //if comming back from signup/login
+    if (this.props.location.state) {
+      if (this.props.location.state.selected) {
+        this.props.location.state.selected.sort(function(a, b) {
+          return a - b;
+        });
+      }
+      this.setState({
+        selected: this.props.location.state.selected,
+        confirm: true
       });
     }
-    document
-      .getElementById("submit_selection_ball")
-      .addEventListener("click", function(e) {
-        if (that.canSubmit()) {
-          that.submitUserSelections();
-        } else {
-          alert("Can not submit less than " + allowedToSelect);
-          return;
-        }
-      });
-  }
+    document.getElementsByTagName("META")[2].content =
+      "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
+    window.scrollTo(0, 0);
+    window.scroll(0, 0);
+    this.setBalls();
 
+    var buttons = document.getElementsByClassName("page747_selection_button");
+    var that = this;
+    if (document.getElementById("submit_selection_ball")) {
+      document
+        .getElementById("submit_selection_ball")
+        .addEventListener("click", function(e) {
+          if (that.canSubmit()) {
+            that.submitUserSelections();
+          } else {
+            popupHader = "Selection Minimum";
+            popupText = "Can not submit less than " + allowedToSelect;
+            that.handleShow();
+            return;
+          }
+        });
+    }
+  }
   canSelectMore() {
-    if (selectedNumbers.length >= allowedToSelect) {
+    if (this.state.selected.length >= allowedToSelect) {
       return false;
     } else {
       return true;
     }
   }
   canSubmit() {
-    if (selectedNumbers.length == allowedToSelect) {
+    if (this.state.selected.length == allowedToSelect) {
       return true;
     } else {
       return false;
     }
   }
   submitUserSelections() {
+    this.handleShowConfirm();
+  }
+  submitBalls() {
     const cookies = new Cookies();
-    const jwt = cookies.get("jwt");
-    var data =
-      "numbers=" +
-      selectedNumbers +
-      "&jwt=" +
-      jwt +
-      "&game_id=" +
-      this.state.gameData.id +
-      "&gametype_id=" +
-      Constants.ELITE8_ID;
-
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-    var that = this;
-    console.log(data);
-    xhr.addEventListener("readystatechange", function() {
-      if (this.readyState === 4) {
-        if (~this.responseText.indexOf("Successful")) {
-          alert("Updated");
-          that.props.history.push({
-            pathname: "/powerplay-lotto"
-          });
-        } else {
+    DEMO_PICKS = this.state.selected;
+    if (this.state.isDemo) {
+      this.props.history.push({
+        pathname: "/elite8-draw",
+        state: {
+          gameData: "demo",
+          picks: this.state.selected
         }
+      });
+    } else {
+      const jwt = cookies.get("jwt");
+      if (jwt == "" || jwt == undefined) {
+        popupText = "Please Login First";
+        popupHader = "Authentication Failed!";
+        this.handleShow();
+        this.props.history.push({
+          pathname: "/register",
+          state: {
+            backlink: "elite8",
+            selected: this.state.selected
+          }
+        });
+        return false;
       }
-    });
-    xhr.open(
-      "POST",
-      " https://" + Constants.URL + "/public_api/lottery_games/setMyNumbers.php"
-    );
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    xhr.send(data);
+      var data =
+        "numbers=" +
+        this.state.selected +
+        "&jwt=" +
+        cookies.get("jwt") +
+        "&game_id=" +
+        this.state.gameData.id +
+        "&gametype_id=" +
+        Constants.ELITE8_ID +
+        "&contest_id=" +
+        this.state.gameData.contest_id;
+
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+      var that = this;
+      console.log(data);
+      xhr.addEventListener("readystatechange", function() {
+        if (this.readyState === 4) {
+          if (~this.responseText.indexOf("Successful")) {
+            popupHader = "Successful";
+            popupText = "Your Selected Numbers Have been saved!";
+            that.handleShow();
+            that.props.history.push({
+              pathname: "/powerplay-lotto"
+            });
+          } else {
+          }
+        }
+      });
+      xhr.open(
+        "POST",
+        " https://" +
+          Constants.URL +
+          "/public_api/lottery_games/setMyNumbers.php"
+      );
+      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      xhr.send(data);
+    }
   }
   setBalls() {
-    for (var i = 1; i <= ballsTotal; i++) {
-      ballElements.push(
-        <div className="elite8_selection_button" id={"ball-" + i}>
-          {i}
+    var allElements = [];
+
+    for (let counter = 1; counter <= ballsTotal; counter++) {
+      const x = counter;
+      allElements.push(
+        <div
+          className={
+            "page747_selection_button" +
+            (this.state.selected.indexOf(counter) == -1 ? "" : " btn-active")
+          }
+          onClick={() => this.onBallClicked(x)}
+        >
+          {counter}
         </div>
       );
     }
+    return allElements;
+  }
+  handleClosePrize() {
+    this.setState({
+      showPrize: false
+    });
+  }
+  handleShowPrize(game_type) {
+    var prizesToShow = this.state.gameData.prize;
+    prizesToShow.sort(function(a, b) {
+      return parseFloat(b.prize) - parseFloat(a.prize);
+    });
+
+    this.setState({
+      showPrize: true,
+      prizes: prizesToShow
+    });
   }
   render() {
-    return (
-      <div>
-        <Header />
-        <div className="container-fluid _faq_wrap">
-          <div className="container">
-            <div className="row elite8_rows">
-              <div className="col-md-12">
-                <img
-                  className="img-responsive"
-                  src={require("./../../assets/images/lotto/elite8/elite8_header.png")}
-                />
+    if (this.state.isLoaded) {
+      return (
+        <div>
+          <Header />
+          <DrawTimer />
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title> {popupHader} </Modal.Title>
+            </Modal.Header>
+            <Modal.Body> {popupText}</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
+            <Modal.Header closeButton>
+              <Modal.Title>Prizes</Modal.Title>
+              <div className="prize-note">
+                *Note: All Prizes Will be divided equally among Winners
               </div>
-              <div className="col-md-12">
-                <div className="page747_main_bar row">
-                  <div className="col-md-6">
-                    <div class="main_bar_inner">
-                      <div>
-                        <p>Jackpot</p>
-                        <p className="main_bar_inner_bigger">
-                          {this.getJackpot(this.state.gameData.prize)}
-                        </p>
-                      </div>
-                      <div className="page747_main_left_lower_text">
-                        Draw date <s>{this.state.gameData.start_datetime}</s>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div class="page747_main_draw_box">
-                      <div>
-                        <p>Next draw starts in</p>
-                        <div className="row page747_main_draw_inner">
-                          <div>
+            </Modal.Header>
+            <Modal.Body className="grid-body">
+              {
+                <table className="modal-prize-table">
+                  <thead>
+                    <tr>
+                      <th scope="col"> Matches </th>
+                      <th scope="col"> Prize </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.prizes.map((prize, key) => {
+                      return (
+                        <tr className="prize-row" key={key}>
+                          <td>
+                            <p> {prize.hits} </p>
+                          </td>
+                          <td>
                             <p>
-                              {" "}
-                              {this.getDays(this.state.gameData.start_datetime)}
+                              {"$" + Functions.numberWithCommas(prize.prize)}
                             </p>
-                            Days
-                          </div>
-                          <div>
-                            <p>
-                              {" "}
-                              {this.getHours(
-                                this.state.gameData.start_datetime
-                              )}
-                            </p>
-                            hours
-                          </div>
-                          <div>
-                            <p>
-                              {" "}
-                              {this.getMinuts(
-                                this.state.gameData.start_datetime
-                              )}
-                            </p>
-                            Mins
-                          </div>
-                        </div>
-                      </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              }
+            </Modal.Body>
+          </Modal>
+          <Modal
+            className="modal-confirm"
+            show={this.state.confirm}
+            onHide={this.handleCloseConfirm}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>
+                Your picks have been entered! Good Luck!{" "}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="grid-body">
+              <div className="confirm_submit_header">My Numbers</div>
+              <div className="row confirm_submit_numbers">
+                {this.state.selected.map((number, key) => {
+                  return (
+                    <div
+                      className="confirm_submit_circle"
+                      style={mCircleStyles}
+                    >
+                      {number}
                     </div>
-                    <div className="page747_main_lower_text">
-                      Draw date <s>{this.state.gameData.start_datetime}</s>
-                    </div>
-                  </div>
-                </div>
-                <center class="main_bar_button">
-                  <button onClick={this.scrollToNumbers}>
-                    Pick Your Numbers Now!
-                  </button>
-                </center>
+                  );
+                })}
               </div>
-              <div className="col-md-12">
-                <div className="elite8_main_prize">
-                  <div class="elite8_prize_image-wraper">
-                    <img
-                      className="img-responsive"
-                      src={require("./../../assets/images/747/747_prize.png")}
-                    />
-                  </div>
-
-                  <div className="elite8_prize_details">
-                    <div className="elite8_prize_content">
-                      <div class="elite8_prize_header row">
-                        <div className="row">
-                          <span>Prizes</span>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="elite8-prize-box-wrapper">
-                          <div className="elite8-prize-box">
-                            {this.state.gameData.prize[0].hits + " Number of 8"}{" "}
-                            <br />
-                            <span>
-                              {"$" + this.state.gameData.prize[0].prize}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="elite8-prize-box-wrapper">
-                          <div className="elite8-prize-box">
-                            {this.state.gameData.prize[1].hits + " Number of 8"}{" "}
-                            <br />
-                            <span>
-                              {"$" + this.state.gameData.prize[1].prize}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="elite8-prize-box-wrapper">
-                          <div className="elite8-prize-box">
-                            {this.state.gameData.prize[2].hits + " Number of 8"}{" "}
-                            <br />
-                            <span>
-                              {"$" + this.state.gameData.prize[2].prize}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="elite8-prize-box-wrapper">
-                          <div className="elite8-prize-box">
-                            {this.state.gameData.prize[3].hits + " Number of 8"}{" "}
-                            <br />
-                            <span>
-                              {"$" + this.state.gameData.prize[3].prize}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="elite8_prize_note">
-                        *All prizes will be divided equally among winners
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="confirm_submit_footer">
+                <button
+                  className="footer_btn_cancel"
+                  onClick={this.handleCloseConfirm}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="footer_btn_submit"
+                  onClick={this.submitBalls}
+                >
+                  Submit
+                </button>
               </div>
-              <div className="col-md-12">
-                <div className="elite8_main_power">
-                  <div class="elite8_power_image-wraper">
-                    <img
-                      className="img-responsive"
-                      src={require("./../../assets/images/747/747_powerplays.png")}
-                    />
-                  </div>
-                  <div className="elite8_power_details">
-                    <div className="elite8_power_heading">Powerplays</div>
-                    <div className="elite8_power_content">
-                      <div className="col-md-6 power_content_box">
-                        <div className="col-md-4 power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_2.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Increase/Decrease
-                          </div>
-                        </div>
-                        <div className="col-md-6 power_content_box_right">
-                          <span>
-                            You can increase or decrease your pick live during
-                            the draw
-                          </span>
-                        </div>
-                      </div>
-                      <div className="col-md-6 power_content_box">
-                        <div className="col-md-4 power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_3.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Power Match
-                          </div>
-                        </div>
-                        <div className="col-md-6 power_content_box_right">
-                          <span>
-                            Use force match to change your pick to match the
-                            drawn #
-                          </span>
-                        </div>
-                      </div>
-                      <div className="col-md-6 power_content_box">
-                        <div className="col-md-4 power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/lotto/shuffle.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Change
-                          </div>
-                        </div>
-                        <div className="col-md-6 power_content_box_right">
-                          <span>
-                            Use change to replace one # with a random new Number
-                          </span>
-                        </div>
-                      </div>
-                      <div className="col-md-6 power_content_box">
-                        <div className="col-md-4 power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_1.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Refresh All
-                          </div>
-                        </div>
-                        <div className="col-md-6 power_content_box_right">
-                          <span>
-                            Use refresh all to refresh all your numbers with a
-                            random new set.
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="page747_number_header">
-                  <span>Pick Your Numbers!</span>
+            </Modal.Body>
+          </Modal>
+          <div className="container-fluid _faq_wrap">
+            <div className="container-fluid">
+              <div className="page747_rows">
+                <div className="col-md-12" style={{ padding: "0px" }}>
+                  <img
+                    style={{ margin: "0 auto", width: "100%" }}
+                    className="img-responsive"
+                    src={require("./../../assets/images/lotto/elite8/elite8_header.png")}
+                  />
                 </div>
 
-                <div className="col-md-12">
-                  <div className="page747_number_rules">CONTEST RULES</div>
-                  <div class="page747_number_box">
-                    <div>
-                      <p>Till Next Draw</p>
-                      <div className="row page747_next_draw_box">
-                        <div>
-                          <p>
-                            {" "}
-                            {this.getDays(this.state.gameData.start_datetime)}
-                          </p>
-                          Days
-                        </div>
-                        <div>
-                          <p>
-                            {" "}
-                            {this.getHours(this.state.gameData.start_datetime)}
-                          </p>
-                          hours
-                        </div>
-                        <div>
-                          <p>
-                            {" "}
-                            {this.getMinuts(this.state.gameData.start_datetime)}
-                          </p>
-                          Mins
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <div className="elite8_selection_box" id = "pick-numbers">{ballElements}</div>
-                </div>
-                <div className="col-md-12">
-                  <div
-                    className="elite8_selection_box_submit"
-                    id="submit_selection_ball"
+                <div className="pick_numbers_mobile_box">
+                  <p className="mobile_box_text_1">Jackpot</p>
+                  {this.state.isDemo ? (
+                    <p
+                      className="mobile_box_text_2"
+                      style={{ marginBottom: "20px !important" }}
+                    >
+                      Can be fixed or progressive
+                    </p>
+                  ) : (
+                    <>
+                      <p className="mobile_box_text_2b">
+                        {this.getJackpot(this.state.gameData.prize)}
+                      </p>
+                      <p className="mobile_box_text_3">
+                        Odds of Winning:{" "}
+                        <span>{this.state.gameData.odds_text}</span>
+                      </p>
+                      <p className="mobile_box_text_4">Next Draw Date</p>
+                      <p className="mobile_box_text_5">
+                        Sunday Apr 12 2019, 12:15 PM EST
+                      </p>{" "}
+                      <p className="mobile_box_text_6">Entry Deadline</p>
+                      <p className="mobile_box_text_7">11:15 PM EST</p>
+                    </>
+                  )}
+                  <button
+                    className="mobile_box_button"
+                    onClick={this.scrollToNumbers}
                   >
-                    SUBMIT!
+                    Enter Now
+                  </button>
+                </div>
+                <div className="col-md-12">
+                  {this.state.isDemo ? (
+                    ""
+                  ) : (
+                    <div className="page747_main_bar row">
+                      <div className="col-md-6">
+                        <div class="main_bar_inner">
+                          <div>
+                            <p>Jackpot</p>
+                            <p className="main_bar_inner_bigger">
+                              {this.getJackpot(this.state.gameData.prize)}
+                            </p>
+                          </div>
+                          <div className="page747_main_left_lower_text">
+                            Draw date{" "}
+                            <s>{this.state.gameData.start_datetime}</s>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div class="page747_main_draw_box">
+                          <div>
+                            <p>Next draw starts in</p>
+                            <div className="row page747_main_draw_inner">
+                              <div>
+                                <p>
+                                  {" "}
+                                  {Functions.getDays(
+                                    this.state.gameData.start_datetime
+                                  )}
+                                </p>
+                                Days
+                              </div>
+                              <div>
+                                <p>
+                                  {" "}
+                                  {Functions.getHours(
+                                    this.state.gameData.start_datetime
+                                  )}
+                                </p>
+                                hours
+                              </div>
+                              <div>
+                                <p>
+                                  {" "}
+                                  {Functions.getMinuts(
+                                    this.state.gameData.start_datetime
+                                  )}
+                                </p>
+                                Mins
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="page747_main_lower_text">
+                          Draw date <s>{this.state.gameData.start_datetime}</s>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <center class="main_bar_button">
+                    <button onClick={this.scrollToNumbers}>Enter Now!</button>
+                  </center>
+                </div>
+                {this.state.isDemo ? (
+                  ""
+                ) : (
+                  <div className="col-md-12">
+                    <div className="page747_main_prize">
+                      <div class="page747_prize_image-wraper">
+                        <img
+                          className="img-responsive"
+                          src={require("./../../assets/images/747/747_prize.png")}
+                        />
+                      </div>
+
+                      <div className="page747_prize_details">
+                        <div className="page747_prize_content">
+                          <div class="page747_prize_header row">
+                            <div className="row">
+                              <span>Top Prizes</span>{" "}
+                              <div className="button_show_prize_wrapper">
+                                <button
+                                  className="button_show_prize"
+                                  onClick={e => this.handleShowPrize("747")}
+                                >
+                                  View All Prizes
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          {this.state.gameData.prize ? (
+                            <div className="row">
+                              <div className="page747-prize-box-wrapper">
+                                <div className="page747-prize-box">
+                                  {this.state.gameData.prize[0].hits + "/7"}{" "}
+                                  <br />
+                                  <span>
+                                    {"$" +
+                                      Functions.numberWithCommas(
+                                        this.state.gameData.prize[0].prize
+                                      )}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="page747-prize-box-wrapper">
+                                <div className="page747-prize-box">
+                                  {this.state.gameData.prize[1].hits + "/7"}
+                                  <br />
+                                  <span>
+                                    {"$" +
+                                      Functions.numberWithCommas(
+                                        this.state.gameData.prize[1].prize
+                                      )}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="page747-prize-box-wrapper">
+                                <div className="page747-prize-box">
+                                  {this.state.gameData.prize[2].hits + "/7"}
+                                  <br />
+                                  <span>
+                                    {"$" +
+                                      Functions.numberWithCommas(
+                                        this.state.gameData.prize[2].prize
+                                      )}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="page747-prize-box-wrapper">
+                                <div className="page747-prize-box">
+                                  {this.state.gameData.prize[3].hits + "/7"}
+                                  <br />
+                                  <span>
+                                    {"$" + this.state.gameData.prize[3].prize}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+
+                          <div className="page747_prize_note">
+                            *All prizes will be divided equally among winners
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div className="promo-content">
+                  <div className="elite8-promo-row1">
+                    <img
+                      className="elite8-promo-row1-img"
+                      src={require("./../../assets/images/elite8-promo/prie.png")}
+                    />
+                    <div className="elite8-promo-row-content">
+                      <div className="elite8-promo-row-header">Prizes</div>
+                      <div className="elite8-promo-row-prizes">
+                        <div className="elite8-promo-row-prize">
+                          <div className="elite8-promo-row-prize-header">
+                            1st
+                          </div>
+                          <div className="elite8-promo-row-prize-text">
+                            $500
+                          </div>
+                        </div>
+                        <div className="elite8-promo-row-prize">
+                          <div className="elite8-promo-row-prize-header">
+                            1st
+                          </div>
+                          <div className="elite8-promo-row-prize-text">
+                            $500
+                          </div>
+                        </div>
+                        <div className="elite8-promo-row-prize">
+                          <div className="elite8-promo-row-prize-header">
+                            1st
+                          </div>
+                          <div className="elite8-promo-row-prize-text">
+                            $500
+                          </div>
+                        </div>
+                      </div>
+                      <button className="elite8-promo-header-button">
+                        Win 500$ !
+                      </button>
+                    </div>
+                  </div>
+                  <div className="elite8-promo-row2">
+                    <img
+                      className="elite8-promo-row2-img"
+                      src={require("./../../assets/images/elite8-promo/time.png")}
+                    />
+                    <div className="elite8-promo-row2-content">
+                      <div className="elite8-promo-row2-header">
+                        Pick your winning numbers weekly by 8pm on Sunday.
+                      </div>
+                      <div className="elite8-promo-row2-sub">
+                        Contest runs from Jan 10 to Feb 28th
+                      </div>
+                      <div
+                        className="elite8-promo-header-button m-btn"
+                        onClick={() => this.props.history.push("/elite8")}
+                      >
+                        ENTER NOW!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-12">
+                  <div className="page747_main_power">
+                    <div class="page747_power_image-wraper">
+                      <img
+                        className="img-responsive"
+                        src={require("./../../assets/images/747/747_powerplays.png")}
+                      />
+                    </div>
+                    <div className="page747_power_details">
+                      <div className="page747_power_heading">Powerplays</div>
+                      <div className="page747_power_content">
+                        <div className="power_content_box">
+                          <div className="power_content_box_left">
+                            <div className="power_content_box_left_image_wrapper">
+                              <img
+                                className="img-responsive power_content_box_left_image"
+                                src={require("./../../assets/images/747/747_2.png")}
+                              />
+                            </div>
+                            <div className="power_content_box_left_text">
+                              Increase/Decrease
+                            </div>
+                          </div>
+                          <div className="power_content_box_right">
+                            <span>
+                              You can increase or decrease your selections live
+                              during the game.
+                            </span>
+                          </div>
+                        </div>
+                        <div className="power_content_box">
+                          <div className="power_content_box_left">
+                            <div className="power_content_box_left_image_wrapper">
+                              <img
+                                className="img-responsive power_content_box_left_image"
+                                src={require("./../../assets/images/747/747_3.png")}
+                              />
+                            </div>
+                            <div className="power_content_box_left_text">
+                              Power Match
+                            </div>
+                          </div>
+                          <div className=" power_content_box_right">
+                            <span>
+                              Use Power Match to change your pick to match the
+                              in-play numbers.
+                            </span>
+                          </div>
+                        </div>
+                        <div className=" power_content_box">
+                          <div className=" power_content_box_left">
+                            <div className="power_content_box_left_image_wrapper">
+                              <img
+                                className="img-responsive power_content_box_left_image"
+                                style={{ width: "57px" }}
+                                src={require("./../../assets/images/lotto/shuffle.png")}
+                              />
+                            </div>
+                            <div className="power_content_box_left_text">
+                              Replace
+                            </div>
+                          </div>
+                          <div className=" power_content_box_right">
+                            <span>
+                              Use Replace to swap one of your selections with a
+                              random new number.
+                            </span>
+                          </div>
+                        </div>
+                        <div className=" power_content_box">
+                          <div className=" power_content_box_left">
+                            <div className="power_content_box_left_image_wrapper">
+                              <img
+                                className="img-responsive power_content_box_left_image"
+                                src={require("./../../assets/images/747/747_1.png")}
+                              />
+                            </div>
+                            <div className="power_content_box_left_text">
+                              Replace All
+                            </div>
+                          </div>
+                          <div className=" power_content_box_right">
+                            <span>
+                              Use Replace All to replace all your selections
+                              with a random new set.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-12">
+                  <div className="page747_number_header">
+                    <span>Pick Your Numbers!</span>
+                  </div>
+
+                  <div className="col-md-12">
+                    {this.state.isDemo ? (
+                      ""
+                    ) : (
+                      <div className="page747_number_rules">CONTEST RULES</div>
+                    )}
+
+                    {this.state.isDemo ? (
+                      ""
+                    ) : (
+                      <div class="page747_number_box">
+                        <div>
+                          <p>Till Next Draw</p>
+                          <div className="row page747_next_draw_box">
+                            <div>
+                              <p>
+                                {" "}
+                                {Functions.getDays(
+                                  this.state.gameData.start_datetime
+                                )}
+                              </p>
+                              Days
+                            </div>
+                            <div>
+                              <p>
+                                {" "}
+                                {Functions.getHours(
+                                  this.state.gameData.start_datetime
+                                )}
+                              </p>
+                              hours
+                            </div>
+                            <div>
+                              <p>
+                                {" "}
+                                {Functions.getMinuts(
+                                  this.state.gameData.start_datetime
+                                )}
+                              </p>
+                              Mins
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="col-md-12">
+                    <div className="page747_selection_box" id="pick-numbers">
+                      {this.setBalls()}
+                    </div>
+                  </div>
+                  <div className="col-md-12">
+                    <div className="page747_selection_box_submit_info">
+                      {this.state.selected.length +
+                        " of " +
+                        allowedToSelect +
+                        " Numbers chosen"}
+                    </div>
+
+                    <div
+                      id="submit_selection_ball"
+                      onClick={e => this.submitUserSelections()}
+                      className={
+                        "page747_selection_box_submit" +
+                        (this.canSelectMore() ? " deactivate" : "")
+                      }
+                    >
+                      SUBMIT!
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    );
+      );
+    } else {
+      return <>Loading</>;
+    }
   }
 }
 

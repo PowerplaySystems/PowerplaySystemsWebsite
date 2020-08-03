@@ -1,0 +1,287 @@
+.select_player_box_header {
+  margin: 12px 0px;
+}
+.select_player_search_wrapper {
+  display: inline-block;
+  margin-left: 20px;
+}
+.select_player_search {
+  width: 280px;
+  height: 45px;
+  border-radius: 22.5px;
+  background-color: #1a1a1a;
+  border: none;
+  padding: 0px 22px;
+  line-height: 44px;
+}
+.select_player_tabs {
+  display: inline-block;
+}
+.select_player_tab {
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 17px;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-bottom: solid 1px #979797;
+  cursor: pointer;
+}
+.select_player_tab.tab_active {
+  font-size: 17px;
+  font-weight: bold;
+  color: #fb6e00;
+  border-bottom: solid 1px #fb6e00;
+}
+.select_player_box_teams {
+  padding: 10px;
+  width: 953px;
+  height: 562.1px;
+  border-radius: 11px;
+  background-color: #1a1a1a;
+  overflow: auto;
+  overflow-y: scroll;
+  margin-bottom: 60px;
+  display: inline-block;
+}
+.select_player_box_details {
+  display: inline-block;
+  width: 334px;
+  height: 562.1px;
+  border-radius: 16px;
+  background-color: #1a1a1a;
+  margin-left: 20px;
+  padding: 10px;
+  vertical-align: top;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+.fantasy_player_box {
+  width: 438px;
+  height: 159px;
+  border-radius: 5px;
+  background-color: #0f0f0f;
+  text-align: center;
+  padding-top: 10px;
+  display: inline-block;
+  margin: 10px;
+}
+.fantasy_player_box > div {
+  margin: 10px;
+}
+
+.player_box_row1_text {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+}
+.fantasy_player_box_row1 > div {
+  display: inline-block;
+}
+.player_box_header_img_btn {
+  display: inline-block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+
+  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff), #fb6e00;
+  margin: -4px 9px;
+  background-position: center;
+  background-size: 50% 2px, 2px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.player_box_header_text2 {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  color: #fb6e00;
+  margin: 0px 7px;
+}
+.player_box_header_text3 {
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0px 0px 0px 25px;
+}
+.player_box_row2_text1 {
+  font-family: Poppins;
+  font-size: 14px;
+  color: #ffffff;
+  margin: 0px 10px;
+}
+.player_box_row2_text2 {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: #fb6e00;
+  margin-right: 6px;
+}
+.player_box_row2_text3 {
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+}
+.fantasy_player_box_row2 > div {
+  display: inline-block;
+}
+.player_box_divider {
+  height: 1px;
+  border: solid 1px #232323;
+}
+.player_box_row3 > div {
+  display: inline-block;
+}
+.player_box_row3_text1 {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fb6e00;
+  margin: 0px 10px;
+}
+.player_box_row3_text2 {
+  font-family: Poppins;
+  font-size: 14px;
+  color: #ffffff;
+}
+.player_box_row4 {
+  text-align: center;
+}
+.player_box_row4 > div {
+  display: inline-block;
+  margin: 0px 10px;
+}
+.box_active {
+  border: solid 1px #fb6e00;
+  background-color: #000000;
+}
+.box_active .fantasy_player_box_row1 {
+  text-align: left;
+}
+
+.box_active .player_box_header_img_btn {
+  content: "\2713";
+  background: none;
+  margin-left: -10px;
+}
+.player_box_header_icon_del {
+  background: url("../../../assets/images/fantasy/players/del.png");
+  width: 16px;
+  height: 18.5px;
+  background-size: cover;
+  cursor: pointer;
+  vertical-align: sub;
+}
+.selected_player_box {
+  width: 210px;
+  height: 47px;
+  line-height: 47px;
+  border-radius: 13px;
+  margin: 5px;
+  background-color: #0f0f0f;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #fb6e00;
+  display: inline-block;
+  padding: 0px 10px;
+}
+.selected_player_wrapper {
+  height: 350px;
+  overflow-y: auto;
+  text-align: left;
+  padding-left: 30px;
+}
+.selected_player_main {
+  display: inline-block;
+}
+.selected_player_type {
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  margin-right: 20px;
+}
+.selected_player_dvider {
+  width: 250px;
+  height: 1px;
+  border: solid 1px #000000;
+  margin: 20px 0px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 14px;
+  margin-left: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  left: 0px;
+  bottom: -3px;
+  background-color: #fb6e00;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgba(237, 121, 48, 0.6);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgba(237, 121, 48, 0.6);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.type_small .selected_player_type {
+  font-size: 14px;
+  margin-right: 3px;
+}
+.type_small .selected_player_box {
+  width: 200px;
+  font-size: 17px;
+}
+.type_small .close-thin {
+  font-size: 19px;
+}

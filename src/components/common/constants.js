@@ -34,6 +34,33 @@ export const SPORTS_POWERPLAY_SWAP = 24;
 export const SPORTS_POWERPLAY_LOCK = 1;
 
 export const ENK = 1122334455;
-export const URL_WEBSITE = "powerplaygames.com"
-export const URL = "powerplaysystems.com"
+export const URL_WEBSITE = "powerplaysystems.com";
+export const URL = "35.231.47.215";
+
+export var DEMO_PICKS = [];
+export var DEMO_DRAW = [];
+export var DEMO_GAME_DATA = {
+  id: 122,
+  game_type: 1,
+  start_datetime: "2019-12-30 12:59:00",
+  prize_id: 44,
+  prize: [
+    { hits: 7, prize: 1000 },
+    { hits: 6, prize: 400 },
+    { hits: 5, prize: 200 },
+    { hits: 4, prize: 100 },
+    { hits: 3, prize: 50 },
+    { hits: 2, prize: 25 },
+    { hits: 1, prize: 15 }
+  ],
+  countdown_timer: 30,
+  delay: 1,
+  game_text: "1",
+  rules: "undefined",
+  odds_text: "1 in 10,000",
+  code: null,
+  status: "unplayed",
+  deadline: "2019-12-30 12:59:00",
+  entry: 109
+};
 
