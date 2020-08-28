@@ -51,7 +51,7 @@
   "main": "index.js",
   "author": "Hamza Iqbal",
   "license": "MIT",
-npm   "description": "",
+  "description": "",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hamza-iqbal-hi/PowerplayGamesWebsite.git"
