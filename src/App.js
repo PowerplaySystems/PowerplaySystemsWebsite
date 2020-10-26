@@ -52,6 +52,7 @@ import DraftDaySelect from "./components/DrafDay/Selection";
 import DraftDayLive from "./components/DrafDay/Live";
 
 import "./App.css";
+import ContestCentral from "./components/ContestCentral/ContestCentral";
 
 class App extends Component {
   render() {
@@ -111,6 +112,7 @@ class App extends Component {
             <Route path="/draft-day" component={DraftDayLanding} />
             <Route path="/draft-day-teams" component={DraftDaySelect} />
             <Route path="/draft-day-live" component={DraftDayLive} />
+            <Route path='/contest-central' component={ContestCentral} />
           </div>
         </Router>
       </Provider>

@@ -1,0 +1,93 @@
+.__ContestCentral{
+    color: #fff;
+    overflow: hidden;
+    .__viewport{
+        height: 100vh;
+        align-items: center;
+        text-align: center;
+        background: url('../../assets/images/contesy_centeral/341694-pa-9-a-9-h-864-low.png');
+    }
+    .__viewport-title{
+        font-size: 6em;
+        font-weight: bold;
+    }
+}
+
+@media (min-width: 1000px){
+    .__ContestCentral{
+        .__live-sports{
+            position: relative;
+            .__background-image{
+                position: absolute;
+                bottom: 0;
+                right: 80px;
+                max-height: 85%;
+                &::after{
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    content: '';
+                    background: rgba($color: #000000, $alpha: 0.6);
+                }
+            }
+            >.__col{
+                z-index: 1;
+            }
+        }
+        .__power-play{
+            background: url('../../assets/images/contesy_centeral/457826-pfcw-8-w-118.png') no-repeat right top;
+            >div{
+                background-image: linear-gradient(to bottom, rgba(32, 33, 36, 0.5), #000000);
+                transform: skew(-10deg);
+                margin-right: -120px;
+                >div{
+                    transform: skew(10deg);
+                    margin-right: 120px;
+                }
+            }
+        }
+    }
+}
+
+.__ContestCentral{
+    @media (max-width: 1000px){
+        background-color: #202124;
+        .__viewport{
+            padding: 0 1.6em;
+            background-position: center;
+            background-size: auto 100%;
+            .__viewport-title{
+                font-size: 3.715em;
+                margin: auto;
+            }
+            .__viewport-subtitle{
+                font-size: 1.143em;
+                margin-bottom: 5em !important;
+            }
+            .__large-btn{
+                font-size: 1.143em;
+                margin-bottom: 2em !important;
+            }
+        }
+        .__sports-play-wrapper{
+            .__heading-1{
+                font-size: 1.72em;
+                font-weight: normal;
+                margin: 2em 0 !important;
+                text-align: left;
+                padding: 0.2em 0;
+            }
+            .__background-image, .__btn{
+                display: none;
+            }
+            .__power-play .__heading-1{
+                color: inherit;
+            }
+            .__live-sports .__heading-1{
+                border-bottom: 3px solid;
+            }
+        }
+    }
+}
