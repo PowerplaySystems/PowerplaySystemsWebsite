@@ -64,8 +64,8 @@ class Home extends Component {
                     <div className="corousal-content-text3">
                       TDN NFL Fantasy Football
                     </div>
-                    <div className="corousal-content-text2">Comming Soon</div>
-                    <div className="corousal-content-text4">Sept 2020</div>
+                    <div className="corousal-content-text2">Play-off Elimination Format</div>
+                    <div className="corousal-content-text4">Jan 2021</div>
                     <div className="corousal-content-text5">
                       Prizes will be announced soon!
                     </div>
@@ -86,7 +86,7 @@ class Home extends Component {
                     </div>
                     <div className="corousal-content-text7">NFL PowerLine</div>
                     <div className="corousal-content-text8">
-                      Coming Fall 2020
+                    Coming Fall 2021
                     </div>
                     <div className="corousal-content-text9">
                       Progressive Powerplay Contest
@@ -490,7 +490,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="real-excitement-wrapper">
-            <div className="real-excitement-text1">Real Excitement !</div>
+            <div className="real-excitement-text1">Real Excitement!</div>
             <br />
             <div className="real-excitement-text2">
               Utilizing our platform your customers will be fully engaged.
