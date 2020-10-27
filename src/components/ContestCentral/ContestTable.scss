@@ -1,0 +1,43 @@
+@media (min-width: 1150px){
+    .__contest-central-grid{
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        grid-auto-rows: 1fr;
+        border-radius: 6px;
+        overflow: hidden;
+    
+        >*{
+            padding: 0.54em 36px;
+        }
+    
+        >*:nth-last-child(1),
+        >*:nth-last-child(2),
+        >*:nth-last-child(3),
+        >*:nth-last-child(4),
+        >*:nth-last-child(5){
+            background-color: #17181a;
+        }
+    
+        >*:nth-child(10n + 1),
+        >*:nth-child(10n + 2),
+        >*:nth-child(10n + 3),
+        >*:nth-child(10n + 4),
+        >*:nth-child(10n + 5){
+            background: rgba(17, 17, 17, 0.8);
+        }
+    
+        >*:nth-child(1),
+        >*:nth-child(2),
+        >*:nth-child(3),
+        >*:nth-child(4),
+        >*:nth-child(5){
+            display: flex;
+            align-items: center;
+            background-color: #111111;
+        }
+    
+        .__heading-6 img{
+            margin-left: 0.4em;
+        }
+    }
+}

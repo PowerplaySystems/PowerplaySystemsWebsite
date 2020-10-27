@@ -1,0 +1,18 @@
+.__EntryItem{
+    font-size: 14px;
+    .__title{
+        font-size: 18px;
+    }
+    .__percentage-bar{
+        background-color: rgba(242, 242, 242, 0.1);
+        border-radius: 3px;
+        overflow: hidden;
+        width: 80px;
+        >div{
+            height: 6px;
+        }
+    }
+    .__text-percentage{
+        width: 70px;
+    }
+}

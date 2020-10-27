@@ -111,7 +111,9 @@
     margin-bottom: auto;
 }
 
-
+.__container{
+    margin: auto 3.4em;
+}
 @media (min-width: 1001px){
     .__hide-on-large{
         display: none;

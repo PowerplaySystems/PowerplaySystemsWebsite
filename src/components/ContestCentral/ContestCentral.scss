@@ -1,15 +1,34 @@
+@import '../../scss/colors.scss';
+@import './ContestTable.scss';
+
 .__ContestCentral{
-    color: #fff;
     overflow: hidden;
+    background-color: #202124;
     .__viewport{
         height: 100vh;
         align-items: center;
         text-align: center;
         background: url('../../assets/images/contesy_centeral/341694-pa-9-a-9-h-864-low.png');
+        .__viewport-title{
+            font-size: 6em;
+            font-weight: bold;
+        }
     }
-    .__viewport-title{
-        font-size: 6em;
-        font-weight: bold;
+    .__sports-play-wrapper{
+        background: #000;
+    }
+}
+@media (max-height: 650px){
+    .__ContestCentral {
+        .__viewport {
+            .__viewport-title{
+                font-size: 4.5em;
+            }
+        }
+        .__large-btn{
+            margin: 2em !important;
+            font-size: 20px;
+        }
     }
 }
 
@@ -17,6 +36,7 @@
     .__ContestCentral{
         .__live-sports{
             position: relative;
+            overflow: hidden;
             .__background-image{
                 position: absolute;
                 bottom: 0;
@@ -48,14 +68,37 @@
                 }
             }
         }
+        >.__sports-play-wrapper{
+            a{
+                text-decoration: none;
+                color: $primary;
+                .__btn{
+                    background: $white;
+                }
+                &.active .__btn{
+                    background: $primary;
+                }
+            }
+        }
     }
 }
 
 .__ContestCentral{
     @media (max-width: 1000px){
+        >.__sports-play-wrapper{
+            a{
+                text-decoration: none;
+                color: $white;
+                &.active{
+                    color: $primary;
+                    .__heading-1{
+                        border-bottom: 3px solid;
+                    }
+                }
+            }
+        }
         background-color: #202124;
         .__viewport{
-            padding: 0 1.6em;
             background-position: center;
             background-size: auto 100%;
             .__viewport-title{
@@ -85,9 +128,18 @@
             .__power-play .__heading-1{
                 color: inherit;
             }
-            .__live-sports .__heading-1{
-                border-bottom: 3px solid;
-            }
+        }
+    }
+}
+
+
+.__contest-central-games{
+    padding: 6em 0;
+    .__badges{
+        margin: 1em;
+        white-space: nowrap;
+        >div{
+            margin: 0.4em;
         }
     }
 }

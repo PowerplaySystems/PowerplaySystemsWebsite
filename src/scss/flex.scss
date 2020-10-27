@@ -16,7 +16,7 @@
 .__wrap{
     flex-wrap: wrap;
 }
-.__flex-center{
+.__row-center{
     justify-content: center;
 }
 .__row-stretch{
@@ -24,4 +24,7 @@
 }
 .__ai{
     align-items: center;
+}
+.__fg{
+    flex-grow: 1;
 }
