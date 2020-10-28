@@ -1,0 +1,43 @@
+.__contest-central-card{
+    background-image: linear-gradient(to bottom, #111111, #232529);
+    border-radius: 6px;
+    border: solid 2px #111111;
+    padding: 0 1em;
+    text-align: left;
+    .__icon{
+        height: 44px;
+        margin: -3px 1em auto 0;
+        display: flex;
+        align-items: center;
+        border-radius: 0 0 20px 20px;
+        padding: 9px;
+        svg{
+            width: 16px;
+            color: #111111;
+        }
+    }
+    .__time{
+        width: 87px;
+        svg{
+            width: 14px;
+            padding-top: 7px;
+        }
+    }
+    button{
+        border: none;
+        outline: none;
+        background: linear-gradient(to bottom, #fb6e00, rgba(251, 110, 0, 0.6));
+        display: flex;
+        align-items: center;
+        font-family: inherit;
+        font-size: 18px;
+        padding: 8px 0;
+        width: 180px;
+        justify-content: center;
+        border-radius: 36px;
+        margin: 1em 0 1em auto;
+        img{
+            margin-left: 4px;
+        }
+    }
+}

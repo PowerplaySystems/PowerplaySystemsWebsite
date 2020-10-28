@@ -6,14 +6,14 @@ import ContestCentralGridiTem from './ContestCentralGridiTem';
 
 const Sports = props => {
     return (
-        <Fragment>
+        <div className='__contest-central-games __sports'>
             <div className='__row __badges __row-center __mb-2'>
                 <div className='__badge __primary-text'><Ball />NFL</div>
                 <div className='__badge'><Basket />NBA</div>
                 <div className='__badge'><Hockey />NHL</div>
                 <div className='__badge'>Show All</div>
             </div>
-            <div className='__heading-6 __most-popular'>Most Popular</div>
+            <div className='__heading-6 __most-popular __ml-1'>Most Popular</div>
             <div className='__contest-central-grid'>
                 <div>Sport</div>
                 <div>Contest</div>
@@ -80,7 +80,7 @@ const Sports = props => {
                     prize='$300,000'
                 />
             </div>
-        </Fragment>
+        </div>
     )
 }
 

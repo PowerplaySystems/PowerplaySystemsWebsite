@@ -14,8 +14,9 @@
             font-weight: bold;
         }
     }
-    .__sports-play-wrapper{
-        background: #000;
+    .__contest-central-prizes-details{
+        max-width: 1000px;
+        margin: auto;
     }
 }
 @media (max-height: 650px){
@@ -26,7 +27,7 @@
             }
         }
         .__large-btn{
-            margin: 2em !important;
+            margin: 2em auto !important;
             font-size: 20px;
         }
     }
@@ -34,6 +35,18 @@
 
 @media (min-width: 1000px){
     .__ContestCentral{
+        .__sports-play-wrapper{
+            background: #000;
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 60px;
+                bottom: 0;
+                background: linear-gradient(to bottom, rgba(0,0,0, 0.6), #000);
+            }
+        }
         .__live-sports{
             position: relative;
             overflow: hidden;
@@ -85,10 +98,23 @@
 
 .__ContestCentral{
     @media (max-width: 1000px){
+        .__contest-central-prizes-details{
+            padding: 1em;
+            .__heading-2{
+                font-size: 28px;
+            }
+            .__heading-4{
+                font-size: 18px;
+            }
+        }
         >.__sports-play-wrapper{
             a{
                 text-decoration: none;
                 color: $white;
+                .__heading-1{
+                    margin-bottom: 1em !important;
+                    font-size: 20px;
+                }
                 &.active{
                     color: $primary;
                     .__heading-1{
@@ -128,18 +154,6 @@
             .__power-play .__heading-1{
                 color: inherit;
             }
-        }
-    }
-}
-
-
-.__contest-central-games{
-    padding: 6em 0;
-    .__badges{
-        margin: 1em;
-        white-space: nowrap;
-        >div{
-            margin: 0.4em;
         }
     }
 }

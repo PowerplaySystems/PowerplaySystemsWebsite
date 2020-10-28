@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Info from '../../assets/icons/Info';
 import EntryItem from './EntryItem';
 import bitmap from '../../assets/images/contesy_centeral/bitmap-2.png';
@@ -6,8 +6,21 @@ import Ball from '../../assets/icons/Ball';
 import Basket from '../../assets/icons/Basket';
 import BasketBall from '../../assets/icons/BasketBall';
 import Hockey from '../../assets/icons/Hockey';
+import './ContestCentralGridiTem.scss'
 
 const ContestCentralGridiTem = ({ sport, title, time, entries, totalEntries, prize, fee }) => {
+    const [isMobileMode, setIsMobileMode] = useState(false);
+    const responsiveHandler = screenSize => {
+        screenSize.matches ? setIsMobileMode(true) : setIsMobileMode(false);
+    }
+    useEffect(() => {
+        const screenSize = window.matchMedia("(max-width: 1150px)");
+        responsiveHandler(screenSize);
+        screenSize.addListener(responsiveHandler);
+        return () => {
+            screenSize.removeListener(responsiveHandler);
+        }
+    }, [])
     const icon = () => {
         switch (sport.toLowerCase()) {
             case 'mlb':
@@ -20,7 +33,7 @@ const ContestCentralGridiTem = ({ sport, title, time, entries, totalEntries, pri
                 return <Hockey />
         }
     }
-    return (
+    return !isMobileMode ? (
         <Fragment>
             <div className='__row'>
                 {icon()}
@@ -38,7 +51,30 @@ const ContestCentralGridiTem = ({ sport, title, time, entries, totalEntries, pri
                 : <div className='__row __heading-6'>Free Entry <span class="__chevron __right"></span></div>
             }
         </Fragment>
-    )
+    ) : (
+            <div className='__contest-central-card __m-1'>
+                <div className='__row'>
+                    <div className='__row __mr-a'>
+                        <div className='__icon __primary'>{icon()}</div>
+                        <div className='__mr-a'>
+                            <div className='__heading-6'>{sport}</div>
+                            <div className='__primary-text __row __heading-6'>{title}</div>
+                        </div>
+                    </div>
+                    <div className='__small __time'>{time.replace('|', '')} <Info /></div>
+                </div>
+                <div className='__row __mt-1 __sb'>
+                    <EntryItem entries={entries} totalEntries={totalEntries} />
+                    <div>
+                        <div className='__small'>PRIZES</div>
+                        <div className='__heading-6'>{prize}</div>
+                    </div>
+                </div>
+                {fee ?
+                    <button>{fee} <img src={bitmap} alt='' /></button> :
+                    <button>Free Entry <span class="__chevron __right"></span></button>}
+            </div>
+        )
 }
 
 export default ContestCentralGridiTem;

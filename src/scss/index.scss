@@ -30,6 +30,14 @@
     font-size: 4em;
     font-weight: bold;
 }
+.__heading-2{
+    font-size: 40px;
+    font-weight: bold;
+}
+.__heading-4{
+    font-size: 28px;
+    font-weight: bold;
+}
 .__heading-6{
     font-size: 20px;
 }
@@ -61,6 +69,14 @@
     cursor: pointer;
     svg{
         margin-right: 0.4em;
+    }
+    @media (max-width: 1150px) {
+        font-size: 15px;
+        min-width: initial;
+        border-radius: 0.8em;
+        svg{
+            width: 1em;
+        }
     }
 }
 .__small{

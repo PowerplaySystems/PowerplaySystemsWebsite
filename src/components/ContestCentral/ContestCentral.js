@@ -4,6 +4,7 @@ import './ContestCentral.scss';
 import liveSportsImage from '../../assets/images/contesy_centeral/bitmap.png';
 import { Route, NavLink } from 'react-router-dom';
 import Sports from './Sports';
+import Footer from './Footer';
 
 const ContestCentral = props => {
     const { url } = props.match;
@@ -44,10 +45,16 @@ const ContestCentral = props => {
                     </div>
                 </NavLink>
             </div>
-            <div className='__contest-central-games __container'>
-                <Route exact path={url} component={Sports} />
-                <Route path={`${url}/games`} render={() => <h1>Games</h1>} />
+            <Route exact path={url} component={Sports} />
+            <Route path={`${url}/games`} render={() => <h1>Games</h1>} />
+            <div className='__center __contest-central-prizes-details'>
+                <div className='__heading-2'>Your Cash Balance: <span className='__primary-text'>$3,000</span></div>
+                <div className='__mb-2'></div>
+                <div className='__heading-2 __mb-4'>Your Powerplay Token Balance: <span className='__primary-text'>$5,000</span></div>
+                <div className='__heading-4'>Partner with us to integrate one of these exclusive interactive contests with your brand.</div>
+                <button className='__large-btn'>Partner With Us</button>
             </div>
+            <Footer />
         </div>
     )
 }
