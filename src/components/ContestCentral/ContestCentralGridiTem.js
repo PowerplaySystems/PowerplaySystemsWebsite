@@ -6,6 +6,8 @@ import Ball from '../../assets/icons/Ball';
 import Basket from '../../assets/icons/Basket';
 import BasketBall from '../../assets/icons/BasketBall';
 import Hockey from '../../assets/icons/Hockey';
+import Casino from '../../assets/icons/Casino';
+import PlayingCards from '../../assets/icons/PlayingCards';
 import './ContestCentralGridiTem.scss'
 
 const ContestCentralGridiTem = ({ sport, title, time, entries, totalEntries, prize, fee }) => {
@@ -29,8 +31,12 @@ const ContestCentralGridiTem = ({ sport, title, time, entries, totalEntries, pri
                 return <Basket />
             case 'nfl':
                 return <Ball />
-            default:
+            case 'nhl':
                 return <Hockey />
+            case 'tdb':
+                return <Casino />
+            default:
+                return <PlayingCards />
         }
     }
     return !isMobileMode ? (

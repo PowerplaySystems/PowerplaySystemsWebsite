@@ -44,7 +44,7 @@
                 width: 100%;
                 height: 60px;
                 bottom: 0;
-                background: linear-gradient(to bottom, rgba(0,0,0, 0.6), #000);
+                background: linear-gradient(to bottom, rgba(0,0,0, 0.1), #000);
             }
         }
         .__live-sports{
@@ -62,7 +62,7 @@
                     top: 0;
                     height: 100%;
                     content: '';
-                    background: rgba($color: #000000, $alpha: 0.6);
+                    background: linear-gradient(to bottom, rgba(0,0,0, 0.6), #000);
                 }
             }
             >.__col{

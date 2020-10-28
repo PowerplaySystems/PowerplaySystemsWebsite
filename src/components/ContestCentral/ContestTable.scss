@@ -17,6 +17,11 @@
 }
 
 @media (min-width: 1150px){
+    .__games{
+        .__badges .__badge{
+            min-width: 200px;
+        }
+    }
     .__contest-central-grid{
         display: grid;
         grid-template-columns: repeat(5, auto);

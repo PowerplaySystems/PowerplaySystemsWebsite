@@ -3,14 +3,15 @@ import Ball from '../../assets/icons/Ball';
 import Basket from '../../assets/icons/Basket';
 import Hockey from '../../assets/icons/Hockey';
 import ContestCentralGridiTem from './ContestCentralGridiTem';
+import Casino from '../../assets/icons/Casino';
+import PlayingCards from '../../assets/icons/PlayingCards';
 
-const Sports = props => {
+const Games = props => {
     return (
-        <div className='__contest-central-games __sports'>
+        <div className='__contest-central-games __games'>
             <div className='__row __badges __row-center __mb-2'>
-                <div className='__badge __primary-text'><Ball />NFL</div>
-                <div className='__badge'><Basket />NBA</div>
-                <div className='__badge'><Hockey />NHL</div>
+                <div className='__badge'><Casino />Lottery</div>
+                <div className='__badge'><PlayingCards />Card Games</div>
                 <div className='__badge'>Show All</div>
             </div>
             <div className='__heading-6 __most-popular __ml-1 __mb-1'>Most Popular</div>
@@ -23,7 +24,7 @@ const Sports = props => {
 
                 <ContestCentralGridiTem
                     title='Chase The Ace'
-                    sport='MLB'
+                    sport='TDB'
                     time='Oct 24, 2020 | 8:00PM ET'
                     entries={58589}
                     totalEntries={200000}
@@ -32,7 +33,7 @@ const Sports = props => {
                 />
                 <ContestCentralGridiTem
                     title='PowerLine'
-                    sport='MLB'
+                    sport='Card Game'
                     time='Oct 24, 2020 | 8:00PM ET'
                     entries={15395} 
                     totalEntries={19161}
@@ -40,7 +41,7 @@ const Sports = props => {
                 />
                 <ContestCentralGridiTem
                     title='21’s'
-                    sport='NBA'
+                    sport='TDB'
                     time='Oct 24, 2020 | 8:00PM ET'
                     entries={1497} 
                     totalEntries={150000}
@@ -49,7 +50,7 @@ const Sports = props => {
                 />
                 <ContestCentralGridiTem
                     title='Chase The Ace'
-                    sport='MLB'
+                    sport='Card Game'
                     time='Oct 24, 2020 | 8:00PM ET'
                     entries={27433} 
                     totalEntries={71856}
@@ -57,7 +58,7 @@ const Sports = props => {
                 />
                 <ContestCentralGridiTem
                     title='Power DFS'
-                    sport='NFL'
+                    sport='TDB'
                     time='Oct 24, 2020 | 8:00PM ET'
                     entries={32975} 
                     totalEntries={250000}
@@ -65,7 +66,7 @@ const Sports = props => {
                 />
                 <ContestCentralGridiTem
                     title='Power Draft'
-                    sport='NBA'
+                    sport='Card Game'
                     time='Oct 24, 2020 | 8:00PM ET'
                     entries={18699}
                     totalEntries={247904}
@@ -73,7 +74,7 @@ const Sports = props => {
                 />
                 <ContestCentralGridiTem
                     title='PowerLine'
-                    sport='NFL'
+                    sport='Card Game'
                     time='Oct 24, 2020 | 8:00PM ET'
                     entries={21183}
                     totalEntries={59523}
@@ -84,4 +85,4 @@ const Sports = props => {
     )
 }
 
-export default Sports;
+export default Games;

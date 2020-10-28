@@ -5,6 +5,7 @@ import liveSportsImage from '../../assets/images/contesy_centeral/bitmap.png';
 import { Route, NavLink } from 'react-router-dom';
 import Sports from './Sports';
 import Footer from './Footer';
+import Games from './Games';
 
 const ContestCentral = props => {
     const { url } = props.match;
@@ -46,7 +47,7 @@ const ContestCentral = props => {
                 </NavLink>
             </div>
             <Route exact path={url} component={Sports} />
-            <Route path={`${url}/games`} render={() => <h1>Games</h1>} />
+            <Route path={`${url}/games`} component={Games} />
             <div className='__center __contest-central-prizes-details'>
                 <div className='__heading-2'>Your Cash Balance: <span className='__primary-text'>$3,000</span></div>
                 <div className='__mb-2'></div>
