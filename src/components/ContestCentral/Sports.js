@@ -6,7 +6,7 @@ import ContestCentralGridiTem from './ContestCentralGridiTem';
 
 const Sports = props => {
     return (
-        <div className='__contest-central-games __sports'>
+        <div className='__contest-central-games'>
             <div className='__row __badges __row-center __mb-2'>
                 <div className='__badge __primary-text'><Ball />NFL</div>
                 <div className='__badge'><Basket />NBA</div>
