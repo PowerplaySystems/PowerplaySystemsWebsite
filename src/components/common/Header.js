@@ -23,7 +23,8 @@ class Header extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      isLogedin: mLogged
+      isLogedin: mLogged,
+      isMenuOpen: false,
     };
     this.logout = this.logout.bind(this);
   }
@@ -41,27 +42,24 @@ class Header extends Component {
     );
   }
   render() {
+    const { isMenuOpen, isLogedin } = this.state;
     return (
       <nav className='__appbar'>
         <div className='__container __flex __sb'>
           <Link to='/' className='__brand-logo'></Link>
-          <button className='__menu'>
+          <button className={isMenuOpen ? '__close' : '__menu'} onClick={() => this.setState({ isMenuOpen: !isMenuOpen })}>
             <span></span>
             <span></span>
             <span></span>
           </button>
-          <button className='__close'>
-            <span></span>
-            <span></span>
-          </button>
-          <ul className='__flex __nav-links'>
+          <ul className={`__flex __nav-links ${isMenuOpen ? 'open' : ''}`}>
             <li><NavLink to='/'>Solutions</NavLink></li>
             <li><NavLink to='/'>our services</NavLink></li>
             <li><NavLink to='/about-us'>about us</NavLink></li>
             <li><NavLink to='/partner' className='__partner-with-us-btn'>Partner with us!</NavLink></li>
             <li className='__game-center'><NavLink to='/game-central'>My Game Center</NavLink></li>
             <li className='__profile-links __flex'>
-              <button className='__profile-button' style={{backgroundImage: `url(${defaultUserImage})`}}></button>
+              <button className='__profile-button' style={{ backgroundImage: `url(${defaultUserImage})` }}></button>
               <div className='__drop-down'>
                 <NavLink to='/my-account'>My Account</NavLink>
                 <span>Logout</span>
