@@ -1,0 +1,106 @@
+nav.__appbar{
+    font-size: 16px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #111111;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.32em 0;
+    .__nav-links{
+        margin: 0;
+        list-style-type: none;
+        li{
+            margin: 0 2.2em;
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+        a{
+            display: inline-block;
+        }
+    }
+    .__menu, .__close{
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+    }
+    .__close{
+        display: none;
+    }
+}
+@media (min-width: 1199px){
+    nav.__appbar{
+        .__partner-with-us-btn{
+            border: 1px solid #f2f2f2;
+            padding: 0.4em 0.6em;
+            border-radius: 6px;
+            font-size: 0.875em;
+            font-weight: 600;
+        }
+    }
+}
+@media (max-width: 1200px){
+    nav.__appbar{
+        padding: 0.875em 0;
+        .__nav-links{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 100%;
+            max-height: 0;
+            overflow: hidden;
+            transition: ease-in all 0.4s;
+            display: block;
+            background: #111111;
+            li{
+                margin: 2em 0;
+                text-align: center;
+            }
+        }
+        .__close, .__menu{
+            width: 1.95em;
+            >span{
+                height: 4px;
+                background: #fb6e00;
+                border-radius: 4px;
+                display: block;
+            }
+        }
+        .__close{
+            span {
+                position: relative;
+                &:first-child{
+                    transform: rotate(45deg);
+                    transform-origin: center center;
+                    top: 2px;
+                }
+                &:last-child{
+                    transform: rotate(135deg);
+                    transform-origin: center center;
+                    top: -2px;
+                }
+            }
+        }
+        .__menu{
+            width: 1.95em;
+            span{
+                margin: 4px 0;
+            }
+            &:focus {
+                position: absolute;
+                opacity: 0;
+                z-index: -1;
+                ~ .__nav-links{
+                    max-height: 1000px;
+                    padding: 1em;
+                }
+                ~ .__close{
+                    display: block;
+                }
+            }
+        }
+    }
+}
