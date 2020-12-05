@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./index.css";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -57,14 +57,18 @@ class Header extends Component {
             <li><NavLink to='/'>our services</NavLink></li>
             <li><NavLink to='/about-us'>about us</NavLink></li>
             <li><NavLink to='/partner' className='__partner-with-us-btn'>Partner with us!</NavLink></li>
-            <li className='__game-center'><NavLink to='/game-central'>My Game Center</NavLink></li>
-            <li className='__profile-links __flex'>
-              <button className='__profile-button' style={{ backgroundImage: `url(${defaultUserImage})` }}></button>
-              <div className='__drop-down'>
-                <NavLink to='/my-account'>My Account</NavLink>
-                <span>Logout</span>
-              </div>
-            </li>
+            {isLogedin && (
+              <Fragment>
+                <li className='__game-center'><NavLink to='/game-central'>My Game Center</NavLink></li>
+                <li className='__profile-links __flex'>
+                  <button className='__profile-button' style={{ backgroundImage: `url(${defaultUserImage})` }}></button>
+                  <div className='__drop-down'>
+                    <NavLink to='/my-account'>My Account</NavLink>
+                    <span onClick={this.logout}>Logout</span>
+                  </div>
+                </li>
+              </Fragment>
+            )}
           </ul>
         </div>
       </nav>

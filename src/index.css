@@ -11,6 +11,9 @@ a{
   width: 7.25em;
   height: 2.5em;
 }
+.__primary{
+  color: #fb6e00;
+}
 .__container{
   width: 85%;
   margin: auto;
@@ -28,4 +31,9 @@ a{
 }
 .__f1{
   flex: 1;
+}
+@media (max-width: 600px){
+  .__container{
+    width: 90%;
+  }
 }

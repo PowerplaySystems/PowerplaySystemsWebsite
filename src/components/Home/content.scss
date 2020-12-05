@@ -1,0 +1,60 @@
+@media (min-width: 1200px){
+    .__content{
+        .__container{
+            width: 70%;
+        }
+    }
+}
+
+.__home-page{
+    .__content{
+        padding: 5em 0;
+        overflow: hidden;
+        background: #090909;
+        border: 1px solid;
+        position: relative;
+        transform: skewY(-2.4deg);
+        .__background{
+            position: absolute;
+            bottom: -7em;
+            left: -7em;
+        }
+        .__container{
+            transform: skewY(2.4deg);
+        }
+        &:nth-child(odd){
+            .__main{
+                margin: 5em 0 0 auto;
+            }
+        }
+        .__title{
+            font-weight: bolder;
+            text-transform: uppercase;
+            font-size: 2.58em;
+            text-align: center;
+        }
+        .__main{
+            width: 50%;
+            >div{
+                margin: 2em 0;
+            }
+        }
+        .__backgroundimage-1{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .__main, .__homepage-btn{
+            position: relative;
+            z-index: 1;
+        }
+        .__homepage-btn{
+            margin: 4.7em auto 0 auto;
+        }
+        .__subtitle{
+            font-size: 1.625em;
+            font-weight: 500;
+        }
+    }
+}
