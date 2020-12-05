@@ -1,0 +1,93 @@
+.__about-us-page{
+    .__btn{
+        font-size: 20px;
+        background: #fb6e00;
+        height: 48px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 220px;
+        text-transform: uppercase;
+    }
+    .__main{
+        padding: 0.1px;
+        background-image: url('../../assets/images/about_us/27263.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom right;
+        border-top: 4px solid #fb6e00;
+        .__title{
+            font-size: 36px;
+            font-weight: bolder;
+            text-transform: uppercase;
+        }
+        .__content{
+            width: 31em;
+            flex-direction: column;
+            &:first-child{
+                margin: 9em 5em;
+            }
+            &:nth-child(2){
+                margin: 20em 5em 2em auto;
+            }
+        }
+        .__paragraph{
+            >div{
+                margin: 2em 0;
+            }
+        }
+        .__btn{
+            margin: 4em auto;
+        }
+    }
+}
+
+@media (max-width: 1300px){
+    .__about-us-page{
+        .__main{
+            background-position: top center;
+            .__content{
+                &:first-child{
+                    margin: 6em 0;
+                }
+                &:nth-child(2){
+                    margin: 15em 0 2em auto;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px){
+    .__about-us-page{
+        .__main{
+            .__content{
+                width: 60%;
+                text-align: left;
+            }
+            .__title{
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px){
+    .__about-us-page{
+        .__main{
+            .__content{
+                width: 80%;
+                &:first-child{
+                    margin: 3em 0;
+                }
+                &:nth-child(2){
+                    margin: 6em 0 3em auto;
+                }
+            }
+            .__btn{
+                margin: 1em auto 3em auto;
+            }
+        }
+    }
+}

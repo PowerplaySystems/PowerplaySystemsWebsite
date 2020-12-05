@@ -25,6 +25,9 @@ nav.__appbar{
                 margin-right: 0;
             }
         }
+        a.active{
+            color: #fb6e00;
+        }
     }
     button{
         background: transparent;
@@ -46,7 +49,7 @@ nav.__appbar{
         }
     }
 }
-@media (max-width: 1200px){
+@media (max-width: 1300px){
     nav.__appbar{
         padding: 0.875em 0;
         .__nav-links{

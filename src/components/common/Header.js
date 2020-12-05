@@ -53,8 +53,8 @@ class Header extends Component {
             <span></span>
           </button>
           <ul className={`__flex __nav-links ${isMenuOpen ? 'open' : ''}`}>
-            <li><NavLink to='/'>Solutions</NavLink></li>
-            <li><NavLink to='/'>our services</NavLink></li>
+            <li><NavLink to='/solutions'>Solutions</NavLink></li>
+            <li><NavLink to='/services'>our services</NavLink></li>
             <li><NavLink to='/about-us'>about us</NavLink></li>
             <li><NavLink to='/partner' className='__partner-with-us-btn'>Partner with us!</NavLink></li>
             {isLogedin && (

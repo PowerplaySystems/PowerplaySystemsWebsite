@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
-import "./index.css";
+import "./index.scss";
 import * as Constants from "./../common/constants";
 class AboutUs extends Component {
   constructor(props) {
@@ -44,147 +44,41 @@ class AboutUs extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="__about-us-page">
         <Header />
-        <div className="container-fluid p-o">
-          <div className="about_us_row_one">
-            <p className="about_us_heading">
-              <span>Changing</span> the landscape for interactive games and
-              contests
-            </p>
+        <div className='__viewport __column'>
+          <div className='__container __sb __column __f1'>
+            <div className='__view-port-header'>
+              <div className='__title'>PowerPlay Systems</div>
+              <div className='__subtitle'>Driving disruptive change across the lottery, fantasy sports, and sports betting landscape</div>
+            </div>
+            <div className='__viewport-footer'>
+              <div className='__title-2 __primary'>What We Do?</div>
+              <div className='__subtitle-2'>Powerplay Systems is offering the worlds first patent pending Live-Play Lottery and Fantasy Sports solutions.</div>
+              <div className='__subtitle-2 __hide-on-mediam'>Our solution can be used for charity fundraising, DFS, State run lotteries, lead generation, or promotional contests.</div>
+            </div>
           </div>
-          <center>
-            <div className="about_us_section_heading">What We Do?</div>
-            <div className="about_us_section_sub">
-              Powerplay Systems is offering the worlds first patent pending
-              interactive Live Sports and Lottery platform. Our platform can be
-              used for charity fundraising, State run lotteries, lead
-              generation, or promotional contests.
-            </div>
-            <div className="about_us_row_two" />
-            <div className="about_us_row_three">
-              <div className="about_us_row_left">
-                <div className="row_three_header header_1">Powerplay Lotto</div>
-                <div className="row_three_text">
-                  Utilize our Powerful fully customizable lottery platform to
-                  take your lottery offering to the next level. Whether it is a
-                  Sporting event 50/50 draw or a Mega-Millions draw, our
-                  platform will provide your customers with an exceptionally
-                  exciting experience.
-                </div>
-                <button
-                  className="row_three_button"
-                  onClick={() => this.props.history.push("/powerplay-lotto")}
-                >
-                  Explore
-                </button>
-              </div>
-              <div className="about_us_row_right">
-                <div className="row_three_header header_2">
-                  Powerplay Live Sports
-                </div>
-                <div className="row_three_text">
-                  Would you like to ramp up customer engagement? Use our
-                  interactive live sports platform to drive customer behavior by
-                  offering exciting new fantasy sports games, bar games,
-                  promotional contests, sports betting games, and even sports
-                  based lotteries.
-                </div>
-                <button
-                  className="row_three_button"
-                  onClick={() => this.props.history.push("/live-sports")}
-                >
-                  Explore
-                </button>
-              </div>
-            </div>
-            <div className="about_us_section_heading">Our Partners</div>
-            <div className="about_us_section_sub">
-              Partner with us to engage with your customers and offer exiting
-              new customer interaction points. You will have truly engaged
-              customers, new leads, and access to the mobile generation. Let's
-              get started.{" "}
-            </div>
-
-            <button
-              onClick={() => this.props.history.push("/partner")}
-              className="about_us_button_partner"
-            >
-              Become a Partner
-            </button>
-            <div className="about_us_section_heading">Our Mission</div>
-            <br />
-            <div className="about_us_section_sub">
-              To drive exceptional consumer engagement and create significant
-              new revenue streams for our clients.
-            </div>
-            {/* <div className="about_us_row_players">
-              <div className="about_us_player_box">
-                <div className="about_us_player_header">
-                  <img src={require("./../../assets/images/about_us/pp.png")} />
-                  <span>Adams Sandler</span>
-                </div>
-                <div className="about_us_coment">
-                  Oh Powerplay I Love3 you soooo much. You helped me do some
-                  wonderful work today.
-                </div>
-              </div>
-              <div className="about_us_player_box_active">
-                <div className="about_us_player_header">
-                  <img src={require("./../../assets/images/about_us/pp.png")} />
-                  <span>Adams Sandler</span>
-                </div>
-                <div className="about_us_coment">
-                  Oh Powerplay I Love3 you soooo much. You helped me do some
-                  wonderful work today.
-                </div>
-              </div>
-              <div className="about_us_player_box">
-                <div className="about_us_player_header">
-                  <img src={require("./../../assets/images/about_us/pp.png")} />
-                  <span>Adams Sandler</span>
-                </div>
-                <div className="about_us_coment">
-                  Oh Powerplay I Love3 you soooo much. You helped me do some
-                  wonderful work today.
-                </div>
-              </div>
-            </div> */}
-            <div className="about_us_section_heading">Where to Find Us?</div>
-            <div className="about_us_address_row">
-              <img
-                className="about_us_address_img"
-                src={require("./../../assets/images/about_us/map.PNG")}
-              />
-
-              <div className="about_us_address">
-                <img
-                  src={require("./../../assets/images/about_us/placeholder.png")}
-                />
-
-                <span>140 Yonge St., S.200 Toronto, Ontario</span>
-                <br />
-                <img
-                  src={require("./../../assets/images/about_us/phone_call.png")}
-                />
-                <span>1-844-268-1573</span>
-                <br />
-                <img
-                  src={require("./../../assets/images/about_us/phone_call.png")}
-                />
-                <span>647-499-5746 (local)</span>
-                <br />
-                <button
-                  onClick={() => this.props.history.push("/partner")}
-                  className="btn_contact_us"
-                >
-                  Contact Us
-                </button>
-              </div>
-            </div>
-          </center>
         </div>
-        <Footer />
+
+        <div className='__main'>
+          <div className='__container'>
+            <div className='__content'>
+              <div className='__title __primary'>Live-Play Lottery Games</div>
+              <div className='__paragraph'>
+                <div>Utilize our Powerful fully customizable lottery platform to take your lottery offering to the next level.</div>
+                <div  className='__hide-on-small'>Whether it is a Sporting event 50/50 draw or a Mega-Millions draw, our solution will provide your customers with the world’s most exciting lottery draw.</div>
+              </div>
+            </div>
+            <div className='__content'>
+              <div className='__title __primary'>Live-Play Sports Games</div>
+              <div className='__paragraph'>
+                <div className='__hide-on-small'>Would you like to ramp up customer engagement?</div>
+                <div>Use our interactive live sports solution to drive customer behavior by offering exciting new fantasy sports games, bar games, promotional contests, sports betting games, and even sports based lotteries.</div>
+              </div>
+            </div>
+            <div className='__flex'><Link to='/' className='__btn'>partner with us!</Link></div>
+          </div>
+        </div>
       </div>
     );
   }

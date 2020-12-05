@@ -23,6 +23,11 @@ a{
   align-items: center;
   flex-wrap: wrap;
 }
+.__column{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .__flex-start{
   align-items: flex-start;
 }
@@ -32,8 +37,27 @@ a{
 .__f1{
   flex: 1;
 }
+.__viewport{
+  min-height: calc(100vh - 50px);
+  margin-top: 50px;
+}
+
+
+
+@media (max-width: 1300px){
+  .__viewport{
+    min-height: calc(100vh - 68px);
+    margin-top: 68px;
+  }
+  .__hide-on-mediam{
+    display: none;
+  }
+}
 @media (max-width: 600px){
   .__container{
     width: 90%;
+  }
+  .__hide-on-small{
+    display: none;
   }
 }
