@@ -37,13 +37,15 @@ a{
   flex: 1;
 }
 .__viewport{
-  min-height: calc(100vh - 50px);
-  margin-top: 50px;
+  min-height: calc(100vh - 3.1em);
+  margin-top: 3.1em;
+}
+.__flex-center{
+  justify-content: center;
 }
 
 
-
-@media (max-width: 1300px){
+@media (max-width: 1290px){
   .__viewport{
     min-height: calc(100vh - 68px);
     margin-top: 68px;
@@ -54,9 +56,15 @@ a{
 }
 @media (max-width: 600px){
   .__container{
-    width: 90%;
+    width: 88%;
   }
   .__hide-on-small{
     display: none;
+  }
+}
+
+@media (min-width: 1800px){
+  .__page{
+    font-size: 20px;
   }
 }

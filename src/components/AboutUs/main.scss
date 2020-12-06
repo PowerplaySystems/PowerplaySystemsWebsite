@@ -1,29 +1,30 @@
 .__about-us-page{
     .__btn{
-        font-size: 20px;
+        font-size: 1.429em;
         background: #fb6e00;
-        height: 48px;
-        border-radius: 4px;
+        height: 2.4em;
+        border-radius: 6px;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: 220px;
+        min-width: 11em;
         text-transform: uppercase;
+        font-weight: 600;
     }
     .__main{
         padding: 0.1px;
         background-image: url('../../assets/images/about_us/27263.png');
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: bottom right;
+        background-position: center right;
         border-top: 4px solid #fb6e00;
         .__title{
-            font-size: 36px;
+            font-size: 2.25em;
             font-weight: bolder;
             text-transform: uppercase;
         }
         .__content{
-            width: 31em;
+            width: 30.5em;
             flex-direction: column;
             &:first-child{
                 margin: 9em 5em;
@@ -43,10 +44,10 @@
     }
 }
 
-@media (max-width: 1300px){
+@media (max-width: 1290px){
     .__about-us-page{
         .__main{
-            background-position: top center;
+            background-position: bottom center;
             .__content{
                 &:first-child{
                     margin: 6em 0;
@@ -63,11 +64,11 @@
     .__about-us-page{
         .__main{
             .__content{
-                width: 60%;
                 text-align: left;
+                width: 20em;
             }
             .__title{
-                font-size: 20px;
+                font-size: 1.429em;
             }
         }
     }
@@ -75,18 +76,26 @@
 
 @media (max-width: 600px){
     .__about-us-page{
+        .__btn{
+            font-size: 14px;
+            background: transparent;
+            border: 1px solid currentColor;
+            min-width: 15.714em;
+            height: 3.428em;
+        }
         .__main{
             .__content{
-                width: 80%;
+                max-width: initial;
+                width: 15em;
                 &:first-child{
                     margin: 3em 0;
                 }
                 &:nth-child(2){
-                    margin: 6em 0 3em auto;
+                    margin: 8em 0 3em auto;
                 }
             }
             .__btn{
-                margin: 1em auto 3em auto;
+                margin: 1em auto 2em auto;
             }
         }
     }
