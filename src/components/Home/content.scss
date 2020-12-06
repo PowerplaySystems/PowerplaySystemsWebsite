@@ -1,60 +1,75 @@
 @media (min-width: 1200px){
     .__content{
         .__container{
-            width: 70%;
+            width: 100%;
         }
     }
 }
 
+
 .__home-page{
     .__content{
-        padding: 5em 0;
-        overflow: hidden;
-        background: #090909;
-        border: 1px solid;
-        position: relative;
-        transform: skewY(-2.4deg);
-        .__background{
-            position: absolute;
-            bottom: -7em;
-            left: -7em;
-        }
         .__container{
-            transform: skewY(2.4deg);
+            position: relative;
+            z-index: 1;
         }
-        &:nth-child(odd){
-            .__main{
-                margin: 5em 0 0 auto;
-            }
+        .__subtitle{
+            font-size: 1.625em;
+            font-weight: 500;
         }
         .__title{
             font-weight: bolder;
             text-transform: uppercase;
             font-size: 2.58em;
             text-align: center;
+            margin-bottom: 1.8em;
         }
         .__main{
-            width: 50%;
+            width: 40%;
             >div{
                 margin: 2em 0;
+                &:first-child{
+                    margin-top: 0;
+                }
+                &:last-child{
+                    margin-bottom: 0;
+                }
             }
         }
-        .__backgroundimage-1{
-            width: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .__main, .__homepage-btn{
-            position: relative;
-            z-index: 1;
-        }
         .__homepage-btn{
-            margin: 4.7em auto 0 auto;
+            margin: auto;
         }
-        .__subtitle{
-            font-size: 1.625em;
-            font-weight: 500;
+        &:nth-child(even){
+            .__main{
+                margin: auto auto 7.5em 10%;
+            }
+            .__background{
+                right: 0;
+            }
         }
+    }
+}
+// background: linear-gradient(to left, #111111, #fb6e00);
+
+.__home-page{
+    .__content{
+        overflow: hidden;
+        // transform: skewY(-2deg);
+        max-height: 100%;
+        border: 2px solid;
+        &::after{
+            content: '';
+            height: 5px;
+            background: linear-gradient(to left, #111111, #fb6e00);
+            display: none;
+        }
+        .__container{
+            border: 2px solid purple;
+        }
+        .__background{
+            position: absolute;
+            max-height: 100%;;
+            top: 0;
+        }        
     }
 }

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./index.scss";
 import Header from "./../common/Header";
 import { Link } from "react-router-dom";
-import img1 from '../../assets/images/home/bitmap-2.png';
+import img1 from '../../assets/images/home/group-14@2x.png';
+import img2 from '../../assets/images/home/group-15@2x.png';
 
 class Home extends Component {
   render() {
@@ -21,24 +22,28 @@ class Home extends Component {
         </div>
 
         <div className='__content __content-1'>
-          <div className='__container'>
-            <div className='__main __right'>
-              <div>PowerPlay Systems provides patent-pending gaming solutions that changes the way the world plays lottery, DFS, and Sports betting games.  With our exclusive live-play experience, we put the <span className='__primary'>Players in control.</span></div>
-              <div>Say goodbye to the 'pick-and-wait' game format. No longer will games be played simply by making picks and waiting for results. With our games, players have the power to control their own destiny by <span className='__primary'>making live-play changes.</span></div>
-              <div className='__subtitle __primary'>Now that is Powerful!</div>
-            </div>
-            <Link to='/' className='__homepage-btn'>Partner with us!</Link>
+          <div className='__wrapper'>
             <img src={img1} alt='' className='__background' />
+            <div className='__container'>
+              <div className='__main __right'>
+                <div>PowerPlay Systems provides patent-pending gaming solutions that changes the way the world plays lottery, DFS, and Sports betting games.  With our exclusive live-play experience, we put the <span className='__primary'>Players in control.</span></div>
+                <div>Say goodbye to the 'pick-and-wait' game format. No longer will games be played simply by making picks and waiting for results. With our games, players have the power to control their own destiny by <span className='__primary'>making live-play changes.</span></div>
+                <div className='__subtitle __primary'>Now that is Powerful!</div>
+              </div>
+              <Link to='/' className='__homepage-btn'>Partner with us!</Link>
+            </div>
           </div>
         </div>
-
-        <div className='__content __content-2'>
-          <div className='__primary __title'>Powerful Live-game engagement</div>
-          <div className='__container'>
-            <div className='__main'>
-              <div>We provide players with <span className='__primary'>Powers</span> to make changes to their lottery picks, fantasy sports picks, and bet slips during live gameplay.</div>
-              <div>If a fantasy pick is injured early in a game, players can swap him out in real-time!</div>
-              <div>There are different Powers for each type of game but all Powers add another level of engagement and excitement to gameplay.</div>
+        <div className='__content'>
+          <div className='__wrapper'>
+            <img src={img2} alt='' className='__background' />
+            <div className='__container'>
+              <div className='__primary __title'>Powerful Live-game engagement</div>
+              <div className='__main'>
+                <div>We provide players with <span className='__primary'>Powers</span> to make changes to their lottery picks, fantasy sports picks, and bet slips during live gameplay.</div>
+                <div>If a fantasy pick is injured early in a game, players can swap him out in real-time!</div>
+                <div>There are different Powers for each type of game but all Powers add another level of engagement and excitement to gameplay.</div>
+              </div>
             </div>
           </div>
         </div>
