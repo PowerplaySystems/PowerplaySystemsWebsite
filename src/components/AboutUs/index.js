@@ -57,7 +57,7 @@ class AboutUs extends Component {
             <div className='__viewport-footer'>
               <div className='__title-2 __primary'>What We Do?</div>
               <div className='__subtitle-2'>Powerplay Systems is offering the worlds first patent pending Live-Play Lottery and Fantasy Sports solutions.</div>
-              <div className='__subtitle-2 __hide-on-mediam'>Our solution can be used for charity fundraising, DFS, State run lotteries, lead generation, or promotional contests.</div>
+              <div className='__subtitle-2 __hide-on-large'>Our solution can be used for charity fundraising, DFS, State run lotteries, lead generation, or promotional contests.</div>
             </div>
           </div>
         </div>

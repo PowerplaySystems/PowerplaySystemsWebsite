@@ -44,12 +44,22 @@ a{
   justify-content: center;
 }
 
+@media (min-width: 600px){
+  .__show-on-small{
+    display: none;
+  }
+}
 
 @media (max-width: 1290px){
   .__viewport{
-    min-height: calc(100vh - 68px);
-    margin-top: 68px;
+    min-height: calc(100vh - 66px);
+    margin-top: 66px;
   }
+  .__hide-on-large{
+    display: none;
+  }
+}
+@media (max-width: 800px){
   .__hide-on-mediam{
     display: none;
   }

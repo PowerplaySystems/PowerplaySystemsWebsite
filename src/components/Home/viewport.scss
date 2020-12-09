@@ -7,6 +7,7 @@
         z-index: 1;
         .__container{
             flex-direction: column;
+            height: 100%;
         }
         .__title{
             border-radius: 6px;
@@ -61,6 +62,9 @@
                 width: 100%;
                 
             }
+            .__homepage-btn{
+                margin-top: 5em;
+            }
         }
         .__homepage-btn{
             background: transparent;
@@ -69,6 +73,12 @@
     }
 }
 
+@media (max-width: 700px){
+    .__home-page .__homepage-btn{
+        font-size: 1em;
+        margin-top: auto;
+    }
+}
 @media (max-width: 350px){
     .__home-page{
         font-size: 13px;
