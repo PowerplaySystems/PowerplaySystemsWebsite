@@ -6,10 +6,7 @@ a{
   color: inherit;
 }
 .__brand-logo{
-  background-image: url('././assets/images/logo.png');
-  background-size: 100%;
   width: 7.25em;
-  height: 2.5em;
 }
 .__primary{
   color: #fb6e00;

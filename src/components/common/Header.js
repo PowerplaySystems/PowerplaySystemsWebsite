@@ -4,6 +4,7 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 import Cookies from "universal-cookie";
 import './Header.scss';
 import defaultUserImage from './../../assets/images/pp.png';
+import logo from '../../assets/images/logo.png'
 
 class Header extends Component {
   mEmail = "";
@@ -46,7 +47,9 @@ class Header extends Component {
     return (
       <nav className='__appbar'>
         <div className='__container __flex __sb'>
-          <Link to='/' className='__brand-logo'></Link>
+          <Link to='/'>
+            <img alt='' src={logo} className='__brand-logo' />
+          </Link>
           <button className={isMenuOpen ? '__close' : '__menu'} onClick={() => this.setState({ isMenuOpen: !isMenuOpen })}>
             <span></span>
             <span></span>
