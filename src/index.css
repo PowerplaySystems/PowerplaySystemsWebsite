@@ -34,8 +34,8 @@ a{
   flex: 1;
 }
 .__viewport{
-  min-height: calc(100vh - 3.1em);
-  margin-top: 3.1em;
+  min-height: calc(100vh - 3.5em);
+  margin-top: 3.5em;
 }
 .__flex-center{
   justify-content: center;
