@@ -13,14 +13,17 @@ const PPSSolutions = props => {
         <div className='__PPSSolutions'>
             <Header />
             <div className='__viewport'>
-                <div className='__container'>
-                    <div className='__title'>SOLUTIONS FOR YOUR INDUSTRY</div>
-                    <div className='__subtitle'>No matter your industry, we have a solution to expand your <br className='__hide-on-mediam' /> gaming options and generate new revenue streams.</div>
+                <div className='__container __flex __flex-center'>
+                    <div className='__f1'>
+                        <div className='__title'>SOLUTIONS FOR YOUR INDUSTRY</div>
+                        <div className='__subtitle'>No matter your industry, we have a solution to expand your <br className='__hide-on-mediam' /> gaming options and generate new revenue streams.</div>
+                    </div>
+                    <img src={img1} alt='' className='__show-on-mediam' />
                 </div>
             </div>
             <div className='__content __content-1'>
                 <div className='__container __flex __flex-start __sb'>
-                    <div className='__img-1'>
+                    <div className='__img-1 __hide-on-mediam'>
                         <img src={img1} alt='' />
                     </div>
                     <div className='__custom-list'>

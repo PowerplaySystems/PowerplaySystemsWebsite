@@ -98,25 +98,29 @@
     }   
 }
 
-@media (max-width: 999px){
+@media (max-width: 1000px){
     .__PPSSolutions{
-        padding-top: 2em;
         text-align: left;
+        overflow-x: hidden;
         .__viewport{
-            position: relative;
-            z-index: 1;
-            width: 80%;
             .__title{
                 color: #fb6e00;
                 font-size: 1.714em;
                 font-weight: bold;
                 margin: 0 0 1em 0;
-                // width: 80%;
             }
             .__subtitle{
                 color: #111111;
                 font-style: italic;
                 font-weight: 500;
+            }
+            .__show-on-mediam{
+                max-width: 200px;
+                transform: scaleX(-1);
+                position: relative;
+                margin-left: auto;
+                right: -6em;
+                margin-left: -4em;
             }
         }
         .__content{
@@ -131,22 +135,8 @@
                 }
             }
         }
-        .__content-1{
-            .__img-1{
-                width: 24%;
-                max-width: 14em;
-                position: absolute;
-                top: 0;
-                transform: scaleX(-1);
-                right: 0;
-                overflow: hidden;
-                img{
-                    position: relative;
-                    right: 3em;
-                }
-            }
-        }
         .__content-2{
+            margin-top: 0;
             .__img-2{
                 position: initial;
                 display: block;
@@ -154,38 +144,39 @@
                 transform: initial;
                 width: 90%;
             }
-        }
-        .__content-footer{
+            .__list-item{
+                margin-top: 0;
+            }
         }
     }
 }
 
-@media (max-width: 500px){
+@media (max-width: 600px){
     .__PPSSolutions{
         font-size: 14px;
         .__viewport{
-            max-width: 80%;
+            position: relative;
+            .__show-on-mediam{
+                top: 0;
+                position: absolute;
+                right: -4em;
+            }
+            .__title{
+                margin-top: 1em;
+                max-width: 80%;
+                position: relative;
+                z-index: 1;
+            }
             .__subtitle{
-                width: 60%;
+                position: relative;
+                z-index: 1;
+                width: 50%;
             }
         }
         .__content-1{
             .__custom-list{
                 width: 100%;
-                margin: 1em 0;
-            }
-            .__img-1{
-                width: 60%;
-                top: 10%;
-            }
-        }
-    }
-}
-@media (max-width: 350px){
-    .__PPSSolutions{
-        .__viewport{
-            .__title{
-                width: 50%;
+                margin: 1em 0 0 0;
             }
         }
     }
