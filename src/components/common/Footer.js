@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
+import logo from '../../assets/images/logo.png'
 
 class Footer extends Component {
   render() {
@@ -8,7 +9,9 @@ class Footer extends Component {
       <div className='__footer'>
         <div className='__container'>
           <div className='__flex __sb __links-wrapper'>
-            <Link to='/' className='__brand-logo'></Link>
+            <Link to='/'>
+              <img alt='' src={logo} className='__brand-logo' />
+            </Link>
             <div className='__links'>
               <Link to='/faqs'>FAQs</Link>
               <Link to='/about-us'>About Us</Link>

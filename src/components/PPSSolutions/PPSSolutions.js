@@ -5,6 +5,8 @@ import './PPSSolutions.scss';
 import img1 from '../../assets/images/solutions/bitmap@2x.jpg';
 import img2 from '../../assets/images/solutions/bitmap@2x (02).jpg';
 import ListItem from '../../ui/ListItem';
+import { Link } from 'react-router-dom';
+import CallCenter from '../../icons/CallCenter';
 
 const PPSSolutions = props => {
     return (
@@ -57,8 +59,13 @@ const PPSSolutions = props => {
                             <ListItem className='__hide-on-mediam'>Custom designed experiences to match your brand</ListItem>
                         </ListItem>
                     </div>
-                    <img src={img2} alt='' className='__img-2' />
+                    <div className='__content-footer'>
+                        <Link to='/' className='__solution-btn'>Partner with us!</Link>
+                        <div className='__call-today'>Call today for an over-view of our solution and a live demo</div>
+                        <div className='__flex __primary __phone-number __flex-center'><CallCenter />1-888-777-666-555</div>
+                    </div>
                 </div>
+                <img src={img2} alt='' className='__img-2' />
             </div>
             <Footer />
         </div>
