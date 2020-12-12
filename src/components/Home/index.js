@@ -4,7 +4,7 @@ import Header from "./../common/Header";
 import { Link } from "react-router-dom";
 import genrlogo from '../../assets/images/home/genr-8-logo@2x.png';
 import Footer from "../common/Footer";
-import logo from '../../assets/images/logo.png'
+import powerPlayGameLogo from '../../assets/images/power-play-games-logo.png'
 
 class Home extends Component {
   render() {
@@ -116,7 +116,7 @@ class Home extends Component {
           <div className='__wrapper'>
             <div className='__container'>
               <div>
-                <img className='__brand-logo' src={logo} alt='' />
+                <img className='__brand-logo' src={powerPlayGameLogo} alt='' />
                 <div className='__paragraph'>Visit PowerPlay Games to experience our ground-breaking live-play games where you have the Power to control your destiny!</div>
                 <div className='__homepage-btn'>Comming Soon</div>
               </div>
