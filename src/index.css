@@ -19,6 +19,9 @@ a{
   display: flex;
   align-items: center;
 }
+.__wrap{
+  flex-wrap: wrap;
+}
 .__column{
   display: flex;
   flex-direction: column;
