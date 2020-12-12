@@ -41,6 +41,12 @@ a{
   justify-content: center;
 }
 
+@media (min-width: 1001px){
+  .__show-on-mediam{
+    display: none;
+  }
+}
+
 @media (min-width: 600px){
   .__show-on-small{
     display: none;
@@ -56,7 +62,7 @@ a{
     display: none;
   }
 }
-@media (max-width: 800px){
+@media (max-width: 1000px){
   .__hide-on-mediam{
     display: none;
   }

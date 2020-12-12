@@ -19,13 +19,13 @@ nav.__appbar{
             }
             >a{
                 display: inline-block;
+                &.active, &:hover{
+                    color: #fb6e00;
+                }
             }
             &.__game-center{
                 margin-right: 0;
             }
-        }
-        a.active{
-            color: #fb6e00;
         }
     }
     button{
