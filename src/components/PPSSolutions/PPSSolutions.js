@@ -63,7 +63,7 @@ const PPSSolutions = props => {
                         </ListItem>
                     </div>
                     <div className='__content-footer'>
-                        <Link to='/' className='__solution-btn'>Partner with us!</Link>
+                        <Link to='/partner' className='__solution-btn'>Partner with us!</Link>
                         <div className='__call-today'>Call today for an over-view of our solution and a live demo</div>
                         <div className='__flex __primary __phone-number __flex-center'><CallCenter />1-888-777-666-555</div>
                     </div>

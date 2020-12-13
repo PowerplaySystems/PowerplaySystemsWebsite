@@ -18,7 +18,7 @@ class Home extends Component {
               Driving disruptive change across the lottery, <br />
               fantasy sports, and sports betting landscape
             </div>
-            <Link to='/' className='__homepage-btn'>Partner with us!</Link>
+            <Link to='/partner' className='__homepage-btn'>Partner with us!</Link>
           </div>
         </div>
 
@@ -30,7 +30,7 @@ class Home extends Component {
                 <div>Say goodbye to the 'pick-and-wait' game format. <span className='__hide-on-mediam'>No longer will games be played simply by making picks and waiting for results. With our games,</span> players have the power to control their own destiny by <span className='__primary'>making live-play changes.</span></div>
                 <div className='__subtitle __primary'>Now that is Powerful!</div>
               </div>
-              <Link to='/' className='__homepage-btn'>Partner with us!</Link>
+              <Link to='/partner' className='__homepage-btn'>Partner with us!</Link>
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@ class Home extends Component {
                 <div className='__hide-on-small'>We have ensured that your customers' personal data is stored securely, and we are completely transparent in all our transactions.</div>
               </div>
               <div className='__we-are-prepare'>We are passionate about making sure that your customers will have an interactive and fun-filled experience when they use our service, whether they win or lose.</div>
-              <Link to='/' className='__homepage-btn'>Partner with us!</Link>
+              <Link to='/partner' className='__homepage-btn'>Partner with us!</Link>
             </div>
           </div>
         </div>

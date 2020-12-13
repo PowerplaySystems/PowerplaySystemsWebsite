@@ -78,7 +78,7 @@ class AboutUs extends Component {
                 <div>Use our interactive live sports solution to drive customer behavior by offering exciting new <span className='__hide-on-small'>fantasy sports games, bar games, promotional contests, sports betting games, and even</span> sports based lotteries.</div>
               </div>
             </div>
-            <div className='__flex'><Link to='/' className='__btn'>partner with us!</Link></div>
+            <div className='__flex'><Link to='/partner' className='__btn'>partner with us!</Link></div>
           </div>
         </div>
 
