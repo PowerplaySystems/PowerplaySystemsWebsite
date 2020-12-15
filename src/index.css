@@ -15,6 +15,10 @@ a{
   width: 85%;
   margin: auto;
 }
+.__container-2{
+  width: 80%;
+  margin: auto;
+}
 .__flex{
   display: flex;
   align-items: center;
@@ -71,7 +75,7 @@ a{
   }
 }
 @media (max-width: 600px){
-  .__container{
+  .__container, .__container-2{
     width: 88%;
   }
   .__hide-on-small{
