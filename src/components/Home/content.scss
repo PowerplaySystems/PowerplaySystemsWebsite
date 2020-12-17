@@ -105,20 +105,26 @@
         }
     }
     .__content-6{
+        .__container{
+            max-width: 28em;
+        }
         .__wrapper{
-            padding: 0.6em 0 6em 0;
+            background: url('../../assets/images/home/group-18-(02).png') right bottom;
+            background-size: cover;
             text-align: center;
-            .__brand-logo{
-                display: inline-block;
-            }
+            padding: 6.6em 0 6em 0;
+            margin: -6em 0 -1em 0;
             .__paragraph{
                 font-size: 1.125em;
                 margin: 1em auto 3em auto;
-                max-width: 35em;
             }
-            a.__homepage-btn{
-                width: 180px;
-            }
+        }
+        .__content-6-btn{
+            border: 2px solid;
+            font-size: 20px;
+            height: 48px;
+            border-radius: 4px;
+            line-height: 44px;
         }
     }
     .__content-7{
@@ -189,6 +195,10 @@
         .__content-7 .__wrapper{
             background-size: 60% auto; 
         }
+        .__content-6 .__wrapper{
+            padding: 6.6em 0 7em 0;
+            margin: -6em 0 -2em 0;
+        }
     }
 }
 @media (max-width: 1000px){
@@ -240,8 +250,10 @@
                 z-index: 1;
                 .__wrapper{
                     transform: initial;
-                    padding: 0 0 4.5em 0 !important;
+                    padding: 0 0 7em 0 !important;
                     transform: skewY(6deg);
+                    margin: 0;
+                    background: none;
                 }
                 &::after{
                     content: '' !important;

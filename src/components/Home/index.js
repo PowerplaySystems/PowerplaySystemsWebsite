@@ -117,8 +117,8 @@ class Home extends Component {
             <div className='__container'>
               <div>
                 <img className='__brand-logo' src={powerPlayGameLogo} alt='' />
-                <div className='__paragraph'>Visit PowerPlay Games to experience our ground-breaking live-play games where you have the Power to control your destiny!</div>
-                <div className='__homepage-btn'>Comming Soon</div>
+                <div className='__paragraph'>Visit <span className='__primary'>PowerPlay Games</span> to experience our ground-breaking live-play games where you have the <span className='__primary'>Power to control your destiny!</span></div>
+                <div className='__content-6-btn'>Comming Soon</div>
               </div>
             </div>
           </div>
