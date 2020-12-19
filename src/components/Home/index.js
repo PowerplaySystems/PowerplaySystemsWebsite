@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./index.scss";
 import Header from "./../common/Header";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import genrlogo from '../../assets/images/home/genr-8-logo@2x.png';
 import Footer from "../common/Footer";
 import powerPlayGameLogo from '../../assets/images/power-play-games-logo.png'
@@ -88,7 +88,9 @@ class Home extends Component {
                   <div>Play our <span className='__primary'>«747»</span>  demo lottery game now.</div>
                 </div>
               </div>
-              <div className='__btn-wrapper'><Link to='/' className='__outine-btn'>Play 747 Demo Lottery</Link></div>
+
+              {/* <div className='__btn-wrapper'><Link to='/' className='__outine-btn'>Play 747 Demo Lottery</Link></div> */}
+              <div className='__btn-wrapper'><span className='__outine-btn' onClick={() => this.props.history.push({ pathname: '/747', state: { detail: {} }})}>Play 747 Demo Lottery</span></div>
 
               <div className='__subtitle-wrapper'>
                 <div className='__subtitle __primary'>Live-Play Sports-Based Games</div>
@@ -156,4 +158,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);
