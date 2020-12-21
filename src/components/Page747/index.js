@@ -75,7 +75,7 @@ class Page747 extends Component {
         error: null,
         isLoaded: false,
         content: "",
-        gameData: this.props.location.state.gameData,
+        gameData: DEMO_GAME_DATA,
         show: false,
         selected: [],
         prizes: [],
