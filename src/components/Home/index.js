@@ -7,6 +7,9 @@ import Footer from "../common/Footer";
 import powerPlayGameLogo from '../../assets/images/power-play-games-logo.png'
 
 class Home extends Component {
+  goTo747(){
+    return this.props.history.push({ pathname: '/747', state: { gameData: "demo" }})
+  }
   render() {
     return (
       <div className='__home-page'>
@@ -90,7 +93,7 @@ class Home extends Component {
               </div>
 
               {/* <div className='__btn-wrapper'><Link to='/' className='__outine-btn'>Play 747 Demo Lottery</Link></div> */}
-              <div className='__btn-wrapper'><span className='__outine-btn' onClick={() => this.props.history.push({ pathname: '/747', state: { detail: {} }})}>Play 747 Demo Lottery</span></div>
+              <div className='__btn-wrapper'><span className='__outine-btn' onClick={() => this.goTo747()}>Play 747 Demo Lottery</span></div>
 
               <div className='__subtitle-wrapper'>
                 <div className='__subtitle __primary'>Live-Play Sports-Based Games</div>
