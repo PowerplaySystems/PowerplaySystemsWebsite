@@ -293,15 +293,15 @@ class Page747 extends Component {
     }
   }
   setBalls() {
-    var allElements = [];
+    const allElements = [];
 
     for (let counter = 1; counter <= ballsTotal; counter++) {
       const x = counter;
       allElements.push(
         <div
           className={
-            "page747_selection_button" +
-            (this.state.selected.indexOf(counter) == -1 ? "" : " btn-active")
+            "__game-ball" +
+            (this.state.selected.indexOf(counter) == -1 ? "" : " __active")
           }
           onClick={() => this.onBallClicked(x)}
         >
@@ -446,7 +446,7 @@ class Page747 extends Component {
                     </div>
                     <div className='__powerplyas-content-details'>You can increase or decrease your pick live during the draw</div>
                   </div>
-                  
+
                   <div className='__powerplays-content __flex __sb'>
                     <div className='__powerplays-card __column'>
                       <img
@@ -483,6 +483,12 @@ class Page747 extends Component {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="__container __game-wrapper" id="pick-numbers">
+            <div className='__title'>Pick Your Numbers !</div>
+            <div className='__game'>{this.setBalls()}</div>
+            <div className='__helper-text'>{this.state.selected.length + " of " + allowedToSelect + " Numbers chosen"}</div>
+            <button id="submit_selection_ball" className="__submit-btn" disabled={this.canSelectMore()}>SUBMIT!</button>
           </div>
         </div>
         {/* Not worked on this, Ubaid */}
@@ -709,29 +715,7 @@ class Page747 extends Component {
                       </div>
                     )}
                 </div>
-                <div className="col-md-12">
-                  <div className="page747_selection_box" id="pick-numbers">
-                    {this.setBalls()}
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <div className="page747_selection_box_submit_info">
-                    {this.state.selected.length +
-                      " of " +
-                      allowedToSelect +
-                      " Numbers chosen"}
-                  </div>
 
-                  <div
-                    id="submit_selection_ball"
-                    className={
-                      "page747_selection_box_submit" +
-                      (this.canSelectMore() ? " deactivate" : "")
-                    }
-                  >
-                    SUBMIT!
-                  </div>
-                </div>
               </div>
             </div>
           </div>

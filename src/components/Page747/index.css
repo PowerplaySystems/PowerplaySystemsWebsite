@@ -382,18 +382,9 @@
 }
 .page747_selection_box {
   max-width: 100%;
-  padding: 40px 50px 60px 60px;
-  margin-top: 30px;
-  width: 1155px;
   border-radius: 23px;
   background-color: #1e1e1e;
   text-align: center;
-  /* display: grid; */
-  /* grid-template-columns: auto auto auto auto auto auto auto auto auto auto; */
-  /* grid-template-rows: auto auto auto auto auto; */
-  /* grid-column-gap: 20px; */
-  /* grid-row-gap: 20px; */
-  margin: 30px auto;
 }
 .page747_selection_button {
   width: 62px;
@@ -652,9 +643,6 @@
   }
   .page747_number_rules {
     width: 75%;
-  }
-  .page747_selection_box {
-    padding: 23px 4px 80px;
   }
   .page747_selection_button {
     margin: 6px;

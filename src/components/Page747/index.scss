@@ -104,3 +104,96 @@
         }
     }
 }
+
+.__747-page{
+    .__game-wrapper{
+        text-align: center;
+        margin: 4em auto;
+        .__helper-text{
+            display: inline-block;
+            background: #000;
+            padding: 0.4em 0.8em;
+            border-radius: 0.6em 0.6em 0 0;
+        }
+        .__submit-btn{
+            display: block;
+            margin: auto;
+            font-size: 1.25em;
+            font-family: Poppins;
+            font-weight: 500;
+            padding: 0.74em 1em;
+            border-radius: 2em;
+            border: none;
+            outline: none;
+            width: 21.7em;
+            cursor: pointer;
+            background: #fb6e00;
+            &:disabled{
+                background-color: #bcbcbc;
+                color: #7f7f7f;
+                cursor: not-allowed;
+            }
+        }
+        .__title{
+            font-size: 3.625em;
+            font-weight: bolder;
+        }
+    }
+    .__game{
+        border-radius: 1.5em;
+        padding: 2.5em 5em 8em 5em;
+        background: #1e1e1e;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        justify-content: space-between;
+        grid-gap: 2em;
+        margin-bottom: -4.2em;
+        .__game-ball{
+            font-size: 1.56em;
+            height: 2.5em;
+            width: 2.5em;
+            background: linear-gradient(#e1e1e1, #fff, #e1e1e1);
+            border-radius: 50%;
+            color: #e1e1e1;
+            display: grid;
+            place-items: center;
+            color: #000;
+            margin: 4px;
+            position: relative;
+            cursor: pointer;
+            &::before{
+                content: '';
+                position: absolute;
+                border: 4px solid;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                transform: scale(0);
+            }
+            &.__active{
+                animation: linear forwards GameBall 0.3s;
+                &::before{
+                    transform: scale(1.04);
+                    transition-delay: 0.15s;
+                    transition: linear 0.3s transform;
+                }
+            }
+        }
+    }
+}
+
+@keyframes GameBall{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0);
+        font-weight: bold;
+        color: #fb6e00;
+    }
+    100%{
+        transform: scale(1);
+        font-weight: bold;
+        color: #fb6e00;
+    }
+}
