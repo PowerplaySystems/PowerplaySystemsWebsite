@@ -60,7 +60,7 @@ class Header extends Component {
             <li><NavLink to='/services'>our services</NavLink></li>
             <li><NavLink to='/about-us'>about us</NavLink></li>
             <li><NavLink to='/partner' className='__partner-with-us-btn'>Partner with us!</NavLink></li>
-            {isLogedin && (
+            {!isLogedin && (
               <Fragment>
                 <li className='__game-center'><NavLink to='/game-central'>My Game Center</NavLink></li>
                 <li className='__profile-links __flex'>

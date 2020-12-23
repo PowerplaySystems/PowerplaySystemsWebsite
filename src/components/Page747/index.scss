@@ -1,0 +1,106 @@
+.__747-page{
+    .__viewport{
+        text-align: center;
+        .__content{
+            font-size: 1.25em;
+        }
+        .__viewport-image{
+            width: 100%;
+            display: block;
+        }
+        .__main-title{
+            font-family: Marion;
+            font-size: 8em;
+            &::after, &::before{
+                content: '';
+                flex: 1;
+                color: #fb6e00;
+                border: 2px solid;
+                background: currentColor;
+                border-radius: 1em;
+            }
+            &::after{
+                margin-left: 0.25em;
+            }
+            &::before{
+                margin-right: 0.25em;
+            }
+        }
+        .__subtitle{
+            font-size: 1.6em;
+            font-weight: 600;
+            margin: 1.5em 0 0 0;
+        }
+        .__title{
+            font-size: 2.9em;
+            font-weight: 900;
+        }
+        .__747-card{
+            max-width: 47em;
+            text-align: left;
+            box-shadow: 0 2px 24px 7px rgba(0, 0, 0, 0.32);
+            background-color: #1e1e1e;
+            padding: 2em 4em;
+            border-radius: 5em;
+            margin: 4.5em auto 6em auto;
+            .__balls{
+                width: 10em;
+            }
+            .__border{
+                border: 1px solid #979797;
+                height: 4em;
+                margin: 0 1.6em;
+                background: #979797;
+            }
+        }
+    }
+}
+.__747-page{
+    .__main{
+        .__poweplays{
+            .__title{
+                font-size: 3.62em;
+                font-weight: bolder;
+                margin-bottom: 0.5em;
+            }
+            .__powerplays-left-image{
+                width: 27em;
+            }
+        }
+        .__powerplays-content{
+            max-width: calc(50% - 1.5em);
+            .__powerplays-card{
+                background-color: #1e1e1e;
+                text-align: center;
+                border-radius: 1em;
+                padding: 0.5em;
+                height: 11em;
+                margin-right: 2em;
+                min-width: 10.52em;
+                margin: 1.5em;
+            }
+            .__powerplays-card-footer{
+                font-weight: 500;
+                &::before{
+                    content: '';
+                    display: block;
+                    border: solid 0.5px #979797;
+                    background: #979797;
+                    width: 6.25em;
+                    margin: 0.2em auto 0.6em auto;
+                }
+            }
+            .__powerplays-card-image{
+                margin: auto;
+            }
+            .__powerplyas-content-details{
+                font-size: 1.25em;
+                font-weight: 600;
+                max-width: 8.7em;
+            }
+        }
+        .__powerplays-content-wrapper{
+            margin: -1.5em -1.5em 0 -1.5em;
+        }
+    }
+}

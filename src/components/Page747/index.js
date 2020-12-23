@@ -10,6 +10,8 @@ import Cookies from "universal-cookie";
 //import Modal from 'react-modal'
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
+import './index.scss';
+import backgroudImage from '../../assets/images/747/hero-image@2x.png';
 
 var DEMO_PICKS = [];
 var DEMO_DRAW = [];
@@ -111,7 +113,7 @@ class Page747 extends Component {
     });
   }
   handleShowConfirm() {
-    this.state.selected.sort(function(a, b) {
+    this.state.selected.sort(function (a, b) {
       return a - b;
     });
     this.setState({
@@ -136,7 +138,7 @@ class Page747 extends Component {
     var selectedNumbers = this.state.selected;
     var index = selectedNumbers.indexOf(mNumber);
     if (index > -1) {
-      var filtered = selectedNumbers.filter(function(value, index, arr) {
+      var filtered = selectedNumbers.filter(function (value, index, arr) {
         return value != mNumber;
       });
       this.setState({
@@ -163,11 +165,11 @@ class Page747 extends Component {
       var that = this;
       fetch(
         "https://" +
-          Constants.URL +
-          "/public_api/lottery_games/getMyNumbers.php?jwt=" +
-          jwt +
-          "&game_id=" +
-          this.state.gameData.id
+        Constants.URL +
+        "/public_api/lottery_games/getMyNumbers.php?jwt=" +
+        jwt +
+        "&game_id=" +
+        this.state.gameData.id
       )
         .then(res => res.json())
         .then(
@@ -206,7 +208,7 @@ class Page747 extends Component {
 
     document
       .getElementById("submit_selection_ball")
-      .addEventListener("click", function(e) {
+      .addEventListener("click", function (e) {
         if (that.canSubmit()) {
           that.submitUserSelections();
         } else {
@@ -267,7 +269,7 @@ class Page747 extends Component {
       xhr.withCredentials = true;
       var that = this;
       console.log(data);
-      xhr.addEventListener("readystatechange", function() {
+      xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
           if (~this.responseText.indexOf("Successful")) {
             popupHader = "Successful";
@@ -283,8 +285,8 @@ class Page747 extends Component {
       xhr.open(
         "POST",
         " https://" +
-          Constants.URL +
-          "/public_api/lottery_games/setMyNumbers.php"
+        Constants.URL +
+        "/public_api/lottery_games/setMyNumbers.php"
       );
       xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
       xhr.send(data);
@@ -317,7 +319,7 @@ class Page747 extends Component {
 
   handleShowPrize(game_type) {
     var prizesToShow = this.state.gameData.prize;
-    prizesToShow.sort(function(a, b) {
+    prizesToShow.sort(function (a, b) {
       return parseFloat(b.prize) - parseFloat(a.prize);
     });
 
@@ -407,19 +409,90 @@ class Page747 extends Component {
             </div>
           </Modal.Body>
         </Modal>
+        <div className='__747-page'>
+          <div className='__viewport'>
+            <div className='__content'>
+              <img src={require('../../assets/images/747/hero-image@2x.png')} alt='' className='__viewport-image' />
+              <div className="__container">
+                <div className='__main-title __flex'>747</div>
+                <div className='__subtitle'>You are about to experience the world's</div>
+                <div className='__primary __title'>First Live-Play Lottery Game!</div>
+                <div>The most exciting lottery game you will ever play! Guaranteed.</div>
+              </div>
+              <div className='__747-card __flex'>
+                <div>Pick and submit <span className='__primary'>7 numbers</span> below and you will be taken to the live-play game. Use your live-play Powers to <span className='__primary'>adjust your picks</span> during the live draw!</div>
+                <div className='__border'></div>
+                <img src={require('../../assets/images/747/group-2@2x.png')} className='__balls' alt='' />
+              </div>
+            </div>
+          </div>
+          <div className='__main __container'>
+            <div className='__flex __poweplays __flex-start'>
+              <img
+                className='__powerplays-left-image'
+                src={require("./../../assets/images/747/747_powerplays.png")}
+              />
+              <div className='__f1'>
+                <div className='__title'>Powerplays</div>
+                <div className='__wrap __powerplays-content-wrapper __flex __sb'>
+
+                  <div className='__powerplays-content __flex __sb'>
+                    <div className='__powerplays-card __column'>
+                      <img
+                        src={require("./../../assets/images/747/747_2.png")}
+                        className='__powerplays-card-image'
+                      />
+                      <div className='__powerplays-card-footer'>Increase/Decrease</div>
+                    </div>
+                    <div className='__powerplyas-content-details'>You can increase or decrease your pick live during the draw</div>
+                  </div>
+                  
+                  <div className='__powerplays-content __flex __sb'>
+                    <div className='__powerplays-card __column'>
+                      <img
+                        src={require("./../../assets/images/747/747_3.png")}
+                        className='__powerplays-card-image'
+                      />
+                      <div className='__powerplays-card-footer'>Power Match</div>
+                    </div>
+                    <div className='__powerplyas-content-details'>Use force match to change your pick to match the drawn #</div>
+                  </div>
+
+                  <div className='__powerplays-content __flex __sb'>
+                    <div className='__powerplays-card __column'>
+                      <img
+                        src={require("./../../assets/images/747/shuffle.png")}
+                        className='__powerplays-card-image'
+                      />
+                      <div className='__powerplays-card-footer'>Increase/Decrease</div>
+                    </div>
+                    <div className='__powerplyas-content-details'>Use change to replace one # with a random new Number</div>
+                  </div>
+
+                  <div className='__powerplays-content __flex __sb'>
+                    <div className='__powerplays-card __column'>
+                      <img
+                        src={require("./../../assets/images/747/747_1.png")}
+                        className='__powerplays-card-image'
+                      />
+                      <div className='__powerplays-card-footer'>Refresh All</div>
+                    </div>
+                    <div className='__powerplyas-content-details'>Use refresh all to refresh all your numbers with a random new set.</div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Not worked on this, Ubaid */}
         <div className="container-fluid _faq_wrap">
           <div className="container-fluid">
             <div className="page747_rows">
-              <div className="col-md-12" style={{ padding: "0px" }}>
-                <img
-                  style={{ margin: "0 auto", width: "100%" }}
-                  className="img-responsive"
-                  src={require("./../../assets/images/747/747_header.png")}
-                />
-              </div>
+
               <div className="pick_numbers_mobile_box">
                 <p className="mobile_box_text_1">Jackpot</p>
-                {this.state.isDemo ? (
+                {!this.state.isDemo ? (
                   <p
                     className="mobile_box_text_2"
                     style={{ marginBottom: "20px !important" }}
@@ -427,52 +500,183 @@ class Page747 extends Component {
                     Can be fixed or progressive
                   </p>
                 ) : (
-                  <>
-                    <p className="mobile_box_text_2b">
-                      {this.getJackpot(this.state.gameData.prize)}
-                    </p>
-                    <p className="mobile_box_text_3">
-                      Odds of Winning:{" "}
-                      <span>{this.state.gameData.odds_text}</span>
-                    </p>
-                    <p className="mobile_box_text_4">Next Draw Date</p>
-                    <p className="mobile_box_text_5">
-                      Sunday Apr 12 2019, 12:15 PM EST
+                    <>
+                      <p className="mobile_box_text_2b">
+                        {this.getJackpot(this.state.gameData.prize)}
+                      </p>
+                      <p className="mobile_box_text_3">
+                        Odds of Winning:{" "}
+                        <span>{this.state.gameData.odds_text}</span>
+                      </p>
+                      <p className="mobile_box_text_4">Next Draw Date</p>
+                      <p className="mobile_box_text_5">
+                        Sunday Apr 12 2019, 12:15 PM EST
                     </p>{" "}
-                    <p className="mobile_box_text_6">Entry Deadline</p>
-                    <p className="mobile_box_text_7">11:15 PM EST</p>
-                  </>
-                )}
-                <button
-                  className="mobile_box_button"
-                  onClick={this.scrollToNumbers}
-                >
-                  Pick Your Numbers Now
-                </button>
+                      <p className="mobile_box_text_6">Entry Deadline</p>
+                      <p className="mobile_box_text_7">11:15 PM EST</p>
+                    </>
+                  )}
               </div>
+
+              {/* Not worked on this, Ubaid */}
               <div className="col-md-12">
                 {this.state.isDemo ? (
                   ""
                 ) : (
-                  <div className="page747_main_bar row">
-                    <div className="col-md-6">
-                      <div class="main_bar_inner">
-                        <div>
-                          <p>Jackpot</p>
-                          <p className="main_bar_inner_bigger">
-                            {this.getJackpot(this.state.gameData.prize)}
-                          </p>
+                    <div className="page747_main_bar row">
+                      <div className="col-md-6">
+                        <div class="main_bar_inner">
+                          <div>
+                            <p>Jackpot</p>
+                            <p className="main_bar_inner_bigger">
+                              {this.getJackpot(this.state.gameData.prize)}
+                            </p>
+                          </div>
+                          <div className="page747_main_left_lower_text">
+                            Draw date <s>{this.state.gameData.start_datetime}</s>
+                          </div>
                         </div>
-                        <div className="page747_main_left_lower_text">
+                      </div>
+                      <div className="col-md-6">
+                        <div class="page747_main_draw_box">
+                          <div>
+                            <p>Next draw starts in</p>
+                            <div className="row page747_main_draw_inner">
+                              <div>
+                                <p>
+                                  {" "}
+                                  {Functions.getDays(
+                                    this.state.gameData.start_datetime
+                                  )}
+                                </p>
+                              Days
+                            </div>
+                              <div>
+                                <p>
+                                  {" "}
+                                  {Functions.getHours(
+                                    this.state.gameData.start_datetime
+                                  )}
+                                </p>
+                              hours
+                            </div>
+                              <div>
+                                <p>
+                                  {" "}
+                                  {Functions.getMinuts(
+                                    this.state.gameData.start_datetime
+                                  )}
+                                </p>
+                              Mins
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="page747_main_lower_text">
                           Draw date <s>{this.state.gameData.start_datetime}</s>
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-6">
-                      <div class="page747_main_draw_box">
+                  )}
+              </div>
+              {/* Not worked on this too */}
+              {this.state.isDemo ? (
+                ""
+              ) : (
+                  <div className="col-md-12">
+                    <div className="page747_main_prize">
+                      <div class="page747_prize_image-wraper">
+                        <img
+                          className="img-responsive"
+                          src={require("./../../assets/images/747/747_prize.png")}
+                        />
+                      </div>
+
+                      <div className="page747_prize_details">
+                        <div className="page747_prize_content">
+                          <div class="page747_prize_header row">
+                            <div className="row">
+                              <span>Top Prizes</span>{" "}
+                              <div className="button_show_prize_wrapper">
+                                <button
+                                  className="button_show_prize"
+                                  onClick={e => this.handleShowPrize("747")}
+                                >
+                                  View All Prizes
+                              </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="page747-prize-box-wrapper">
+                              <div className="page747-prize-box">
+                                {this.state.gameData.prize[0].hits + "/7"} <br />
+                                <span>
+                                  {"$" +
+                                    Functions.numberWithCommas(
+                                      this.state.gameData.prize[0].prize
+                                    )}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="page747-prize-box-wrapper">
+                              <div className="page747-prize-box">
+                                {this.state.gameData.prize[1].hits + "/7"}
+                                <br />
+                                <span>
+                                  {"$" +
+                                    Functions.numberWithCommas(
+                                      this.state.gameData.prize[1].prize
+                                    )}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="page747-prize-box-wrapper">
+                              <div className="page747-prize-box">
+                                {this.state.gameData.prize[2].hits + "/7"}
+                                <br />
+                                <span>
+                                  {"$" +
+                                    Functions.numberWithCommas(
+                                      this.state.gameData.prize[2].prize
+                                    )}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="page747-prize-box-wrapper">
+                              <div className="page747-prize-box">
+                                {this.state.gameData.prize[3].hits + "/7"}
+                                <br />
+                                <span>
+                                  {"$" + this.state.gameData.prize[3].prize}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="page747_prize_note">
+                            *All prizes will be divided equally among winners
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              <div className="col-md-12">
+                <div className="col-md-12">
+                  {this.state.isDemo ? (
+                    ""
+                  ) : (
+                      <div className="page747_number_rules">CONTEST RULES</div>
+                    )}
+
+                  {this.state.isDemo ? (
+                    ""
+                  ) : (
+                      <div class="page747_number_box">
                         <div>
-                          <p>Next draw starts in</p>
-                          <div className="row page747_main_draw_inner">
+                          <p>Till Next Draw</p>
+                          <div className="row page747_next_draw_box">
                             <div>
                               <p>
                                 {" "}
@@ -480,8 +684,8 @@ class Page747 extends Component {
                                   this.state.gameData.start_datetime
                                 )}
                               </p>
-                              Days
-                            </div>
+                            Days
+                          </div>
                             <div>
                               <p>
                                 {" "}
@@ -489,8 +693,8 @@ class Page747 extends Component {
                                   this.state.gameData.start_datetime
                                 )}
                               </p>
-                              hours
-                            </div>
+                            hours
+                          </div>
                             <div>
                               <p>
                                 {" "}
@@ -498,249 +702,12 @@ class Page747 extends Component {
                                   this.state.gameData.start_datetime
                                 )}
                               </p>
-                              Mins
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="page747_main_lower_text">
-                        Draw date <s>{this.state.gameData.start_datetime}</s>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <center class="main_bar_button">
-                  <button onClick={this.scrollToNumbers}>
-                    Pick Your Numbers Now!
-                  </button>
-                </center>
-              </div>
-              {this.state.isDemo ? (
-                ""
-              ) : (
-                <div className="col-md-12">
-                  <div className="page747_main_prize">
-                    <div class="page747_prize_image-wraper">
-                      <img
-                        className="img-responsive"
-                        src={require("./../../assets/images/747/747_prize.png")}
-                      />
-                    </div>
-
-                    <div className="page747_prize_details">
-                      <div className="page747_prize_content">
-                        <div class="page747_prize_header row">
-                          <div className="row">
-                            <span>Top Prizes</span>{" "}
-                            <div className="button_show_prize_wrapper">
-                              <button
-                                className="button_show_prize"
-                                onClick={e => this.handleShowPrize("747")}
-                              >
-                                View All Prizes
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="page747-prize-box-wrapper">
-                            <div className="page747-prize-box">
-                              {this.state.gameData.prize[0].hits + "/7"} <br />
-                              <span>
-                                {"$" +
-                                  Functions.numberWithCommas(
-                                    this.state.gameData.prize[0].prize
-                                  )}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="page747-prize-box-wrapper">
-                            <div className="page747-prize-box">
-                              {this.state.gameData.prize[1].hits + "/7"}
-                              <br />
-                              <span>
-                                {"$" +
-                                  Functions.numberWithCommas(
-                                    this.state.gameData.prize[1].prize
-                                  )}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="page747-prize-box-wrapper">
-                            <div className="page747-prize-box">
-                              {this.state.gameData.prize[2].hits + "/7"}
-                              <br />
-                              <span>
-                                {"$" +
-                                  Functions.numberWithCommas(
-                                    this.state.gameData.prize[2].prize
-                                  )}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="page747-prize-box-wrapper">
-                            <div className="page747-prize-box">
-                              {this.state.gameData.prize[3].hits + "/7"}
-                              <br />
-                              <span>
-                                {"$" + this.state.gameData.prize[3].prize}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="page747_prize_note">
-                          *All prizes will be divided equally among winners
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <div className="col-md-12">
-                <div className="page747_main_power">
-                  <div class="page747_power_image-wraper">
-                    <img
-                      className="img-responsive"
-                      src={require("./../../assets/images/747/747_powerplays.png")}
-                    />
-                  </div>
-                  <div className="page747_power_details">
-                    <div className="page747_power_heading">Powerplays</div>
-                    <div className="page747_power_content">
-                      <div className="power_content_box">
-                        <div className="power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_2.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Increase/Decrease
-                          </div>
-                        </div>
-                        <div className="power_content_box_right">
-                          <span>
-                            You can increase or decrease your selections live
-                            during the game.
-                          </span>
-                        </div>
-                      </div>
-                      <div className="power_content_box">
-                        <div className="power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_3.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Power Match
-                          </div>
-                        </div>
-                        <div className=" power_content_box_right">
-                          <span>
-                            Use Power Match to change your pick to match the
-                            in-play numbers.
-                          </span>
-                        </div>
-                      </div>
-                      <div className=" power_content_box">
-                        <div className=" power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              style={{ width: "57px" }}
-                              src={require("./../../assets/images/lotto/shuffle.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Replace
-                          </div>
-                        </div>
-                        <div className=" power_content_box_right">
-                          <span>
-                            Use Replace to swap one of your selections with a
-                            random new number.
-                          </span>
-                        </div>
-                      </div>
-                      <div className=" power_content_box">
-                        <div className=" power_content_box_left">
-                          <div className="power_content_box_left_image_wrapper">
-                            <img
-                              className="img-responsive power_content_box_left_image"
-                              src={require("./../../assets/images/747/747_1.png")}
-                            />
-                          </div>
-                          <div className="power_content_box_left_text">
-                            Replace All
-                          </div>
-                        </div>
-                        <div className=" power_content_box_right">
-                          <span>
-                            Use Replace All to replace all your selections with
-                            a random new set.
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="page747_number_header">
-                  <span>Pick Your Numbers!</span>
-                </div>
-
-                <div className="col-md-12">
-                  {this.state.isDemo ? (
-                    ""
-                  ) : (
-                    <div className="page747_number_rules">CONTEST RULES</div>
-                  )}
-
-                  {this.state.isDemo ? (
-                    ""
-                  ) : (
-                    <div class="page747_number_box">
-                      <div>
-                        <p>Till Next Draw</p>
-                        <div className="row page747_next_draw_box">
-                          <div>
-                            <p>
-                              {" "}
-                              {Functions.getDays(
-                                this.state.gameData.start_datetime
-                              )}
-                            </p>
-                            Days
-                          </div>
-                          <div>
-                            <p>
-                              {" "}
-                              {Functions.getHours(
-                                this.state.gameData.start_datetime
-                              )}
-                            </p>
-                            hours
-                          </div>
-                          <div>
-                            <p>
-                              {" "}
-                              {Functions.getMinuts(
-                                this.state.gameData.start_datetime
-                              )}
-                            </p>
                             Mins
                           </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
+                    )}
                 </div>
                 <div className="col-md-12">
                   <div className="page747_selection_box" id="pick-numbers">
