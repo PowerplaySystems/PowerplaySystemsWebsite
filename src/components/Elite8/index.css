@@ -447,13 +447,14 @@
   line-height: 1.16;
   text-align: left;
   color: #ffffff;
+  margin-left: 25px;
 }
 
 .PickNumbers-header-sub {
   font-family: Poppins;
   font-size: 20px;
   color: #ffffff;
-  margin: 10px 0 32px 0;
+  margin: 10px 0 32px 25px;
 }
 
 .all-PickNumbers-box {

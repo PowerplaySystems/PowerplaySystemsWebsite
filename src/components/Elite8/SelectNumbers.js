@@ -1,5 +1,7 @@
 import React from "react";
 import "./index.css";
+import { withRouter } from "react-router-dom";
+import { Component } from "react";
 
 class SelectNumbers extends React.Component {
   constructor(props) {
@@ -35,7 +37,7 @@ class SelectNumbers extends React.Component {
                 {this.initSelectedBalls()}
               </div>
             </div>
-            <SubmitMyPicks />
+            {this.SubmitMyPicksBtn()}
           </div>
         </div>
         <div className="elite8-about">
@@ -118,7 +120,7 @@ class SelectNumbers extends React.Component {
       // if yes, remove the number from array
       this.removeFromSelectedNumbers(number);
     } else {
-      if (this.state.selected.length > 7) return alert("Please shokhe na hun!");
+      if (this.state.selected.length > 7) return alert("Only 8 selections allowed");
       // if no, add the number in array
       this.addToSelectedNumbers(number);
     }
@@ -171,7 +173,27 @@ class SelectNumbers extends React.Component {
 
     this.setState({ selected: oldArray });
   }
-}
+
+  SubmitMyPicksBtn(props) {
+    return (
+      <button
+        className="c-pick-your-numbers-btn submit"
+        onClick={(e) => {
+          let path = "/elite8-livedraw";
+          this.props.history.push({
+            pathname: path,
+            state: {
+              picked_balls: this.state.selected,
+            },
+          });
+        }}
+      >
+        Submit My Picks
+      </button>
+    );
+  }
+} //react class ends
+
 function Ball(props) {
   return (
     <div className={"elite8-ball " + (props.isSelected ? "selected" : "")}>
@@ -181,14 +203,9 @@ function Ball(props) {
   //  else return <div className="elite8-ball">{props.number}</div>;
 }
 
-function SubmitMyPicks(props) {
-  return (
-    <button className="c-pick-your-numbers-btn submit">Submit My Picks</button>
-  );
-}
-
 function ContestRules(props) {
   return <button className="contest-rules-btn"> Contest Rules </button>;
 }
 
-export default SelectNumbers;
+//export default SelectNumbers;
+export default withRouter(SelectNumbers);
