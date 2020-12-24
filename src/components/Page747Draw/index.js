@@ -284,7 +284,7 @@ class Page747Draw extends Component {
     });
     var that = this;
     var x = 0;
-    var intervalID = setInterval(function() {
+    var intervalID = setInterval(function () {
       newPicks[x] = {
         id: x,
         number: selectedNumbers[x]
@@ -311,7 +311,7 @@ class Page747Draw extends Component {
     var that = this;
     if (this.state.ticker == null) {
       if (that.state.gameData) {
-        this.state.ticker = setInterval(function() {
+        this.state.ticker = setInterval(function () {
           that.setState({
             secondsTimer: Functions.getSeconds(
               that.state.gameData.start_datetime
@@ -360,7 +360,7 @@ class Page747Draw extends Component {
       lastUsedPowerplay = null;
       var that = this;
 
-      var set = setTimeout(function() {
+      var set = setTimeout(function () {
         that.setState({
           powerplayRefresh: false
         });
@@ -381,7 +381,7 @@ class Page747Draw extends Component {
     });
     var that = this;
 
-    var set = setTimeout(function() {
+    var set = setTimeout(function () {
       that.setState({
         showInfo: false
       });
@@ -402,17 +402,17 @@ class Page747Draw extends Component {
         this.state.gameData.start_datetime
       );
       if (tempTimeDiff > 1000) {
-        var myVar = setTimeout(function() {
+        var myVar = setTimeout(function () {
           console.log("Calling Data");
           that.getData();
         }, tempTimeDiff - 1000);
       } else {
-        var myVar = setTimeout(function() {
+        var myVar = setTimeout(function () {
           that.getData();
         }, 1000);
       }
     } else if (lastDrawTime == null) {
-      var myVar = setTimeout(function() {
+      var myVar = setTimeout(function () {
         that.getData();
       }, 500);
     } else {
@@ -666,11 +666,11 @@ class Page747Draw extends Component {
       var that = this;
       fetch(
         "https://" +
-          Constants.URL +
-          "/public_api/live_draw/draws.php?jwt=" +
-          jwt +
-          "&game_id=" +
-          that.state.gameData.id
+        Constants.URL +
+        "/public_api/live_draw/draws.php?jwt=" +
+        jwt +
+        "&game_id=" +
+        that.state.gameData.id
       )
         .then(res => res.json())
         .then(result => {
@@ -834,11 +834,11 @@ class Page747Draw extends Component {
       var that = this;
       fetch(
         "https://" +
-          Constants.URL +
-          "/public_api/live_draw/data.php?jwt=" +
-          jwt +
-          "&game_id=" +
-          this.state.gameData.id
+        Constants.URL +
+        "/public_api/live_draw/data.php?jwt=" +
+        jwt +
+        "&game_id=" +
+        this.state.gameData.id
       )
         .then(res => res.json())
         .then(
@@ -972,12 +972,12 @@ class Page747Draw extends Component {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     // if any scroll is attempted, set this to the previous value
-    window.onscroll = function() {
+    window.onscroll = function () {
       window.scrollTo(0, 550);
     };
   }
   enableScroll() {
-    window.onscroll = function() {};
+    window.onscroll = function () { };
   }
   getPowerplayAmount(id) {
     if (this.state.powerplays == undefined) return 0;
@@ -1024,7 +1024,7 @@ class Page747Draw extends Component {
       xhr.withCredentials = true;
       var that = this;
 
-      xhr.addEventListener("readystatechange", function() {
+      xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
           if (~this.responseText.indexOf("Updated")) {
             that.getData();
@@ -1093,7 +1093,7 @@ class Page747Draw extends Component {
 
     this.getData();
     var that = this;
-    setTimeout(function() {
+    setTimeout(function () {
       that.setState({
         run: true
       });
@@ -1173,7 +1173,7 @@ class Page747Draw extends Component {
 
   handleShowPrize(game_type) {
     var prizesToShow = this.state.gameData.prize;
-    prizesToShow.sort(function(a, b) {
+    prizesToShow.sort(function (a, b) {
       return parseFloat(b.prize) - parseFloat(a.prize);
     });
 
@@ -1222,8 +1222,8 @@ class Page747Draw extends Component {
                       element.number == ballSelected
                         ? " edit_numbers_circle_active pick_button_active"
                         : ballSelected == null
-                        ? "edit_numbers_circle_active"
-                        : "edit_numbers_circle_active circle_disabled"
+                          ? "edit_numbers_circle_active"
+                          : "edit_numbers_circle_active circle_disabled"
                     }
                   >
                     <img
@@ -1251,8 +1251,8 @@ class Page747Draw extends Component {
                         element.number == ballSelected
                           ? "edit_numbers_circle pick_button_active"
                           : ballSelected == null
-                          ? "edit_numbers_circle"
-                          : "edit_numbers_circle circle_disabled"
+                            ? "edit_numbers_circle"
+                            : "edit_numbers_circle circle_disabled"
                       }
                       style={mCircleStyles}
                       onClick={e => this.onBallClicked(element.number)}
@@ -1265,87 +1265,87 @@ class Page747Draw extends Component {
                           {this.getPowerplayAmount(
                             Constants.LOTETRY_POWERPLAY_CHANGE
                           ) < 1 &&
-                          this.getPowerplayAmount(
-                            Constants.LOTETRY_POWERPLAY_FORCE_MATCH
-                          ) < 1 &&
-                          this.getPowerplayAmount(
-                            Constants.LOTETRY_POWERPLAY_DECREASE
-                          ) < 1 &&
-                          this.getPowerplayAmount(
-                            Constants.LOTETRY_POWERPLAY_INCREASE
-                          ) < 1 ? (
-                            <div className="powerplays_used_text">
-                              All Powerplays Have been Used
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                            this.getPowerplayAmount(
+                              Constants.LOTETRY_POWERPLAY_FORCE_MATCH
+                            ) < 1 &&
+                            this.getPowerplayAmount(
+                              Constants.LOTETRY_POWERPLAY_DECREASE
+                            ) < 1 &&
+                            this.getPowerplayAmount(
+                              Constants.LOTETRY_POWERPLAY_INCREASE
+                            ) < 1 ? (
+                              <div className="powerplays_used_text">
+                                All Powerplays Have been Used
+                              </div>
+                            ) : (
+                              ""
+                            )}
                           {this.getPowerplayAmount(
                             Constants.LOTETRY_POWERPLAY_CHANGE
                           ) > 0 ? (
-                            <img
-                              onClick={e =>
-                                this.onPowerplayClicked(
-                                  Constants.LOTETRY_POWERPLAY_CHANGE
-                                )
-                              }
-                              className="img-responsive"
-                              src={require("./../../assets/images/747_live/shuffle.png")}
-                            />
-                          ) : (
-                            ""
-                          )}
+                              <img
+                                onClick={e =>
+                                  this.onPowerplayClicked(
+                                    Constants.LOTETRY_POWERPLAY_CHANGE
+                                  )
+                                }
+                                className="img-responsive"
+                                src={require("./../../assets/images/747_live/shuffle.png")}
+                              />
+                            ) : (
+                              ""
+                            )}
                           {this.getPowerplayAmount(
                             Constants.LOTETRY_POWERPLAY_FORCE_MATCH
                           ) > 0 ? (
-                            <img
-                              onClick={e =>
-                                this.onPowerplayClicked(
-                                  Constants.LOTETRY_POWERPLAY_FORCE_MATCH
-                                )
-                              }
-                              className="img-responsive"
-                              src={require("./../../assets/images/747_live/force.png")}
-                            />
-                          ) : (
-                            ""
-                          )}
+                              <img
+                                onClick={e =>
+                                  this.onPowerplayClicked(
+                                    Constants.LOTETRY_POWERPLAY_FORCE_MATCH
+                                  )
+                                }
+                                className="img-responsive"
+                                src={require("./../../assets/images/747_live/force.png")}
+                              />
+                            ) : (
+                              ""
+                            )}
                           {this.getPowerplayAmount(
                             Constants.LOTETRY_POWERPLAY_DECREASE
                           ) > 0 ? (
-                            <img
-                              onClick={e =>
-                                this.onPowerplayClicked(
-                                  Constants.LOTETRY_POWERPLAY_DECREASE
-                                )
-                              }
-                              className="img-responsive"
-                              src={require("./../../assets/images/747_live/decrease.png")}
-                            />
-                          ) : (
-                            ""
-                          )}
+                              <img
+                                onClick={e =>
+                                  this.onPowerplayClicked(
+                                    Constants.LOTETRY_POWERPLAY_DECREASE
+                                  )
+                                }
+                                className="img-responsive"
+                                src={require("./../../assets/images/747_live/decrease.png")}
+                              />
+                            ) : (
+                              ""
+                            )}
 
                           {this.getPowerplayAmount(
                             Constants.LOTETRY_POWERPLAY_INCREASE
                           ) > 0 ? (
-                            <img
-                              onClick={e =>
-                                this.onPowerplayClicked(
-                                  Constants.LOTETRY_POWERPLAY_INCREASE
-                                )
-                              }
-                              className="img-responsive"
-                              src={require("./../../assets/images/747_live/increase.png")}
-                            />
-                          ) : (
-                            ""
-                          )}
+                              <img
+                                onClick={e =>
+                                  this.onPowerplayClicked(
+                                    Constants.LOTETRY_POWERPLAY_INCREASE
+                                  )
+                                }
+                                className="img-responsive"
+                                src={require("./../../assets/images/747_live/increase.png")}
+                              />
+                            ) : (
+                              ""
+                            )}
                         </div>
                       </div>
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                   </>
                 );
               }
@@ -1545,7 +1545,7 @@ class Page747Draw extends Component {
   };
   gotoNextStep() {
     var that = this;
-    setTimeout(function() {
+    setTimeout(function () {
       that.setState({
         run: true,
         stepIndex: 1
@@ -1582,18 +1582,21 @@ class Page747Draw extends Component {
             }
           }}
         />
-       <Header />
-        <DrawTimer/>
-
+        <Header />
+        <DrawTimer />
+        <div className='__747-page'>
+          <div className='__viewport'>
+            <div className='__content'>
+              <img src={require('../../assets/images/747/hero-image@2x.png')} alt='' className='__viewport-image' />
+              <div className='__container'>
+                <div className='__main-title __flex'>747</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="container-fluid _faq_wrap">
           <div className="container-fluid">
             <div className="page747_live_rows">
-              <div>
-                <img
-                  className="img-responsive header-live-draw"
-                  src={require("./../../assets/images/747/747_header.png")}
-                />
-              </div>
               <div>
                 <div className="live_draw_div_jackpot">
                   {/* <p className="live_draw_div_jackpot_header" id="scroller">
@@ -1626,13 +1629,13 @@ class Page747Draw extends Component {
                         </p>
                       </>
                     ) : (
-                      ""
-                    )
+                        ""
+                      )
                   ) : (
-                    <p className="live_draw_div_jackpot_odds">
-                      {"Odds of Winning: " + this.state.gameData.odds_text}
-                    </p>
-                  )}
+                      <p className="live_draw_div_jackpot_odds">
+                        {"Odds of Winning: " + this.state.gameData.odds_text}
+                      </p>
+                    )}
                 </div>
               </div>
               <center>
@@ -1672,8 +1675,8 @@ class Page747Draw extends Component {
                         </>
                       </div>
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                   </div>
                   <div>{this.componentPowerplays()}</div>
                 </div>
@@ -1721,51 +1724,51 @@ class Page747Draw extends Component {
                               {this.state.isDemo ? (
                                 ""
                               ) : (
-                                <p className="live_draw_loser_note5">
-                                  Draw Date: &nbsp;
-                                  {Functions.getStringDate(
-                                    this.state.gameData.start_datetime
-                                  )}
-                                  {" at "}
-                                  {Functions.getStringTime(
-                                    this.state.gameData.start_datetime
-                                  )}{" "}
+                                  <p className="live_draw_loser_note5">
+                                    Draw Date: &nbsp;
+                                    {Functions.getStringDate(
+                                      this.state.gameData.start_datetime
+                                    )}
+                                    {" at "}
+                                    {Functions.getStringTime(
+                                      this.state.gameData.start_datetime
+                                    )}{" "}
                                   EST
-                                </p>
-                              )}
+                                  </p>
+                                )}
                             </div>
                           </>
                         ) : (
-                          //if game is live and last minute
-                          <>
-                            {" "}
-                            <div className="live_draw_my_prize">
-                              <p className="live_draw_my_numbers_matched">
-                                Numbers Matched:{" "}
-                                <span id="total-matched">{mTotalMatched}</span>
+                            //if game is live and last minute
+                            <>
+                              {" "}
+                              <div className="live_draw_my_prize">
+                                <p className="live_draw_my_numbers_matched">
+                                  Numbers Matched:{" "}
+                                  <span id="total-matched">{mTotalMatched}</span>
                                 /7
                               </p>
-                              <p className="live_draw_my_numbers_notes">
-                                Click a number and use your powerplays to edit!
+                                <p className="live_draw_my_numbers_notes">
+                                  Click a number and use your powerplays to edit!
                               </p>
-                            </div>
-                            {flagReplaceAll ? (
-                              <div className="match_text">
-                                <>
-                                  Your selection&nbsp;
-                                  <span> {oldReplacedNumber.number}</span> was
-                                  replaced with &nbsp;
-                                  <span>{newReplacedNumber.number}</span>
-                                  {this.isAMatch(newReplacedNumber)
-                                    ? " and it was a match!"
-                                    : ""}
-                                </>
                               </div>
-                            ) : (
-                              ""
-                            )}
-                          </>
-                        )
+                              {flagReplaceAll ? (
+                                <div className="match_text">
+                                  <>
+                                    Your selection&nbsp;
+                                    <span> {oldReplacedNumber.number}</span> was
+                                  replaced with &nbsp;
+                                    <span>{newReplacedNumber.number}</span>
+                                    {this.isAMatch(newReplacedNumber)
+                                      ? " and it was a match!"
+                                      : ""}
+                                  </>
+                                </div>
+                              ) : (
+                                  ""
+                                )}
+                            </>
+                          )
                       ) : this.state.result.prize_won ? (
                         !this.hasWonPrize(mTotalMatched) ? (
                           <div className="live_draw_my_prize">
@@ -1814,123 +1817,123 @@ class Page747Draw extends Component {
                             </div>
                           </div>
                         ) : (
-                          <div className="live_draw_my_prize winner">
-                            <div className="live_draw_winner_left">
-                              <img
-                                className="img-responsive"
-                                src={require("./../../assets/images/747_live/trophy.png")}
-                              />
-                            </div>
-                            <div className="live_draw_winner_right">
-                              <p className="live_draw_prize_matches">
-                                Matched{" "}
-                                <span id="total-matched">{mTotalMatched}</span>{" "}
+                            <div className="live_draw_my_prize winner">
+                              <div className="live_draw_winner_left">
+                                <img
+                                  className="img-responsive"
+                                  src={require("./../../assets/images/747_live/trophy.png")}
+                                />
+                              </div>
+                              <div className="live_draw_winner_right">
+                                <p className="live_draw_prize_matches">
+                                  Matched{" "}
+                                  <span id="total-matched">{mTotalMatched}</span>{" "}
                                 of 7 numbers
                               </p>
-                              <p className="live_draw_winner_note">
-                                Congratulations! You are a winner
+                                <p className="live_draw_winner_note">
+                                  Congratulations! You are a winner
                               </p>
-                              <p className="live_draw_winner_note2">
-                                Individual prizes will be calculated & added to
+                                <p className="live_draw_winner_note2">
+                                  Individual prizes will be calculated & added to
                                 your <span>account balance</span> within 24
                                 hours
                               </p>
-                              <div className="results_wrapper">
-                                <p className="live_draw_winner_note3">
-                                  * All prizes are divided equally among winners
+                                <div className="results_wrapper">
+                                  <p className="live_draw_winner_note3">
+                                    * All prizes are divided equally among winners
                                 </p>
-                                <button
-                                  onClick={this.goToResults}
-                                  className="live_draw_button_show_result winner"
-                                >
-                                  View Results
+                                  <button
+                                    onClick={this.goToResults}
+                                    className="live_draw_button_show_result winner"
+                                  >
+                                    View Results
                                 </button>
-                              </div>
+                                </div>
 
-                              <p className="live_draw_winner_note4">
-                                Next Draw Date
+                                <p className="live_draw_winner_note4">
+                                  Next Draw Date
                               </p>
-                              <p className="live_draw_winner_note5">
-                                {Functions.getStringDate(
-                                  this.state.nextGame.start_datetime
-                                )}
-                                {Functions.getStringTime(
-                                  this.state.nextGame.start_datetime
-                                )}{" "}
+                                <p className="live_draw_winner_note5">
+                                  {Functions.getStringDate(
+                                    this.state.nextGame.start_datetime
+                                  )}
+                                  {Functions.getStringTime(
+                                    this.state.nextGame.start_datetime
+                                  )}{" "}
                                 EST
                               </p>
-                            </div>
+                              </div>
 
-                            <button
-                              className="button_pickNumbers"
-                              onClick={e =>
-                                this.onPickNumbersClicked(
-                                  "/747",
-                                  this.state.nextGame
-                                )
-                              }
-                            >
-                              Pick Numbers for Next Draw
+                              <button
+                                className="button_pickNumbers"
+                                onClick={e =>
+                                  this.onPickNumbersClicked(
+                                    "/747",
+                                    this.state.nextGame
+                                  )
+                                }
+                              >
+                                Pick Numbers for Next Draw
                             </button>
-                          </div>
-                        )
+                            </div>
+                          )
                       ) : (
-                        <>
-                          {" "}
-                          <div className="live_draw_my_prize">
-                            <p className="live_draw_my_numbers_matched">
-                              Numbers Matched:
+                            <>
+                              {" "}
+                              <div className="live_draw_my_prize">
+                                <p className="live_draw_my_numbers_matched">
+                                  Numbers Matched:
                               <span id="total-matched">{mTotalMatched}</span>/7
                             </p>
-                            {this.state.isDemo &&
-                            this.state.gameData.status == "finished" ? (
-                              <>
-                                <p
-                                  className="live_draw_my_numbers_notes clickable"
-                                  onClick={this.goToPicknumbersDemo}
-                                >
-                                  Try Again
-                                </p>
-                                <button
-                                  style={{ "margin-left": "0px" }}
-                                  onClick={() =>
-                                    this.props.history.push("/partner")
-                                  }
-                                  className="lotto-button-partner orange"
-                                >
-                                  Partner With Us
-                                </button>
-                              </>
-                            ) : (
-                              <>
-                                <p className="live_draw_my_numbers_notes">
-                                  Click a number and use your powerplays to
-                                  edit!
-                                </p>
-                                {flagReplaceAll ||
-                                this.state.powerplayRefresh ? (
-                                  <div className="match_text">
+                                {this.state.isDemo &&
+                                  this.state.gameData.status == "finished" ? (
                                     <>
-                                      Your selection&nbsp;
-                                      <span>
-                                        {" "}
-                                        {oldReplacedNumber.number}
-                                      </span>{" "}
-                                      was replaced with &nbsp;
-                                      <span>{newReplacedNumber.number}</span>
-                                      {this.isAMatch(newReplacedNumber)
-                                        ? " and it was a match!"
-                                        : "and there was no match"}
+                                      <p
+                                        className="live_draw_my_numbers_notes clickable"
+                                        onClick={this.goToPicknumbersDemo}
+                                      >
+                                        Try Again
+                                </p>
+                                      <button
+                                        style={{ "margin-left": "0px" }}
+                                        onClick={() =>
+                                          this.props.history.push("/partner")
+                                        }
+                                        className="lotto-button-partner orange"
+                                      >
+                                        Partner With Us
+                                </button>
                                     </>
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              </>
-                            )}
-                          </div>
-                        </>
-                      )}
+                                  ) : (
+                                    <>
+                                      <p className="live_draw_my_numbers_notes">
+                                        Click a number and use your powerplays to
+                                        edit!
+                                </p>
+                                      {flagReplaceAll ||
+                                        this.state.powerplayRefresh ? (
+                                          <div className="match_text">
+                                            <>
+                                              Your selection&nbsp;
+                                              <span>
+                                                {" "}
+                                                {oldReplacedNumber.number}
+                                              </span>{" "}
+                                      was replaced with &nbsp;
+                                              <span>{newReplacedNumber.number}</span>
+                                              {this.isAMatch(newReplacedNumber)
+                                                ? " and it was a match!"
+                                                : "and there was no match"}
+                                            </>
+                                          </div>
+                                        ) : (
+                                          ""
+                                        )}
+                                    </>
+                                  )}
+                              </div>
+                            </>
+                          )}
                     </div>
                   </div>
                   <div className="live_draw_content_right">
@@ -1943,86 +1946,86 @@ class Page747Draw extends Component {
                 {this.state.isDemo ? (
                   ""
                 ) : (
-                  <div className="page747_main_prize">
-                    <div class="page747_prize_image-wraper">
-                      <img
-                        className="img-responsive"
-                        src={require("./../../assets/images/747/747_prize.png")}
-                      />
-                    </div>
+                    <div className="page747_main_prize">
+                      <div class="page747_prize_image-wraper">
+                        <img
+                          className="img-responsive"
+                          src={require("./../../assets/images/747/747_prize.png")}
+                        />
+                      </div>
 
-                    <div className="page747_prize_details">
-                      <div className="page747_prize_content">
-                        <div class="page747_prize_header row">
-                          <div className="row">
-                            <span>Top Prizes</span>
-                            <div className="button_show_prize_wrapper">
-                              <button
-                                className="button_show_prize"
-                                onClick={e => this.handleShowPrize("747")}
-                              >
-                                View All Prizes
+                      <div className="page747_prize_details">
+                        <div className="page747_prize_content">
+                          <div class="page747_prize_header row">
+                            <div className="row">
+                              <span>Top Prizes</span>
+                              <div className="button_show_prize_wrapper">
+                                <button
+                                  className="button_show_prize"
+                                  onClick={e => this.handleShowPrize("747")}
+                                >
+                                  View All Prizes
                               </button>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="row">
-                          <div className="page747-prize-box-wrapper">
-                            <div className="page747-prize-box">
-                              {this.state.gameData.prize[0].hits + "/7"} <br />
-                              <span>
-                                {"$" +
-                                  Functions.numberWithCommas(
-                                    this.state.gameData.prize[0].prize
-                                  )}
-                              </span>
+                          <div className="row">
+                            <div className="page747-prize-box-wrapper">
+                              <div className="page747-prize-box">
+                                {this.state.gameData.prize[0].hits + "/7"} <br />
+                                <span>
+                                  {"$" +
+                                    Functions.numberWithCommas(
+                                      this.state.gameData.prize[0].prize
+                                    )}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="page747-prize-box-wrapper">
+                              <div className="page747-prize-box">
+                                {this.state.gameData.prize[1].hits + "/7"}
+                                <br />
+                                <span>
+                                  {"$" +
+                                    Functions.numberWithCommas(
+                                      this.state.gameData.prize[1].prize
+                                    )}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="page747-prize-box-wrapper">
+                              <div className="page747-prize-box">
+                                {this.state.gameData.prize[2].hits + "/7"}
+                                <br />
+                                <span>
+                                  {"$" +
+                                    Functions.numberWithCommas(
+                                      this.state.gameData.prize[2].prize
+                                    )}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="page747-prize-box-wrapper">
+                              <div className="page747-prize-box">
+                                {this.state.gameData.prize[3].hits + "/7"}
+                                <br />
+                                <span>
+                                  {"$" +
+                                    Functions.numberWithCommas(
+                                      this.state.gameData.prize[3].prize
+                                    )}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                          <div className="page747-prize-box-wrapper">
-                            <div className="page747-prize-box">
-                              {this.state.gameData.prize[1].hits + "/7"}
-                              <br />
-                              <span>
-                                {"$" +
-                                  Functions.numberWithCommas(
-                                    this.state.gameData.prize[1].prize
-                                  )}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="page747-prize-box-wrapper">
-                            <div className="page747-prize-box">
-                              {this.state.gameData.prize[2].hits + "/7"}
-                              <br />
-                              <span>
-                                {"$" +
-                                  Functions.numberWithCommas(
-                                    this.state.gameData.prize[2].prize
-                                  )}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="page747-prize-box-wrapper">
-                            <div className="page747-prize-box">
-                              {this.state.gameData.prize[3].hits + "/7"}
-                              <br />
-                              <span>
-                                {"$" +
-                                  Functions.numberWithCommas(
-                                    this.state.gameData.prize[3].prize
-                                  )}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
 
-                        <div className="page747_prize_note">
-                          *All prizes will be divided equally among winners
+                          <div className="page747_prize_note">
+                            *All prizes will be divided equally among winners
+                        </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
               </div>
             </div>
           </div>

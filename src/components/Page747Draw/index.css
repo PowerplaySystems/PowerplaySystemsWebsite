@@ -638,6 +638,8 @@
 }
 .header-live-draw {
   margin: 0 auto;
+  display: block;
+  max-width: 100%;
 }
 .live_draw_in_play_timer_bottom.text_only {
   line-height: 33px;
