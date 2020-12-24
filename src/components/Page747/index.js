@@ -394,38 +394,6 @@ class Page747 extends Component {
             })}
           </div>
         </Popup>
-        <Modal
-          className="modal-confirm"
-          show={this.state.confirm}
-          onHide={this.handleCloseConfirm}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title></Modal.Title>
-          </Modal.Header>
-          <Modal.Body className="grid-body">
-            <div className="confirm_submit_header">My Numbers</div>
-            <div className="row confirm_submit_numbers">
-              {this.state.selected.map((number, key) => {
-                return (
-                  <div className="__game-ball">
-                    {number}
-                  </div>
-                );
-              })}
-            </div>
-            <div className="confirm_submit_footer">
-              <button
-                className="footer_btn_cancel"
-                onClick={this.handleCloseConfirm}
-              >
-                Cancel
-              </button>
-              <button className="footer_btn_submit" onClick={this.submitBalls}>
-                Submit
-              </button>
-            </div>
-          </Modal.Body>
-        </Modal>
         <div className='__747-page'>
           <div className='__viewport'>
             <div className='__content'>
