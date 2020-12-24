@@ -503,6 +503,7 @@ class Page747 extends Component {
           </div>
           <div className="__container __game-wrapper" id="pick-numbers">
             <div className='__title'>Pick Your Numbers !</div>
+            <div className="page747_number_rules">CONTEST RULES</div>
             <div className='__game'>{this.setBalls()}</div>
             <div className='__helper-text'>{this.state.selected.length + " of " + allowedToSelect + " Numbers chosen"}</div>
             <button id="submit_selection_ball" className="__submit-btn" disabled={this.canSelectMore()}>SUBMIT!</button>
