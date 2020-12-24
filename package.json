@@ -5,8 +5,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
-    "bootstrap": "^4.3.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
+    "node-sass": "^4.14.1",
     "react": "^16.8.6",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.8.6",

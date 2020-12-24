@@ -1,0 +1,46 @@
+@import './viewport.scss', './main.scss', './map.scss';
+
+.__about-us-page{
+    .__about-us{
+        background-image: url('../../assets/images/about_us/bitmap-copy@2x.jpg');
+        background-position: center;
+        background-size: cover;
+        padding: 7em 0;
+        text-align: center;
+        position: relative;
+        border-top: 5px solid #fb6e00;
+        border-bottom: 5px solid #fb6e00;
+        .__title{
+            font-size: 2.25em;
+            font-weight: bolder;
+            text-transform: uppercase;
+            margin-bottom: 0.6em;
+        }
+        .__subtitle{
+            font-size: 1.25em;
+        }
+        .__container{
+            max-width: 30em;
+        }
+    }
+}
+
+@media (max-width: 600px){
+    .__about-us-page{
+        .__about-us{
+            padding: 4em 0;
+            .__title{
+                font-size: 1.429em;
+            }
+            .__subtitle{
+                font-size: 1.144em;
+            }
+        }
+    }
+}
+
+.__about-us{
+    .__map{
+
+    }
+}

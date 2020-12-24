@@ -1,0 +1,374 @@
+.__747-page{
+    .__viewport{
+        text-align: center;
+        .__content{
+            font-size: 1.25em;
+        }
+        .__viewport-image{
+            width: 100%;
+            display: block;
+        }
+        .__main-title{
+            font-family: Marion;
+            font-size: 8em;
+            &::after, &::before{
+                content: '';
+                flex: 1;
+                color: #fb6e00;
+                border: 2px solid;
+                background: currentColor;
+                border-radius: 1em;
+            }
+            &::after{
+                margin-left: 0.25em;
+            }
+            &::before{
+                margin-right: 0.25em;
+            }
+        }
+        .__subtitle{
+            font-size: 1.6em;
+            font-weight: 600;
+            margin: 1.5em 0 0 0;
+        }
+        .__title{
+            font-size: 2.9em;
+            font-weight: 900;
+        }
+        .__747-card{
+            max-width: 47em;
+            text-align: left;
+            box-shadow: 0 2px 24px 7px rgba(0, 0, 0, 0.32);
+            background-color: #1e1e1e;
+            padding: 2em 4em;
+            border-radius: 5em;
+            margin: 4.5em auto 6em auto;
+            .__balls{
+                max-width: 10em;
+            }
+            .__border{
+                border: 1px solid #979797;
+                height: 4em;
+                margin: 0 1.6em;
+                background: #979797;
+            }
+        }
+    }
+}
+.__747-page{
+        .__poweplays{
+            .__title{
+                font-size: 3.62em;
+                font-weight: bolder;
+                margin-bottom: 0.5em;
+            }
+            .__powerplays-left-image{
+                width: 27em;
+            }
+        }
+        .__powerplays-content{
+            max-width: calc(50% - 1.5em);
+            .__powerplays-card{
+                background-color: #1e1e1e;
+                text-align: center;
+                border-radius: 1em;
+                padding: 0.5em;
+                height: 11em;
+                margin-right: 2em;
+                min-width: 10.52em;
+                margin: 1.5em;
+            }
+            .__powerplays-card-footer{
+                font-weight: 500;
+                &::before{
+                    content: '';
+                    display: block;
+                    border: solid 0.5px #979797;
+                    background: #979797;
+                    width: 6.25em;
+                    margin: 0.2em auto 0.6em auto;
+                }
+            }
+            .__powerplays-card-image{
+                margin: auto;
+            }
+            .__powerplyas-content-details{
+                font-size: 1.25em;
+                font-weight: 600;
+                max-width: 8.7em;
+            }
+        }
+        .__powerplays-content-wrapper{
+            margin: -1.5em -1.5em 0 -1.5em;
+        }
+    
+}
+.__popup-game-wrapper{
+    margin: 0.3em 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    .__game-ball{
+        border: 1px solid #fff;
+        border-radius: 50%;
+        margin: 0.4em;
+    }
+}
+.__game-ball{
+    font-size: 1.56em;
+    height: 2.5em;
+    width: 2.5em;
+    background: url('../../assets/images/747_live/circle.png') no-repeat center;
+    background-size: 100% auto;
+    color: #e1e1e1;
+    display: grid;
+    place-items: center;
+    color: #000;
+    position: relative;
+    cursor: pointer;
+    &::before{
+        content: '';
+        position: absolute;
+        border: 4px solid;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transform: scale(0);
+    }
+    &.__active{
+        animation: linear forwards GameBall 0.3s;
+        &::before{
+            transform: scale(1.04);
+            transition-delay: 0.15s;
+            transition: linear 0.3s transform;
+        }
+    }
+}
+
+.__747-page{
+    .__game-wrapper{
+        text-align: center;
+        margin: 4em auto;
+        .__helper-text{
+            display: inline-block;
+            background: #000;
+            padding: 0.4em 0.8em;
+            border-radius: 0.6em 0.6em 0 0;
+        }
+        .page747_number_rules{
+            margin-bottom: 3em;
+        }
+        .__submit-btn{
+            display: block;
+            margin: auto;
+            font-size: 1.25em;
+            font-family: Poppins;
+            font-weight: 500;
+            padding: 0.74em 1em;
+            border-radius: 2em;
+            border: none;
+            outline: none;
+            width: 21.7em;
+            cursor: pointer;
+            background: #fb6e00;
+            &:disabled{
+                background-color: #bcbcbc;
+                color: #7f7f7f;
+                cursor: not-allowed;
+            }
+        }
+        .__title{
+            font-size: 3.625em;
+            font-weight: bolder;
+        }
+    }
+    .__game{
+        border-radius: 1.5em;
+        padding: 2.5em 5em 8em 5em;
+        background: #1e1e1e;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        justify-content: space-between;
+        grid-gap: 2em;
+        margin-bottom: -4.2em;
+    }
+    
+}
+
+@keyframes GameBall{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0);
+        font-weight: bold;
+        color: #fb6e00;
+    }
+    100%{
+        transform: scale(1);
+        font-weight: bold;
+        color: #fb6e00;
+    }
+}
+
+
+
+@media (max-width: 1300px){
+    .__747-page{
+        .__poweplays{
+            .__powerplays-left-image{
+                display: none;
+            }
+            .__title{
+                text-align: center;
+                margin-bottom: 1em;
+            }
+            .__powerplays-content{
+                .__powerplyas-content-details{
+                    max-width: initial;
+                }
+            }
+        }
+        .__game{
+            grid-template-columns: repeat(8, 1fr);
+        }
+    }
+}
+
+@media (max-width: 1050px){
+    .__747-page{
+        .__viewport{
+            .__content{
+                font-size: 1em;
+            }
+            .__main-title{
+                font-size: 6em;
+            }
+            .__subtitle{
+                font-size: 1.3em;
+                margin: 1em 0 0 0;
+            }
+            .__title{
+                font-size: 2em;
+            }
+            .__747-card{
+                max-width: 85%;
+                text-align: left;
+                margin: 3em auto 4em auto;
+                padding: 1.2em 2.4em;
+                .__balls{
+                    max-width: 8em;
+                }
+            }
+        }
+        .__poweplays, .__game-wrapper{
+            .__title{
+                font-size: 2.5em;
+            }
+        }
+        .__game{
+            grid-template-columns: repeat(7, 1fr);
+            padding: 2.5em 2.5em 8em 2.5em;
+        }
+    }
+}
+
+
+
+@media (max-width: 900px){
+    .__747-page{
+        .__game{
+            grid-template-columns: repeat(6, 1fr);
+        }
+        .__powerplays-content-wrapper{
+            display: block;
+        }
+        .__powerplays-content{
+            max-width: initial;
+        }
+    }
+}
+
+@media (max-width: 760px){
+    .__747-page{
+        text-align: left;
+        .__game{
+            grid-template-columns: repeat(5, 1fr);
+            padding: 1em 1em 6em 1em;
+            grid-gap: 0.7em;
+            justify-content: center;
+        }
+        .__game-wrapper{
+            .__submit-btn{
+                width: 12em;
+            }
+        }
+        .__poweplays{
+            .__powerplyas-content-details{
+                font-size: 1em;
+                font-weight: normal;
+            }
+        }
+        .__viewport{
+            min-height: initial;
+            .__747-card{
+                .__border, .__balls{
+                    display: none;
+                }
+            }
+            .__main-title{
+                font-size: 5em;
+            }
+            .__subtitle{
+                font-size: 1.15em;
+            }
+            .__title{
+                font-size: 1.6em;
+            }
+            .__747-card{
+                padding: 1em 1.2em;
+                border-radius: 0.6em;
+                text-align: center;
+            }
+        }
+        .__poweplays, .__game-wrapper{
+            .__title{
+                font-size: 2em;
+            }
+        }
+    }
+}
+
+@media (max-width: 470px){
+    .__game-ball{
+        font-size: 1.3em;
+    }
+    .__747-page{
+        .__viewport{
+            .__main-title{
+                font-size: 4em;
+            }
+        }
+        .__powerplays-content{
+            display: block;
+            width: 90%;
+            margin: auto;
+            text-align: center;
+            .__powerplays-card{
+                width: 10em;
+                margin: 2em auto 1em auto;
+            }
+            .__powerplyas-content-details{
+                display: block;
+
+            }
+        }
+    }
+}
+
+@media (max-width: 400px){
+    .__747-page{
+        .__game{
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

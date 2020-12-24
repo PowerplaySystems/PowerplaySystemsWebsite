@@ -386,7 +386,7 @@ class PowerplayLotto extends Component {
               <div className="lotto-landing-text13">
                 Elite 8 Promotional Contest
               </div>
-              <div className="lotto-landing-text13a">Starts Fall 2020</div>
+              <div className="lotto-landing-text13a"></div>
               {this.componentButton("Coming Soon", "")}
             </div>
             <div className="lotto-landing-text14">Player Experience</div>
