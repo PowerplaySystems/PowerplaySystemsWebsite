@@ -12,6 +12,7 @@ import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
 import './index.scss';
 import backgroudImage from '../../assets/images/747/hero-image@2x.png';
+import Popup from "../../ui/Popup";
 
 var DEMO_PICKS = [];
 var DEMO_DRAW = [];
@@ -332,17 +333,10 @@ class Page747 extends Component {
     return (
       <div>
         <Header />
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title> {popupHader} </Modal.Title>
-          </Modal.Header>
-          <Modal.Body> {popupText}</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        <Popup title={popupHader} closeButton footer={[<button onClick={this.handleClose}>Close</button>]} show={this.state.show} onHide={this.handleClose}>
+          {popupText}
+        </Popup>
+
         <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
           <Modal.Header closeButton>
             <Modal.Title>Prizes</Modal.Title>
@@ -377,20 +371,43 @@ class Page747 extends Component {
             }
           </Modal.Body>
         </Modal>
+        <Popup
+          show={this.state.confirm}
+          onHide={this.handleCloseConfirm}
+          title='Review my numbers'
+          closeButton
+          footer={
+            [
+              <button onClick={this.handleCloseConfirm}>Cancel</button>,
+              <button onClick={this.submitBalls}>Submit</button>
+            ]
+          }
+        >
+          <div>My Numbers</div>
+          <div className='__flex __popup-game-wrapper'>
+            {this.state.selected.map((number, key) => {
+              return (
+                <div className='__game-ball'>
+                  {number}
+                </div>
+              );
+            })}
+          </div>
+        </Popup>
         <Modal
           className="modal-confirm"
           show={this.state.confirm}
           onHide={this.handleCloseConfirm}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Review my numbers</Modal.Title>
+            <Modal.Title></Modal.Title>
           </Modal.Header>
           <Modal.Body className="grid-body">
             <div className="confirm_submit_header">My Numbers</div>
             <div className="row confirm_submit_numbers">
               {this.state.selected.map((number, key) => {
                 return (
-                  <div className="confirm_submit_circle" style={mCircleStyles}>
+                  <div className="__game-ball">
                     {number}
                   </div>
                 );

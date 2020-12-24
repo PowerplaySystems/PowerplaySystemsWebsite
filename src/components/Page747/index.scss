@@ -104,8 +104,49 @@
         }
     }
 }
+.__popup-game-wrapper{
+    margin: 0 -0.4em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .__game-ball{
+        border: 1px solid #fff;
+        border-radius: 50%;
+        margin: 0.4em;
+    }
+}
+.__game-ball{
+    font-size: 1.56em;
+    height: 2.5em;
+    width: 2.5em;
+    background: url('../../assets/images/747_live/circle.png') no-repeat center;
+    background-size: 100% auto;
+    color: #e1e1e1;
+    display: grid;
+    place-items: center;
+    color: #000;
+    position: relative;
+    cursor: pointer;
+    &::before{
+        content: '';
+        position: absolute;
+        border: 4px solid;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transform: scale(0);
+    }
+    &.__active{
+        animation: linear forwards GameBall 0.3s;
+        &::before{
+            transform: scale(1.04);
+            transition-delay: 0.15s;
+            transition: linear 0.3s transform;
+        }
+    }
+}
 
 .__747-page{
+    
     .__game-wrapper{
         text-align: center;
         margin: 4em auto;
@@ -148,38 +189,8 @@
         justify-content: space-between;
         grid-gap: 2em;
         margin-bottom: -4.2em;
-        .__game-ball{
-            font-size: 1.56em;
-            height: 2.5em;
-            width: 2.5em;
-            background: linear-gradient(#e1e1e1, #fff, #e1e1e1);
-            border-radius: 50%;
-            color: #e1e1e1;
-            display: grid;
-            place-items: center;
-            color: #000;
-            margin: 4px;
-            position: relative;
-            cursor: pointer;
-            &::before{
-                content: '';
-                position: absolute;
-                border: 4px solid;
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-                transform: scale(0);
-            }
-            &.__active{
-                animation: linear forwards GameBall 0.3s;
-                &::before{
-                    transform: scale(1.04);
-                    transition-delay: 0.15s;
-                    transition: linear 0.3s transform;
-                }
-            }
-        }
     }
+    
 }
 
 @keyframes GameBall{
