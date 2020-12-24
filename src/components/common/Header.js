@@ -1,7 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./index.css";
-import { withRouter } from "react-router-dom";
+import { Link, NavLink, withRouter } from "react-router-dom";
 import Cookies from "universal-cookie";
+import './Header.scss';
+import defaultUserImage from './../../assets/images/pp.png';
+import logo from '../../assets/images/logo.png'
+
 class Header extends Component {
   mEmail = "";
   mJwt = "";
@@ -20,12 +24,13 @@ class Header extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      isLogedin: mLogged
+      isLogedin: mLogged,
+      isMenuOpen: false,
     };
     this.logout = this.logout.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   logout() {
     const cookies = new Cookies();
@@ -36,183 +41,41 @@ class Header extends Component {
       },
       this.props.history.push("/")
     );
-    // ;
   }
   render() {
-    //if user logged IN
-    if (this.state.isLogedin) {
-      return (
-        <div className="container-fluid p-o">
-          <header>
-            <div className="col-md-2 col-sm-3 col-xs-7">
-              <div
-                onClick={() => this.props.history.push("/")}
-                className="logo c-p"
-              >
-                <a>
-                  <img
-                    className="logo_img"
-                    src={require("./../../assets/images/logo.png")}
-                  />
-                </a>
-              </div>
-            </div>
-            <div className="col-xs-4 pull-rights" id="burger">
-              <div className="_burger">
-                <button
-                  type="button"
-                  class="navbar-toggle ham-burger "
-                  data-toggle="collapse"
-                  data-target="#myNavbar"
-                ></button>
-              </div>
-            </div>
-            <div className="col-md-10  main_navigation pull-right">
-              <div className="nav-bar " id="myNavbar">
-                <ul className="nav navbar-nav">
-                  <li className="c-p">
-                    <a onClick={() => this.props.history.push("/live-sports")}>
-                      Powerplay Live Sports
-                    </a>
-                  </li>
-                  <li className="c-p">
-                    <a
-                      onClick={() =>
-                        this.props.history.push("/powerplay-lotto")
-                      }
-                    >
-                      Powerplay Lotto
-                    </a>
-                  </li>
-                  <li className="c-p">
-                    <a onClick={() => this.props.history.push("/partner")}>
-                      Partner With Us
-                    </a>
-                  </li>
-                  <li className="c-p">
-                    <a
-                      className="header_li_button"
-                      onClick={() => this.props.history.push("/game-central")}
-                    >
-                      My Game Center
-                    </a>
-                  </li>
-                  <li className="c-p" style={{ marginLeft: "-10px" }}>
-                    <a
-                      href="#"
-                      class="dropdown-toggle"
-                      data-toggle="dropdown"
-                      role="button"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <img
-                        src={require("./../../assets/images/pp.png")}
-                        className="header_user_img"
-                      />{" "}
-                      <span class="caret" />
-                    </a>
-                    <ul
-                      className="drop-down header_dropdown_list profile_dropdown"
-                      style={{ left: "-90px" }}
-                    >
-                      <ul className="c-p header_dropdown_menu_item">
-                        <a
-                          onClick={() => this.props.history.push("/my-account")}
-                        >
-                          My Account
-                        </a>
-                      </ul>
-                      <ul className="c-p header_dropdown_menu_item">
-                        <a onClick={() => this.logout()}>Logout</a>
-                      </ul>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </header>
+    const { isMenuOpen, isLogedin } = this.state;
+    return (
+      <nav className='__appbar'>
+        <div className='__container __flex __sb'>
+          <Link to='/'>
+            <img alt='' src={logo} className='__brand-logo' />
+          </Link>
+          <button className={isMenuOpen ? '__close' : '__menu'} onClick={() => this.setState({ isMenuOpen: !isMenuOpen })}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul className={`__flex __nav-links ${isMenuOpen ? 'open' : ''}`}>
+            <li><NavLink to='/solutions'>Solutions</NavLink></li>
+            <li><NavLink to='/services'>our services</NavLink></li>
+            <li><NavLink to='/about-us'>about us</NavLink></li>
+            <li><NavLink to='/partner' className='__partner-with-us-btn'>Partner with us!</NavLink></li>
+            {!isLogedin && (
+              <Fragment>
+                <li className='__game-center'><NavLink to='/game-central'>My Game Center</NavLink></li>
+                <li className='__profile-links __flex'>
+                  <button className='__profile-button' style={{ backgroundImage: `url(${defaultUserImage})` }}></button>
+                  <div className='__drop-down'>
+                    <NavLink to='/my-account'>My Account</NavLink>
+                    <span onClick={this.logout}>Logout</span>
+                  </div>
+                </li>
+              </Fragment>
+            )}
+          </ul>
         </div>
-      );
-    } else {
-      return (
-        <div className="container-fluid p-o">
-          <header>
-            <div className="col-md-2 col-sm-3 col-xs-7">
-              <div
-                onClick={() => this.props.history.push("/")}
-                className="logo c-p"
-              >
-                <a>
-                  <img
-                    className="logo_img"
-                    src={require("./../../assets/images/logo.png")}
-                  />
-                </a>
-              </div>
-            </div>
-            <div className="col-xs-4 pull-rights" id="burger">
-              <div className="_burger">
-                <button
-                  type="button"
-                  class="navbar-toggle  ham-burger"
-                  data-toggle="collapse"
-                  data-target="#myNavbar"
-                ></button>
-              </div>
-            </div>
-            <div className="col-md-10  main_navigation pull-right">
-              <div className="nav-bar" id="myNavbar">
-                <ul className="nav navbar-nav">
-                  <li className="c-p">
-                    <a onClick={() => this.props.history.push("/live-sports")}>
-                      Powerplay Live Sports
-                    </a>
-                  </li>
-                  <li className="c-p">
-                    <a
-                      onClick={() =>
-                        this.props.history.push("/powerplay-lotto")
-                      }
-                    >
-                      Powerplay Lotto
-                    </a>
-                  </li>
-
-                  {/* <li className="c-p">
-                    <a onClick={() => this.props.history.push("/partner")}>
-                      Partner With Us
-                    </a>
-                  </li> */}
-                  <li className="c-p">
-                    <a
-                      className="c-p"
-                      onClick={() => this.props.history.push("/about-us")}
-                    >
-                      About Us
-                    </a>
-                    {/* <a
-                      className="header_li_signin"
-                      onClick={() => this.props.history.push("/login")}
-                    >
-                      Sign In
-                    </a> */}
-                  </li>
-                  <li className="c-p btn-singup">
-                    <a
-                      className="header_li_button_start"
-                      onClick={() => this.props.history.push("/partner")}
-                    >
-                      Partner With Us
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </header>
-        </div>
-      );
-    }
+      </nav>
+    )
   }
 }
 

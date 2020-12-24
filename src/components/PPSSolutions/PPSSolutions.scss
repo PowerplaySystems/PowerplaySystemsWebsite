@@ -1,0 +1,183 @@
+.__PPSSolutions{
+    background: #fff;
+    .__viewport{
+        min-height: initial;
+    }
+    .__content{
+        color: #000;
+        .__custom-list{
+            width: 52%;
+            list-style-image: url('../../assets/images/home/correct-copy-3.png');
+            .__title{
+                font-size: 1.125em;
+            }
+        }
+    }
+    .__content-1{
+        .__img-1{
+            width: 30%;
+            margin-left: 4em;
+            img{
+                width: 100%;
+                display: block;
+            }
+        }
+        .__custom-list{
+            margin-top: 3em;
+        }
+    }
+    .__content-2{
+        position: relative;
+        margin-top: 1em;
+        .__img-2{
+            position: absolute;
+            width: 40%;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .__solution-btn{
+        background: #fb6e00;
+        width: 220px;
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 500;
+        border-radius: 6px;
+        border: 2px solid #fb6e00;
+        height: 48px;
+        line-height: 47px;
+        position: relative;
+        display: block;
+        text-align: center;
+        color: #fff;
+        display: inline-block;
+    }
+    .__content-footer{
+        text-align: center;
+        margin: 3em auto ;
+        max-width: 22em;
+        .__call-today{
+            margin: 2em 0 1em 0;
+        }
+        .__phone-number{
+            font-size: 24px;
+            svg{
+                margin-right: 0.3em;
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px){
+    .__PPSSolutions{
+        .__viewport{
+            text-align: center;
+            padding: 7em 0 6.5em 0;
+            background: url('../../assets/images/about_us/bitmap-copy@2x.jpg');
+            background-size: cover;
+            .__title{
+                border-radius: 6px;
+                background: #fb6e00;
+                font-size: 2.25em;
+                padding: 0.09em 0.5em;
+                font-weight: bolder;
+                text-transform: uppercase;
+                line-height: normal;
+                letter-spacing: -0.35px;
+                text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+                margin: 0 auto 1em auto;
+                max-width: 20.3em;
+            }
+            .__subtitle{
+                text-shadow: 0 2px 10px #000000, 0 2px 4px #000000;
+                font-size: 1.125em;
+                line-height: 1.67;
+            }
+        }
+    }   
+}
+
+@media (max-width: 1000px){
+    .__PPSSolutions{
+        text-align: left;
+        overflow-x: hidden;
+        .__viewport{
+            .__title{
+                color: #fb6e00;
+                font-size: 1.714em;
+                font-weight: bold;
+                margin: 0 0 1em 0;
+            }
+            .__subtitle{
+                color: #111111;
+                font-style: italic;
+                font-weight: 500;
+            }
+            .__show-on-mediam{
+                max-width: 200px;
+                transform: scaleX(-1);
+                position: relative;
+                margin-left: auto;
+                right: -6em;
+                margin-left: -4em;
+            }
+        }
+        .__content{
+            .__custom-list{
+                width: 100%;
+                margin-right: 0;
+            }
+            .__custom-list-item{
+                margin: 0 !important;
+                .__star{
+                    display: none;
+                }
+            }
+        }
+        .__content-2{
+            margin-top: 0;
+            .__img-2{
+                position: initial;
+                display: block;
+                margin: 0 0 1em auto;
+                transform: initial;
+                width: 90%;
+            }
+            .__list-item{
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px){
+    .__PPSSolutions{
+        font-size: 14px;
+        .__viewport{
+            position: relative;
+            .__show-on-mediam{
+                top: 0;
+                position: absolute;
+                right: -4em;
+            }
+            .__title{
+                margin-top: 1em;
+                max-width: 80%;
+                position: relative;
+                z-index: 1;
+            }
+            .__subtitle{
+                position: relative;
+                z-index: 1;
+                width: 50%;
+            }
+        }
+        .__content-1{
+            .__custom-list{
+                width: 100%;
+                margin: 1em 0 0 0;
+            }
+        }
+    }
+}

@@ -52,6 +52,8 @@ import DraftDaySelect from "./components/DrafDay/Selection";
 import DraftDayLive from "./components/DrafDay/Live";
 
 import "./App.css";
+import PPSSolutions from "./components/PPSSolutions/PPSSolutions";
+import Services from "./components/Services/Services";
 
 class App extends Component {
   render() {
@@ -111,6 +113,8 @@ class App extends Component {
             <Route path="/draft-day" component={DraftDayLanding} />
             <Route path="/draft-day-teams" component={DraftDaySelect} />
             <Route path="/draft-day-live" component={DraftDayLive} />
+            <Route path='/solutions' component={PPSSolutions} />
+            <Route path='/services' component={Services} />
           </div>
         </Router>
       </Provider>
