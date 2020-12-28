@@ -15,7 +15,7 @@
   font-weight: bold;
   color: #fb6e00;
 }
-.bg_black{
+.bg_black {
   background-color: black !important ;
   color: white !important;
 }
@@ -36,7 +36,7 @@
   width: 874px;
 }
 .live_draw_winning_box_content > p {
-  width: 213px;
+  width: 215px;
   height: 33px;
   font-family: Poppins;
   font-size: 24px;
@@ -89,7 +89,7 @@
   height: 230px;
 }
 .live_draw_in_play > p {
-  width: 77px;
+  width: 107px;
   height: 33px;
   font-family: Poppins;
   font-size: 24px;
@@ -160,7 +160,7 @@
 }
 
 .live_draw_my_numbers > p {
-  width: 150px;
+  width: 155px;
   height: 33px;
   font-family: Poppins;
   font-size: 24px;
@@ -233,6 +233,7 @@
 .edit_numbers_circle_active img {
   width: 18px;
   height: 22px;
+  display: block;
   position: absolute;
   margin-left: 20px;
   margin-top: -7px;
@@ -394,8 +395,9 @@
   border-radius: 11px;
   background-color: #0f0f0f;
   margin: 0px 0px 40px 0px;
-  padding: 8px 5px;
-  line-height: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mright_powerplays_item .item_img_wrapper {
   float: left;
@@ -403,19 +405,19 @@
   height: 44px;
   cursor: pointer;
 }
+.item_img_wrapper img {
+  width: 100%;
+}
 .mright_powerplays_item .item_right {
-  float: left;
   margin-left: 5px;
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mright_powerplays_item .item_right > p {
-  width: 57px;
-  height: 32px;
-  width: 45px;
-  height: 32px;
+  width: 68px;
   font-family: Poppins;
   font-size: 14px;
-  line-height: 1.14;
   color: #ffffff;
 }
 .mright_powerplays_item .lotto_live_powerplay_amount {
@@ -428,7 +430,6 @@
   float: right;
   color: #fff;
   margin-right: -19px;
-  margin-top: 5px;
 }
 
 .draw_wrapper {
@@ -510,6 +511,7 @@
 }
 .img-checked {
   position: absolute;
+  display: block;
   width: 17px !important;
   height: 17px !important;
   margin: -14px 0px 0px 15px !important;
@@ -833,7 +835,7 @@
   color: #ffffff;
   margin: 15px auto 15px !important;
 }
-.lotto-button-partner.orange{
+.lotto-button-partner.orange {
   cursor: pointer;
   width: 235px;
   height: 52px;
@@ -1140,7 +1142,7 @@
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
   }
 }
-#tourstep1{
+#tourstep1 {
   width: 180px;
   height: 480px;
   position: absolute;
@@ -1154,7 +1156,7 @@
   height: 75px;
   position: absolute;
   margin-left: 82px;
-  bottom: 361px;
+  bottom: 301px;
   z-index: -1;
 }
 #tourstep3 {
@@ -1162,9 +1164,9 @@
   height: 25px;
   position: absolute;
   margin-left: 172px;
-  bottom: 304px;
+  bottom: 254px;
 }
-#tourstep4{
+#tourstep4 {
   width: 243px;
   height: 50px;
   position: absolute;

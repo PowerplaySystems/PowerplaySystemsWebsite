@@ -564,9 +564,7 @@ class Page747Draw extends Component {
     }
   }
   getDraws() {
-    console.log("Called Draw");
     var curTime = new Date().getTime();
-
     if (this.state.isDemo) {
       if (curTime - lastCallToDraw < 2000) {
         return;
@@ -623,12 +621,12 @@ class Page747Draw extends Component {
       }
       //for the top row in live draw page
       if (myDrawnRow.length > 0) {
-        if (
-          this.state.gameData.status == "live" ||
-          this.state.gameData.status == "In Progress"
-        ) {
-          myDrawnRow.pop();
-        }
+        // if (
+        //   this.state.gameData.status == "live" ||
+        //   this.state.gameData.status == "In Progress"
+        // ) {
+        //   myDrawnRow.pop();
+        // }
 
         myDrawnRow.sort(
           (a, b) =>
@@ -653,7 +651,7 @@ class Page747Draw extends Component {
           updatedAt: Functions.getCurrentTimeEST(),
           drawRaw: DEMO_DRAW,
           draw: myDraws,
-          drawNumbersRow: [],
+          drawNumbersRow: myDrawnRow,
           requestedDraw: false,
           showInfo: false
         });
@@ -689,12 +687,12 @@ class Page747Draw extends Component {
             }
             //for the top row in live draw page
             if (myDrawnRow.length > 0) {
-              if (
-                this.state.gameData.status == "live" ||
-                this.state.gameData.status == "In Progress"
-              ) {
-                myDrawnRow.pop();
-              }
+              // if (
+              //   this.state.gameData.status == "live" ||
+              //   this.state.gameData.status == "In Progress"
+              // ) {
+              //   myDrawnRow.pop();
+              // }
 
               myDrawnRow.sort(
                 (a, b) =>
@@ -744,15 +742,12 @@ class Page747Draw extends Component {
       }
 
       if (myDrawnRow.length > 0) {
-        if (
-          result.game.status == "live" ||
-          result.game.status == "In Progress"
-        ) {
-          if (result.game.status == "finished" || myDraws.length > 6) {
-          } else {
-            myDrawnRow.pop();
-          }
-        }
+        // if (result.game.status == "live" || result.game.status == "In Progress") {
+        //   if (result.game.status == "finished" || myDraws.length > 6) {
+        //   } else {
+        //     myDrawnRow.pop();
+        //   }
+        // }
 
         myDrawnRow.sort(
           (a, b) =>
@@ -769,7 +764,7 @@ class Page747Draw extends Component {
             picks: myPicks,
             powerplays: result.powerplays,
             result: result.result,
-            drawNumbersRow: myDrawnRow
+            drawNumbersRow: result.draw
           });
         } else {
           this.setState({
@@ -778,7 +773,7 @@ class Page747Draw extends Component {
             gameData: result.game,
             powerplays: result.powerplays,
             result: result.result,
-            drawNumbersRow: myDrawnRow
+            drawNumbersRow: result.draw
           });
         }
       } else {
@@ -787,7 +782,7 @@ class Page747Draw extends Component {
             isLoaded: true,
             drawRaw: result.draw,
             draw: myDraws,
-            drawNumbersRow: myDrawnRow,
+            drawNumbersRow: result.draw,
             picks: myPicks,
             powerplays: result.powerplays,
             result: result.result,
@@ -799,7 +794,7 @@ class Page747Draw extends Component {
             isLoaded: true,
             drawRaw: result.draw,
             draw: myDraws,
-            drawNumbersRow: myDrawnRow,
+            drawNumbersRow: result.draw,
             picks: myPicks,
             gameData: result.game,
             powerplays: result.powerplays,
@@ -856,12 +851,12 @@ class Page747Draw extends Component {
               );
             }
             if (myDrawnRow.length > 0) {
-              if (
-                result.game.status == "live" ||
-                result.game.status == "In Progress"
-              ) {
-                myDrawnRow.pop();
-              }
+              // if (
+              //   result.game.status == "live" ||
+              //   result.game.status == "In Progress"
+              // ) {
+              //   myDrawnRow.pop();
+              // }
 
               myDrawnRow.sort(
                 (a, b) =>
@@ -1170,7 +1165,6 @@ class Page747Draw extends Component {
       showPrize: false
     });
   }
-
   handleShowPrize(game_type) {
     var prizesToShow = this.state.gameData.prize;
     prizesToShow.sort(function (a, b) {
@@ -1182,7 +1176,6 @@ class Page747Draw extends Component {
       prizes: prizesToShow
     });
   }
-
   hasWonPrize(matches) {
     let obj = this.state.gameData.prize.find(obj => obj.hits == matches);
     if (obj) {

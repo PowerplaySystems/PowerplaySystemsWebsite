@@ -231,7 +231,6 @@ class InPlay extends Component {
               });
             }
           }, 1000);
-          console.log("Timer Id: " + this.intervalIDTimer);
           setTimeout(function() {
             clearInterval(this.intervalIDTimer);
             clearInterval(this.intervalIDSecs);
