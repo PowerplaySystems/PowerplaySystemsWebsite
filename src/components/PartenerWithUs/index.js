@@ -26,16 +26,19 @@ class PartnerWithUs extends Component {
     this.uploadData = this.uploadData.bind(this);
   }
   handleClose() {
-    this.setState({
-      show: false
-    }, function () {
-      this.props.history.push("/")
-    });
+    this.setState(
+      {
+        show: false,
+      },
+      function() {
+        this.props.history.push("/");
+      }
+    );
   }
 
   handleShow() {
     this.setState({
-      show: true
+      show: true,
     });
   }
   componentDidMount() {
@@ -46,9 +49,9 @@ class PartnerWithUs extends Component {
     var name = document.getElementById("input-name").value;
     var email = document.getElementById("input-email").value;
     var phone = document.getElementById("input-number").value;
-    var business = document.getElementById("input-business").value;
+    var business = "";
     var message = document.getElementById("input-message").value;
-    if (email == "" || name == "" || phone == "" || business == "") {
+    if (email == "" || name == "" || phone == "") {
       alert("Please Fill out the form");
       return;
     }
@@ -67,25 +70,18 @@ class PartnerWithUs extends Component {
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
     var that = this;
-    xhr.addEventListener("readystatechange", function () {
+    xhr.addEventListener("readystatechange", function() {
       if (this.readyState === 4) {
-        // if (~this.responseText.indexOf("successfully")) {
-        //   popupText = "We will contact you in a short while!";
-        //   popupHader = "Successful!";
-        //   that.handleShow();
-        //   that.props.history.push("/");
-        // } else {
-        //   popupText = "Something Went Wrong, Please Try Again";
-        //   popupHader = "Sorry!";
-        //   that.handleShow();
-        // }
-        popupText = "We will contact you in a short while!";
-        popupHader = "Successful!";
-        that.handleShow();
-
+        alert("We will contact you in a short while!");
+        // popupText = "We will contact you in a short while!";
+        // popupHader = "Successful!";
+        // that.handleShow();
+        that.props.history.push({
+          pathname: "/",
+        });
       }
     });
-    xhr.open("POST", " https://" + Constants.URL + "/public_api/partner.php");
+    xhr.open("POST", " https://" + Constants.URL_WEBSITE + "/public_api/partner.php");
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
   }
@@ -106,26 +102,34 @@ class PartnerWithUs extends Component {
         <Header />
         <DrawTimer />
 
-        <div className='__partner-with-us'>
-
-          <div className='__viewport'>
-            <div className='__container-2'>
-              <div className='__title'>Partner with <span className='__primary'>Powerplay Systems</span></div>
-              <div className='__subtitle'>We’re here to help you boost your business via using our contest platfrom. <br /> We look forward to hearing from you </div>
-              <button className='__btn'>Partner With Us!</button>
+        <div className="__partner-with-us">
+          <div className="__viewport">
+            <div className="__container-2">
+              <div className="__title">
+                Partner with{" "}
+                <span className="__primary">Powerplay Systems</span>
+              </div>
+              <div className="__subtitle">
+                We’re here to help you boost your business via using our contest
+                platfrom. <br /> We look forward to hearing from you{" "}
+              </div>
+              <button className="__btn">Partner With Us!</button>
             </div>
           </div>
 
-          <div className='__main'>
-            <div className='__reverse-rotate'>
-              <div className='__container-2 __flex __sb'>
-
-                <div className='__left'>
-
-                  <img src={require("./../../assets/images/partner/interaction.png")} />
+          <div className="__main">
+            <div className="__reverse-rotate">
+              <div className="__container-2 __flex __sb">
+                <div className="__left">
+                  <img
+                    src={require("./../../assets/images/partner/interaction.png")}
+                  />
                   <div>
-                    <div className='__title'>Customer Engagement</div>
-                    <div>- Engage your customers with an exciting interactive experience. <br />- Tap into the Mobile generation</div>
+                    <div className="__title">Customer Engagement</div>
+                    <div>
+                      - Engage your customers with an exciting interactive
+                      experience. <br />- Tap into the Mobile generation
+                    </div>
                   </div>
 
                   <img
@@ -134,7 +138,11 @@ class PartnerWithUs extends Component {
                   />
                   <div>
                     <div className="__title">Build Your Brand</div>
-                    <div>- Offering a contest has been proven to increase brand awareness <br />- An email campaign is included with all our interactive options</div>
+                    <div>
+                      - Offering a contest has been proven to increase brand
+                      awareness <br />- An email campaign is included with all
+                      our interactive options
+                    </div>
                   </div>
 
                   <img
@@ -142,39 +150,43 @@ class PartnerWithUs extends Component {
                     src={require("./../../assets/images/partner/excited.png")}
                   />
                   <div>
-                    <div className='__title'>Drive customers behavior</div>
-                    <div>- PowerPlays are very valuable to our games, you can use this knowledge to drive customer actions (i.e. like us on Facebook to obtain an extra PowerPlay) <br />- Live In-game options are also available to increase interaction.</div>
+                    <div className="__title">Drive customers behavior</div>
+                    <div>
+                      - PowerPlays are very valuable to our games, you can use
+                      this knowledge to drive customer actions (i.e. like us on
+                      Facebook to obtain an extra PowerPlay) <br />- Live
+                      In-game options are also available to increase
+                      interaction.
+                    </div>
                   </div>
-
                 </div>
-                <div className='__show-on-mediam __title'>We look forward to hearing from you </div>
-                <form className='__right' onSubmit={this.uploadData}>
-                  <div className='__input-field'>
-                    <label htmlFor='input-name'>Name</label>
+                <div className="__show-on-mediam __title">
+                  We look forward to hearing from you{" "}
+                </div>
+                <form className="__right" onSubmit={this.uploadData}>
+                  <div className="__input-field">
+                    <label htmlFor="input-name">Name</label>
                     <input id="input-name" type="text" />
                   </div>
-                  <div className='__input-field'>
-                    <label htmlFor='input-email'>Email</label>
+                  <div className="__input-field">
+                    <label htmlFor="input-email">Email</label>
                     <input id="input-email" type="email" />
                   </div>
-                  <div className='__input-field'>
+                  <div className="__input-field">
                     <label>Phone Number</label>
                     <input id="input-number" type="number" min={0} />
                   </div>
-                  <div className='__input-field'>
-                    <label htmlFor='input-message'>Message</label>
-                    <textarea id="input-message" type="text" rows={6}></textarea>
+                  <div className="__input-field">
+                    <label htmlFor="input-message">Message</label>
+                    <textarea id="input-message" type="text" rows={6} />
                   </div>
-                  <button className='__btn'>Partner with us!</button>
+                  <button className="__btn">Partner with us!</button>
                 </form>
-
               </div>
             </div>
           </div>
-
         </div>
-        <div>
-        </div>
+        <div />
         <Footer />
       </>
     );
