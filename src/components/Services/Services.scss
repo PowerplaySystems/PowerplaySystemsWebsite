@@ -1,183 +1,193 @@
-.__Services{
-    background: #fff;
-    color: #000;
-    .__viewport{
-        min-height: initial;
-        color: #fff;
-    }
-    .__content{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 2em;
-        margin: 4em auto;
-        padding: 0 2em;
-        >div{
-            padding-left: 1.6em;
-            max-width: 35em;
-            position: relative;
-            .__title{
-                font-weight: 500;
-                font-size: 1.125em;
-            }
-            &::before{
-                font-size: 12px;
-                content: '';
-                width: 1em;
-                height: 1em;
-                background: #fb6e00;
-                position: absolute;
-                left: 0;
-                top: 0.6em;
-            }
-        }
-    }
-    .__content-footer{
-        text-align: center;
-        margin: 5em auto;
-        max-width: 22em;
-        .__call-today{
-            margin: 2em 0 1em 0;
-        }
-        .__phone-number{
-            font-size: 24px;
-            svg{
-                margin-right: 0.3em;
-            }
-        }
-    }
-    .__services-btn{
-        background: #fb6e00;
-        width: 220px;
-        text-transform: uppercase;
-        font-size: 1.25em;
+.__Services {
+  background: #fff;
+  color: #000;
+  .__viewport {
+    min-height: initial;
+    color: #fff;
+  }
+  .__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2em;
+    margin: 4em auto;
+    padding: 0 2em;
+    > div {
+      padding-left: 1.6em;
+      max-width: 35em;
+      position: relative;
+      .__title {
         font-weight: 500;
+        font-size: 1.125em;
+      }
+      &::before {
+        font-size: 12px;
+        content: "";
+        width: 1em;
+        height: 1em;
+        background: #fb6e00;
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+      }
+    }
+  }
+  .__content-footer {
+    text-align: center;
+    margin: 5em auto;
+    max-width: 22em;
+    .__call-today {
+      margin: 2em 0 1em 0;
+    }
+    .__phone-number {
+      font-size: 24px;
+      svg {
+        margin-right: 0.3em;
+      }
+    }
+  }
+  .__services-btn {
+    background: #fb6e00;
+    width: 220px;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 2px solid #fb6e00;
+    height: 48px;
+    line-height: 47px;
+    position: relative;
+    display: block;
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 1000px) {
+  .__Services {
+    .__viewport {
+      text-align: center;
+      padding: 7em 0 5em 0;
+      background: url("../../assets/images/about_us/bitmap-copy@2x.jpg");
+      background-size: cover;
+      .__title {
         border-radius: 6px;
-        border: 2px solid #fb6e00;
-        height: 48px;
-        line-height: 47px;
+        background: #fb6e00;
+        font-size: 2.25em;
+        padding: 0.09em 0.5em;
+        font-weight: bolder;
+        text-transform: uppercase;
+        line-height: normal;
+        letter-spacing: -0.35px;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+        margin: 0 auto 1em auto;
+        max-width: 15.5em;
+      }
+      .__subtitle {
+        text-shadow: 0 2px 10px #000000, 0 2px 4px #000000;
+        font-size: 1.125em;
+        line-height: 1.67;
+      }
+    }
+    .__main {
+      position: relative;
+      padding: 0.1px;
+      .__img-2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 33.33%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .__Services {
+    text-align: left;
+    overflow-x: hidden;
+    .__viewport {
+      padding: 2em 0 0 0;
+      .__title {
+        color: #fb6e00;
+        font-size: 1.714em;
+        font-weight: bold;
+        margin: 0 0 -3.5em 0;
         position: relative;
+        z-index: 1;
+      }
+      .__subtitle {
+        color: #111111;
+        font-style: italic;
+        font-weight: 500;
+      }
+      .__show-on-mediam {
+        max-width: 200px;
+        width: 50%;
+        position: relative;
+        margin-left: auto;
+        right: -55px;
+        margin-left: -2em;
+      }
+    }
+    .__content {
+      grid-template-columns: 1fr;
+      grid-gap: 1em;
+      padding: 0;
+      margin-top: 1em;
+      > div {
+        max-width: initial;
+      }
+    }
+    .__content-footer {
+      margin-bottom: 3em;
+    }
+    .__main {
+      .__img-2 {
         display: block;
-        text-align: center;
-        color: #fff;
-        display: inline-block;
+        margin-left: auto;
+      }
     }
-}
-@media (min-width: 1000px){
-    .__Services{
-        .__viewport{
-            text-align: center;
-            padding: 7em 0 5em 0;
-            background: url('../../assets/images/about_us/bitmap-copy@2x.jpg');
-            background-size: cover;
-            .__title{
-                border-radius: 6px;
-                background: #fb6e00;
-                font-size: 2.25em;
-                padding: 0.09em 0.5em;
-                font-weight: bolder;
-                text-transform: uppercase;
-                line-height: normal;
-                letter-spacing: -0.35px;
-                text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
-                margin: 0 auto 1em auto;
-                max-width: 15.5em;
-            }
-            .__subtitle{
-                text-shadow: 0 2px 10px #000000, 0 2px 4px #000000;
-                font-size: 1.125em;
-                line-height: 1.67;
-            }
-        }
-        .__main{
-            position: relative;
-            padding: 0.1px;
-            .__img-2{
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                width: 33.33%;
-            }
-        }
-    }   
-}
-@media (max-width: 1000px){
-    .__Services{
-        text-align: left;
-        overflow-x: hidden;
-        .__viewport{
-            padding: 2em 0 0 0;
-            .__title{
-                color: #fb6e00;
-                font-size: 1.714em;
-                font-weight: bold;
-                margin: 0 0 -3.5em 0;
-                position: relative;
-                z-index: 1;
-                
-            }
-            .__subtitle{
-                color: #111111;
-                font-style: italic;
-                font-weight: 500;
-            }
-            .__show-on-mediam{
-                max-width: 200px;
-                width: 50%;
-                position: relative;
-                margin-left: auto;
-                right: -55px;
-                margin-left: -2em;
-            }
-        }
-        .__content{
-            grid-template-columns: 1fr;
-            grid-gap: 1em;
-            padding: 0;
-            margin-top: 1em;
-            >div{
-                max-width: initial;
-            }
-        }
-        .__content-footer{
-            margin-bottom: 3em;
-        }
-        .__main{
-            .__img-2{
-                display: block;
-                margin-left: auto;    
-            }
-        }
-    }
+  }
 }
 
-
-@media (max-width: 600px){
-    .__Services{
-        font-size: 14px;
-        .__viewport{
-            .__title{
-                margin: 0 0 -1.2em 0;
-            }
-        }
-        .__main{
-            .__img-2{
-                width: 100%;    
-            }
-        }
+@media (max-width: 600px) {
+  .__Services {
+    font-size: 14px;
+    .__viewport {
+      .__title {
+        margin: 0 0 -1.2em 0;
+      }
     }
+    .__main {
+      .__img-2 {
+        width: 100%;
+      }
+    }
+  }
 }
 
-@media (max-width: 350px){
-    .__Services{
-        .__viewport{
-            .__title{
-                margin: 0;
-            }
-        }
-        .__content-footer{
-            .__phone-number{
-                font-size: 20px;
-            }
-        }
+@media (max-width: 350px) {
+  .__Services {
+    .__viewport {
+      .__title {
+        margin: 0;
+      }
     }
+    .__content-footer {
+      .__phone-number {
+        font-size: 20px;
+      }
+    }
+  }
 }
+@media (min-width: 1550px) {
+    .__Services {
+      .__main {
+        .__img-2 {
+          width: 30%;
+          margin-left: auto;
+        }
+      }
+    }
+  }
