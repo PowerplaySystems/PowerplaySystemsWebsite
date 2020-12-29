@@ -13,7 +13,7 @@ class Footer extends Component {
               <img alt='' src={logo} className='__brand-logo' />
             </Link>
             <div className='__links'>
-              <Link to='/faqs'>FAQs</Link>
+              {/* <Link to='/faqs'>FAQs</Link> */}
               <Link to='/about-us'>About Us</Link>
               <Link to='/services'>Services</Link>
               <Link to='/solutions'>Solutions</Link>
