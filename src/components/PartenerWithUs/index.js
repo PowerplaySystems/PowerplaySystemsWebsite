@@ -50,9 +50,9 @@ class PartnerWithUs extends Component {
     var name = document.getElementById("input-name").value;
     var email = document.getElementById("input-email").value;
     var phone = document.getElementById("input-number").value;
-    var business = document.getElementById("input-business").value;
+    var business = "";
     var message = document.getElementById("input-message").value;
-    if (email == "" || name == "" || phone == "" || business == "") {
+    if (email == "" || name == "" || phone == "") {
       alert("Please Fill out the form");
       return;
     }
@@ -73,22 +73,16 @@ class PartnerWithUs extends Component {
     var that = this;
     xhr.addEventListener("readystatechange", function() {
       if (this.readyState === 4) {
-        // if (~this.responseText.indexOf("successfully")) {
-        //   popupText = "We will contact you in a short while!";
-        //   popupHader = "Successful!";
-        //   that.handleShow();
-        //   that.props.history.push("/");
-        // } else {
-        //   popupText = "Something Went Wrong, Please Try Again";
-        //   popupHader = "Sorry!";
-        //   that.handleShow();
-        // }
-        popupText = "We will contact you in a short while!";
-        popupHader = "Successful!";
-        that.handleShow();
+        alert("We will contact you in a short while!");
+        // popupText = "We will contact you in a short while!";
+        // popupHader = "Successful!";
+        // that.handleShow();
+        that.props.history.push({
+          pathname: "/",
+        });
       }
     });
-    xhr.open("POST", " https://" + Constants.URL + "/public_api/partner.php");
+    xhr.open("POST", " https://" + Constants.URL_WEBSITE + "/public_api/partner.php");
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
   }
@@ -192,11 +186,7 @@ class PartnerWithUs extends Component {
                   </div>
                   <div className="__input-field">
                     <label htmlFor="input-message">Message</label>
-                    <textarea
-                      id="input-message"
-                      type="text"
-                      rows={6}
-                    ></textarea>
+                    <textarea id="input-message" type="text" rows={6} />
                   </div>
                   <button className="__btn">Partner with us!</button>
                 </form>
@@ -204,7 +194,7 @@ class PartnerWithUs extends Component {
             </div>
           </div>
         </div>
-        <div></div>
+        <div />
         <Footer />
       </>
     );

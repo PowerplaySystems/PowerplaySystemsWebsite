@@ -12,9 +12,8 @@ import * as Functions from "./../common/functions";
 import Cookies from "universal-cookie";
 import * as DrawComponents from "./DrawComponents";
 import InPlay from "./InPlay";
-//import Modal from 'react-modal'
-import Modal from "react-bootstrap/lib/Modal";
-import Button from "react-bootstrap/lib/Button";
+
+import Popup from "../../ui/Popup";
 
 //demo game variables
 var DEMO_PICKS = [];
@@ -32,7 +31,7 @@ var DEMO_GAME_DATA = {
     { hits: 4, prize: 100 },
     { hits: 3, prize: 50 },
     { hits: 2, prize: 25 },
-    { hits: 1, prize: 15 }
+    { hits: 1, prize: 15 },
   ],
   countdown_timer: 30,
   delay: 1,
@@ -42,7 +41,7 @@ var DEMO_GAME_DATA = {
   code: null,
   status: "unplayed",
   deadline: "2020-12-30 12:59:00",
-  entry: 109
+  entry: 109,
 };
 var lastCallToDraw = 0;
 //Popup variables
@@ -56,12 +55,12 @@ var canSelectBall = true;
 let mCircleStyles = {
   backgroundImage: "url(" + bg + ")",
   backgroundSize: "cover",
-  overflow: "hidden"
+  overflow: "hidden",
 };
 let mLockedCircleStyles = {
   backgroundImage: "url(" + bg + ")",
   backgroundSize: "cover",
-  overflow: "hidden"
+  overflow: "hidden",
 };
 var mTotalMatchedLast = 0;
 var isInDelay = false;
@@ -81,7 +80,7 @@ var tourSteps = [
     placement: "left",
     disableBeacon: true,
     content:
-      "This is How many powerplays you have for the draw. Powerplays are used to edit your selected Numbers"
+      "This is How many powerplays you have for the draw. Powerplays are used to edit your selected Numbers",
   },
 
   {
@@ -89,21 +88,21 @@ var tourSteps = [
     content:
       "In-Play numbers are shown on this ball. Try to match it before the timer runs out!",
     placement: "left",
-    disableBeacon: true
+    disableBeacon: true,
   },
   {
     target: "#tourstep3",
     content:
       "The timer will be displayed here. This is how much time you have to edit your numbers.",
     placement: "bottom-start",
-    disableBeacon: true
+    disableBeacon: true,
   },
   {
     target: "#tourstep4",
     disableBeacon: true,
     content:
-      "Clicking a number will open the edit window. Use your available powerplays to match the in-play numbers!"
-  }
+      "Clicking a number will open the edit window. Use your available powerplays to match the in-play numbers!",
+  },
 ];
 class Page747Draw extends Component {
   constructor(props) {
@@ -137,7 +136,7 @@ class Page747Draw extends Component {
         replaceAllCheck: false,
         powerplayRefresh: false,
         run: false,
-        steps: tourSteps
+        steps: tourSteps,
       };
     } else {
       this.state = {
@@ -167,7 +166,7 @@ class Page747Draw extends Component {
         replaceAllCheck: false,
         run: false,
         powerplayRefresh: false,
-        steps: tourSteps
+        steps: tourSteps,
       };
     }
 
@@ -207,26 +206,26 @@ class Page747Draw extends Component {
     this.props.history.push({
       pathname: "747",
       state: {
-        gameData: "demo"
-      }
+        gameData: "demo",
+      },
     });
   }
   /* Prize Modal*/
   handleClose() {
     this.setState({
-      show: false
+      show: false,
     });
   }
 
   handleShow() {
     this.setState({
-      show: true
+      show: true,
     });
   }
   /* Checking if the element matches any draw number*/
   isAMatch(element) {
     let obj = this.state.draw.find(
-      obj => obj.daw_ball_number == element.number
+      (obj) => obj.daw_ball_number == element.number
     );
     if (obj) {
       return true;
@@ -243,12 +242,12 @@ class Page747Draw extends Component {
   // Confirm Dailog
   hideConfirmDialog() {
     this.setState({
-      confirmDialog: false
+      confirmDialog: false,
     });
   }
   dialog() {
     this.setState({
-      confirmDialog: true
+      confirmDialog: true,
     });
   }
   //calback when yes pressed for replace all
@@ -256,13 +255,13 @@ class Page747Draw extends Component {
     this.onPowerplayClicked(Constants.LOTETRY_POWERPLAY_REFRESH);
     this.setState({
       confirmDialog: false,
-      replaceAllCheck: true
+      replaceAllCheck: true,
     });
   }
   //calback when no pressed for replace all
   noCallback() {
     this.setState({
-      confirmDialog: false
+      confirmDialog: false,
     });
   }
   //animate the new set of numbers after replace all pressed
@@ -274,26 +273,26 @@ class Page747Draw extends Component {
     for (x = 0; x < 7; x++) {
       newPicks.push({
         id: x,
-        number: "-"
+        number: "-",
       });
     }
 
     ballSelected = null;
     this.setState({
-      picks: newPicks
+      picks: newPicks,
     });
     var that = this;
     var x = 0;
     var intervalID = setInterval(function() {
       newPicks[x] = {
         id: x,
-        number: selectedNumbers[x]
+        number: selectedNumbers[x],
       };
       that.setTotalMatched();
       oldReplacedNumber = oldPicks[x];
       newReplacedNumber = newPicks[x];
       that.setState({
-        picks: newPicks
+        picks: newPicks,
       });
 
       if (++x === 7) {
@@ -315,7 +314,7 @@ class Page747Draw extends Component {
           that.setState({
             secondsTimer: Functions.getSeconds(
               that.state.gameData.start_datetime
-            )
+            ),
           });
         });
       }
@@ -332,7 +331,7 @@ class Page747Draw extends Component {
     var dt = new Date(this.state.gameData.start_datetime);
     var countDownDate = new Date(dt).getTime();
     var usaTime = new Date().toLocaleString("en-US", {
-      timeZone: "America/New_York"
+      timeZone: "America/New_York",
     });
     usaTime = new Date(usaTime);
     var now = usaTime.getTime();
@@ -342,9 +341,9 @@ class Page747Draw extends Component {
   // seting total matched numbers
   setTotalMatched() {
     mTotalMatched = 0;
-    this.state.picks.forEach(element => {
+    this.state.picks.forEach((element) => {
       let obj = this.state.draw.find(
-        obj => obj.daw_ball_number == element.number
+        (obj) => obj.daw_ball_number == element.number
       );
       if (obj) {
         mTotalMatched = mTotalMatched + 1;
@@ -355,14 +354,14 @@ class Page747Draw extends Component {
     }
     if (lastUsedPowerplay == Constants.LOTETRY_POWERPLAY_CHANGE) {
       this.setState({
-        powerplayRefresh: true
+        powerplayRefresh: true,
       });
       lastUsedPowerplay = null;
       var that = this;
 
       var set = setTimeout(function() {
         that.setState({
-          powerplayRefresh: false
+          powerplayRefresh: false,
         });
         lastUsedPowerplay = null;
       }, 3000);
@@ -377,13 +376,13 @@ class Page747Draw extends Component {
 
   showInfo() {
     this.setState({
-      showInfo: true
+      showInfo: true,
     });
     var that = this;
 
     var set = setTimeout(function() {
       that.setState({
-        showInfo: false
+        showInfo: false,
       });
     }, 3000);
   }
@@ -498,15 +497,15 @@ class Page747Draw extends Component {
       case Constants.LOTETRY_POWERPLAY_CHANGE:
         while (true) {
           newNumber = Math.floor(Math.random() * 47);
-          let obj = this.state.picks.find(obj => obj.number == newNumber);
+          let obj = this.state.picks.find((obj) => obj.number == newNumber);
           if (!obj) {
             oldReplacedNumber = {
               id: 0,
-              number: ballSelected
+              number: ballSelected,
             };
             newReplacedNumber = {
               id: 0,
-              number: newNumber
+              number: newNumber,
             };
 
             break;
@@ -536,7 +535,7 @@ class Page747Draw extends Component {
     if (powerplay == Constants.LOTETRY_POWERPLAY_REFRESH) {
     } else {
       if (this.state.picks == undefined) return 0;
-      this.state.picks.forEach(element => {
+      this.state.picks.forEach((element) => {
         selectedNumbers.push(element.number);
       });
       if (selectedNumbers.indexOf(newNumber) > -1) {
@@ -547,10 +546,10 @@ class Page747Draw extends Component {
         return;
       }
       selectedNumbers = [];
-      let obj = this.state.picks.find(obj => obj.number == ballSelected);
+      let obj = this.state.picks.find((obj) => obj.number == ballSelected);
       if (obj) {
         obj.number = newNumber;
-        this.state.picks.forEach(element => {
+        this.state.picks.forEach((element) => {
           selectedNumbers.push(element.number);
         });
       }
@@ -564,9 +563,7 @@ class Page747Draw extends Component {
     }
   }
   getDraws() {
-    console.log("Called Draw");
     var curTime = new Date().getTime();
-
     if (this.state.isDemo) {
       if (curTime - lastCallToDraw < 2000) {
         return;
@@ -577,7 +574,7 @@ class Page747Draw extends Component {
       if (DEMO_DRAW.length > 0) {
         while (true) {
           var newNumber = this.getRandomInt(1, 47);
-          let obj = DEMO_DRAW.find(obj => obj.daw_ball_number == newNumber);
+          let obj = DEMO_DRAW.find((obj) => obj.daw_ball_number == newNumber);
 
           if (obj) {
           } else {
@@ -586,7 +583,7 @@ class Page747Draw extends Component {
               game_id: 150,
               daw_ball_number: newNumber,
               draw_number: DEMO_DRAW.length,
-              date_time: "2019-09-30 16:05:02.26147"
+              date_time: "2019-09-30 16:05:02.26147",
             };
             break;
           }
@@ -598,7 +595,7 @@ class Page747Draw extends Component {
           game_id: 150,
           daw_ball_number: newNumber,
           draw_number: DEMO_DRAW.length,
-          date_time: "2019-09-30 16:05:02.26147"
+          date_time: "2019-09-30 16:05:02.26147",
         };
       }
       if (DEMO_DRAW.length <= 7) {
@@ -623,12 +620,12 @@ class Page747Draw extends Component {
       }
       //for the top row in live draw page
       if (myDrawnRow.length > 0) {
-        if (
-          this.state.gameData.status == "live" ||
-          this.state.gameData.status == "In Progress"
-        ) {
-          myDrawnRow.pop();
-        }
+        // if (
+        //   this.state.gameData.status == "live" ||
+        //   this.state.gameData.status == "In Progress"
+        // ) {
+        //   myDrawnRow.pop();
+        // }
 
         myDrawnRow.sort(
           (a, b) =>
@@ -642,7 +639,7 @@ class Page747Draw extends Component {
             drawRaw: DEMO_DRAW,
             draw: myDraws,
             drawNumbersRow: myDrawnRow,
-            requestedDraw: false
+            requestedDraw: false,
           });
         }
       } else {
@@ -653,9 +650,9 @@ class Page747Draw extends Component {
           updatedAt: Functions.getCurrentTimeEST(),
           drawRaw: DEMO_DRAW,
           draw: myDraws,
-          drawNumbersRow: [],
+          drawNumbersRow: myDrawnRow,
           requestedDraw: false,
-          showInfo: false
+          showInfo: false,
         });
       }
       this.setTotalMatched();
@@ -672,8 +669,8 @@ class Page747Draw extends Component {
           "&game_id=" +
           that.state.gameData.id
       )
-        .then(res => res.json())
-        .then(result => {
+        .then((res) => res.json())
+        .then((result) => {
           let myDraws = [...result.draw];
           let myDrawnRow = [...result.draw];
           //if there isn't new draw return without doing anything!
@@ -689,12 +686,12 @@ class Page747Draw extends Component {
             }
             //for the top row in live draw page
             if (myDrawnRow.length > 0) {
-              if (
-                this.state.gameData.status == "live" ||
-                this.state.gameData.status == "In Progress"
-              ) {
-                myDrawnRow.pop();
-              }
+              // if (
+              //   this.state.gameData.status == "live" ||
+              //   this.state.gameData.status == "In Progress"
+              // ) {
+              //   myDrawnRow.pop();
+              // }
 
               myDrawnRow.sort(
                 (a, b) =>
@@ -706,7 +703,7 @@ class Page747Draw extends Component {
               drawRaw: result.draw,
               draw: myDraws,
               drawNumbersRow: myDrawnRow,
-              requestedDraw: false
+              requestedDraw: false,
             });
           }
         });
@@ -715,7 +712,7 @@ class Page747Draw extends Component {
   //update draw NUmbers Row
   updateDrawNumberRow(row) {
     this.setState({
-      drawNumbersRow: row
+      drawNumbersRow: row,
     });
   }
   getData() {
@@ -728,7 +725,7 @@ class Page747Draw extends Component {
         game: DEMO_GAME_DATA,
         draw: [...DEMO_DRAW],
         powerplays: DEMO_POWEPLAYS,
-        result: []
+        result: [],
       };
       let myDraws = [...result.draw];
       let myDrawnRow = [...result.draw];
@@ -744,15 +741,12 @@ class Page747Draw extends Component {
       }
 
       if (myDrawnRow.length > 0) {
-        if (
-          result.game.status == "live" ||
-          result.game.status == "In Progress"
-        ) {
-          if (result.game.status == "finished" || myDraws.length > 6) {
-          } else {
-            myDrawnRow.pop();
-          }
-        }
+        // if (result.game.status == "live" || result.game.status == "In Progress") {
+        //   if (result.game.status == "finished" || myDraws.length > 6) {
+        //   } else {
+        //     myDrawnRow.pop();
+        //   }
+        // }
 
         myDrawnRow.sort(
           (a, b) =>
@@ -769,7 +763,7 @@ class Page747Draw extends Component {
             picks: myPicks,
             powerplays: result.powerplays,
             result: result.result,
-            drawNumbersRow: myDrawnRow
+            drawNumbersRow: result.draw,
           });
         } else {
           this.setState({
@@ -778,7 +772,7 @@ class Page747Draw extends Component {
             gameData: result.game,
             powerplays: result.powerplays,
             result: result.result,
-            drawNumbersRow: myDrawnRow
+            drawNumbersRow: result.draw,
           });
         }
       } else {
@@ -787,24 +781,24 @@ class Page747Draw extends Component {
             isLoaded: true,
             drawRaw: result.draw,
             draw: myDraws,
-            drawNumbersRow: myDrawnRow,
+            drawNumbersRow: result.draw,
             picks: myPicks,
             powerplays: result.powerplays,
             result: result.result,
 
-            requestedDraw: false
+            requestedDraw: false,
           });
         } else {
           this.setState({
             isLoaded: true,
             drawRaw: result.draw,
             draw: myDraws,
-            drawNumbersRow: myDrawnRow,
+            drawNumbersRow: result.draw,
             picks: myPicks,
             gameData: result.game,
             powerplays: result.powerplays,
 
-            result: result.result
+            result: result.result,
           });
         }
       }
@@ -840,9 +834,9 @@ class Page747Draw extends Component {
           "&game_id=" +
           this.state.gameData.id
       )
-        .then(res => res.json())
+        .then((res) => res.json())
         .then(
-          result => {
+          (result) => {
             let myDraws = [...result.draw];
             let myDrawnRow = [...result.draw];
             let myPicks = result.picks;
@@ -856,12 +850,12 @@ class Page747Draw extends Component {
               );
             }
             if (myDrawnRow.length > 0) {
-              if (
-                result.game.status == "live" ||
-                result.game.status == "In Progress"
-              ) {
-                myDrawnRow.pop();
-              }
+              // if (
+              //   result.game.status == "live" ||
+              //   result.game.status == "In Progress"
+              // ) {
+              //   myDrawnRow.pop();
+              // }
 
               myDrawnRow.sort(
                 (a, b) =>
@@ -879,7 +873,7 @@ class Page747Draw extends Component {
                   isLoaded: true,
                   picks: myPicks,
                   powerplays: result.powerplays,
-                  result: result.result
+                  result: result.result,
                 });
               } else {
                 this.setState({
@@ -887,7 +881,7 @@ class Page747Draw extends Component {
                   picks: myPicks,
                   gameData: result.game,
                   powerplays: result.powerplays,
-                  result: result.result
+                  result: result.result,
                 });
               }
             } else {
@@ -901,7 +895,7 @@ class Page747Draw extends Component {
                   powerplays: result.powerplays,
                   result: result.result,
                   updatedAt: Functions.getCurrentTimeEST(),
-                  requestedDraw: false
+                  requestedDraw: false,
                 });
               } else {
                 this.setState({
@@ -912,7 +906,7 @@ class Page747Draw extends Component {
                   picks: myPicks,
                   gameData: result.game,
                   powerplays: result.powerplays,
-                  result: result.result
+                  result: result.result,
                 });
               }
             }
@@ -937,10 +931,10 @@ class Page747Draw extends Component {
               that.countdownTimer("check", null, null);
             }
           },
-          error => {
+          (error) => {
             this.setState({
               hasError: true,
-              error: error
+              error: error,
             });
           }
         );
@@ -981,7 +975,7 @@ class Page747Draw extends Component {
   }
   getPowerplayAmount(id) {
     if (this.state.powerplays == undefined) return 0;
-    let obj = this.state.powerplays.find(obj => obj.id == id);
+    let obj = this.state.powerplays.find((obj) => obj.id == id);
     if (obj) {
       return obj.ramining_amount;
     } else {
@@ -997,7 +991,7 @@ class Page747Draw extends Component {
         { id: 2654, number: selectedNumbers[3] },
         { id: 2655, number: selectedNumbers[4] },
         { id: 2656, number: selectedNumbers[5] },
-        { id: 2657, number: selectedNumbers[6] }
+        { id: 2657, number: selectedNumbers[6] },
       ];
 
       DEMO_POWEPLAYS[powerplay - 1].ramining_amount =
@@ -1051,14 +1045,14 @@ class Page747Draw extends Component {
       { id: 2654, number: this.props.location.state.picks[3] },
       { id: 2655, number: this.props.location.state.picks[4] },
       { id: 2656, number: this.props.location.state.picks[5] },
-      { id: 2657, number: this.props.location.state.picks[6] }
+      { id: 2657, number: this.props.location.state.picks[6] },
     ];
     DEMO_POWEPLAYS = [
       { id: 1, ramining_amount: 1 },
       { id: 2, ramining_amount: 1 },
       { id: 3, ramining_amount: 1 },
       { id: 4, ramining_amount: 5 },
-      { id: 5, ramining_amount: 5 }
+      { id: 5, ramining_amount: 5 },
     ];
     DEMO_DRAW = [];
     DEMO_GAME_DATA = {
@@ -1073,7 +1067,7 @@ class Page747Draw extends Component {
         { hits: 4, prize: 100 },
         { hits: 3, prize: 50 },
         { hits: 2, prize: 25 },
-        { hits: 1, prize: 15 }
+        { hits: 1, prize: 15 },
       ],
       countdown_timer: 12,
       delay: 2,
@@ -1083,7 +1077,7 @@ class Page747Draw extends Component {
       code: null,
       status: "unplayed",
       deadline: "2019-12-30 12:59:00",
-      entry: 109
+      entry: 109,
     };
     if (document.getElementById("scroller"))
       document.getElementById("scroller").scrollIntoView(true);
@@ -1095,7 +1089,7 @@ class Page747Draw extends Component {
     var that = this;
     setTimeout(function() {
       that.setState({
-        run: true
+        run: true,
       });
     }, 1000);
   }
@@ -1115,7 +1109,7 @@ class Page747Draw extends Component {
         { hits: 4, prize: 100 },
         { hits: 3, prize: 50 },
         { hits: 2, prize: 25 },
-        { hits: 1, prize: 15 }
+        { hits: 1, prize: 15 },
       ],
       countdown_timer: 12,
       delay: 2,
@@ -1125,7 +1119,7 @@ class Page747Draw extends Component {
       code: null,
       status: "unplayed",
       deadline: "2019-12-30 12:59:00",
-      entry: 109
+      entry: 109,
     };
   }
   getLotteryGames() {
@@ -1137,16 +1131,16 @@ class Page747Draw extends Component {
       link = link + "?jwt=" + jwt;
     }
     fetch(link)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
-        xx => {
+        (xx) => {
           this.setState({
-            nextGame: xx.records[0]
+            nextGame: xx.records[0],
           });
         },
-        error => {
+        (error) => {
           this.setState({
-            error: error
+            error: error,
           });
         }
       );
@@ -1161,16 +1155,15 @@ class Page747Draw extends Component {
     this.props.history.push({
       pathname: path,
       state: {
-        gameData: game
-      }
+        gameData: game,
+      },
     });
   }
   handleClosePrize() {
     this.setState({
-      showPrize: false
+      showPrize: false,
     });
   }
-
   handleShowPrize(game_type) {
     var prizesToShow = this.state.gameData.prize;
     prizesToShow.sort(function(a, b) {
@@ -1179,12 +1172,11 @@ class Page747Draw extends Component {
 
     this.setState({
       showPrize: true,
-      prizes: prizesToShow
+      prizes: prizesToShow,
     });
   }
-
   hasWonPrize(matches) {
-    let obj = this.state.gameData.prize.find(obj => obj.hits == matches);
+    let obj = this.state.gameData.prize.find((obj) => obj.hits == matches);
     if (obj) {
       if (obj.prize > 0) {
         return true;
@@ -1202,8 +1194,8 @@ class Page747Draw extends Component {
         gameData: this.state.gameData,
         draw: this.state.draw,
         result: this.state.result,
-        picks: this.state.picks
-      }
+        picks: this.state.picks,
+      },
     });
   };
   componentMyNumbers() {
@@ -1233,7 +1225,7 @@ class Page747Draw extends Component {
                     <div
                       className="inner-div-select"
                       style={mLockedCircleStyles}
-                      onClick={e => this.onBallClicked(element.number)}
+                      onClick={(e) => this.onBallClicked(element.number)}
                     >
                       {element.number}
                       <img
@@ -1255,7 +1247,7 @@ class Page747Draw extends Component {
                           : "edit_numbers_circle circle_disabled"
                       }
                       style={mCircleStyles}
-                      onClick={e => this.onBallClicked(element.number)}
+                      onClick={(e) => this.onBallClicked(element.number)}
                     >
                       {element.number}
                     </div>
@@ -1284,7 +1276,7 @@ class Page747Draw extends Component {
                             Constants.LOTETRY_POWERPLAY_CHANGE
                           ) > 0 ? (
                             <img
-                              onClick={e =>
+                              onClick={(e) =>
                                 this.onPowerplayClicked(
                                   Constants.LOTETRY_POWERPLAY_CHANGE
                                 )
@@ -1299,7 +1291,7 @@ class Page747Draw extends Component {
                             Constants.LOTETRY_POWERPLAY_FORCE_MATCH
                           ) > 0 ? (
                             <img
-                              onClick={e =>
+                              onClick={(e) =>
                                 this.onPowerplayClicked(
                                   Constants.LOTETRY_POWERPLAY_FORCE_MATCH
                                 )
@@ -1314,7 +1306,7 @@ class Page747Draw extends Component {
                             Constants.LOTETRY_POWERPLAY_DECREASE
                           ) > 0 ? (
                             <img
-                              onClick={e =>
+                              onClick={(e) =>
                                 this.onPowerplayClicked(
                                   Constants.LOTETRY_POWERPLAY_DECREASE
                                 )
@@ -1330,7 +1322,7 @@ class Page747Draw extends Component {
                             Constants.LOTETRY_POWERPLAY_INCREASE
                           ) > 0 ? (
                             <img
-                              onClick={e =>
+                              onClick={(e) =>
                                 this.onPowerplayClicked(
                                   Constants.LOTETRY_POWERPLAY_INCREASE
                                 )
@@ -1517,7 +1509,7 @@ class Page747Draw extends Component {
       </div>
     );
   }
-  handleJoyrideCallback = data => {
+  handleJoyrideCallback = (data) => {
     const { action, index, status, type } = data;
     if (data.action === "close" && data.type === "step:after") {
       // if (index == 0) {
@@ -1548,7 +1540,7 @@ class Page747Draw extends Component {
     setTimeout(function() {
       that.setState({
         run: true,
-        stepIndex: 1
+        stepIndex: 1,
       });
     }, 1000);
   }
@@ -1558,7 +1550,7 @@ class Page747Draw extends Component {
       close: "Close",
       last: "Last",
       next: "Next",
-      skip: "Don't Show me agian"
+      skip: "Don't Show me agian",
     };
     return (
       <div>
@@ -1578,22 +1570,29 @@ class Page747Draw extends Component {
               backgroundColor: "rgba(26, 26, 26, 0.95)",
 
               primaryColor: "#fb6e00",
-              textColor: "#fff"
-            }
+              textColor: "#fff",
+            },
           }}
         />
-       <Header />
-        <DrawTimer/>
-
+        <Header />
+        <DrawTimer />
+        <div className="__747-page">
+          <div className="__viewport">
+            <div className="__content">
+              <img
+                src={require("../../assets/images/747/hero-image@2x.png")}
+                alt=""
+                className="__viewport-image"
+              />
+              <div className="__container">
+                <div className="__main-title __flex">747</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="container-fluid _faq_wrap">
           <div className="container-fluid">
             <div className="page747_live_rows">
-              <div>
-                <img
-                  className="img-responsive header-live-draw"
-                  src={require("./../../assets/images/747/747_header.png")}
-                />
-              </div>
               <div>
                 <div className="live_draw_div_jackpot">
                   {/* <p className="live_draw_div_jackpot_header" id="scroller">
@@ -1682,8 +1681,8 @@ class Page747Draw extends Component {
                   <div className="live_draw_content_left">
                     {this.componentWinnigNUmbers()}
                     <div className="live_draw_in_play">
-                      <div id="tourstep3"></div>
-                      <div id="tourstep2"></div>
+                      <div id="tourstep3" />
+                      <div id="tourstep2" />
                       <InPlay
                         drawRaw={this.state.drawRaw}
                         gameData={this.state.gameData}
@@ -1703,7 +1702,7 @@ class Page747Draw extends Component {
                     </div>
 
                     <div className="live_draw_my_numbers" id="my-numbers">
-                      <div id="tourstep4"></div>
+                      <div id="tourstep4" />
                       {this.componentMyNumbers()}
                     </div>
                     <div className="live_draw_my_prize_wrapper">
@@ -1802,7 +1801,7 @@ class Page747Draw extends Component {
                               </div>
                               <button
                                 className="live_draw_loser_button"
-                                onClick={e =>
+                                onClick={(e) =>
                                   this.onPickNumbersClicked(
                                     "/747",
                                     this.state.nextGame
@@ -1863,7 +1862,7 @@ class Page747Draw extends Component {
 
                             <button
                               className="button_pickNumbers"
-                              onClick={e =>
+                              onClick={(e) =>
                                 this.onPickNumbersClicked(
                                   "/747",
                                   this.state.nextGame
@@ -1934,7 +1933,7 @@ class Page747Draw extends Component {
                     </div>
                   </div>
                   <div className="live_draw_content_right">
-                    <div id="tourstep1"></div>
+                    <div id="tourstep1" />
                     {this.componentPowerplays()}
                   </div>
                 </div>
@@ -1959,7 +1958,7 @@ class Page747Draw extends Component {
                             <div className="button_show_prize_wrapper">
                               <button
                                 className="button_show_prize"
-                                onClick={e => this.handleShowPrize("747")}
+                                onClick={(e) => this.handleShowPrize("747")}
                               >
                                 View All Prizes
                               </button>
@@ -2027,14 +2026,14 @@ class Page747Draw extends Component {
             </div>
           </div>
         </div>
-        <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
-          <Modal.Header closeButton>
-            <Modal.Title>Prizes</Modal.Title>
+        <Popup show={this.state.showPrize} onHide={this.handleClosePrize}>
+          <Popup.Header closeButton>
+            <Popup.Title>Prizes</Popup.Title>
             <div className="prize-note">
               *Note: All Prizes Will be divided equally among Winners
             </div>
-          </Modal.Header>
-          <Modal.Body className="grid-body">
+          </Popup.Header>
+          <Popup.Body className="grid-body">
             {
               <table className="modal-prize-table">
                 <thead>
@@ -2059,36 +2058,36 @@ class Page747Draw extends Component {
                 </tbody>
               </table>
             }
-          </Modal.Body>
-        </Modal>
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title> {popupHader} </Modal.Title>
-          </Modal.Header>
-          <Modal.Body> {popupText}</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
+          </Popup.Body>
+        </Popup>
+        <Popup show={this.state.show} onHide={this.handleClose}>
+          <Popup.Header closeButton>
+            <Popup.Title> {popupHader} </Popup.Title>
+          </Popup.Header>
+          <Popup.Body> {popupText}</Popup.Body>
+          <Popup.Footer>
+            <button variant="secondary" onClick={this.handleClose}>
               Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-        <Modal show={this.state.confirmDialog} onHide={this.hideConfirmDialog}>
-          <Modal.Header>
-            <Modal.Title>Confirm </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+            </button>
+          </Popup.Footer>
+        </Popup>
+        <Popup
+          show={this.state.confirmDialog}
+          onHide={this.hideConfirmDialog}
+          title="Confirm"
+          closeButton
+          footer={[
+            <button onClick={this.noCallback}>Cancel</button>,
+            <button onClick={this.yesCallback}>Confirm</button>,
+          ]}
+        >
+          <div>
+            {" "}
             This will replace all your numbers with a random new set. Are you
             sure?
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.noCallback}>
-              Cancel
-            </Button>
-            <Button variant="secondary" onClick={this.yesCallback}>
-              Confirm
-            </Button>
-          </Modal.Footer>
-        </Modal>
+          </div>
+        </Popup>
+       
         <Footer />
       </div>
     );
