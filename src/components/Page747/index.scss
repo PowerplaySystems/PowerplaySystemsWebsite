@@ -1,6 +1,7 @@
 .__747-page{
     .__viewport{
         text-align: center;
+        min-height: initial;
         .__content{
             font-size: 1.25em;
         }
@@ -309,7 +310,6 @@
             }
         }
         .__viewport{
-            min-height: initial;
             .__747-card{
                 .__border, .__balls{
                     display: none;
