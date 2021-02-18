@@ -138,7 +138,7 @@ class AboutUs extends Component {
           <div className="__container">
             <div className="__title __primary">Where to find us?</div>
             <div className="__subtitle __primary __flex __flex-center">
-              <CallCenter /> 1-888-777-666-555
+              <CallCenter /> 844-268-1573
             </div>
             <div className="__subtitle __primary __flex __flex-center">
               <PlaceHolder /> 140 Yonge St., S.200 Toronto, Ontario
