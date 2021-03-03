@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import "./index.scss";
 import Header from "./../common/Header";
 import { Link, withRouter } from "react-router-dom";
@@ -8,6 +8,7 @@ import Footer from "../common/Footer";
 import powerPlayGameLogo from "../../assets/images/power-play-games-logo.png";
 
 class Home extends Component {
+
   goTo747() {
     return this.props.history.push({
       pathname: "/747",
@@ -29,6 +30,7 @@ class Home extends Component {
         <Header />
         <div className="__viewport __flex">
           <div className="__container __flex">
+            <div className="__logo"></div>
             <div className="__title">Powering Innovative Gaming Solutions</div>
             <div className="__subtitle">
               Driving disruptive change across the lottery, <br />
