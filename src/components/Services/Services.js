@@ -126,7 +126,7 @@ const Services = (props) => {
           </div>
           <div className="__flex __primary __phone-number __flex-center">
             <CallCenter />
-            844-268-1573
+            1-888-808-POWR (7697) 
           </div>
         </div>
         <img src={img2} alt="" className="__img-2" />

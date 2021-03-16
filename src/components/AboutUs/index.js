@@ -138,7 +138,7 @@ class AboutUs extends Component {
           <div className="__container">
             <div className="__title __primary">Where to find us?</div>
             <div className="__subtitle __primary __flex __flex-center">
-              <CallCenter /> 844-268-1573
+              <CallCenter /> 1-888-808-POWR (7697) 
             </div>
             <div className="__subtitle __primary __flex __flex-center">
               <PlaceHolder /> 140 Yonge St., S.200 Toronto, Ontario
