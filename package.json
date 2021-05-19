@@ -4,11 +4,15 @@
   "homepage": "http://localhost",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.3.14",
+    "@apollo/react-hooks": "^4.0.0",
+    "apollo-boost": "^0.4.9",
     "axios": "^0.19.2",
+    "graphql": "^15.5.0",
     "jquery-ui-bundle": "^1.12.1-migrate",
-    "node-pre-gyp": "^0.17.0",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
+    "react-apollo": "^3.1.5",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.14.0",
     "react-ga": "^2.7.0",
@@ -27,6 +31,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.83.0",
     "slick-carousel": "^1.8.1",
+    "sweetalert": "^2.1.2",
     "universal-cookie": "^3.1.0"
   },
   "scripts": {

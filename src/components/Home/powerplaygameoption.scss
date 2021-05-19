@@ -38,6 +38,23 @@
                     width: 36em;
                 }
             }
+            ul{
+                li{
+                    display: block;
+                    position: relative;
+                    padding-left: 25px;
+                &::before{
+                    background: url('../../assets/images/home/correct_icon.png') no-repeat;
+                    min-width: 1em;
+                    height: 1em;
+                    background-size: auto 100%;
+                    content: '';
+                    margin: 0.25em 0.8em 0 0;
+                    position: absolute;
+                    left:0;
+                }
+                }
+            }
             .__li{
                 display: flex;
                 &::before{

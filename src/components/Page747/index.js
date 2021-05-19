@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState,useEffect,Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import Header from "./../common/Header";
 import Footer from "./../common/Footer";
@@ -13,6 +13,10 @@ import Button from "react-bootstrap/lib/Button";
 import './index.scss';
 import backgroudImage from '../../assets/images/747/hero-image@2x.png';
 import Popup from "../../ui/Popup";
+
+
+import { gql, useQuery } from '@apollo/client';
+import {PAGE747} from '../../GraphQL/Queries'
 
 var DEMO_PICKS = [];
 var DEMO_DRAW = [];
@@ -57,109 +61,106 @@ let mCircleStyles = {
   overflow: "hidden"
 };
 
-class Page747 extends Component {
-  constructor(props) {
-    super(props);
-    if (this.props.location.state.gameData == "demo") {
-      this.state = {
-        isDemo: true,
-        error: null,
-        isLoaded: false,
-        content: "",
-        gameData: DEMO_GAME_DATA,
-        show: false,
-        selected: [],
-        prizes: [],
-        confirm: false
-      };
-    } else {
-      this.state = {
-        isDemo: false,
-        error: null,
-        isLoaded: false,
-        content: "",
-        gameData: DEMO_GAME_DATA,
-        show: false,
-        selected: [],
-        prizes: [],
-        confirm: false
-      };
-    }
+const Page747 =(props)=>{
+    var value={}
+    // if (props.location.state) {
+    //   if (props.location.state.gameData == "demo") {
+        value = {
+          isDemo: true,
+          error: null,
+          isLoaded: false,
+          content: "",
+          gameData: DEMO_GAME_DATA,
+          show: false,
+          selected: [],
+          prizes: [],
+          confirm: false
+        };
+      // }
+    // } else {
+    //   value = {
+    //     isDemo: false,
+    //     error: null,
+    //     isLoaded: false,
+    //     content: "",
+    //     gameData: DEMO_GAME_DATA,
+    //     show: false,
+    //     selected: [],
+    //     prizes: [],
+    //     confirm: false,
 
-    this.canSelectMore = this.canSelectMore.bind(this);
-    this.getJackpot = this.getJackpot.bind(this);
-    this.scrollToNumbers = this.scrollToNumbers.bind(this);
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.onBallClicked = this.onBallClicked.bind(this);
-    this.handleShowPrize = this.handleShowPrize.bind(this);
-    this.handleClosePrize = this.handleClosePrize.bind(this);
-    this.handleCloseConfirm = this.handleCloseConfirm.bind(this);
-    this.handleShowConfirm = this.handleShowConfirm.bind(this);
-    this.submitBalls = this.submitBalls.bind(this);
-  }
-  handleClose() {
-    this.setState({
+    //   };
+    // }
+  const [state,setState]=useState(value)
+  
+  function handleClose() {
+    setState({
+      ...state,
       show: false
     });
   }
-  handleShow() {
-    this.setState({
+  function handleShow() {
+    setState({
+      ...state,
       show: true
     });
   }
-  handleCloseConfirm() {
-    this.setState({
+  function handleCloseConfirm() {
+    setState({
+      ...state,
       confirm: false
     });
   }
-  handleShowConfirm() {
-    this.state.selected.sort(function (a, b) {
+  function handleShowConfirm() {
+    state.selected.sort(function (a, b) {
       return a - b;
     });
-    this.setState({
+    setState({
+      ...state,
       confirm: true
     });
   }
-  getJackpot(prizeArray) {
+  function getJackpot(prizeArray) {
     if (prizeArray) {
       return "$" + Functions.numberWithCommas(prizeArray[0].prize);
     } else {
       return "Coming soon";
     }
   }
-  scrollToNumbers() {
+  function scrollToNumbers() {
     const gameTable = document.getElementById("pick-numbers");
     if (gameTable) {
       gameTable.scrollIntoView({ block: "start", behavior: "smooth" });
     }
   }
-  onBallClicked(mNumber) {
+  function onBallClicked(mNumber) {
     console.log(mNumber);
-    var selectedNumbers = this.state.selected;
+    var selectedNumbers = state.selected;
     var index = selectedNumbers.indexOf(mNumber);
     if (index > -1) {
       var filtered = selectedNumbers.filter(function (value, index, arr) {
         return value != mNumber;
       });
-      this.setState({
+      setState({
+        ...state,
         selected: [...filtered]
       });
     } else {
-      if (this.canSelectMore()) {
+      if (canSelectMore()) {
         selectedNumbers.push(mNumber);
-        this.setState({
+        setState({
+          ...state,
           selected: selectedNumbers
         });
       } else {
         popupHader = "Selection Limit";
         popupText = "Cannot select More than " + allowedToSelect;
-        this.handleShow();
+        handleShow();
       }
     }
   }
-  getMyPickedNumbers() {
-    if (this.state.isDemo) {
+  function getMyPickedNumbers() {
+    if (state.isDemo) {
     } else {
       const cookies = new Cookies();
       const jwt = cookies.get("jwt");
@@ -170,7 +171,7 @@ class Page747 extends Component {
         "/public_api/lottery_games/getMyNumbers.php?jwt=" +
         jwt +
         "&game_id=" +
-        this.state.gameData.id
+        state.gameData.id
       )
         .then(res => res.json())
         .then(
@@ -179,17 +180,20 @@ class Page747 extends Component {
             var selectedNumbers = [];
             result.forEach(element => {
               selectedNumbers.push(element.number);
-              this.setState({
+              setState({
+                ...state,
                 selected: [...selectedNumbers]
               });
             });
 
-            this.setState({
+            setState({
+              ...state,
               isLoaded: true
             });
           },
           error => {
-            this.setState({
+            setState({
+              ...state,
               hasError: true,
               error: error
             });
@@ -197,54 +201,54 @@ class Page747 extends Component {
         );
     }
   }
-  componentDidMount() {
+  useEffect(()=> {
     document.getElementsByTagName("META")[2].content =
       "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
     window.scrollTo(0, 0);
     window.scroll(0, 0);
-    this.setBalls();
-    this.getMyPickedNumbers();
+    setBalls();
+    getMyPickedNumbers();
     var buttons = document.getElementsByClassName("page747_selection_button");
     var that = this;
 
     document
       .getElementById("submit_selection_ball")
       .addEventListener("click", function (e) {
-        if (that.canSubmit()) {
-          that.submitUserSelections();
+        if (canSubmit()) {
+          submitUserSelections();
         } else {
           popupHader = "Selection Minimum";
           popupText = "Can not submit less than " + allowedToSelect;
-          that.handleShow();
+          handleShow();
           return;
         }
       });
-  }
-  canSelectMore() {
-    if (this.state.selected.length >= allowedToSelect) {
+  },[])
+  function canSelectMore() {
+    if (state.selected.length >= allowedToSelect) {
       return false;
     } else {
       return true;
     }
   }
-  canSubmit() {
-    if (this.state.selected.length == allowedToSelect) {
+  function canSubmit() {
+    if (state.selected.length == allowedToSelect) {
       return true;
     } else {
       return false;
     }
   }
-  submitUserSelections() {
-    this.handleShowConfirm();
+  function submitUserSelections() {
+    handleShowConfirm();
   }
-  submitBalls() {
-    DEMO_PICKS = this.state.selected;
-    if (this.state.isDemo) {
-      this.props.history.push({
+  function submitBalls() {
+    DEMO_PICKS = state.selected;
+    if (state.isDemo) {
+      props.history.push({
         pathname: "/747-draw",
         state: {
           gameData: "demo",
-          picks: this.state.selected
+          picks: state.selected
         }
       });
     } else {
@@ -253,16 +257,16 @@ class Page747 extends Component {
       if (jwt == "" || jwt == undefined) {
         popupText = "Please Login First";
         popupHader = "Authentication Failed!";
-        this.handleShow();
+        handleShow();
         return false;
       }
       var data =
         "numbers=" +
-        this.state.selected +
+        state.selected +
         "&jwt=" +
         jwt +
         "&game_id=" +
-        this.state.gameData.id +
+        state.gameData.id +
         "&gametype_id=" +
         Constants.LOTTO_747_ID;
 
@@ -293,18 +297,18 @@ class Page747 extends Component {
       xhr.send(data);
     }
   }
-  setBalls() {
+  function setBalls() {
     const allElements = [];
-
+    console.log('ddddd')
     for (let counter = 1; counter <= ballsTotal; counter++) {
       const x = counter;
       allElements.push(
         <div
           className={
             "__game-ball" +
-            (this.state.selected.indexOf(counter) == -1 ? "" : " __active")
+            (state.selected.indexOf(counter) == -1 ? "" : " __active")
           }
-          onClick={() => this.onBallClicked(x)}
+          onClick={() => onBallClicked(x)}
         >
           {counter}
         </div>
@@ -312,32 +316,45 @@ class Page747 extends Component {
     }
     return allElements;
   }
-  handleClosePrize() {
-    this.setState({
+  function handleClosePrize() {
+    setState({
+      ...state,
       showPrize: false
     });
   }
 
-  handleShowPrize(game_type) {
-    var prizesToShow = this.state.gameData.prize;
+  function handleShowPrize(game_type) {
+    var prizesToShow = state.gameData.prize;
     prizesToShow.sort(function (a, b) {
       return parseFloat(b.prize) - parseFloat(a.prize);
     });
 
-    this.setState({
+    setState({
+      ...state,
       showPrize: true,
       prizes: prizesToShow
     });
   }
-  render() {
+  const { error,loading,data } =useQuery(PAGE747)
+  const [banner,getBanner]=useState({})
+  const [compo1,getCompo1]=useState({})
+  const [compo2,getCompo2]=useState({})
+  useEffect(() => {
+    if(data){
+      getBanner(data.page747.banner)
+      getCompo1(data.page747.compo1)
+      getCompo2(data.page747.compo2)
+      
+    }
+  }, [data])
     return (
       <div>
         <Header />
-        <Popup title={popupHader} closeButton footer={[<button onClick={this.handleClose}>Close</button>]} show={this.state.show} onHide={this.handleClose}>
+        <Popup title={popupHader} closeButton footer={[<button onClick={()=>handleClose()}>Close</button>]} show={state.show} onHide={()=>handleClose()}>
           {popupText}
         </Popup>
 
-        <Modal show={this.state.showPrize} onHide={this.handleClosePrize}>
+        <Modal show={state.showPrize} onHide={()=>handleClosePrize()}>
           <Modal.Header closeButton>
             <Modal.Title>Prizes</Modal.Title>
             <div className="prize-note">
@@ -354,7 +371,7 @@ class Page747 extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.prizes.map((prize, key) => {
+                  {state.prizes.map((prize, key) => {
                     return (
                       <tr className="prize-row" key={key}>
                         <td>
@@ -372,20 +389,20 @@ class Page747 extends Component {
           </Modal.Body>
         </Modal>
         <Popup
-          show={this.state.confirm}
-          onHide={this.handleCloseConfirm}
+          show={state.confirm}
+          onHide={()=>handleCloseConfirm()}
           title='Review my numbers'
           closeButton
           footer={
             [
-              <button onClick={this.handleCloseConfirm}>Cancel</button>,
-              <button onClick={this.submitBalls}>Submit</button>
+              <button onClick={()=>handleCloseConfirm()}>Cancel</button>,
+              <button onClick={()=>submitBalls()}>Submit</button>
             ]
           }
         >
           <div>My Numbers</div>
           <div className='__flex __popup-game-wrapper'>
-            {this.state.selected.map((number, key) => {
+            {state.selected.map((number, key) => {
               return (
                 <div className='__game-ball'>
                   {number}
@@ -395,86 +412,99 @@ class Page747 extends Component {
           </div>
         </Popup>
         <div className='__747-page'>
-          <div className='__viewport'>
-            <div className='__content'>
-              <img src={require('../../assets/images/747/hero-image@2x.png')} alt='' className='__viewport-image' />
-              <div className="__container">
-                <div className='__main-title __flex'>747</div>
-                <div className='__subtitle'>You are about to experience the world's</div>
-                <div className='__primary __title'>First Live-Play Lottery Game!</div>
-                <div>The most exciting lottery game you will ever play! Guaranteed.</div>
-              </div>
-              <div className='__747-card __flex'>
-                <div>Pick and submit <span className='__primary'>7 numbers</span> below and you will be taken to the live-play game. Use your live-play Powers to <span className='__primary'>adjust your picks</span> during the live draw!</div>
-                <div className='__border'></div>
-                <img src={require('../../assets/images/747/group-2@2x.png')} className='__balls' alt='' />
-              </div>
-            </div>
-          </div>
-          <div className='__main __container'>
-            <div className='__flex __poweplays __flex-start'>
-              <img
-                className='__powerplays-left-image'
-                src={require("./../../assets/images/747/747_powerplays.png")}
-              />
-              <div className='__f1'>
-                <div className='__title'>Powerplays</div>
-                <div className='__wrap __powerplays-content-wrapper __flex __sb'>
-
-                  <div className='__powerplays-content __flex __sb'>
-                    <div className='__powerplays-card __column'>
-                      <img
-                        src={require("./../../assets/images/747/747_2.png")}
-                        className='__powerplays-card-image'
-                      />
-                      <div className='__powerplays-card-footer'>Increase/Decrease</div>
-                    </div>
-                    <div className='__powerplyas-content-details'>You can increase or decrease your pick live during the draw</div>
+          {
+            Object.keys(banner).length>0?(
+              <div className='__viewport'>
+                <div className='__content'>
+                  <img src={banner.image.url} alt='' className='__viewport-image' />
+                  <div className="__container">
+                    <div className='__main-title __flex'>{banner.title}</div>
+                    <div  className="page747banner"  dangerouslySetInnerHTML={{ __html: banner.desc }}/>
+                    {/* <div className='__subtitle'>You are about to experience the world's</div>
+                    <div className='__primary __title'>First Live-Play Lottery Game!</div>
+                    <div>The most exciting lottery game you will ever play! Guaranteed.</div> */}
                   </div>
-
-                  <div className='__powerplays-content __flex __sb'>
-                    <div className='__powerplays-card __column'>
-                      <img
-                        src={require("./../../assets/images/747/747_3.png")}
-                        className='__powerplays-card-image'
-                      />
-                      <div className='__powerplays-card-footer'>Power Match</div>
-                    </div>
-                    <div className='__powerplyas-content-details'>Use force match to change your pick to match the drawn #</div>
+                  <div className='__747-card __flex'>
+                  <div    dangerouslySetInnerHTML={{ __html: compo1.desc }}/>
+                    {/* <div>Pick and submit <span className='__primary'>7 numbers</span> below and you will be taken to the live-play game. Use your live-play Powers to <span className='__primary'>adjust your picks</span> during the live draw!</div> */}
+                    <div className='__border'></div>
+                    <img src={compo1.image.url} className='__balls' alt='' />
                   </div>
-
-                  <div className='__powerplays-content __flex __sb'>
-                    <div className='__powerplays-card __column'>
-                      <img
-                        src={require("./../../assets/images/747/shuffle.png")}
-                        className='__powerplays-card-image'
-                      />
-                      <div className='__powerplays-card-footer'>Increase/Decrease</div>
-                    </div>
-                    <div className='__powerplyas-content-details'>Use change to replace one # with a random new Number</div>
-                  </div>
-
-                  <div className='__powerplays-content __flex __sb'>
-                    <div className='__powerplays-card __column'>
-                      <img
-                        src={require("./../../assets/images/747/747_1.png")}
-                        className='__powerplays-card-image'
-                      />
-                      <div className='__powerplays-card-footer'>Refresh All</div>
-                    </div>
-                    <div className='__powerplyas-content-details'>Use refresh all to refresh all your numbers with a random new set.</div>
-                  </div>
-
                 </div>
               </div>
-            </div>
+            ):<Fragment/>
+          }
+
+          <div className='__main __container'>
+            {
+              Object.keys(compo2).length>0?(
+                <div className='__flex __poweplays __flex-start'>
+                  <img
+                    className='__powerplays-left-image'
+                    src={compo2.bg_image.url}
+                  />
+                  <div className='__f1'>
+                    <div className='__title'>{compo2.title}</div>
+                    <div className='__wrap __powerplays-content-wrapper __flex __sb'>
+                      {
+                        compo2.list.map((item,i)=>(
+                            <div className='__powerplays-content __flex __sb' key={i}>
+                              <div className='__powerplays-card __column'>
+                                <img
+                                  src={item.img.url}
+                                  className='__powerplays-card-image'
+                                />
+                                <div className='__powerplays-card-footer'>{item.title}</div>
+                              </div>
+                              <div className='__powerplyas-content-details'>{item.desc}</div>
+                            </div>
+                        ))
+                      }
+
+                      {/* <div className='__powerplays-content __flex __sb'>
+                        <div className='__powerplays-card __column'>
+                          <img
+                            src={require("./../../assets/images/747/747_3.png")}
+                            className='__powerplays-card-image'
+                          />
+                          <div className='__powerplays-card-footer'>Power Match</div>
+                        </div>
+                        <div className='__powerplyas-content-details'>Use force match to change your pick to match the drawn #</div>
+                      </div>
+
+                      <div className='__powerplays-content __flex __sb'>
+                        <div className='__powerplays-card __column'>
+                          <img
+                            src={require("./../../assets/images/747/shuffle.png")}
+                            className='__powerplays-card-image'
+                          />
+                          <div className='__powerplays-card-footer'>Increase/Decrease</div>
+                        </div>
+                        <div className='__powerplyas-content-details'>Use change to replace one # with a random new Number</div>
+                      </div>
+
+                      <div className='__powerplays-content __flex __sb'>
+                        <div className='__powerplays-card __column'>
+                          <img
+                            src={require("./../../assets/images/747/747_1.png")}
+                            className='__powerplays-card-image'
+                          />
+                          <div className='__powerplays-card-footer'>Refresh All</div>
+                        </div>
+                        <div className='__powerplyas-content-details'>Use refresh all to refresh all your numbers with a random new set.</div>
+                      </div> */}
+                    </div>
+                  </div>
+              </div>
+              ):<Fragment/>
+            }
           </div>
           <div className="__container __game-wrapper" id="pick-numbers">
             <div className='__title'>Pick Your Numbers !</div>
             <div className="page747_number_rules">CONTEST RULES</div>
-            <div className='__game'>{this.setBalls()}</div>
-            <div className='__helper-text'>{this.state.selected.length + " of " + allowedToSelect + " Numbers chosen"}</div>
-            <button id="submit_selection_ball" className="__submit-btn" disabled={this.canSelectMore()}>SUBMIT!</button>
+            <div className='__game'>{setBalls()}</div>
+            <div className='__helper-text'>{state.selected.length + " of " + allowedToSelect + " Numbers chosen"}</div>
+            <button id="submit_selection_ball" className="__submit-btn" disabled={canSelectMore()}>SUBMIT!</button>
           </div>
         </div>
         {/* Not worked on this, Ubaid */}
@@ -484,7 +514,7 @@ class Page747 extends Component {
 
               <div className="pick_numbers_mobile_box">
                 <p className="mobile_box_text_1">Jackpot</p>
-                {!this.state.isDemo ? (
+                {!state.isDemo ? (
                   <p
                     className="mobile_box_text_2"
                     style={{ marginBottom: "20px !important" }}
@@ -494,11 +524,11 @@ class Page747 extends Component {
                 ) : (
                     <>
                       <p className="mobile_box_text_2b">
-                        {this.getJackpot(this.state.gameData.prize)}
+                        {()=>getJackpot()(state.gameData.prize)}
                       </p>
                       <p className="mobile_box_text_3">
                         Odds of Winning:{" "}
-                        <span>{this.state.gameData.odds_text}</span>
+                        <span>{state.gameData.odds_text}</span>
                       </p>
                       <p className="mobile_box_text_4">Next Draw Date</p>
                       <p className="mobile_box_text_5">
@@ -512,7 +542,7 @@ class Page747 extends Component {
 
               {/* Not worked on this, Ubaid */}
               <div className="col-md-12">
-                {this.state.isDemo ? (
+                {state.isDemo ? (
                   ""
                 ) : (
                     <div className="page747_main_bar row">
@@ -521,11 +551,11 @@ class Page747 extends Component {
                           <div>
                             <p>Jackpot</p>
                             <p className="main_bar_inner_bigger">
-                              {this.getJackpot(this.state.gameData.prize)}
+                              {()=>getJackpot()(state.gameData.prize)}
                             </p>
                           </div>
                           <div className="page747_main_left_lower_text">
-                            Draw date <s>{this.state.gameData.start_datetime}</s>
+                            Draw date <s>{state.gameData.start_datetime}</s>
                           </div>
                         </div>
                       </div>
@@ -538,7 +568,7 @@ class Page747 extends Component {
                                 <p>
                                   {" "}
                                   {Functions.getDays(
-                                    this.state.gameData.start_datetime
+                                    state.gameData.start_datetime
                                   )}
                                 </p>
                               Days
@@ -547,7 +577,7 @@ class Page747 extends Component {
                                 <p>
                                   {" "}
                                   {Functions.getHours(
-                                    this.state.gameData.start_datetime
+                                    state.gameData.start_datetime
                                   )}
                                 </p>
                               hours
@@ -556,7 +586,7 @@ class Page747 extends Component {
                                 <p>
                                   {" "}
                                   {Functions.getMinuts(
-                                    this.state.gameData.start_datetime
+                                    state.gameData.start_datetime
                                   )}
                                 </p>
                               Mins
@@ -565,14 +595,14 @@ class Page747 extends Component {
                           </div>
                         </div>
                         <div className="page747_main_lower_text">
-                          Draw date <s>{this.state.gameData.start_datetime}</s>
+                          Draw date <s>{state.gameData.start_datetime}</s>
                         </div>
                       </div>
                     </div>
                   )}
               </div>
               {/* Not worked on this too */}
-              {this.state.isDemo ? (
+              {state.isDemo ? (
                 ""
               ) : (
                   <div className="col-md-12">
@@ -592,7 +622,7 @@ class Page747 extends Component {
                               <div className="button_show_prize_wrapper">
                                 <button
                                   className="button_show_prize"
-                                  onClick={e => this.handleShowPrize("747")}
+                                  onClick={e => ()=>handleShowPrize("747")}
                                 >
                                   View All Prizes
                               </button>
@@ -602,45 +632,45 @@ class Page747 extends Component {
                           <div className="row">
                             <div className="page747-prize-box-wrapper">
                               <div className="page747-prize-box">
-                                {this.state.gameData.prize[0].hits + "/7"} <br />
+                                {state.gameData.prize[0].hits + "/7"} <br />
                                 <span>
                                   {"$" +
                                     Functions.numberWithCommas(
-                                      this.state.gameData.prize[0].prize
+                                      state.gameData.prize[0].prize
                                     )}
                                 </span>
                               </div>
                             </div>
                             <div className="page747-prize-box-wrapper">
                               <div className="page747-prize-box">
-                                {this.state.gameData.prize[1].hits + "/7"}
+                                {state.gameData.prize[1].hits + "/7"}
                                 <br />
                                 <span>
                                   {"$" +
                                     Functions.numberWithCommas(
-                                      this.state.gameData.prize[1].prize
+                                      state.gameData.prize[1].prize
                                     )}
                                 </span>
                               </div>
                             </div>
                             <div className="page747-prize-box-wrapper">
                               <div className="page747-prize-box">
-                                {this.state.gameData.prize[2].hits + "/7"}
+                                {state.gameData.prize[2].hits + "/7"}
                                 <br />
                                 <span>
                                   {"$" +
                                     Functions.numberWithCommas(
-                                      this.state.gameData.prize[2].prize
+                                      state.gameData.prize[2].prize
                                     )}
                                 </span>
                               </div>
                             </div>
                             <div className="page747-prize-box-wrapper">
                               <div className="page747-prize-box">
-                                {this.state.gameData.prize[3].hits + "/7"}
+                                {state.gameData.prize[3].hits + "/7"}
                                 <br />
                                 <span>
-                                  {"$" + this.state.gameData.prize[3].prize}
+                                  {"$" + state.gameData.prize[3].prize}
                                 </span>
                               </div>
                             </div>
@@ -656,13 +686,13 @@ class Page747 extends Component {
                 )}
               <div className="col-md-12">
                 <div className="col-md-12">
-                  {this.state.isDemo ? (
+                  {state.isDemo ? (
                     ""
                   ) : (
                       <div className="page747_number_rules">CONTEST RULES</div>
                     )}
 
-                  {this.state.isDemo ? (
+                  {state.isDemo ? (
                     ""
                   ) : (
                       <div class="page747_number_box">
@@ -673,7 +703,7 @@ class Page747 extends Component {
                               <p>
                                 {" "}
                                 {Functions.getDays(
-                                  this.state.gameData.start_datetime
+                                  state.gameData.start_datetime
                                 )}
                               </p>
                             Days
@@ -682,7 +712,7 @@ class Page747 extends Component {
                               <p>
                                 {" "}
                                 {Functions.getHours(
-                                  this.state.gameData.start_datetime
+                                  state.gameData.start_datetime
                                 )}
                               </p>
                             hours
@@ -691,7 +721,7 @@ class Page747 extends Component {
                               <p>
                                 {" "}
                                 {Functions.getMinuts(
-                                  this.state.gameData.start_datetime
+                                  state.gameData.start_datetime
                                 )}
                               </p>
                             Mins
@@ -710,6 +740,4 @@ class Page747 extends Component {
       </div>
     );
   }
-}
-
-export default withRouter(Page747);
+export default withRouter(Page747)
