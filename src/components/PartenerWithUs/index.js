@@ -67,7 +67,8 @@ const PartnerWithUs =(props)=>{
   const uploadData=async(e)=> {
     e.preventDefault();
     console.log(data1)
-    const res=await axios.post('http://localhost:1337/contacts',data1)
+    const res=await axios.post('https://strapi.powerplaysystems.com/contacts',data1)
+    // const res=await axios.post('http://localhost:1337/contacts',data1)
 
     try{
       console.log(res.data)

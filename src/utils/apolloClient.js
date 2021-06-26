@@ -9,7 +9,7 @@ import { ApolloClient,InMemoryCache } from "@apollo/client";
 //   uri: `http://localhost:1337/graphql`
 // });
 const client = new ApolloClient({
-  uri: `https://api.powerplaysystems.com/graphql`,
+  uri: `https://strapi.powerplaysystems.com/graphql`,
   // uri: `http://localhost:1337/graphql`,
   cache : new InMemoryCache()
 });
