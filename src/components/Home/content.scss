@@ -349,3 +349,239 @@
     }
   }
 }
+
+/*New Home Page Start*/
+.__home-page-wrp{
+  .__banner-wrp{
+    position: relative;
+      padding: 100px 0;
+      height: 650px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    h1{
+      // font-family: Teko;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 46px;
+      line-height: 94.5%;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #F2F2F2;
+      margin-bottom: 30px !important;
+    }
+    p{
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 170%;
+      color: #F2F2F2;
+      margin-bottom: 10px;
+    }
+  }
+  .__homepage-btn-wrp{
+    background: #FB6E00;
+    border-radius: 12px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1E1E1E;
+    // font-family:Teko;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 128.5%;
+    padding: 11px 36px;
+    display: inline-block;
+    margin-top: 50px;
+  }
+  .__left-img-text-wrp{
+    position: relative;
+    background-position: bottom left;
+    background-size: contain;
+    padding: 100px 0;
+    .__right-side-content{
+      max-width: 750px;
+      margin-left: auto;
+      p{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 170%;
+        color: #F2F2F2;
+        margin-bottom: 20px !important;
+      }
+      h2{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 94.5%;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #FB6E00;
+        margin-top: 20px !important;
+        margin-bottom: 80px !important;
+      }
+    }
+  }
+  .__right-img-text-wrp{
+    position: relative;
+    padding: 100px 0;
+    background-position: right top;
+    background-size: contain;
+    .__left-side-content{
+      max-width: 750px;
+      margin-right: auto;
+      h2{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 120%;
+        letter-spacing: 1px;
+        color: #FB6E00;
+        text-transform: uppercase;
+        margin-top: 0px !important;
+        margin-bottom: 40px !important;
+      }
+      h3{
+        // font-family: 'Teko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 23px;
+        line-height: 130%;
+        letter-spacing: 1px;
+        color: #F2F2F2;
+        margin-bottom: 20px !important;
+      }
+      p{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 170%;
+        color: #F2F2F2;
+        margin-bottom: 20px !important;
+      }
+      .__content-sport-list{
+        list-style-type: none;
+        li{
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          span{
+            width: 130px;
+            flex: 0 0 130px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #FB6E00;
+            // font-family: 'Teko';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: normal;
+          }
+          p{
+            margin: 0 !important;
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: normal;
+            color: #F2F2F2;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1199px) {
+  .__home-page-wrp{
+    .__right-img-text-wrp{
+      .__left-side-content {
+        max-width: 575px;
+      }
+    }
+    .__left-img-text-wrp{
+      .__right-side-content {
+        max-width: 575px;
+      }
+    }
+  }  
+}
+@media (max-width: 991px) {
+.__home-page-wrp{
+  .__left-img-text-wrp {
+    padding: 3em 0 90vw 0 !important;
+    .__right-side-content {
+      max-width: 100%;
+      margin: 0;
+      h2{
+        margin-bottom: 20px !important;
+      }
+    }
+   }
+   .__right-img-text-wrp{
+    background-position: center bottom;
+    padding: 3em 0 90vw 0 !important;
+    background-size: 100% auto !important;
+    width: 100%;
+    .__left-side-content {
+      max-width: 100%;
+      margin: 0;
+    }
+   }
+   .__homepage-btn-wrp{
+     margin-top: 30px;
+   }
+  } 
+}
+@media (max-width: 767px) {
+  .__home-page-wrp{
+    .__homepage-btn-wrp {
+      width: 100%;
+      font-size: 16px;
+      padding: 11px 22px;
+    }
+    .__banner-wrp{
+      h1 {font-size: 30px;}
+    }
+    .__left-img-text-wrp{
+      .__right-side-content{
+        padding-bottom: 40px;
+        h2{
+          font-size: 20px;
+        }
+      }
+    }
+    .__right-img-text-wrp{
+      padding: 3em 0 70vw 0 !important;
+      .__left-side-content{
+        padding-bottom: 40px;
+        h2{
+          font-size: 20px;
+          margin-bottom: 20px !important;
+        }
+        h3{
+          font-size: 20px;
+          line-height: normal;
+        }
+        .__content-sport-list{
+          li{
+            span{
+              font-size: 16px;
+              width: 100px;
+              flex: 0 0 100px;
+            }
+          }
+        }
+      }
+    }
+  } 
+}

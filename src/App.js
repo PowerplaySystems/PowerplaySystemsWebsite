@@ -4,7 +4,9 @@ import { Provider } from "react-redux";
 // import store from "./store/store";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
+import oldHome from "./components/Home/oldHomePage";
 import Home from "./components/Home";
+
 import SelectGames from "./components/SelectGames";
 import HowToPlay from "./components/HowToPlay";
 import AboutUs from "./components/AboutUs";
@@ -99,6 +101,8 @@ const App =()=> {
           <Router>
             <div className="App">
               <Route exact path="/" component={Home} />
+              <Route exact path="/old-home" component={oldHome} />
+
               <Route exact path="/select-games" component={SelectGames} />
               <Route exact path="/select-games/:id" component={SelectGames} />
               <Route exact path="/how-to-play" component={HowToPlay} />
