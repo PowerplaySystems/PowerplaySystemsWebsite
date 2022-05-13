@@ -1,11 +1,21 @@
 import React, { useEffect,useState,Fragment } from "react";
 import { Helmet } from "react-helmet";
 import "./index.scss";
-import Header from "./../common/Header";
+import Header from "../common/Header";
 import { Link, withRouter } from "react-router-dom";
 import genrlogo from "../../assets/images/home/genr-8-logo@2x.png";
 import Footer from "../common/Footer";
 import powerPlayGameLogo from "../../assets/images/power-play-games-logo.png";
+
+import HomeBanner from "../../assets/images/home-new/banner-bg.jpg";
+import Homebg01 from "../../assets/images/home-new/home-bg-01.jpg";
+import Homebg02 from "../../assets/images/home-new/home-bg-02.jpg";
+import Homebg03 from "../../assets/images/home-new/home-bg-03.jpg";
+import Homebg04 from "../../assets/images/home-new/home-bg-04.jpg";
+import Homebg05 from "../../assets/images/home-new/home-bg-05.jpg";
+import Homebgres02 from "../../assets/images/home-new/home-bg-res-02.jpg";
+import Homebgres04 from "../../assets/images/home-new/home-bg-res-04.jpg";
+import Homebgres05 from "../../assets/images/home-new/home-bg-res-05.jpg";
 
 import {useQuery,gql} from '@apollo/react-hooks'
 import {HOME_BANNER} from '../../GraphQL/Queries'
@@ -60,7 +70,7 @@ const Home =(props)=>{
     const MOBILE_BREAKPOINT1 = 768;
     const isMobile1 = Boolean(viewportWidth <= MOBILE_BREAKPOINT1);
     return (
-      <div className="__home-page">
+      <div className="__home-page-wrp">
         <Helmet>
           <title>
             Power Play Systems | Innovative Gaming Management & Solutions
@@ -71,428 +81,93 @@ const Home =(props)=>{
           />
         </Helmet>
         <Header />
-        {
-          Object.keys(banner).length>0?(
-          <div className="__viewport __flex" style={{backgroundImage:`url(${banner.banner_image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:'bottom'}}>
-            <div className="__container __flex">
-              {
-                banner.logo?(
-                  <div className="__logo"></div>
-                ):<Fragment/>
-              }
-              <div className="__title">{banner.title}</div>
-              <div className="__subtitle">
-                {banner.title2}
-                {/* Driving disruptive change across the lottery, <br />
-                fantasy sports, and sports betting landscape */}
-              </div>
-              <Link to="/partner" className="__homepage-btn">
-                Partner with us!
-              </Link>
+            <div className="__banner-wrp" style={{backgroundImage:`url(${HomeBanner})`}}>
+                {/* <img src={HomeBanner} alt=""/> */}
+                <div className="__container">
+                    <h1>Power up your bar revenue</h1>
+                    <p>Our exclusive live sports based bar games will generate <br/>unparalleled excitement for your bar patrons</p>
+                    <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                </div>
             </div>
-          </div>
-          ):<Fragment/>
-        }
-
-        <div className="__content __content-1">
-          {
-            Object.keys(home2).length>0?(
-            <div className="__wrapper" style={{backgroundImage:isMobile1?`url(${home2.res_bg_image.url})`:`url(${home2.bg_image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:isMobile1?'0 100%':''}}>
-              <div className="__container">
-                <div className="__main __right">
-                  {/* <div>
-                    PowerPlay Systems provides patent-pending gaming solutions
-                    that changes the way the world plays lottery, DFS, and Sports
-                    betting games.{" "}
-                    <span className="__hide-on-mediam">
-                      With our exclusive live-play experience,
-                    </span>{" "}
-                    we put the{" "}
-                    <span className="__primary">Players in control.</span>
-                  </div>
-                  <div>
-                    Say goodbye to the 'pick-and-wait' game format.{" "}
-                    <span className="__hide-on-mediam">
-                      No longer will games be played simply by making picks and
-                      waiting for results. With our games,
-                    </span>{" "}
-                    players have the power to control their own destiny by{" "}
-                    <span className="__primary">making live-play changes.</span>
-                  </div> */}
-                  {
-                    isMobile1?(
-
-                      <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home2.res_desc }}/>
-                    ):(
-
-                      <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home2.desc }}/>
-                    )
-                  }
-                  <div className="__subtitle __primary">
-                    {home2.title}
-                  </div>
+            <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg01})`, backgroundRepeat:'no-repeat'}}>
+                <div className="__right-side-content">
+                    <div className="__container">
+                        <p>PowerPlay Systems provides exciting <strong>new gaming solutions</strong> that power engagement. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
+                        <p>We provide the app design and all marketing materials. We even provide up to a <strong>$1,000,000 fully insured prize!</strong></p>
+                        <h2>Now that is powerful!</h2>
+                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                    </div>
                 </div>
-                {
-                  home2.partner_btn?(
-                  <Link to="/partner" className="__homepage-btn">
-                    Partner with us!
-                  </Link>
-                  ):<Fragment/>
-                }
-              </div>
             </div>
-            ):<Fragment/>
-          }
-        </div>
-
-        <div className="__content __content-2">
-        {
-            Object.keys(home3).length>0?(
-            <div className="__wrapper" style={{backgroundImage:isMobile1?`url(${home3.res_bg_image.url})`:`url(${home3.image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:isMobile1?'bottom':'right 75%'}}>
-              <div className="__container">
-                <div className="__primary __title">
-                  {home3.title}
+            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres02})`:`url(${Homebg02})`, backgroundRepeat:'no-repeat'}}>
+                <div className="__left-side-content">
+                    <div className="__container">
+                        <h2>Powerful Live-game engagement</h2>
+                        <p>All our games are based on <strong>live sporting event</strong> data. Whether you have NFL, MLB, NHL, NBA, Soccer or Cricket fans, we’ve got you covered!</p>
+                        <p>Imagine <strong>the level of engagement</strong> we can achieve!></p>
+                        <p><strong>Exclusive in-bar only entry</strong> ensures customers will keep coming back to play again and again.</p>
+                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                    </div>
                 </div>
-                <div className="__main">
-                  {
-                    isMobile1?(
-                      <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home3.res_desc }}/>
-                    ):(
-                      <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home3.desc }}/>
-                    )
-                  }
-                  {/* <div>
-                    We provide players with{" "}
-                    <span className="__primary">Powers</span> to make changes{" "}
-                    <span className="__hide-on-mediam">
-                      to their lottery picks, fantasy sports picks, and bet slips
-                    </span>{" "}
-                    during live gameplay.
-                  </div>
-                  <div>
-                    If a fantasy pick is injured early in a game, players can swap
-                    him out in real-time!
-                  </div>
-                  <div>
-                    <span className="__hide-on-mediam">
-                      There are different Powers for each type of game but all
-                    </span>{" "}
-                    Powers add another level of engagement and excitement to
-                    gameplay.
-                  </div> */}
-                </div>
-              </div>
             </div>
-            ):<Fragment/>
-        }
-        </div>
-
-        <div className="__content __content-3">
-        {
-            Object.keys(home4).length>0?(
-              <div className="__wrapper" style={{backgroundImage:isMobile1?`url(${home4.res_bg_image.url})`:`url(${home4.image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:isMobile1?'bottom':'left bottom'}}>
-                <div className="__container">
-                  <div className="__title __primary">
-                    {home4.title}
-                  </div>
-                  <div className="__main">
-                    {
-                      isMobile1?(
-
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home4.res_desc }}/>
-                      ):(
-
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home4.desc }}/>
-                      )
-                    }
-                    
-                  </div>
+            <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg03})`, backgroundRepeat:'no-repeat'}}>
+                <div className="__right-side-content">
+                    <div className="__container">
+                        <h2>Powerful Revenue</h2>
+                        <p>Our target is to increase your revenue. If we don’t achieve tabgible results within 6 month of launch, we will <strong>refund 100%</strong> of your fees.</p>
+                        <p>We can make this offer because we are super confident in our ability to suceed.</p>
+                        <p>When you consider increased bar sales, advertising revenue, ancillary revenue, and lead generation... it’s a slam dunk! or Homerun! or Touchdown!</p>
+                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                    </div>
                 </div>
-              </div>
-            ):<Fragment/>
-        }
-        </div>
-
-        <div className="__content __content-4">
-        {
-            Object.keys(home5).length>0?(
-              <div className="__wrapper" style={{backgroundImage:isMobile1?`url(${home5.res_bg_image.url})`:`url(${home5.image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:isMobile1?'bottom':'right bottom'}}>
-                <div className="__container">
-                  <div className="__title __primary">
-                    {home5.title}
-                  </div>
-                  <div className="__main">
-                  <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home5.desc }}/>
-                    {/* <div>
-                      With Live-Play Powers, you can control the odds for every game
-                      at every level providing unparalleled flexibility.
+            </div>
+            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres04})`:`url(${Homebg04})`, backgroundRepeat:'no-repeat'}}>
+                <div className="__left-side-content">
+                    <div className="__container">
+                        <h2>Live-Play sport-based games</h2>
+                        <h3>Available for any sport, any league... worldwide</h3>
+                        <ul className="__content-sport-list">
+                            <li>
+                                <span>NFL</span>
+                                <p>Available September through to the Super Bowl. We also have an NFL Draft Contest!</p>
+                            </li>
+                            <li>
+                                <span>NFL</span>
+                                <p>Available October through to the Stanley Cup Finals.</p>
+                            </li>
+                            <li>
+                                <span>NBA</span>
+                                <p>Available from October through to the Champoinship.</p>
+                            </li>
+                            <li>
+                                <span>MLB</span>
+                                <p>Available from May through to the World Series.</p>
+                            </li>
+                            <li>
+                                <span>Soccer</span>
+                                <p>Year round!</p>
+                            </li>
+                            <li>
+                                <span>Cricket</span>
+                                <p>Year round!</p>
+                            </li>
+                        </ul>
+                        <h3>You can pick from any of the sports above!</h3>
+                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
                     </div>
-                    <div>
-                      You can decide how many winners there will be and how often
-                      they win. You can make it super easy or very difficult to win
-                      prizes/jackpots.
-                    </div>
-                    <div>With our solution, you control the odds.</div> */}
-                  </div>
                 </div>
-              </div>
-            ):<Fragment/>
-        }
-        </div>
-
-        <div className="__content __powerfulgame-options">
-          {
-            Object.keys(home9).length>0?(
-              <div className="__wrapper" style={{backgroundImage:isMobile1?`url(${home9.res_bg_image.url})`:`url(${home9.bg_image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:isMobile1?'100% 100%':'center 10%'}}>
-                <div className="__container">
-                  <div className="__title __primary">
-                    {home9.title1}
-                  </div>
-                  <div className="__title-wrapper">
-                    <div className="__subtitle __primary">
-                      {home9.title2}
+            </div>
+            <div className="__left-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres05})`:`url(${Homebg05})`, backgroundRepeat:'no-repeat'}}>
+                <div className="__right-side-content">
+                    <div className="__container">
+                        <h2>Trust and Security</h2>
+                        <p>PowerPlay Systems offers seamless and safe live-play experiences for your customers. </p>
+                        <p>Our platform is built using industry-leading technology that is scalable, ultra-fast, SSL encrypted, and digitally secured. </p>
+                        <p>We have ensured that your customers' personal data is stored securely, and we are completely transparent in all our transactions.</p>
+                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
                     </div>
-                  </div>
-                  <div className="__main __left">
-                    {
-                      isMobile1?(
-
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home9.res_desc1 }}/>
-                      ):(
-
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home9.desc1 }}/>
-                      )
-                    }
-                    {/* <div className="__li">
-                      <div>
-                        <span className="__primary">
-                          Live-play Lottery and Bingo games
-                        </span>{" "}
-                        -{" "}
-                        <span className="__hide-on-mediam">
-                          Players can change their picks during the live draw!{" "}
-                        </span>{" "}
-                        We guarantee this is the most exciting lottery game you will
-                        ever play.
-                      </div>
-                    </div>
-                    <div className="__li">
-                      <div>
-                        Play our <span className="__primary">«747»</span> demo
-                        lottery game now.
-                      </div>
-                    </div> */}
-                  </div>
-
-                  {
-                    home9.lottery_btn?(
-                      <div className="__btn-wrapper">
-                        <span className="__outine-btn" onClick={() => goTo747()}>
-                          Play 747 Demo Lottery
-                        </span>
-                      </div>
-                    ):<Fragment/>
-                  }
-
-                  <div className="__subtitle-wrapper">
-                    <div className="__subtitle __primary">
-                      {home9.title3}
-                    </div>
-                    <i>{home9.short}</i>
-                  </div>
-                  <div className="__main __right">
-                    {
-                      isMobile1?(
-
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home9.res_desc2 }}/>
-                      ):(
-
-                    <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home9.desc2 }}/>
-                      )
-                    }
-                    {/* <div className="__li">
-                      <div>
-                        <span className="__primary">
-                          Live-play sports-based lottery games
-                        </span>{" "}
-                        - Unique parlay style games that are sure to captivate the
-                        sports fan.
-                      </div>
-                    </div>
-                    <div className="__li">
-                      <div>
-                        <span className="__primary">
-                          Live-Play Daily Fantasy Sports (DFS) games
-                        </span>{" "}
-                        - Our PowerdFS game puts players in control during the live
-                        game.{" "}
-                        <span className="__hide-on-large">
-                          Swap players, boost points, and more! Also available in a
-                          lottery format.
-                        </span>
-                      </div>
-                    </div>
-                    <div className="__li">
-                      <div>
-                        <span className="__primary">
-                          Live-play Sports betting games
-                        </span>{" "}
-                        - enhance your sports bet offering with our sports betting
-                        games
-                        <span className="__hide-on-large">
-                          {" "}
-                          that are sure to appeal to novice bettor and casual
-                          bettors
-                        </span>
-                        .
-                      </div>
-                    </div>
-                    <div className="__li">
-                      <div>
-                        <span className="__primary">
-                          World Series Gaming Events
-                        </span>{" "}
-                        - Think World Series of Poker... Only for DFS or Sports
-                        betting.{" "}
-                        <span className="__hide-on-large">
-                          Bring the world's best DFS players or Sports Bettors
-                          together for your event! We can make it happen.
-                        </span>
-                      </div>
-                    </div> */}
-                  </div>
                 </div>
-              </div>
-            ):<Fragment/>
-          }
-        </div>
-        
-        <div className="__content __content-6">
-          {
-              Object.keys(home6).length>0?(
-                <div className="__wrapper" style={{backgroundImage:isMobile1?'none':`url(${home6.bg_image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:'100% 100%'}}>
-                  <div className="__container">
-                    <div>
-                      {
-                        home6.logos?(
-                          <img className="__brand-logo" src={powerPlayGameLogo} alt="" />
-                        ):<Fragment/>
-                      }
-                      <div className="__paragraph">
-                      <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home6.desc }}/>
-                        {/* Visit <span className="__primary">PowerPlay Games</span> to
-                        experience our ground-breaking live-play games where you have
-                        the{" "}
-                        <span className="__primary">
-                          Power to control your destiny!
-                        </span> */}
-                      </div>
-                      {
-                        home6.coming_btn?(
-                          <div className="__content-6-btn">Comming Soon</div>
-                        ):<Fragment/>
-                      }
-                    </div>
-                  </div>
-                </div>
-              ):<Fragment/>
-          }
-        </div>
-        <div className="__content __content-7">
-          {
-            Object.keys(home7).length>0?(
-              <div className="__wrapper" style={{backgroundImage:isMobile1?`url(${home7.res_bg_image.url})`:`url(${home7.bg_image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:isMobile1?'bottom':'left 105%'}}>
-                <div className="__container">
-                  <div className="__title __primary">
-                    {home7.title}
-                  </div>
-                  <div className="__main">
-                    {
-                      isMobile1?(
-
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home7.res_desc }}/>
-                      ):(
-
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home7.desc }}/>
-                      )
-                    }
-                    {/* <div>
-                      Our games use our patent-pending{" "}
-                      <span className="__primary">#GenR8 technology</span> to ensure
-                      all games are secure and 100% fraud-proof.
-                    </div>
-                    <div className="__hide-on-small">
-                      #GenR8 audits will be performed within seconds of game
-                      completion providing instant verified results.
-                    </div>
-                    <div>
-                      That's right! No more expensive{" "}
-                      <span className="__hide-on-small">and time-consuming</span>{" "}
-                      lottery audits required.{" "}
-                      <div className="__show-on-small"> </div> Instant results.
-                      Instantly verified. Only from PowerPlay Systems.
-                    </div> */}
-                    {
-                      home7.logos?(
-                        <img src={genrlogo} alt="" className="__genrlogo" />
-                      ):<Fragment/>
-                    }
-                  </div>
-                </div>
-              </div>
-            ):<Fragment/>
-          }
-        </div>
-        <div className="__content __content-8">
-          {
-            Object.keys(home8).length>0?(
-              <div className="__wrapper" style={{backgroundImage:`url(${home8.bg_image.url})`,backgroundRepeat:'no-repeat',backgroundPosition:isMobile1?'66% center':'100% 0'}}>
-                <div className="__container">
-                  <div className="__title __primary">
-                    {home8.title}
-                  </div>
-                  <div className="__main">
-                    {
-                      isMobile1?(
-
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home8.res_desc1 }}/>
-                      ):(
-                        <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home8.desc1 }}/>
-                      )
-                    }
-                    {/* <div>
-                      PowerPlay Systems offers seamless and safe live-play
-                      experiences{" "}
-                      <span className="__hide-on-small">for your customers</span>.
-                    </div>
-                    <div>
-                      Our platform is built using industry-leading technology that
-                      is scalable, ultra-fast, SSL encrypted, and digitally secured.
-                    </div>
-                    <div className="__hide-on-small">
-                      We have ensured that your customers' personal data is stored
-                      securely, and we are completely transparent in all our
-                      transactions.
-                    </div> */}
-                  </div>
-                  <div className="__we-are-prepare">
-                    <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: home8.desc2 }}/>
-                    {/* We are passionate about making sure that your customers will
-                    have an interactive and fun-filled experience when they use our
-                    service, whether they win or lose. */}
-                  </div>
-                  {
-                    home8.partner_btn?(
-                      <Link to="/partner" className="__homepage-btn">
-                        Partner with us!
-                      </Link>
-                    ):<Fragment/>
-                  }
-                </div>
-              </div>
-            ):<Fragment/>
-          }
-        </div>
+            </div>
         <Footer />
       </div>
     );
