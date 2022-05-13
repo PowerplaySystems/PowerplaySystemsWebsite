@@ -16,6 +16,10 @@ import Homebg05 from "../../assets/images/home-new/home-bg-05.jpg";
 import Homebgres02 from "../../assets/images/home-new/home-bg-res-02.jpg";
 import Homebgres04 from "../../assets/images/home-new/home-bg-res-04.jpg";
 import Homebgres05 from "../../assets/images/home-new/home-bg-res-05.jpg";
+import Homebgres06 from "../../assets/images/home-new/numbers-cards-bg.png";
+import Homebgres07 from "../../assets/images/home-new/map-pin-dynamic-gradient.png";
+import Homebgres08 from "../../assets/images/home-new/notify-heart-dynamic-gradient.png";
+import Homebgres09 from "../../assets/images/home-new/at-dynamic-gradient.png";
 
 import {useQuery,gql} from '@apollo/react-hooks'
 import {HOME_BANNER} from '../../GraphQL/Queries'
@@ -92,79 +96,116 @@ const Home =(props)=>{
             <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg01})`, backgroundRepeat:'no-repeat'}}>
                 <div className="__right-side-content">
                     <div className="__container">
-                        <p>PowerPlay Systems provides exciting <strong>new gaming solutions</strong> that power engagement. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
-                        <p>We provide the app design and all marketing materials. We even provide up to a <strong>$1,000,000 fully insured prize!</strong></p>
-                        <h2>Now that is powerful!</h2>
-                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                        <div className="barPowered">
+                            <p>PowerPlay Systems provides exciting <strong>new gaming solutions</strong> that power engagement. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
+                            <p>We provide the app design and all marketing materials. We even provide up to a <strong>$1,000,000 fully insured prize!</strong></p>
+                            <p>Do you think a $1,000,000 prize will draw customers to your bar?</p>
+                            <h2>Is your bar Powered?</h2>
+                            {/* <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link> */}
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres02})`:`url(${Homebg02})`, backgroundRepeat:'no-repeat'}}>
                 <div className="__left-side-content">
                     <div className="__container">
-                        <h2>Powerful Live-game engagement</h2>
-                        <p>All our games are based on <strong>live sporting event</strong> data. Whether you have NFL, MLB, NHL, NBA, Soccer or Cricket fans, we’ve got you covered!</p>
-                        <p>Imagine <strong>the level of engagement</strong> we can achieve!></p>
-                        <p><strong>Exclusive in-bar only entry</strong> ensures customers will keep coming back to play again and again.</p>
-                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                        <div className="Powerful-wrp">
+                            <h2>Powerful Live-game engagement</h2>
+                            <p>All our games are based on <strong>live sporting event</strong> data. Whether you have NFL, MLB, NHL, NBA, Soccer or Cricket fans, we’ve got you covered!</p>
+                            <p>Imagine <strong>the level of engagement</strong> we can achieve!></p>
+                            <p><strong>Exclusive in-bar only entry</strong> ensures customers will keep coming back to play again and again.</p>
+                            {/* <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link> */}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="numbers-say-it-all" style={{backgroundImage:isMobile1?`url(${Homebgres06})`:`url(${Homebgres06})`, backgroundRepeat:'no-repeat'}}>
+                <h1 className="numbers-title">The numbers say it all</h1>
+                <div className="numbers-cards-wrp">
+                    <div className="numbers-cards">
+                        <div className="cardNumber-Icon">
+                            <h2>30%</h2>
+                            <img src={Homebgres07} alt=""/>
+                        </div>
+                        <p className="class-sub-text">of people select a bar to visit based on promotions and rewards</p>
+                    </div>
+                    <div className="numbers-cards">
+                        <div className="cardNumber-Icon">
+                            <h2>33%</h2>
+                            <img src={Homebgres08} alt=""/>
+                        </div>
+                        <p className="class-sub-text">of contest participants are open to receiving information about the brand and partners</p>
+                    </div>
+                    <div className="numbers-cards">
+                        <div className="cardNumber-Icon">
+                            <h2>4,400%</h2>
+                            <img src={Homebgres09} alt=""/>
+                        </div>
+                        <p className="class-sub-text">average ROI of email marketing for our contests</p>
                     </div>
                 </div>
             </div>
             <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg03})`, backgroundRepeat:'no-repeat'}}>
                 <div className="__right-side-content">
                     <div className="__container">
-                        <h2>Powerful Revenue</h2>
-                        <p>Our target is to increase your revenue. If we don’t achieve tabgible results within 6 month of launch, we will <strong>refund 100%</strong> of your fees.</p>
-                        <p>We can make this offer because we are super confident in our ability to suceed.</p>
-                        <p>When you consider increased bar sales, advertising revenue, ancillary revenue, and lead generation... it’s a slam dunk! or Homerun! or Touchdown!</p>
-                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                        <div className="powerfulRevenueWrp">
+                            <h2 className="powerfulRevenue">Powerful Revenue</h2>
+                            <p>Our target is to increase your revenue. If we don’t achieve tangible results within 6 month of launch, we will <strong>refund 100%</strong> of your fees.</p>
+                            <p>We can make this offer because we are super confident in our ability to suceed.</p>
+                            <p>When you consider increased bar sales, advertising revenue, ancillary revenue, and lead generation... it’s a slam dunk! or Homerun! or Touchdown!</p>
+                            <Link to="/partner" className="__homepage-btn-wrp __powerfulRevenueButton">Learn more</Link>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres04})`:`url(${Homebg04})`, backgroundRepeat:'no-repeat'}}>
                 <div className="__left-side-content">
                     <div className="__container">
-                        <h2>Live-Play sport-based games</h2>
-                        <h3>Available for any sport, any league... worldwide</h3>
-                        <ul className="__content-sport-list">
-                            <li>
-                                <span>NFL</span>
-                                <p>Available September through to the Super Bowl. We also have an NFL Draft Contest!</p>
-                            </li>
-                            <li>
-                                <span>NFL</span>
-                                <p>Available October through to the Stanley Cup Finals.</p>
-                            </li>
-                            <li>
-                                <span>NBA</span>
-                                <p>Available from October through to the Champoinship.</p>
-                            </li>
-                            <li>
-                                <span>MLB</span>
-                                <p>Available from May through to the World Series.</p>
-                            </li>
-                            <li>
-                                <span>Soccer</span>
-                                <p>Year round!</p>
-                            </li>
-                            <li>
-                                <span>Cricket</span>
-                                <p>Year round!</p>
-                            </li>
-                        </ul>
-                        <h3>You can pick from any of the sports above!</h3>
-                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                        <div className="livePlay">
+                            <h2>Live-Play sport-based games</h2>
+                            <h3>Available for any sport, any league... worldwide</h3>
+                            <ul className="__content-sport-list">
+                                <li>
+                                    <span>NFL</span>
+                                    <p>Available September through to the Super Bowl. We also have an NFL Draft Contest!</p>
+                                </li>
+                                <li>
+                                    <span>NFL</span>
+                                    <p>Available October through to the Stanley Cup Finals.</p>
+                                </li>
+                                <li>
+                                    <span>NBA</span>
+                                    <p>Available from October through to the Champoinship.</p>
+                                </li>
+                                <li>
+                                    <span>MLB</span>
+                                    <p>Available from May through to the World Series.</p>
+                                </li>
+                                <li>
+                                    <span>Soccer</span>
+                                    <p>Year round!</p>
+                                </li>
+                                <li>
+                                    <span>Cricket</span>
+                                    <p>Year round!</p>
+                                </li>
+                            </ul>
+                            <h3>You can pick from any of the sports above!</h3>
+                            <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="__left-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres05})`:`url(${Homebg05})`, backgroundRepeat:'no-repeat'}}>
                 <div className="__right-side-content">
                     <div className="__container">
+                        <div className="trustSecurity">
                         <h2>Trust and Security</h2>
-                        <p>PowerPlay Systems offers seamless and safe live-play experiences for your customers. </p>
-                        <p>Our platform is built using industry-leading technology that is scalable, ultra-fast, SSL encrypted, and digitally secured. </p>
-                        <p>We have ensured that your customers' personal data is stored securely, and we are completely transparent in all our transactions.</p>
-                        <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                            <p>PowerPlay Systems offers seamless and safe live-play experiences for your customers. </p>
+                            <p>Our platform is built using industry-leading technology that is scalable, ultra-fast, SSL encrypted, and digitally secured. </p>
+                            <p>We have ensured that your customers' personal data is stored securely, and we are completely transparent in all our transactions.</p>
+                            <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                        </div>
                     </div>
                 </div>
             </div>

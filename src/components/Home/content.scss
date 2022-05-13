@@ -363,10 +363,10 @@
       align-items: center;
       flex-direction: column;
     h1{
-      // font-family: Teko;
+      font-family: Teko;
       font-style: normal;
-      font-weight: 600;
-      font-size: 46px;
+      font-weight: 400;
+      font-size: 62px;
       line-height: 94.5%;
       letter-spacing: 4px;
       text-transform: uppercase;
@@ -390,14 +390,17 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #1E1E1E;
-    // font-family:Teko;
+    font-family:Teko;
     font-style: normal;
     font-weight: 600;
     font-size: 22px;
     line-height: 128.5%;
-    padding: 11px 36px;
+    padding: 10px 83px;
     display: inline-block;
     margin-top: 50px;
+  }
+  .__powerfulRevenueButton{
+    padding: 10px 111px;
   }
   .__left-img-text-wrp{
     position: relative;
@@ -407,6 +410,18 @@
     .__right-side-content{
       max-width: 750px;
       margin-left: auto;
+      .powerfulRevenueWrp{
+        margin-right: 144px;
+      }
+      .powerfulRevenue{
+        margin-bottom: 40px !important;
+      }
+      .barPowered{
+        margin-right: 144px;
+      }
+      .trustSecurity{
+        margin-right: 144px;
+      }
       p{
         font-family: 'Poppins';
         font-style: normal;
@@ -417,27 +432,46 @@
         margin-bottom: 20px !important;
       }
       h2{
-        font-family: 'Poppins';
+        font-family: Teko;
         font-style: normal;
-        font-weight: 700;
-        font-size: 38px;
+        font-weight: 400;
+        font-size: 52px;
         line-height: 94.5%;
         letter-spacing: 1px;
         text-transform: uppercase;
         color: #FB6E00;
-        margin-top: 20px !important;
+        margin-top: 40px !important;
         margin-bottom: 80px !important;
       }
     }
   }
   .__right-img-text-wrp{
     position: relative;
-    padding: 100px 0;
+    padding: 217px 0;
     background-position: right top;
     background-size: contain;
     .__left-side-content{
       max-width: 750px;
       margin-right: auto;
+      .__container{
+        h2{
+          font-family: 'Teko';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 52px;
+          line-height: 120%;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+        .Powerful-wrp{
+          margin-left: 144px;
+        }
+        .livePlay{
+          margin-left: 144px;
+        }
+        
+        
+      }
       h2{
         font-family: 'Poppins';
         font-style: normal;
@@ -451,7 +485,7 @@
         margin-bottom: 40px !important;
       }
       h3{
-        // font-family: 'Teko';
+        font-family: 'Teko';
         font-style: normal;
         font-weight: 400;
         font-size: 23px;
@@ -481,7 +515,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             color: #FB6E00;
-            // font-family: 'Teko';
+            font-family: 'Teko';
             font-style: normal;
             font-weight: 400;
             font-size: 20px;

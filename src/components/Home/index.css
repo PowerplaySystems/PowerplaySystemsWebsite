@@ -1069,7 +1069,6 @@ button {
 }
 .whatweoffer-solo-wrapper-text {
   display: inline-block;
-  /* padding-top: 8px; */
   width: 298px;
   font-family: Poppins;
   font-size: 16px;
@@ -1094,7 +1093,6 @@ button {
   display: inline-block;
   font-family: Poppins;
   font-size: 24px;
-
   text-align: center;
   color: #ffffff;
 }
@@ -1131,9 +1129,7 @@ button {
   padding-top: 40px;
   font-family: Poppins;
   font-size: 20px;
-
   line-height: 1.5;
-
   text-align: center;
   color: #ffffff;
 }
@@ -1142,6 +1138,73 @@ button {
 }
 .mobile-break {
   display: none;
+}
+.numbers-say-it-all{
+  padding: 125px 0;
+  background-size: cover;
+}
+.numbers-title{
+  font-family: Teko;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 94.5%;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #FB6E00;
+  margin-bottom: 80px !important;
+}
+.numbers-cards{
+  background: #111111;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 0 50px 40px 40px;
+  width: 270px;
+  height: 420px;
+  position: relative;
+}
+.numbers-cards-wrp {
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 40px;
+}
+.cardNumber-Icon {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 95px;
+}
+.cardNumber-Icon h2{
+  font-family: Teko;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 120%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #FB6E00;
+}
+
+.cardNumber-Icon img{
+  position: absolute;
+  right: -60px;
+}
+.class-sub-text{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 180%;
+  letter-spacing: 1px;
+  color: #F2F2F2;
+}
+.__right-side-content .__container h2{
+  font-family: Teko;
 }
 @media screen and (max-width: 1380px) {
   .hl-item1 {
@@ -1811,3 +1874,4 @@ button {
     display: none;
   }
 }
+
