@@ -619,3 +619,14 @@
     }
   } 
 }
+@media (min-width: 1400px) {
+  .__home-page-wrp{
+    .__banner-wrp{
+        height: 966px;
+        background-size: 100%;
+    }
+  }
+  .__left-img-text-wrp{
+    background-position: 15%  !important;
+  }
+}

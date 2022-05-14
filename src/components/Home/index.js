@@ -8,7 +8,7 @@ import Footer from "../common/Footer";
 import powerPlayGameLogo from "../../assets/images/power-play-games-logo.png";
 
 import HomeBanner from "../../assets/images/home-new/banner-bg.jpg";
-import Homebg01 from "../../assets/images/home-new/home-bg-01.jpg";
+import Homebg01 from "../../assets/images/home-new/home-bg-01.png";
 import Homebg02 from "../../assets/images/home-new/home-bg-02.jpg";
 import Homebg03 from "../../assets/images/home-new/home-bg-03.jpg";
 import Homebg04 from "../../assets/images/home-new/home-bg-04.jpg";
@@ -90,7 +90,7 @@ const Home =(props)=>{
                 <div className="__container">
                     <h1>Power up your bar revenue</h1>
                     <p>Our exclusive live sports based bar games will generate <br/>unparalleled excitement for your bar patrons</p>
-                    <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                    <Link to="/partner" className="__homepage-btn-wrp">Partner with us</Link>
                 </div>
             </div>
             <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg01})`, backgroundRepeat:'no-repeat'}}>

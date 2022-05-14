@@ -26,24 +26,24 @@ class Header extends Component {
       isLoaded: false,
       isLogedin: mLogged,
       isMenuOpen: false,
-      showLogo: false,
+      showLogo: true,
     };
     this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
-    var that = this;
-    if (this.props.location && this.props.location.pathname == "/") {
-      window.onscroll = function() {
-        if (window.pageYOffset < 150) {
-          that.setState({ showLogo: false });
-        } else {
-          that.setState({ showLogo: true });
-        }
-      };
-    } else {
-      that.setState({ showLogo: true });
-    }
+    // var that = this;
+    // if (this.props.location && this.props.location.pathname == "/") {
+    //   window.onscroll = function() {
+    //     if (window.pageYOffset < 150) {
+    //       that.setState({ showLogo: false });
+    //     } else {
+    //       that.setState({ showLogo: true });
+    //     }
+    //   };
+    // } else {
+    //   that.setState({ showLogo: true });
+    // }
   }
 
   componentWillUnmount() {
@@ -81,13 +81,13 @@ class Header extends Component {
           </button>
           <ul className={`__flex __nav-links ${isMenuOpen ? "open" : ""}`}>
             <li>
-              <NavLink to="/solutions">Solutions</NavLink>
-            </li>
-            <li>
               <NavLink to="/services">our services</NavLink>
             </li>
             <li>
               <NavLink to="/about-us">about us</NavLink>
+            </li>
+            <li>
+              <NavLink to="/solutions">Pricing</NavLink>
             </li>
             <li>
               <NavLink to="/partner" className="__partner-with-us-btn">
