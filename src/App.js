@@ -55,7 +55,7 @@ import DraftDayLive from "./components/DrafDay/Live";
 
 import "./App.css";
 import PPSSolutions from "./components/PPSSolutions/PPSSolutions";
-import Services from "./components/Services/Services";
+import Services from "./components/Services/ServicesNew";
 
 import AppStore from './store'
 import reducer from './reducer'

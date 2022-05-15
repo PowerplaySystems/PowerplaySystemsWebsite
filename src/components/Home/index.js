@@ -7,8 +7,8 @@ import genrlogo from "../../assets/images/home/genr-8-logo@2x.png";
 import Footer from "../common/Footer";
 import powerPlayGameLogo from "../../assets/images/power-play-games-logo.png";
 
-import HomeBanner from "../../assets/images/home-new/banner-bg.jpg";
-import Homebg01 from "../../assets/images/home-new/home-bg-01.jpg";
+import HomeBanner from "../../assets/images/home-new/banner-bg.png";
+import Homebg01 from "../../assets/images/home-new/home-bg-01.png";
 import Homebg02 from "../../assets/images/home-new/home-bg-02.jpg";
 import Homebg03 from "../../assets/images/home-new/home-bg-03.jpg";
 import Homebg04 from "../../assets/images/home-new/home-bg-04.jpg";
@@ -90,10 +90,10 @@ const Home =(props)=>{
                 <div className="__container">
                     <h1>Power up your bar revenue</h1>
                     <p>Our exclusive live sports based bar games will generate <br/>unparalleled excitement for your bar patrons</p>
-                    <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                    <Link to="/partner" className="__homepage-btn-wrp">Partner with us</Link>
                 </div>
             </div>
-            <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg01})`, backgroundRepeat:'no-repeat'}}>
+            <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg01})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
                 <div className="__right-side-content">
                     <div className="__container">
                         <div className="barPowered">
@@ -106,20 +106,20 @@ const Home =(props)=>{
                     </div>
                 </div>
             </div>
-            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres02})`:`url(${Homebg02})`, backgroundRepeat:'no-repeat'}}>
+            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres02})`:`url(${Homebg02})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
                 <div className="__left-side-content">
                     <div className="__container">
                         <div className="Powerful-wrp">
                             <h2>Powerful Live-game engagement</h2>
                             <p>All our games are based on <strong>live sporting event</strong> data. Whether you have NFL, MLB, NHL, NBA, Soccer or Cricket fans, we’ve got you covered!</p>
-                            <p>Imagine <strong>the level of engagement</strong> we can achieve!></p>
+                            <p>Imagine <strong>the level of engagement</strong> we can achieve!</p>
                             <p><strong>Exclusive in-bar only entry</strong> ensures customers will keep coming back to play again and again.</p>
                             {/* <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link> */}
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="numbers-say-it-all" style={{backgroundImage:isMobile1?`url(${Homebgres06})`:`url(${Homebgres06})`, backgroundRepeat:'no-repeat'}}>
+            <div className="numbers-say-it-all" style={{backgroundImage:isMobile1?`url(${Homebgres06})`:`url(${Homebgres06})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
                 <h1 className="numbers-title">The numbers say it all</h1>
                 <div className="numbers-cards-wrp">
                     <div className="numbers-cards">
@@ -145,7 +145,7 @@ const Home =(props)=>{
                     </div>
                 </div>
             </div>
-            <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg03})`, backgroundRepeat:'no-repeat'}}>
+            <div className="__left-img-text-wrp" style={{backgroundImage:`url(${Homebg03})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
                 <div className="__right-side-content">
                     <div className="__container">
                         <div className="powerfulRevenueWrp">
@@ -158,7 +158,7 @@ const Home =(props)=>{
                     </div>
                 </div>
             </div>
-            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres04})`:`url(${Homebg04})`, backgroundRepeat:'no-repeat'}}>
+            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres04})`:`url(${Homebg04})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
                 <div className="__left-side-content">
                     <div className="__container">
                         <div className="livePlay">
@@ -196,7 +196,7 @@ const Home =(props)=>{
                     </div>
                 </div>
             </div>
-            <div className="__left-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres05})`:`url(${Homebg05})`, backgroundRepeat:'no-repeat'}}>
+            <div className="__left-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres05})`:`url(${Homebg05})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
                 <div className="__right-side-content">
                     <div className="__container">
                         <div className="trustSecurity">

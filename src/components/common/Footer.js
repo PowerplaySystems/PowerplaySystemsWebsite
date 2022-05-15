@@ -14,9 +14,10 @@ class Footer extends Component {
             </Link>
             <div className='__links'>
               {/* <Link to='/faqs'>FAQs</Link> */}
+              <Link to='/services'>Our Services</Link>
               <Link to='/about-us'>About Us</Link>
-              <Link to='/services'>Services</Link>
-              <Link to='/solutions'>Solutions</Link>
+              <Link to='/solutions'>Pricing</Link>
+              <Link to='/partner' className="partnerLink">Partner with us</Link>
             </div>
           </div>
           <div className='__copyright'>Copyright © 2021 PowerPlay Systems Inc. - All Rights Reserved</div>
