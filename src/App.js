@@ -7,6 +7,8 @@ import Signup from "./components/auth/Signup";
 import oldHome from "./components/Home/oldHomePage";
 import Home from "./components/Home";
 
+import Pricing from "./components/Pricing/Pricing";
+
 import SelectGames from "./components/SelectGames";
 import HowToPlay from "./components/HowToPlay";
 import AboutUs from "./components/AboutUs";
@@ -156,6 +158,7 @@ const App =()=> {
               <Route path="/draft-day-live" component={DraftDayLive} />
               <Route path='/solutions' component={PPSSolutions} />
               <Route path='/services' component={Services} />
+              <Route path='/pricing' component={Pricing} />
             </div>
           </Router>
           </AppStore.Provider>

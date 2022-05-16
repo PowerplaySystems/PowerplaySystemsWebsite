@@ -87,7 +87,7 @@ class Header extends Component {
               <NavLink to="/about-us">about us</NavLink>
             </li>
             <li>
-              <NavLink to="/solutions">Pricing</NavLink>
+              <NavLink to="/pricing">Pricing</NavLink>
             </li>
             <li>
               <NavLink to="/partner" className="__partner-with-us-btn">

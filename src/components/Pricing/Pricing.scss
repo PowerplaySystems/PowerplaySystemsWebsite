@@ -1,0 +1,307 @@
+.__Pricing {
+    .__main {
+        .__container {
+            .__top_heading {
+                padding: 167px 0px 67px 0px;
+                h1 {
+                    font-family: 'Teko';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 52px;
+                    line-height: 94.5%;
+                    text-align: center;
+                    letter-spacing: 3px;
+                    color: #F2F2F2;
+                }
+                p {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 170%;
+                    text-align: center;
+                    color: #F2F2F2;
+                }
+            }
+            .__price_panels {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 40px;
+                flex-wrap: wrap;
+                .__panel {
+                    width: 260px;
+                    height: 600px;
+                    background: rgba(242, 242, 242, 0.16);
+                    border: 1px solid #333333;
+                    border-radius: 12px;
+                    margin-right: 20px;
+                    position: relative;
+                    &.__last {
+                        margin-right: 0px;
+                    }
+                    .__star_icons {
+                        position: absolute;
+                        right: 30px;
+                        top: 30px;
+                    }
+                    .__heading {
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 52px;
+                        line-height: 120%;
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        color: #FB6E00;
+                        margin: 100px 0px 0px 30px;
+                        span {
+                            font-size: 18px;
+                            text-transform: none;
+                        }
+                    }
+                    .__sub_heading {
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 18px;
+                        line-height: 120%;
+                        display: flex;
+                        align-items: center;
+                        letter-spacing: 1px;
+                        color: #BDBDBD;
+                        justify-content: center;
+                    }
+                    .__details_tab {
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 18px;
+                        line-height: 120%;
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        color: #BDBDBD;
+                        justify-content: center;
+                        img {
+                            margin-left: 6px;
+                        }
+                    }
+                    .__list_heading {
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 28px;
+                        line-height: 120%;
+                        letter-spacing: 1px;
+                        color: #FB6E00;
+                        display: flex;
+                        margin: 20px 30px;
+                    }
+                    ul {
+                        list-style: none;
+                        margin-left: 30px;
+                        li {
+                            display: flex;
+                            margin-bottom: 6px;
+                            .__bullet {
+                                width: 10px;
+                                height: 10px;                                
+                                background: #FB6E00;
+                                border-radius: 2px;
+                                margin-right: 10px;
+                                margin-top: 5px;
+                            }
+                            .__content {
+                                font-family: 'Poppins';
+                                font-style: normal;
+                                font-weight: 300;
+                                font-size: 14px;
+                                line-height: 140%;
+                                color: #F2F2F2;
+                                max-width: 180px;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            .__schedule_button {
+                padding-bottom: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                button {
+                    position: relative;
+                    width: 340px;
+                    height: 48px;
+                    background: #FB6E00;
+                    border-radius: 12px;
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -42%);
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 22px;
+                        line-height: 128.5%;
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        color: #1E1E1E;
+                    }
+                }
+            }
+            .__monthly_fees {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                margin-bottom: 300px;
+                .__fees_calculator {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 40px 40px 60px;
+                    gap: 30px;
+                    width: 760px;
+                    height: 246px;
+                    background: rgba(242, 242, 242, 0.1);
+                    border-radius: 24px;
+                    margin-bottom: 40px;
+                    h1 {
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 42px;
+                        line-height: 94.5%;
+                        text-align: center;
+                        letter-spacing: 2px;
+                        color: #FB6E00;
+                        text-align: center;
+                        margin-top: 40px;
+                        margin-bottom: 30px;
+                    }
+                    .__calculator_form {
+                        display: flex;
+                        width: 100%;
+                        .__form_field {
+                            display: flex;
+                            flex: 1;
+                            flex-direction: column;
+                            max-width: 240px;
+                            label {
+                                font-family: 'Poppins';
+                                font-style: normal;
+                                font-weight: 300;
+                                font-size: 14px;
+                                line-height: 128.5%;
+                                color: #F2F2F2;
+                                margin-bottom: 10px;
+                            }
+                            .__select_wrapper {
+                                position: relative;
+                                background: rgba(242, 242, 242, 0.2);
+                                border-radius: 12px;
+                                height: 48px;
+                                font-family: 'Poppins';
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 16px;
+                                line-height: 100%;
+                                display: flex;
+                                align-items: center;
+                                margin-right: 20px;
+                                padding: 0px 30px;
+                                select {
+                                    border: 0px;
+                                    background: none;
+                                    color: #fff;
+                                    option {
+                                        color: #000;
+                                    }
+                                    &:focus-visible {
+                                        border: none;
+                                        outline-color: transparent;
+                                        outline-width: 0;
+                                    }
+                                }
+                            }
+                            input {
+                                background: rgba(242, 242, 242, 0.2);
+                                border-radius: 12px;
+                                height: 48px;
+                                padding-left: 30px;
+                                border: 0px;
+                                color: #fff;
+                                font-family: 'Poppins';
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 16px;
+                                line-height: 100%;
+                                display: flex;
+                                align-items: center;
+                                color: #F2F2F2;
+                                margin-right: 20px;
+                                -moz-appearance: textfield;
+                                &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+                                    -webkit-appearance: none;
+                                }
+                                &::-webkit-input-placeholder {
+                                    font-family: 'Poppins';
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    font-size: 16px;
+                                }
+                            }
+                            button {
+                                width: 200px;
+                                height: 48px;
+                                background: #FB6E00;
+                                border-radius: 12px;
+                                position: relative;
+                                border: 0px;
+                                span {
+                                    font-family: 'Teko';
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    font-size: 22px;
+                                    line-height: 128.5%;
+                                    display: flex;
+                                    align-items: center;
+                                    text-align: center;
+                                    letter-spacing: 1px;
+                                    text-transform: uppercase;
+                                    color: #1E1E1E;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -42%);
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                .__bottom_line {
+                    font-family: 'Teko';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 28px;
+                    line-height: 94.5%;
+                    text-align: center;
+                    letter-spacing: 2px;
+                    color: #F2F2F2;
+                }
+            }
+        }
+    }
+}

@@ -89,7 +89,7 @@ const Home =(props)=>{
                 {/* <img src={HomeBanner} alt=""/> */}
                 <div className="__container">
                     <h1>Power up your bar revenue</h1>
-                    <p>Our exclusive live sports based bar games will generate <br/>unparalleled excitement for your bar patrons</p>
+                    <p>Our exclusive free-to-play live sports based games will generate <br/>unparalleled excitement for your bar patrons.</p>
                     <Link to="/partner" className="__homepage-btn-wrp">Partner with us</Link>
                 </div>
             </div>
@@ -97,9 +97,9 @@ const Home =(props)=>{
                 <div className="__right-side-content">
                     <div className="__container">
                         <div className="barPowered">
-                            <p>PowerPlay Systems provides exciting <strong>new gaming solutions</strong> that power engagement. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
-                            <p>We provide the app design and all marketing materials. We even provide up to a <strong>$1,000,000 fully insured prize!</strong></p>
-                            <p>Do you think a $1,000,000 prize will draw customers to your bar?</p>
+                            <p>PowerPlay Systems provides exciting <strong>new bar game solutions</strong> that powers engagement. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
+                            <p>We provide the app design and all marketing materials. We even provide up to a <strong>$100,000 fully insured prize!</strong></p>
+                            <p>Do you think a $100,000 prize will draw customers to your bar?</p>
                             <h2>Is your bar Powered?</h2>
                             {/* <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link> */}
                         </div>
@@ -150,7 +150,7 @@ const Home =(props)=>{
                     <div className="__container">
                         <div className="powerfulRevenueWrp">
                             <h2 className="powerfulRevenue">Powerful Revenue</h2>
-                            <p>Our target is to increase your revenue. If we don’t achieve tangible results within 6 month of launch, we will <strong>refund 100%</strong> of your fees.</p>
+                            <p>Our target is to increase your revenue. If we don’t achieve tangible results within 6 month, we will offer our services free until we meet your expectations.</p>
                             <p>We can make this offer because we are super confident in our ability to suceed.</p>
                             <p>When you consider increased bar sales, advertising revenue, ancillary revenue, and lead generation... it’s a slam dunk! or Homerun! or Touchdown!</p>
                             <Link to="/partner" className="__homepage-btn-wrp __powerfulRevenueButton">Learn more</Link>
