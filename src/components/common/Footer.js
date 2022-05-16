@@ -16,7 +16,7 @@ class Footer extends Component {
               {/* <Link to='/faqs'>FAQs</Link> */}
               <Link to='/services'>Our Services</Link>
               <Link to='/about-us'>About Us</Link>
-              <Link to='/solutions'>Pricing</Link>
+              <Link to='/pricing'>Pricing</Link>
               <Link to='/partner' className="partnerLink">Partner with us</Link>
             </div>
           </div>
