@@ -106,11 +106,11 @@ const Home =(props)=>{
                     </div>
                 </div>
             </div>
-            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres02})`:`url(${Homebg02})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
+            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres02})`:`url(${Homebg02})`, backgroundRepeat:'no-repeat', maxWidth: 1140, margin: '0 auto', backgroundPosition: "0px 50px"}}>
                 <div className="__left-side-content">
                     <div className="__container">
                         <div className="Powerful-wrp">
-                            <h2>Powerful Live-game engagement</h2>
+                            <h2 >Powerful Live-game engagement</h2><br />
                             <p>All our games are based on <strong>live sporting event</strong> data. Whether you have NFL, MLB, NHL, NBA, Soccer or Cricket fans, we’ve got you covered!</p>
                             <p>Imagine <strong>the level of engagement</strong> we can achieve!</p>
                             <p><strong>Exclusive in-bar only entry</strong> ensures customers will keep coming back to play again and again.</p>
@@ -158,11 +158,15 @@ const Home =(props)=>{
                     </div>
                 </div>
             </div>
-            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres04})`:`url(${Homebg04})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
-                <div className="__left-side-content">
+            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres04})`:`url(${Homebg04})`, backgroundRepeat:'no-repeat', maxWidth: 1140, margin: '0 auto', backgroundPosition: "0px 50px"}}>
+                <div className="__left-side-content" style={{
+                    maxWidth: 610
+                }}>
                     <div className="__container">
                         <div className="livePlay">
-                            <h2>Live-Play sport-based games</h2>
+                            <h2 style={{
+                                marginBottom: "0px !important"
+                            }}>Live-Play sport-based games</h2>
                             <h3>Available for any sport, any league... worldwide</h3>
                             <ul className="__content-sport-list">
                                 <li>
@@ -191,7 +195,9 @@ const Home =(props)=>{
                                 </li>
                             </ul>
                             <h3>You can pick from any of the sports above!</h3>
-                            <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                            <Link to="/partner" className="__homepage-btn-wrp" style={{
+                                padding: "14px 83px 8px 83px"
+                            }}>Partner with us!</Link>
                         </div>
                     </div>
                 </div>

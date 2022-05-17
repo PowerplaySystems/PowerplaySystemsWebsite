@@ -11,7 +11,7 @@ import Pricing from "./components/Pricing/Pricing";
 
 import SelectGames from "./components/SelectGames";
 import HowToPlay from "./components/HowToPlay";
-import AboutUs from "./components/AboutUs";
+import AboutUs from "./components/AboutUs/AboutUs";
 import TermsOfUse from "./components/TermsOfUse";
 import Privacy from "./components/Privacy";
 import FAQ from "./components/FAQ";
