@@ -74,6 +74,27 @@
                         color: #BDBDBD;
                         justify-content: center;
                     }
+                    .__discount_details {
+                        ul {
+                            li { 
+                                justify-content: space-between;
+                                max-width: 200px;
+                                div {
+                                    font-family: 'Teko';
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    font-size: 18px;
+                                    line-height: 120%;
+                                    display: flex;
+                                    align-items: center;
+                                    text-align: center;
+                                    letter-spacing: 1px;
+                                    color: #E0E0E0;
+                                }
+                            }
+                        }
+                        
+                    }
                     .__details_tab {
                         font-family: 'Teko';
                         font-style: normal;

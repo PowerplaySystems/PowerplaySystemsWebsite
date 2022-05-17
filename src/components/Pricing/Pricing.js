@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {Helmet} from "react-helmet";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
@@ -11,6 +11,9 @@ import starThree from '../../assets/images/pricing/starThree.png';
 import downArrow from '../../assets/images/pricing/downArrow.svg';
 
 const Pricing = (props) => {
+    const [openDetails, setOpenDetails] = useState(false);
+    const [openDetails1, setOpenDetails1] = useState(false);
+    const [openDetails2, setOpenDetails2] = useState(false);
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }, [])
@@ -61,7 +64,38 @@ const Pricing = (props) => {
                                 <img src={starOne} className="__star_icons" />
                                 <div className="__heading">$0.69<span> /seat</span></div>
                                 <div className="__sub_heading">Get discount for more seats!</div>
-                                <div className="__details_tab">Show details <img src={downArrow} /></div>
+                                {openDetails && <div className="__discount_details">
+                                    <ul>
+                                        <li>
+                                            <div>first 100 seats:</div>
+                                            <div>$0.69 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>101-1000 seats:</div>
+                                            <div>$0.40 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>1001-10000 seats:</div>
+                                            <div>$0.25 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>10000+ seats:</div>
+                                            <div>$0.10 /seat</div>
+                                        </li>
+                                    </ul>
+                                </div>}
+                                {!openDetails && 
+                                    <div className="__details_tab" onClick={() => {
+                                        setOpenDetails(true);
+                                    }}>Show details <img src={downArrow} /></div>
+                                }
+                                {openDetails && 
+                                    <div className="__details_tab" onClick={() => {
+                                        setOpenDetails(false);
+                                    }}>Hide <img src={downArrow} style={{
+                                        transform: "rotate(180deg)"
+                                    }}/></div>
+                                }
                                 <div className="__list_heading">Minor League plan</div>
                                 <ul>
                                     <li>
@@ -86,7 +120,38 @@ const Pricing = (props) => {
                                 <img src={starTwo} className="__star_icons" />
                                 <div className="__heading">$0.99<span> /seat</span></div>
                                 <div className="__sub_heading">Get discount for more seats!</div>
-                                <div className="__details_tab">Show details <img src={downArrow} /></div>
+                                {openDetails1 && <div className="__discount_details">
+                                    <ul>
+                                        <li>
+                                            <div>first 100 seats:</div>
+                                            <div>$0.99 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>101-1000 seats:</div>
+                                            <div>$0.69 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>1001-10000 seats:</div>
+                                            <div>$0.40 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>10000+ seats:</div>
+                                            <div>$0.25 /seat</div>
+                                        </li>
+                                    </ul>
+                                </div>}
+                                {!openDetails1 && 
+                                    <div className="__details_tab" onClick={() => {
+                                        setOpenDetails1(true);
+                                    }}>Show details <img src={downArrow} /></div>
+                                }
+                                {openDetails1 && 
+                                    <div className="__details_tab" onClick={() => {
+                                        setOpenDetails1(false);
+                                    }}>Hide <img src={downArrow} style={{
+                                        transform: "rotate(180deg)"
+                                    }}/></div>
+                                }
                                 <div className="__list_heading">Major League plan</div>
                                 <ul>
                                     <li>
@@ -115,7 +180,38 @@ const Pricing = (props) => {
                                 <img src={starThree} className="__star_icons" />
                                 <div className="__heading">$4.99<span> /seat</span></div>
                                 <div className="__sub_heading">Get discount for more seats!</div>
-                                <div className="__details_tab">Show details <img src={downArrow} /></div>
+                                {openDetails2 && <div className="__discount_details">
+                                    <ul>
+                                        <li>
+                                            <div>first 100 seats:</div>
+                                            <div>$4.99 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>101-1000 seats:</div>
+                                            <div>$2.50 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>1001-10000 seats:</div>
+                                            <div>$1.50 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>10000+ seats:</div>
+                                            <div>$1.00 /seat</div>
+                                        </li>
+                                    </ul>
+                                </div>}
+                                {!openDetails2 && 
+                                    <div className="__details_tab" onClick={() => {
+                                        setOpenDetails2(true);
+                                    }}>Show details <img src={downArrow} /></div>
+                                }
+                                {openDetails2 && 
+                                    <div className="__details_tab" onClick={() => {
+                                        setOpenDetails2(false);
+                                    }}>Hide <img src={downArrow} style={{
+                                        transform: "rotate(180deg)"
+                                    }}/></div>
+                                }
                                 <div className="__list_heading">Championship plan</div>
                                 <ul>
                                     <li>

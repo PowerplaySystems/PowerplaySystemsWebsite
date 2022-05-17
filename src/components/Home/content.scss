@@ -460,7 +460,7 @@
     background-position: right top;
     background-size: contain;
     .__left-side-content{
-      max-width: 664px;
+      max-width: 500px;
       margin-right: auto;
       .__container{
         h2{
@@ -491,7 +491,7 @@
         color: #FB6E00;
         text-transform: uppercase;
         margin-top: 0px !important;
-        margin-bottom: 40px !important;
+        margin-bottom: 40px;
       }
       h3{
         font-family: 'Teko';
@@ -520,7 +520,7 @@
           margin-bottom: 15px;
           span{
             width: 130px;
-            flex: 0 0 130px;
+            flex: 0 0 70px;
             letter-spacing: 1px;
             text-transform: uppercase;
             color: #FB6E00;

@@ -1,0 +1,218 @@
+.__AboutUs {
+   .__main {
+        padding-bottom: 700px;
+       .__container {
+        .__top_banner {
+            max-width: 1440px;
+            margin-top: 157px;
+            display: flex;
+            flex-direction: row;
+            .__left_text {
+                padding-top: 70px;
+                max-width: 619px;
+                h1 {
+                    font-family: 'Teko';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 62px;
+                    line-height: 94.5%;
+                    letter-spacing: 3px;
+                    text-transform: uppercase;
+                    color: #F2F2F2;
+                }
+                .__sub_text {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 170%;
+                    color: #F2F2F2;
+                    padding-bottom: 60px;
+                    max-width: 450px;
+                }
+                .__what_we_do {
+                    font-family: 'Teko';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 52px;
+                    line-height: 94.5%;
+                    letter-spacing: 1px;
+                    color: #FB6E00;
+                    margin-bottom: 10px;
+                }
+                .__what_we_do_desc {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 170%;
+                    color: #F2F2F2;
+                    max-width: 480px;
+                }
+            }
+        }
+        .__our_mission {
+            background: rgba(255, 255, 255, 0.2);
+            height: 200px;
+            margin-top: -6px;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .__title {
+                font-family: 'Teko';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 52px;
+                line-height: 94.5%;
+                text-align: center;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: #FB6E00;
+                margin-bottom: 10px;
+            }
+            p {
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 170%;
+                text-align: center;
+                color: #F2F2F2;
+            }
+        }
+        .__live_play {
+            max-width: 1440px;
+            display: flex;
+            flex-direction: row;
+            margin-top: 240px;
+            .__left_img {
+                img {
+                    width: 605px;
+                }
+            }
+            .__right_text {
+                padding-top: 173px;
+                .__title {
+                    font-family: 'Teko';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 52px;
+                    line-height: 120%;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    color: #FB6E00;
+                    margin-bottom: 20px;
+                }
+                p{
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 170%;
+                    color: #F2F2F2;
+                    max-width: 440px;
+                }
+            }
+        }
+        .__find_us {
+            position: absolute;
+            height: 700px;
+            width: 100%;
+            background-image: url('../../assets/images/about_us/bottomBG.png');
+            background-size: cover;
+            left: 0;
+            mix-blend-mode: color-dodge;
+            .__middle_box {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 60px;
+                position: absolute;
+                width: 493px;
+                height: 487px;
+                left: calc(50% - 493px/2 + 0.5px);
+                top: 106px;
+                background: linear-gradient(142.07deg, rgba(244, 242, 242, 0.06) 8.62%, rgba(237, 236, 236, 0.2) 95.47%);
+                border: 1px solid #828282;
+                backdrop-filter: blur(10px);
+                border-radius: 24px;
+                .__title {
+                    font-family: 'Teko';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 52px;
+                    line-height: 75px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: #FB6E00;
+                    margin-bottom: 30px;
+                }
+                .__number_section {
+                    display: flex;
+                    img {
+                        margin-right: 10px;
+                        width: 24px;
+                        height: 24px;
+                    }
+                    p {
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 400;
+                        //font-size: 18px;
+                        line-height: 34px;
+                        text-align: center;
+                        letter-spacing: -0.191845px;
+                        text-transform: uppercase;
+                        color: #F2F2F2;
+                    }
+                }
+                .__call_today {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 28px;
+                    text-align: center;
+                    letter-spacing: -0.17266px;
+                    color: #F2F2F2;
+                    padding-top: 26px;
+                    padding-bottom: 70px;
+                }
+                .__contact_us_button {
+                    button {
+                        width: 326px;
+                        height: 48px;
+                        background: #FB6E00;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+                        border-radius: 12px;
+                        position: relative;
+                        span {
+                            font-family: 'Teko';
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 22px;
+                            line-height: 128.5%;
+                            display: flex;
+                            align-items: center;
+                            text-align: center;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                            color: #1E1E1E;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -42%);
+                        }
+                    }
+                }
+            }
+            
+        } 
+       }
+   }
+}
