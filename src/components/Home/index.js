@@ -20,6 +20,8 @@ import Homebgres06 from "../../assets/images/home-new/numbers-cards-bg.png";
 import Homebgres07 from "../../assets/images/home-new/map-pin-dynamic-gradient.png";
 import Homebgres08 from "../../assets/images/home-new/notify-heart-dynamic-gradient.png";
 import Homebgres09 from "../../assets/images/home-new/at-dynamic-gradient.png";
+import homePageTopLogo from '../../assets/images/home-new/homePageTopLogo.png';
+import bgnumber from '../../assets/images/home-new/bgnumber.png';
 
 import {useQuery,gql} from '@apollo/react-hooks'
 import {HOME_BANNER} from '../../GraphQL/Queries'
@@ -88,6 +90,7 @@ const Home =(props)=>{
             <div className="__banner-wrp" style={{backgroundImage:`url(${HomeBanner})`}}>
                 {/* <img src={HomeBanner} alt=""/> */}
                 <div className="__container">
+                    <img src={homePageTopLogo} className="topLogo"/>
                     <h1>Power up your bar revenue</h1>
                     <p>Our exclusive free-to-play live sports based games will generate <br/>unparalleled excitement for your bar patrons.</p>
                     <Link to="/partner" className="__homepage-btn-wrp">Partner with us</Link>
@@ -119,7 +122,7 @@ const Home =(props)=>{
                     </div>
                 </div>
             </div>
-            <div className="numbers-say-it-all" style={{backgroundImage:isMobile1?`url(${Homebgres06})`:`url(${Homebgres06})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
+            <div className="numbers-say-it-all" style={{backgroundImage:isMobile1?`url(${bgnumber})`:`url(${Homebgres06})`, backgroundRepeat:'no-repeat', maxWidth: 1440, margin: '0 auto'}}>
                 <h1 className="numbers-title">The numbers say it all</h1>
                 <div className="numbers-cards-wrp">
                     <div className="numbers-cards">
@@ -158,7 +161,7 @@ const Home =(props)=>{
                     </div>
                 </div>
             </div>
-            <div className="__right-img-text-wrp" style={{backgroundImage:isMobile1?`url(${Homebgres04})`:`url(${Homebg04})`, backgroundRepeat:'no-repeat', maxWidth: 1140, margin: '0 auto', backgroundPosition: "0px 50px"}}>
+            <div className="__right-img-text-wrp livePlaymobile" style={{backgroundImage:isMobile1?`url(${Homebgres04})`:`url(${Homebg04})`, backgroundRepeat:'no-repeat', maxWidth: 1140, margin: '0 auto', backgroundPosition: "0px 50px"}}>
                 <div className="__left-side-content" style={{
                     maxWidth: 610
                 }}>
@@ -166,35 +169,36 @@ const Home =(props)=>{
                         <div className="livePlay">
                             <h2 style={{
                                 marginBottom: "0px !important"
-                            }}>Live-Play sport-based games</h2>
+                            }} className="__livePlayh2">Live-Play sport-based games</h2>
                             <h3>Available for any sport, any league... worldwide</h3>
                             <ul className="__content-sport-list">
                                 <li>
-                                    <span>NFL</span>
+                                    {isMobile1 ? <div className="__mainDiv"><div className="bullet"></div><span>NFL</span></div> :<span>NFL</span>}
+                                    
                                     <p>Available September through to the Super Bowl. We also have an NFL Draft Contest!</p>
                                 </li>
                                 <li>
-                                    <span>NFL</span>
+                                    {isMobile1 ? <div className="__mainDiv"><div className="bullet"></div><span>NFL</span></div> :<span>NFL</span>}
                                     <p>Available October through to the Stanley Cup Finals.</p>
                                 </li>
                                 <li>
-                                    <span>NBA</span>
+                                    {isMobile1 ? <div className="__mainDiv"><div className="bullet"></div><span>NBA</span></div> :<span>NBA</span>}
                                     <p>Available from October through to the Champoinship.</p>
                                 </li>
                                 <li>
-                                    <span>MLB</span>
+                                    {isMobile1 ? <div className="__mainDiv"><div className="bullet"></div><span>MLB</span></div> :<span>MLB</span>}
                                     <p>Available from May through to the World Series.</p>
                                 </li>
                                 <li>
-                                    <span>Soccer</span>
+                                    {isMobile1 ? <div className="__mainDiv"><div className="bullet"></div><span>Soccer</span></div> :<span>Soccer</span>}
                                     <p>Year round!</p>
                                 </li>
                                 <li>
-                                    <span>Cricket</span>
+                                    {isMobile1 ? <div className="__mainDiv"><div className="bullet"></div><span>Cricket</span></div> :<span>Cricket</span>}
                                     <p>Year round!</p>
                                 </li>
                             </ul>
-                            <h3>You can pick from any of the sports above!</h3>
+                            {!isMobile1 && <h3>You can pick from any of the sports above!</h3>}
                             <Link to="/partner" className="__homepage-btn-wrp" style={{
                                 padding: "14px 83px 8px 83px"
                             }}>Partner with us!</Link>
@@ -210,7 +214,7 @@ const Home =(props)=>{
                             <p>PowerPlay Systems offers seamless and safe live-play experiences for your customers. </p>
                             <p>Our platform is built using industry-leading technology that is scalable, ultra-fast, SSL encrypted, and digitally secured. </p>
                             <p>We have ensured that your customers' personal data is stored securely, and we are completely transparent in all our transactions.</p>
-                            <Link to="/partner" className="__homepage-btn-wrp">Partner with us!</Link>
+                            <Link to="/partner" className="__homepage-btn-wrp lastButton">Partner with us!</Link>
                         </div>
                     </div>
                 </div>
