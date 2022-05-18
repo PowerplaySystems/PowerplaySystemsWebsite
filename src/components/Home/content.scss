@@ -326,6 +326,36 @@
     }
   }
   .__home-page-wrp {
+    text-align: center;
+    .__banner-wrp {
+      position: relative;
+      padding: 100px 0;
+      height: 650px;
+      background-repeat: no-repeat;
+      background-position: 90% !important;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .__container {
+        h1 {
+          text-align: center;
+          font-family: 'Teko';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 52px;
+          line-height: 120%;
+          text-align: center;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: #F2F2F2;
+          margin-bottom: 20px !important;
+        }
+        p {
+          margin-bottom: 70px !important;
+        }
+      }
+    }
     .__left-img-text-wrp {
       .__right-side-content {
         .barPowered, .powerfulRevenueWrp, .trustSecurity{
@@ -333,6 +363,9 @@
         }
       }
     }
+  }
+  .topLogo {
+    display: none;
   }
 }
 
@@ -561,13 +594,29 @@
 @media (max-width: 991px) {
 .__home-page-wrp{
   .__left-img-text-wrp {
-    padding: 3em 0 90vw 0 !important;
-    background-position-x: 60px;
+    padding: 21em 0 0vw 0 !important;
+    background-position: 10px 40px;
+    text-align: left;
     .__right-side-content {
       max-width: 100%;
       margin: 0;
+      .powerfulRevenue, .__livePlayh2, .trustSecurity h2 {
+        font-size: 42px;
+      }
+      .barPowered {
+        h2 {
+          font-family: 'Teko';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 42px;
+          line-height: 94.5%;
+          letter-spacing: 1px;
+          color: #FB6E00;
+        }
+      }
       h2{
         margin-bottom: 20px !important;
+        
       }
     }
    }
@@ -589,6 +638,9 @@
    .__homepage-btn-wrp{
      margin-top: 30px;
    }
+   .__livePlayh2 {
+        font-size: 42px;
+      }
   } 
 }
 @media (max-width: 767px) {
@@ -609,10 +661,26 @@
         }
       }
     }
+    .numbers-title {
+      font-size: 42px !important;
+    }
     .__right-img-text-wrp{
-      padding: 3em 0 70vw 0 !important;
+      padding: 20em 0 0vw 0 !important;
+      background-position: 0px 0px !important;
+      &.livePlaymobile {
+        padding: 0em 0 0vw 0 !important;
+        background-position: 0px 160px !important;
+      }
       .__left-side-content{
         padding-bottom: 40px;
+        .Powerful-wrp {
+          text-align: left;
+        }
+        .__livePlayh2 {
+          font-size: 42px !important;
+          text-align: left;
+          width: 300px;
+        }
         h2{
           font-size: 20px;
           margin-bottom: 20px !important;
@@ -620,20 +688,99 @@
         h3{
           font-size: 20px;
           line-height: normal;
+          text-align: left;
         }
         .__content-sport-list{
           li{
-            span{
-              font-size: 16px;
-              width: 100px;
-              flex: 0 0 100px;
+            display: flex;
+            align-items: start !important;
+            margin-bottom: 0px;
+            flex-direction: column;
+            text-align: left;
+            p {
+              font-size: 12px;
             }
+            .__mainDiv {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              .bullet {
+                width: 14px;
+                height: 14px;
+                background: #FB6E00;
+                border-radius: 2px;
+                margin-right: 10px;
+                margin-top: -5px;
+              }
+              span{
+                font-size: 16px;
+                width: 100px;
+                //flex: 0 0 100px;
+                font-family: 'Teko';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 28px;
+                line-height: 100%;
+                display: flex;
+                align-items: center;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: #FB6E00;
+              }
+            }
+            
           }
         }
       }
     }
   } 
-  
+  .numbers-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 30px 40px 40px !important;
+    gap: 10px;
+    width: 290px  !important;
+    height: 203px  !important;
+    background: rgba(17, 17, 17, 0.6)  !important;
+    border-radius: 12px  !important;
+    .cardNumber-Icon {
+      margin-top: 20px !important;
+      margin-bottom: 0px;
+      h2 {
+        height: 50px;
+        font-family: 'Teko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 42px;
+        line-height: 120%;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #FB6E00;
+      }
+      img {
+        position: absolute;
+        right: 34px;
+        top: 10px;
+        height: 80px;
+        width: 80px;
+      }
+    }
+    .class-sub-text {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 150%;
+      letter-spacing: 1px;
+      color: #F2F2F2;
+      text-align: left;
+    }
+  }
+  .lastButton{
+    margin-top: 80px !important;
+    margin-bottom: 170px !important;
+  }
 }
 @media (min-width: 1400px) {
   .__home-page-wrp{

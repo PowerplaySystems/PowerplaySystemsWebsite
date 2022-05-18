@@ -32,7 +32,7 @@ import LiveScore from "./components/LiveScore";
 import MyAccount from "./components/MyAccount";
 import Page747 from "./components/Page747";
 import Page747Draw from "./components/Page747Draw";
-import PartnerWithUs from "./components/PartenerWithUs";
+import PartnerWithUs from "./components/PartenerWithUs/PartnerWithUs";
 import Sweet16 from "./components/Sweet16";
 import Sweet16Draw from "./components/Sweet16Draw";
 import Elite8 from "./components/Elite8";

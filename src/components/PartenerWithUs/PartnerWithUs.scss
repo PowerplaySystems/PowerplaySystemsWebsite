@@ -1,0 +1,163 @@
+.__partner-with-us {
+    padding-top: 167px;
+    .__main {
+        .__container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 40px;
+            width: 1040px;
+            .__left {
+                width: 480px;
+                h1 {
+                    font-family: 'Teko';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 62px;
+                    line-height: 94.5%;
+                    letter-spacing: 3px;
+                    text-transform: uppercase;
+                    color: #FB6E00;
+                    padding-bottom: 40px;
+                }
+                .__sub_title {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 170%;
+                    color: #F2F2F2;
+                    margin-bottom: 100px !important;
+                }
+                ul {
+                    list-style: none;
+                    li {
+                        .__li_div {
+                            display: flex;
+                            img {
+                                width: 40px;
+                                height: 40px;
+                                margin-right: 20px;
+                            }
+                            .__title {
+                                font-family: 'Teko';
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 28px;
+                                line-height: 130%;
+                                display: flex;
+                                align-items: center;
+                                letter-spacing: 1px;
+                                text-transform: uppercase;
+                                color: #FB6E00;
+                                padding-bottom: 16px;
+                            }
+                        }
+                        margin-bottom: 60px;
+                        
+                        p {
+                            font-family: 'Poppins';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 16px;
+                            line-height: 170%;
+                            color: #F2F2F2;
+                            width: 400px;
+                            padding-left: 60px;
+                        }
+                    }
+                }
+            }
+            .__right {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 60px;
+                width: 520px;
+                height: 751px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
+                margin-bottom: 145px;
+                .__input-field {
+                    width: 100%;
+                    margin-bottom: 20px;
+                    label {
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 128.5%;
+                        color: #F2F2F2;
+                    }
+                    input {
+                        background: rgba(242, 242, 242, 0.1);
+                        border-radius: 8px;
+                        height: 42px;
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 100%;
+                        display: flex;
+                        align-items: center;
+                        color: #F2F2F2;
+                        width: 100%;
+                        border: 0;              
+                        padding: 0px 30px;
+                    }
+                    textarea {
+                        background: rgba(242, 242, 242, 0.1);
+                        border-radius: 8px;
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 100%;
+                        display: flex;
+                        align-items: center;
+                        color: #F2F2F2;
+                        width: 100%;
+                        border: 0;              
+                        padding: 20px 30px;
+                        height: 140px;
+                        margin-bottom: 65px;
+                    }
+                }
+                .__half {
+                    display: flex;
+                    .__input-field:nth-child(1) {
+                        margin-right: 20px;
+                    }
+                }
+                .__btn {
+                    height: 48px;
+                    background: #FB6E00;
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+                    border-radius: 12px;
+                    position: relative;
+                    width: 100%;
+                    border: 0;
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -42%);
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 22px;
+                        line-height: 128.5%;
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        color: #1E1E1E;
+                    }
+                }
+            }
+        }
+    }
+}
