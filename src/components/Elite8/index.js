@@ -45,7 +45,7 @@ function StaticContent(props) {
             Powerball?
           </div>
           <div className="fun-play-text2a">
-            At PowerPlay Systems,
+            At Powered Bar Games,
             <div className="fun-play-text2b">
               We think the current pick-and-wait format is kind of boring. So we
               invented a fun new way to play!

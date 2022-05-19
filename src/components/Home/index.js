@@ -9,11 +9,11 @@ import powerPlayGameLogo from "../../assets/images/power-play-games-logo.png";
 
 import HomeBanner from "../../assets/images/home-new/banner-bg.png";
 import Homebg01 from "../../assets/images/home-new/home-bg-01.png";
-import Homebg02 from "../../assets/images/home-new/home-bg-02.jpg";
+import Homebg02 from "../../assets/images/home-new/home-bg-02.png";
 import Homebg03 from "../../assets/images/home-new/home-bg-03.jpg";
 import Homebg04 from "../../assets/images/home-new/home-bg-04.jpg";
 import Homebg05 from "../../assets/images/home-new/home-bg-05.jpg";
-import Homebgres02 from "../../assets/images/home-new/home-bg-res-02.jpg";
+import Homebgres02 from "../../assets/images/home-new/home-bg-res-02.png";
 import Homebgres04 from "../../assets/images/home-new/home-bg-res-04.jpg";
 import Homebgres05 from "../../assets/images/home-new/home-bg-res-05.jpg";
 import Homebgres06 from "../../assets/images/home-new/numbers-cards-bg.png";
@@ -83,7 +83,7 @@ const Home =(props)=>{
           </title>
           <meta
             name="description"
-            content="PowerPlay Systems provides patent-pending gaming solutions that changes the way the world plays lottery, DFS, and Sports betting games. Partner With US now"
+            content="Powered Bar Games provides patent-pending gaming solutions that changes the way the world plays lottery, DFS, and Sports betting games. Partner With US now"
           />
         </Helmet>
         <Header />
@@ -100,7 +100,7 @@ const Home =(props)=>{
                 <div className="__right-side-content">
                     <div className="__container">
                         <div className="barPowered">
-                            <p>PowerPlay Systems provides exciting <strong>new bar game solutions</strong> that power customer engagement. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
+                            <p>Powered Bar Games provides exciting <strong>new bar game solutions</strong> that power customer engagement. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
                             <p>We provide the app design and all marketing materials. We even provide up to a <strong>$100,000 fully insured prize!</strong></p>
                             <p>Do you think a $100,000 prize will draw customers to your bar?</p>
                             <h2>Is your bar Powered?</h2>
@@ -211,7 +211,7 @@ const Home =(props)=>{
                     <div className="__container">
                         <div className="trustSecurity">
                         <h2>Trust and Security</h2>
-                            <p>PowerPlay Systems offers seamless and safe live-play experiences for your customers. </p>
+                            <p>Powered Bar Games offers seamless and safe live-play experiences for your customers. </p>
                             <p>Our platform is built using industry-leading technology that is scalable, ultra-fast, SSL encrypted, and digitally secured. </p>
                             <p>We have ensured that your customers' personal data is stored securely, and we are completely transparent in all our transactions.</p>
                             <Link to="/partner" className="__homepage-btn-wrp lastButton">Partner with us!</Link>

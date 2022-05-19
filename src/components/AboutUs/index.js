@@ -63,7 +63,7 @@ const AboutUs =(props)=> {
           <title>About US | Lottery and Fantasy Sports solutions</title>
           <meta
             name="description"
-            content="Powerplay Systems is offering the worlds first patent pending Live-Play Lottery and Fantasy Sports solutions. Visit our website for more details"
+            content="Powered Bar Games is offering the worlds first patent pending Live-Play Lottery and Fantasy Sports solutions. Visit our website for more details"
           />
         </Helmet>
         <Header />
@@ -85,7 +85,7 @@ const AboutUs =(props)=> {
                   {/* <div className="__title-2 __primary">What We Do?</div> */}
                   <div className="__subtitle-2">
                   <div style={{whiteSpace:'pre-wrap'}}  dangerouslySetInnerHTML={{ __html: banner.desc }}/>
-                    {/* Powerplay Systems is offering the worlds first patent pending
+                    {/* Powered Bar Games is offering the worlds first patent pending
                     Live-Play Lottery and Fantasy Sports solutions. */}
                   </div>
                   {/* <div className="__subtitle-2 __hide-on-large">

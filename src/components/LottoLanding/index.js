@@ -238,7 +238,7 @@ class PowerplayLotto extends Component {
               <span class="heading-subtext">TM</span>
             </div>
             <div className="lotto-landing-heading">
-              Powerplay Systems offers a Full-Service Interactive Lottery
+              Powered Bar Games offers a Full-Service Interactive Lottery
               Platform{" "}
               <div className="lotto-landing-heading-fancy">
                 #GenR8 Technology
