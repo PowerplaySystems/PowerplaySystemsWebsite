@@ -34,7 +34,7 @@ const AboutUs = (props) => {
                     <div className="__container">
                         <div className="__top_banner">
                             <div className="__left_text">
-                                <h1>Powerplay Systems</h1>
+                                <h1>Powered Bar Games</h1>
                                 <p className="__sub_text">Driving revenue generating solutions for the bar industy</p>
                                 <div className="__what_we_do">What we do?</div>
                                 <p className="__what_we_do_desc">We do our best to make significant contributions to your bars bottom line. With our exciting games and experience, your bar is sure to have record sales numbers</p>

@@ -151,7 +151,7 @@ const PartnerWithUs =(props)=>{
     return (
       <>
         <Helmet>
-          <title>Partner with Powerplay Systems</title>
+          <title>Partner with Powered Bar Games</title>
           <meta
             name="description"
             content="We’re here to help you boost your business via using our contest platform. We look forward to hearing from you. Partner with us to increase your Gaming Revenue"
@@ -178,7 +178,7 @@ const PartnerWithUs =(props)=>{
                 <div className="__container-2">
                   {/* <div className="__title">
                     Partner with{" "}
-                    <span className="__primary">Powerplay Systems</span>
+                    <span className="__primary">Powered Bar Games</span>
                   </div> */}
                   <div className="__subtitle">
                     {

@@ -5,6 +5,7 @@ import Footer from "../common/Footer";
 import Header from "../common/Header";
 import img1 from "../../assets/images/services/bitmap@2x.jpg";
 import bg from '../../assets/images/services/serviceBG.png';
+import bgMobile from '../../assets/images/services/bgMobile.png';
 import topRightImage from '../../assets/images/services/topRightImage.png';
 import { Link } from "react-router-dom";
 import CallCenter from "../../icons/CallCenter";
@@ -36,28 +37,28 @@ const Services = (props) => {
 //       })
 //     }
 //   },[data1.data])
-//   const isClient = typeof window !== 'undefined';
-//     const [viewportWidth, setWidth] = useState(800)
-//     useEffect(
-//         () => {
-//             if (isClient) {
-//                 updateWindowDimensions();
-//                 window.addEventListener('resize', updateWindowDimensions);
-//             }
-//             return () => {
-//                 if (isClient) window.removeEventListener('resize', updateWindowDimensions);
-//             }
-//         }, []
-//     )
-//     const updateWindowDimensions = () => {
-//         setWidth(window.innerWidth);
-//     }
-//     const MOBILE_BREAKPOINT1 = 768;
-//     const MOBILE_BREAKPOINT2 = 375;
-//     const isMobile1 = Boolean(viewportWidth <= MOBILE_BREAKPOINT1);
-//     const isMobile2 = Boolean(viewportWidth <= MOBILE_BREAKPOINT2);
+  const isClient = typeof window !== 'undefined';
+    const [viewportWidth, setWidth] = useState(800)
+    useEffect(
+        () => {
+            if (isClient) {
+                updateWindowDimensions();
+                window.addEventListener('resize', updateWindowDimensions);
+            }
+            return () => {
+                if (isClient) window.removeEventListener('resize', updateWindowDimensions);
+            }
+        }, []
+    )
+    const updateWindowDimensions = () => {
+        setWidth(window.innerWidth);
+    }
+    const MOBILE_BREAKPOINT1 = 768;
+    const MOBILE_BREAKPOINT2 = 375;
+    const isMobile1 = Boolean(viewportWidth <= MOBILE_BREAKPOINT1);
+    const isMobile2 = Boolean(viewportWidth <= MOBILE_BREAKPOINT2);
 const mainPanelCSS = {
-    backgroundImage: `url(${bg})`,
+    backgroundImage: isMobile1 ? `url(${bgMobile})` : `url(${bg})`,
     backgroundColor: '#000',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
@@ -111,7 +112,7 @@ const dataList = [
             <div className="__topBanner">
                 <div className="__left_text">
                     <h1>EVERYTHING YOU NEED</h1>
-                    <p>We’ve got you covered. We provide everything you need to run a successful bar game and Power your revenue</p>
+                    <p>We provide everything you need to run a successful bar game and Power your revenue</p>
                 </div>
                 <div className="__right_image">
                     <img src={topRightImage} />

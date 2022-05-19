@@ -72,7 +72,7 @@ class LiveSportsMore extends Component {
                 valuable to your business.
                 <br />
                 <br />
-                At Powerplay Systems, we are ultimately focused on interactive
+                At Powered Bar Games, we are ultimately focused on interactive
                 sessions. Our sports-based experiences are designed to keep
                 player engagement high, whether it is one game or an entire
                 season.
@@ -93,10 +93,10 @@ class LiveSportsMore extends Component {
               <div className="ls-rm-powerplay-wrapper-media" />
               <div className="ls-rm-powerplay-wrapper-left">
                 <div className="ls-rm-heading">
-                  PowerPlay Systems Live Sports Benefits
+                  Powered Bar Games Live Sports Benefits
                 </div>
                 <br />
-                PowerPlay Systems offers competitive pricing, 24/7 customer
+                Powered Bar Games offers competitive pricing, 24/7 customer
                 support, and an interactive mobile-friendly platform. Integrate
                 with our platform and watch your conversions soar.
                 <br />
@@ -119,7 +119,7 @@ class LiveSportsMore extends Component {
               <div className="ls-rm-trust-wrapper-right">
                 <div className="ls-rm-heading">Trust and Security</div>
                 <br />
-                PowerPlay Systems Live Sports is an interactive live sports
+                Powered Bar Games Live Sports is an interactive live sports
                 platform that offers seamless and safe sports-based experiences
                 for your customers. Our platform is built using industry leading
                 technology that is scalable, ultra-fast, SSL encrypted and

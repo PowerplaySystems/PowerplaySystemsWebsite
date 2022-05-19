@@ -763,7 +763,7 @@ class SelectGames extends Component {
           <div className="headings-text">Trust and Security</div>
           <br />
           <div className="text-grey">
-            PowerPlay Systems Live Sports is an interactive live sports platform
+            Powered Bar Games Live Sports is an interactive live sports platform
             that offers seamless and safe sports-based experiences for your
             customers.
           </div>

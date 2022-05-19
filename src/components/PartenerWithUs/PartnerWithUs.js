@@ -15,6 +15,7 @@ import {PARTNER} from '../../GraphQL/Queries'
 import axios from 'axios'
 import swal from 'sweetalert';
 import bg from '../../assets/images/partner/bg.png';
+import bgMobile from '../../assets/images/partner/bgMobile.png';
 import li_tick from '../../assets/images/partner/li_tick.png';
 //Popup variables
 var popupText = "Error";
@@ -113,16 +114,16 @@ const PartnerWithUs =(props)=>{
       }
     }
     const mainPanelCSS = {
-        backgroundImage: `url(${bg})`,
+        backgroundImage: isMobile1 ? `url(${bgMobile})` : `url(${bg})`,
         backgroundColor: '#000',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundPosition: '0px 180px'
+        backgroundPosition: isMobile1 ? '0px 120px' : '0px 180px'
     };
     return (
       <>
         <Helmet>
-          <title>Partner with Powerplay Systems</title>
+          <title>Partner with Powered Bar Games</title>
           <meta
             name="description"
             content="We’re here to help you boost your business via using our contest platform. We look forward to hearing from you. Partner with us to increase your Gaming Revenue"

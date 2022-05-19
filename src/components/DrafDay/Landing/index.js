@@ -160,7 +160,7 @@ class DraftDayLanding extends Component {
               the correct order for the NFL entry draft to win great prizes?
             </div>
             <div className="draft_day_main_text5">
-              Powerplay Systems is offering sports fans a chance to win{" "}
+              Powered Bar Games is offering sports fans a chance to win{" "}
               <span>$25,000 USD </span>
               if they can correctly pick the draft order for the first round of
               the 2020 NFL Entry Draft.

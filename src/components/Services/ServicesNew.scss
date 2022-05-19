@@ -107,3 +107,66 @@
         }
     }
 }
+
+@media screen and (max-width: 767px) {
+    .__Services {
+        .__main {
+            .__container {
+                width: 100%;
+                padding: 0px 37px;
+                .__topBanner {
+                    flex-direction: column-reverse;
+                    padding-bottom: 138px;
+                    .__right_image {
+                        img {
+                            width: 200px;
+                            height: 200px;
+                            margin-top: 42px;
+                            margin-bottom: 24px;
+                        }
+                    }
+                    .__left_text {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding: 0px;
+                        gap: 20px;
+                        width: 340px;
+                        height: 118px;
+                        h1 {
+                            font-size: 42px;
+                            text-align: center;
+                        }
+                        p {
+                            font-weight: 400;
+                            font-size: 14px;
+                            width: 340px;
+                            text-align: center;
+                        }   
+                    }
+                }
+                .__data_list {
+                    flex-direction: column;
+                    .__left_section, .__right_section {
+                        padding-right: 0px;
+                        .__data_item {
+                            .__title_with_bullet {
+                                .__title {
+                                    font-weight: 400;
+                                    font-size: 24px;
+                                    line-height: 130%;
+                                }
+                            }
+                            .__content {
+                                font-weight: 300;
+                                font-size: 14px;
+                                line-height: 170%;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

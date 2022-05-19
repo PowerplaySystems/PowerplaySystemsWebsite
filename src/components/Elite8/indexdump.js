@@ -432,7 +432,7 @@ class Elite8 extends Component {
             <div className="fun-play-left-text1">
               Have you ever played a state-run lottery like super 7, 4/49, or
               Powerball? <br />
-              At Powerplay Systems, we think the current state-run format is
+              At Powered Bar Games, we think the current state-run format is
               kind of boring (except for the winner!) so, we invented a fun new
               way to play! We would like to find out if you feel the same way.
             </div>

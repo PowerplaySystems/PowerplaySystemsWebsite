@@ -112,7 +112,7 @@ class Login extends Component {
             </div>
             <div className="login-header-wrapper">
               <div className="login-header">
-                Sign in to <span>Powerplay Systems</span>
+                Sign in to <span>Powered Bar Games</span>
               </div>
               <div className="login-header-sub">Enter your details below</div>
             </div>
