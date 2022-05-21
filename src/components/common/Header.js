@@ -84,16 +84,21 @@ class Header extends Component {
               <NavLink to="/services">our services</NavLink>
             </li>
             <li>
+              <NavLink to="/customer-experience">customer experience</NavLink>
+            </li>
+            <li>
               <NavLink to="/about-us">about us</NavLink>
             </li>
             <li>
               <NavLink to="/pricing">Pricing</NavLink>
             </li>
-            <li>
+
+            {isMenuOpen && <li>
               <NavLink to="/partner" className="__partner-with-us-btn">
                 Partner with us!
               </NavLink>
-            </li>
+            </li>}
+            
             {isLogedin && (
               <Fragment>
                 <li className="__game-center">
@@ -112,6 +117,9 @@ class Header extends Component {
               </Fragment>
             )}
           </ul>
+          {!isMenuOpen && <NavLink to="/partner" className="__partner-with-us-btn __hide_in_mobile">
+            Partner with us!
+          </NavLink>}
         </div>
       </nav>
     );

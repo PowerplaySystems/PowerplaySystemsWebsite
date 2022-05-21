@@ -5,26 +5,54 @@ import Footer from "../common/Footer";
 import "./Pricing.scss";
 
 import bg from '../../assets/images/pricing/bg.png';
+import bgMobile from '../../assets/images/pricing/bgMobile.png';
 import starOne from '../../assets/images/pricing/starOne.png';
 import starTwo from '../../assets/images/pricing/starTwo.png';
 import starThree from '../../assets/images/pricing/starThree.png';
 import downArrow from '../../assets/images/pricing/downArrow.svg';
-
+import closeIcon from '../../assets/images/pricing/closeIcon.png';
 const Pricing = (props) => {
     const [openDetails, setOpenDetails] = useState(false);
     const [openDetails1, setOpenDetails1] = useState(false);
     const [openDetails2, setOpenDetails2] = useState(false);
+    const [openPopup, setOpenPopup] = useState(false);
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
-    }, [])
+    }, []);
+    const isClient = typeof window !== 'undefined';
+    const [viewportWidth, setWidth] = useState(800)
+    useEffect(
+        () => {
+            if (isClient) {
+                updateWindowDimensions();
+                window.addEventListener('resize', updateWindowDimensions);
+            }
+            return () => {
+                if (isClient) window.removeEventListener('resize', updateWindowDimensions);
+            }
+        }, []
+    )
+    const updateWindowDimensions = () => {
+        setWidth(window.innerWidth);
+    }
+    const MOBILE_BREAKPOINT1 = 768;
+    const MOBILE_BREAKPOINT2 = 375;
+    const isMobile1 = Boolean(viewportWidth <= MOBILE_BREAKPOINT1);
+    const isMobile2 = Boolean(viewportWidth <= MOBILE_BREAKPOINT2);
     const mainPanelCSS = {
         backgroundImage: `url(${bg})`,
         backgroundColor: '#000',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'
     };
+    const mainPanelCSSMobile = {
+        backgroundImage: `url(${bgMobile})`,
+        backgroundColor: '#000',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: '0px 120px'
+    };
     return (
-        <div className="__Pricing" style={mainPanelCSS}>
+        <div className="__Pricing" style={isMobile1 ? mainPanelCSSMobile : mainPanelCSS}>
             <Helmet>
                 <title>Everything You Need To Power Your Gaming Revenue</title>
                 <meta
@@ -42,8 +70,10 @@ const Pricing = (props) => {
                         <div className="__price_panels">
                             <div className="__panel">
                                 <div className="__heading">Free</div>
-                                <div className="__sub_heading">&nbsp;</div>
-                                <div className="__details_tab">&nbsp;</div>
+                                {!isMobile1 && <>
+                                    <div className="__sub_heading">&nbsp;</div>
+                                    <div className="__details_tab">&nbsp;</div>
+                                </>}
                                 <div className="__list_heading">Introductory plan</div>
                                 <ul>
                                     <li>
@@ -59,12 +89,17 @@ const Pricing = (props) => {
                                         <div className="__content">Players accumulate reward points</div>
                                     </li>
                                 </ul>
+                                {isMobile1 &&
+                                    <button className="__schedule_button __free">
+                                        <span>Schedule a call</span>
+                                    </button>
+                                }
                             </div>
                             <div className="__panel">
                                 <img src={starOne} className="__star_icons" />
                                 <div className="__heading">$0.69<span> /seat</span></div>
-                                <div className="__sub_heading">Get discount for more seats!</div>
-                                {openDetails && <div className="__discount_details">
+                                {!isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
+                                {!isMobile1 && openDetails && <div className="__discount_details">
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
@@ -84,12 +119,12 @@ const Pricing = (props) => {
                                         </li>
                                     </ul>
                                 </div>}
-                                {!openDetails && 
+                                {!isMobile1 && !openDetails && 
                                     <div className="__details_tab" onClick={() => {
                                         setOpenDetails(true);
                                     }}>Show details <img src={downArrow} /></div>
                                 }
-                                {openDetails && 
+                                {!isMobile1 && openDetails && 
                                     <div className="__details_tab" onClick={() => {
                                         setOpenDetails(false);
                                     }}>Hide <img src={downArrow} style={{
@@ -115,12 +150,45 @@ const Pricing = (props) => {
                                         <div className="__content">Players accumulate reward points</div>
                                     </li>
                                 </ul>
+                                {isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
+                                {isMobile1 && openDetails && <div className="__discount_details">
+                                    <ul>
+                                        <li>
+                                            <div>first 100 seats:</div>
+                                            <div>$0.69 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>101-1000 seats:</div>
+                                            <div>$0.40 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>1001-10000 seats:</div>
+                                            <div>$0.25 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>10000+ seats:</div>
+                                            <div>$0.10 /seat</div>
+                                        </li>
+                                    </ul>
+                                </div>}
+                                {isMobile1 &&
+                                    <button className="__discount_button" onClick={() => {
+                                        setOpenDetails(!openDetails);
+                                    }}>
+                                        <span>{!openDetails ? "See Discount Details" : "Hide Discount Details"}</span>
+                                    </button>
+                                }
+                                {isMobile1 &&
+                                    <button className="__schedule_button __other">
+                                        <span>Schedule a call</span>
+                                    </button>
+                                }
                             </div>
                             <div className="__panel">
                                 <img src={starTwo} className="__star_icons" />
                                 <div className="__heading">$0.99<span> /seat</span></div>
-                                <div className="__sub_heading">Get discount for more seats!</div>
-                                {openDetails1 && <div className="__discount_details">
+                                {!isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
+                                {!isMobile1 && openDetails1 && <div className="__discount_details">
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
@@ -140,12 +208,12 @@ const Pricing = (props) => {
                                         </li>
                                     </ul>
                                 </div>}
-                                {!openDetails1 && 
+                                {!isMobile1 && !openDetails1 && 
                                     <div className="__details_tab" onClick={() => {
                                         setOpenDetails1(true);
                                     }}>Show details <img src={downArrow} /></div>
                                 }
-                                {openDetails1 && 
+                                {!isMobile1 && openDetails1 && 
                                     <div className="__details_tab" onClick={() => {
                                         setOpenDetails1(false);
                                     }}>Hide <img src={downArrow} style={{
@@ -175,12 +243,45 @@ const Pricing = (props) => {
                                         <div className="__content">Players accumulate reward points</div>
                                     </li>
                                 </ul>
+                                {isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
+                                {isMobile1 && openDetails1 && <div className="__discount_details">
+                                    <ul>
+                                        <li>
+                                            <div>first 100 seats:</div>
+                                            <div>$0.99 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>101-1000 seats:</div>
+                                            <div>$0.69 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>1001-10000 seats:</div>
+                                            <div>$0.40 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>10000+ seats:</div>
+                                            <div>$0.25 /seat</div>
+                                        </li>
+                                    </ul>
+                                </div>}
+                                {isMobile1 &&
+                                    <button className="__discount_button" onClick={() => {
+                                        setOpenDetails1(!openDetails1);
+                                    }}>
+                                        <span>{!openDetails1 ? "See Discount Details" : "Hide Discount Details"}</span>
+                                    </button>
+                                }
+                                {isMobile1 &&
+                                    <button className="__schedule_button __other">
+                                        <span>Schedule a call</span>
+                                    </button>
+                                }
                             </div>
                             <div className="__panel __last">
                                 <img src={starThree} className="__star_icons" />
                                 <div className="__heading">$4.99<span> /seat</span></div>
-                                <div className="__sub_heading">Get discount for more seats!</div>
-                                {openDetails2 && <div className="__discount_details">
+                                {!isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
+                                {!isMobile1 && openDetails2 && <div className="__discount_details">
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
@@ -200,12 +301,12 @@ const Pricing = (props) => {
                                         </li>
                                     </ul>
                                 </div>}
-                                {!openDetails2 && 
+                                {!isMobile1 && !openDetails2 && 
                                     <div className="__details_tab" onClick={() => {
                                         setOpenDetails2(true);
                                     }}>Show details <img src={downArrow} /></div>
                                 }
-                                {openDetails2 && 
+                                {!isMobile1 && openDetails2 && 
                                     <div className="__details_tab" onClick={() => {
                                         setOpenDetails2(false);
                                     }}>Hide <img src={downArrow} style={{
@@ -235,11 +336,46 @@ const Pricing = (props) => {
                                         <div className="__content">Players accumulate reward points</div>
                                     </li>
                                 </ul>
+                                {isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
+                                {isMobile1 && openDetails2 && <div className="__discount_details">
+                                    <ul>
+                                        <li>
+                                            <div>first 100 seats:</div>
+                                            <div>$4.99 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>101-1000 seats:</div>
+                                            <div>$2.50 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>1001-10000 seats:</div>
+                                            <div>$1.50 /seat</div>
+                                        </li>
+                                        <li>
+                                            <div>10000+ seats:</div>
+                                            <div>$1.00 /seat</div>
+                                        </li>
+                                    </ul>
+                                </div>}
+                                {isMobile1 &&
+                                    <button className="__discount_button" onClick={() => {
+                                        setOpenDetails2(!openDetails2);
+                                    }}>
+                                        <span>{!openDetails2 ? "See Discount Details" : "Hide Discount Details"}</span>
+                                    </button>
+                                }
+                                {isMobile1 &&
+                                    <button className="__schedule_button __other">
+                                        <span>Schedule a call</span>
+                                    </button>
+                                }
                             </div>
                         </div>
+                        {!isMobile1 && 
                         <div className="__schedule_button">
                             <button><span>Schedule a call</span></button>
-                        </div>
+                        </div>}
+                        {!isMobile1 && 
                         <div className="__monthly_fees">
                             <div className="__fees_calculator">
                                 <h1>Calculate my monthly fee</h1>
@@ -267,10 +403,54 @@ const Pricing = (props) => {
                                 </form>
                             </div>
                             <p className="__bottom_line">Custom plans available, contact us to discuss</p>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             <Footer />
+            {isMobile1 && 
+                <div className="__mobile_calculation">
+                    <button onClick={() => {
+                        setOpenPopup(true);
+                    }}>
+                        <span>Calculate my monthly fee</span>
+                    </button>
+                </div>
+            }
+            {isMobile1 && openPopup &&  
+                <div className="__mobile_calculation_popup">
+                    <button className="__close_button" onClick={() => {
+                        setOpenPopup(false);
+                    }}>
+                        <img src={closeIcon} />
+                    </button>
+                    <h1>Calculate my monthly fee</h1>
+                    <div className="__fields">
+                        <div className="__form_field">
+                            <label>Number of seats</label>
+                            <input type="number" placeholder="Enter a number"/>
+                        </div>
+                        <div className="__radio_group">
+                            <label>Select your plan:</label>
+                            <div className="__radio_item">
+                                <input type="radio" name="plan" value="minor" checked/>
+                                <span>Minor League plan</span>
+                            </div>
+                            <div className="__radio_item">
+                                <input type="radio" name="plan" value="major" />
+                                <span>Major League plan</span>
+                            </div>
+                            <div className="__radio_item">
+                                <input type="radio" name="plan" value="championship" />
+                                <span>Championship plan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="__result">
+                        $104.99<span>/month</span>
+                    </div>
+                    <button className="__calculate_button"><span>Calculate!</span></button>
+                </div>
+            }
         </div>
     );
 };
