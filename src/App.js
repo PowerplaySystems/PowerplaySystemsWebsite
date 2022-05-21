@@ -58,6 +58,7 @@ import DraftDayLive from "./components/DrafDay/Live";
 import "./App.css";
 import PPSSolutions from "./components/PPSSolutions/PPSSolutions";
 import Services from "./components/Services/ServicesNew";
+import CustomerExperience from './components/CustomerExperience';
 
 import AppStore from './store'
 import reducer from './reducer'
@@ -117,6 +118,7 @@ const App =()=> {
                 component={ResponsibleGaming}
               />
               <Route exact path="/faq" component={FAQ} />
+              <Route exact path="/customer-experience" component={CustomerExperience} />
               <Route exact path="/powerplay-lotto" component={PowerplayLotto} />
               <Route
                 exact

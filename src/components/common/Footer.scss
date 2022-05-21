@@ -62,3 +62,12 @@
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .__links-wrapper {
+        a {
+            img {
+                display: inherit !important;
+            }
+        }
+    }
+}

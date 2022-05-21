@@ -326,3 +326,358 @@
         }
     }
 }
+@media screen and (max-width: 767px) {
+    .__Pricing {
+        position: relative;
+        .__main {
+            .__container {
+                width: 100%;
+                .__top_heading {
+                    padding: 217px 37px 20px 37px;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    h1 {
+                        font-weight: 400;
+                        font-size: 42px;
+                        line-height: 120%;
+                        text-align: center;
+                        letter-spacing: 3px;
+                        width: 340px;
+                        height: 100px;
+                    }
+                    p {
+                        width: 340px;
+                        height: 48px;
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 14px;
+                        line-height: 170%;
+                        text-align: center;
+                        color: #F2F2F2;
+                    }
+                }
+                .__price_panels {
+                    gap: 40px; 
+                    padding-top: 40px;
+                    padding-bottom: 126px;
+                    .__panel {
+                        min-height: 456px;
+                        height: auto;
+                        margin-right: 0px;
+                        width: 320px;
+                        .__heading {
+                            margin: 70px 0px 0px 30px;
+                        }
+                        .__content {
+                            width: 240px;
+                            font-family: 'Poppins';
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 14px;
+                            line-height: 140%;
+                            color: #F2F2F2;
+                            max-width: 240px !important;
+                        }
+                        .__bullet {
+                            width: 10px;
+                            height: 10px;
+                        }
+                        .__discount_button {
+                            width: 260px;
+                            height: 48px;
+                            background: rgba(30, 30, 30, 0.4);
+                            border: 1px solid #F2F2F2;
+                            border-radius: 12px;
+                            padding-bottom: 0px;
+                            margin: 0 auto;
+                            position: relative;
+                            margin: 30px 30px 20px 30px;
+                            span {
+                                position: absolute;
+                                height: 28px;
+                                left: calc(50% - 148px/2 - 1px);
+                                top: calc(55% - 28px/2);
+                                font-family: 'Teko';
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 22px;
+                                line-height: 128.5%;
+                                display: flex;
+                                align-items: center;
+                                text-align: center;
+                                letter-spacing: 1px;
+                                text-transform: uppercase;
+                                color: #F2F2F2;
+                            }
+                        }
+                        .__schedule_button {
+                            width: 260px;
+                            height: 48px;
+                            background: #FB6E00;
+                            border-radius: 12px;
+                            padding-bottom: 0px;
+                            margin: 0 auto;
+                            border: 0;
+                            position: relative;
+                            &.__free {
+                                margin: 60px 30px;
+                            }
+                            &.__other {
+                                margin: 0px 30px 30px 30px;
+                            }
+                            span {
+                                position: absolute;
+                                height: 28px;
+                                left: calc(50% - 148px/2 - 1px);
+                                top: calc(55% - 28px/2);
+                                font-family: 'Teko';
+                                font-style: normal;
+                                font-weight: 600;
+                                font-size: 22px;
+                                line-height: 128.5%;
+                                display: flex;
+                                align-items: center;
+                                text-align: center;
+                                letter-spacing: 1px;
+                                text-transform: uppercase;
+                                color: #1E1E1E;
+                            }
+                        }
+                        .__sub_heading {
+                            justify-content: left;
+                            padding: 20px 30px 10px 30px;
+                        }
+                        .__discount_details {
+                            ul {
+                                li {
+                                    max-width: 260px !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .__mobile_calculation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 26px;
+        background: #1E1E1E;
+        align-items: center;
+        padding-top: 26px;
+        button {
+            width: 320px;
+            height: 48px;
+            background: #FB6E00;
+            border-radius: 12px;
+            position: relative;
+            span {
+                position: absolute;
+                height: 28px;
+                left: calc(50% - 243px/2 - 0.5px);
+                top: calc(50% - 28px/2);
+                font-family: 'Teko';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 22px;
+                line-height: 128.5%;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: #1E1E1E;
+            }
+        }
+    }
+    .__mobile_calculation_popup {
+        height: 640px;
+        width: 100%;
+        background: #1E1E1E;
+        border-radius: 24px 24px 0px 0px;
+        position: fixed;
+        bottom: 0;
+        z-index: 11111111111;
+        .__close_button {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 30px;
+            top: 30px;
+            background: none;
+            border: 0;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        h1 {
+            position: absolute;
+            height: 30px;
+            left: calc(50% - 283px/2 - 25.5px);
+            top: calc(50% - 30px/2 - 225px);
+            font-family: 'Teko';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 94.5%;
+            letter-spacing: 2px;
+            color: #FB6E00;
+        }
+        .__fields {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 40px;
+            position: absolute;
+            width: 240px;
+            height: 263px;
+            left: calc(50% - 240px/2 - 47px);
+            top: 137px;
+            .__form_field{
+                width: 240px;
+                height: 76px;
+                
+                    label {
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 16px;
+                        line-height: 128.5%;
+                        color: #F2F2F2;
+                        margin-bottom: 10px;
+                    }
+                    input {
+                        background: rgba(242, 242, 242, 0.2);
+                        border-radius: 12px;
+                        height: 48px;
+                        padding-left: 30px;
+                        border: 0px;
+                        color: #fff;
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 100%;
+                        display: flex;
+                        align-items: center;
+                        color: #F2F2F2;
+                        margin-right: 20px;
+                        -moz-appearance: textfield;
+                        margin-top: 5px;
+                        &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                        }
+                        &::-webkit-input-placeholder {
+                            font-family: 'Poppins';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 16px;
+                        }
+                    }
+                
+            }
+            .__radio_group {
+                label {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 16px;
+                    line-height: 128.5%;
+                    color: #F2F2F2;
+                    margin-bottom: 20px;
+                    display: block;
+                }
+                .__radio_item {
+                    display: flex;
+                    input {
+                        opacity: 1;
+                        visibility: visible;
+                        content: url('../../assets/images/pricing/Ellipse1.png');
+                        height: 18px;
+                        width: 18px;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        &:checked {
+                            content: url('../../assets/images/pricing/Ellipse2.png');
+                          }
+                    }
+                    span {
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 16px;
+                        line-height: 140%;
+                        color: #F2F2F2;
+                        padding-left: 10px;
+                        padding-bottom: 20px;
+                    }
+                }
+            }
+            
+        }
+        .__calculate_button {
+            position: absolute;
+            width: 320px;
+            height: 48px;
+            left: calc(50% - 320px/2);
+            bottom: 52px;
+            background: #FB6E00;
+            border-radius: 12px;
+            span {
+                position: absolute;
+                height: 28px;
+                left: calc(50% - 101px/2 - 0.5px);
+                top: calc(50% - 28px/2);
+                font-family: 'Teko';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 22px;
+                line-height: 128.5%;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: #1E1E1E;
+            }
+        }
+        .__result {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            padding: 0px;
+            gap: 6px;
+            position: absolute;
+            width: 154px;
+            height: 50px;
+            left: calc(50% - 154px/2 + 0.5px);
+            top: calc(50% - 50px/2 + 147px);
+            border-radius: 12px;
+            font-family: 'Teko';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 42px;
+            line-height: 120%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #FB6E00;
+            span {
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 120%;
+                text-transform: lowercase;
+            }
+        }
+    }
+}

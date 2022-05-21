@@ -7,6 +7,8 @@
             margin-top: 157px;
             display: flex;
             flex-direction: row;
+            align-items: center;
+            justify-content: center;
             .__left_text {
                 padding-top: 70px;
                 max-width: 619px;
@@ -215,4 +217,207 @@
         } 
        }
    }
+}
+@media screen and (max-width: 767px) {
+    .__AboutUs {
+        .__main {
+            padding-bottom: 500px;
+           .__container {
+               width: 100%;
+                .__top_banner {
+                    flex-direction: column;
+                    margin-top: 117px;
+                    .__left_text {
+                        .__sub_text {
+                            width: 340px;
+                            height: 54px;
+                            font-family: 'Poppins';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 16px;
+                            line-height: 170%;
+                            text-align: center;
+                            color: #F2F2F2;
+                        }
+                    }
+                    .__right_img {
+                        padding-top: 40px;
+                        padding-bottom: 60px;
+                        img {
+                            width: 300px;
+                        }
+                    }
+                }
+                .__our_mission {
+                    background: rgba(255, 255, 255, 0.2);
+                    .__title {
+                        width: 500px;
+                        height: 40px;
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 42px;
+                        line-height: 94.5%;
+                        text-align: center;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        color: #FB6E00;
+                    }
+                    p{
+                        width: 340px;
+                        height: 81px;
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 16px;
+                        line-height: 170%;
+                        text-align: center;
+                        color: #F2F2F2;
+                    }
+                }
+                .__what_we_do_mobile {
+                    padding-top: 330px;
+                    padding-left: 37px;
+                    padding-right: 37px;
+                    padding-bottom: 80px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    .__what_we_do {
+                        width: 340px;
+                        height: 40px;
+                        font-family: 'Teko';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 42px;
+                        line-height: 94.5%;
+                        letter-spacing: 1px;
+                        color: #FB6E00;
+                    }
+                    .__what_we_do_desc{
+                        width: 280px;
+                        height: 120px;
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 14px;
+                        line-height: 170%;
+                        color: #F2F2F2;
+                    }
+                }
+                .__live_play {
+                    margin-top: 0px;
+                    padding: 0px 33px;
+                    flex-direction: column;
+                    padding-bottom: 87px;
+                    .__left_img {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        img {
+                            width: 414px;
+                            height: 390px;
+                        }
+                    }
+                    .__right_text {
+                        padding-top: 40px;
+                        .__title {
+                            width: 340px;
+                            height: 40px;
+                            font-family: 'Teko';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 42px;
+                            line-height: 94.5%;
+                            letter-spacing: 1px;
+                            color: #FB6E00;
+                        }
+                        p {
+                            width: 280px;
+                            height: 81px;
+                            font-family: 'Poppins';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 16px;
+                            line-height: 170%;                                                        
+                            color: #F2F2F2;
+                        }
+                    }
+                }
+                .__find_us {
+                    background-image: url('../../assets/images/about_us/findUsBgMobile.png');
+                    mix-blend-mode: unset;
+                    opacity: 1;
+                    height: 500px;
+                    .__middle_box {
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding: 40px 30px;
+                        position: absolute;
+                        width: 319px;
+                        height: 365px;
+                        left: calc(50% - 319px/2 + 0.5px);
+                        top: 67px;
+                        background: rgba(17, 17, 17, 0.4);
+                        border: 1px solid #333333;
+                        box-shadow: 0px 24px 24px rgba(0, 0, 0, 0.45);
+                        backdrop-filter: blur(10px);
+                        border-radius: 12px;
+                        .__title {
+                            width: 240px;
+                            height: 63px;
+                            font-family: 'Teko';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 42px;
+                            line-height: 60px;
+                            text-align: center;
+                            text-transform: uppercase;
+                            color: #FB6E00;
+                            margin-bottom: 20px;
+                        }
+                        .__number_section {
+                            img {
+                                width: 10px;
+                                height: 15px;
+                                margin-top: 3px;
+                            }
+                            p {
+                                    /* height: 21px; */
+                                    font-family: 'Poppins';
+                                    font-style: normal;
+                                    /* font-weight: 400; */
+                                    /* font-size: 14px; */
+                                    line-height: 150%;
+                                    /* text-align: center; */
+                                    letter-spacing: -0.191845px;
+                                    text-transform: uppercase;
+                                    color: #F2F2F2;
+                            }
+                        }
+                        .__call_today {
+                            font-family: 'Poppins';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 150%;
+                            text-align: center;
+                            letter-spacing: -0.17266px;
+                            color: #F2F2F2;
+                            padding-bottom: 30px;
+                            padding-top: 20px;
+                        }
+                        .__contact_us_button {
+                            button {
+                                width: 220px;
+                                height: 48px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
