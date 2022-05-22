@@ -96,7 +96,7 @@ const AboutUs = (props) => {
                                 <div className="__title">Where to find us?</div>
                                 <div className="__number_section">
                                     <img src={dialIcon} />
-                                    <p>1-888-777-666-555</p>
+                                    <p>1 (855) 802-1112</p>
                                 </div>
                                 <div className="__number_section">
                                     <img src={mapIcon} />

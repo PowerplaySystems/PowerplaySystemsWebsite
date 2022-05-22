@@ -118,7 +118,7 @@ const PartnerWithUs =(props)=>{
         backgroundColor: '#000',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundPosition: isMobile1 ? '0px 120px' : '0px 180px'
+        backgroundPosition: isMobile1 ? '0px 94px' : '0px 180px'
     };
     return (
       <>
