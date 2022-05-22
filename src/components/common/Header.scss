@@ -59,6 +59,8 @@ nav.__appbar {
 @media (max-width: 1290px) {
   nav.__appbar {
     padding: 0.875em 0;
+    padding-bottom: 0;
+    padding-top: 0;
     .__nav-links {
       position: absolute;
       width: 100%;

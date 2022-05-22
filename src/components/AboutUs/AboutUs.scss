@@ -75,6 +75,7 @@
                 text-transform: uppercase;
                 color: #FB6E00;
                 margin-bottom: 10px;
+                
             }
             p {
                 font-family: 'Poppins';
@@ -84,6 +85,7 @@
                 line-height: 170%;
                 text-align: center;
                 color: #F2F2F2;
+                width: 500px;
             }
         }
         .__live_play {
@@ -124,10 +126,10 @@
             position: absolute;
             height: 700px;
             width: 100%;
-            background-image: url('../../assets/images/about_us/bottomBG.png');
+            background-image: url('../../assets/images/about_us/map_bg.png');
             background-size: cover;
             left: 0;
-            mix-blend-mode: color-dodge;
+            //mix-blend-mode: color-dodge;
             .__middle_box {
                 box-sizing: border-box;
                 display: flex;
@@ -139,7 +141,7 @@
                 height: 487px;
                 left: calc(50% - 493px/2 + 0.5px);
                 top: 106px;
-                background: linear-gradient(142.07deg, rgba(244, 242, 242, 0.06) 8.62%, rgba(237, 236, 236, 0.2) 95.47%);
+                background: linear-gradient(142.07deg, rgba(244, 242, 242, 0.06) 8.62%, rgba(237, 236, 236, 0.2) 95.47%);;
                 border: 1px solid #828282;
                 backdrop-filter: blur(10px);
                 border-radius: 24px;
@@ -158,8 +160,9 @@
                     display: flex;
                     img {
                         margin-right: 10px;
-                        width: 24px;
-                        height: 24px;
+                        width: 13px;
+                        height: 19px;
+                        margin-top: 6px;
                     }
                     p {
                         font-family: 'Poppins';
@@ -193,6 +196,7 @@
                         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
                         border-radius: 12px;
                         position: relative;
+                        border: 0;
                         span {
                             font-family: 'Teko';
                             font-style: normal;
@@ -226,7 +230,7 @@
                width: 100%;
                 .__top_banner {
                     flex-direction: column;
-                    margin-top: 117px;
+                    margin-top: 94px;
                     .__left_text {
                         .__sub_text {
                             width: 340px;
@@ -251,7 +255,7 @@
                 .__our_mission {
                     background: rgba(255, 255, 255, 0.2);
                     .__title {
-                        width: 500px;
+                        //width: 500px;
                         height: 40px;
                         font-family: 'Teko';
                         font-style: normal;
@@ -284,7 +288,6 @@
                     flex-direction: column;
                     gap: 20px;
                     .__what_we_do {
-                        width: 340px;
                         height: 40px;
                         font-family: 'Teko';
                         font-style: normal;
@@ -315,19 +318,18 @@
                         align-items: center;
                         justify-content: center;
                         img {
-                            width: 414px;
-                            height: 390px;
+                            width: 100%;
+                            height: auto;
                         }
                     }
                     .__right_text {
                         padding-top: 40px;
                         .__title {
-                            width: 340px;
                             height: 40px;
                             font-family: 'Teko';
                             font-style: normal;
                             font-weight: 400;
-                            font-size: 42px;
+                            font-size: 38px;
                             line-height: 94.5%;
                             letter-spacing: 1px;
                             color: #FB6E00;

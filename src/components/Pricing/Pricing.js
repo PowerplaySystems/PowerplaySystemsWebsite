@@ -16,6 +16,19 @@ const Pricing = (props) => {
     const [openDetails1, setOpenDetails1] = useState(false);
     const [openDetails2, setOpenDetails2] = useState(false);
     const [openPopup, setOpenPopup] = useState(false);
+    const [selectedSeats, setSelectedSeats] = useState(0);
+    const [selectedType, setSelectedType] = useState("minor");
+    const [result, setResult] = useState(0);
+    const data = [{
+        type: "minor",
+        values: [0.69, 0.40, 0.25, 0.10]
+    },{
+        type: "major",
+        values: [0.99, 0.69, 0.40,0.25]
+    },{
+        type: "championship",
+        values: [1.99, 1.49, 0.99, 0.69]
+    }];
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }, []);
@@ -49,7 +62,39 @@ const Pricing = (props) => {
         backgroundImage: `url(${bgMobile})`,
         backgroundColor: '#000',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: '0px 120px'
+        backgroundPosition: '0px 94px'
+    };
+    const calculateMonthlyFees = () => {
+        if(!selectedSeats) {
+            alert("Please add no of seats to continue.");
+            return;
+        }
+        if(!selectedType) {
+            alert("Please select a plan to continue.");
+            return;
+        }
+        let dataRec = data.find(x => x.type === selectedType);
+        if(selectedSeats <= 100) {
+            setResult(dataRec.values[0] * selectedSeats);
+        }
+        if(selectedSeats > 100 && selectedSeats <= 1000) {
+            var a = dataRec.values[0] * 100;
+            var b = (selectedSeats - 100) * dataRec.values[1];
+            setResult(a+b);
+        }
+        if(selectedSeats > 1000 && selectedSeats <= 10000) {
+            var a = dataRec.values[0] * 100;
+            var b = dataRec.values[1] * 900;
+            var c = (selectedSeats - 1000) * dataRec.values[2];
+            setResult(a+b+c);
+        }
+        if(selectedSeats > 10000) {
+            var a = dataRec.values[0] * 100;
+            var b = dataRec.values[1] * 900;
+            var c = dataRec.values[2] * 9000;
+            var d = (selectedSeats - 10000) * dataRec.values[3];
+            setResult(a+b+c+d);
+        }
     };
     return (
         <div className="__Pricing" style={isMobile1 ? mainPanelCSSMobile : mainPanelCSS}>
@@ -279,25 +324,25 @@ const Pricing = (props) => {
                             </div>
                             <div className="__panel __last">
                                 <img src={starThree} className="__star_icons" />
-                                <div className="__heading">$4.99<span> /seat</span></div>
+                                <div className="__heading">$1.99<span> /seat</span></div>
                                 {!isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
                                 {!isMobile1 && openDetails2 && <div className="__discount_details">
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
-                                            <div>$4.99 /seat</div>
+                                            <div>$1.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>101-1000 seats:</div>
-                                            <div>$2.50 /seat</div>
+                                            <div>$1.49 /seat</div>
                                         </li>
                                         <li>
                                             <div>1001-10000 seats:</div>
-                                            <div>$1.50 /seat</div>
+                                            <div>$0.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>10000+ seats:</div>
-                                            <div>$1.00 /seat</div>
+                                            <div>$0.69 /seat</div>
                                         </li>
                                     </ul>
                                 </div>}
@@ -325,7 +370,7 @@ const Pricing = (props) => {
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
-                                        <div className="__content">Includes insured prize of $250,000</div>
+                                        <div className="__content">Includes insured prize of $150,000</div>
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
@@ -341,19 +386,19 @@ const Pricing = (props) => {
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
-                                            <div>$4.99 /seat</div>
+                                            <div>$1.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>101-1000 seats:</div>
-                                            <div>$2.50 /seat</div>
+                                            <div>$1.49 /seat</div>
                                         </li>
                                         <li>
                                             <div>1001-10000 seats:</div>
-                                            <div>$1.50 /seat</div>
+                                            <div>$0.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>10000+ seats:</div>
-                                            <div>$1.00 /seat</div>
+                                            <div>$0.69 /seat</div>
                                         </li>
                                     </ul>
                                 </div>}
@@ -379,28 +424,42 @@ const Pricing = (props) => {
                         <div className="__monthly_fees">
                             <div className="__fees_calculator">
                                 <h1>Calculate my monthly fee</h1>
-                                <form className="__calculator_form">
+                                <form className="__calculator_form" onSubmit={(e) => {
+                                    e.preventDefault();
+                                }}>
                                     <div className="__form_field">
                                         <label>Select a plan</label>
                                         <div className="__select_wrapper">
-                                            <select>
-                                                <option>Minor League plan</option>
-                                                <option>Major League plan</option>
-                                                <option>Championship plan</option>
+                                            <select onChange={(e) => {
+                                                setSelectedType(e.target.value);
+                                            }}>
+                                                <option value="minor">Minor League plan</option>
+                                                <option value="major">Major League plan</option>
+                                                <option value="championship">Championship plan</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div className="__form_field">
                                         <label>Number of seats</label>
-                                        <input type="number" placeholder="Enter a number"/>
+                                        <input type="number" placeholder="Enter a number" onChange={(e) => {
+                                                setSelectedSeats(e.target.value);
+                                            }}/>
                                     </div>
                                     <div className="__form_field">
                                         <label>&nbsp;</label>
-                                        <button>
+                                        <button onClick={() => calculateMonthlyFees()}>
                                             <span>Calculate!</span>
                                         </button>
                                     </div>
                                 </form>
+                                {result > 0 && <>
+                                    <div className="__result">
+                                        ${parseFloat(result).toFixed(2)}<span>/month</span>
+                                    </div>
+                                    <button>
+                                        <span>Schedule a call</span>
+                                    </button>
+                                </>}
                             </div>
                             <p className="__bottom_line">Custom plans available, contact us to discuss</p>
                         </div>}
@@ -427,28 +486,39 @@ const Pricing = (props) => {
                     <div className="__fields">
                         <div className="__form_field">
                             <label>Number of seats</label>
-                            <input type="number" placeholder="Enter a number"/>
+                            <input type="number" placeholder="Enter a number" onChange={(e) => {
+                                                setSelectedSeats(e.target.value);
+                                            }}/>
                         </div>
                         <div className="__radio_group">
                             <label>Select your plan:</label>
                             <div className="__radio_item">
-                                <input type="radio" name="plan" value="minor" checked/>
+                                <input type="radio" name="plan" value="minor" checked={selectedType === 'minor'} onChange={(e) => {
+                                                setSelectedType(e.target.value);
+                                            }}/>
                                 <span>Minor League plan</span>
                             </div>
                             <div className="__radio_item">
-                                <input type="radio" name="plan" value="major" />
+                                <input type="radio" name="plan" value="major" checked={selectedType === 'major'} onChange={(e) => {
+                                                setSelectedType(e.target.value);
+                                            }}/>
                                 <span>Major League plan</span>
                             </div>
                             <div className="__radio_item">
-                                <input type="radio" name="plan" value="championship" />
+                                <input type="radio" name="plan" value="championship" checked={selectedType === 'championship'} onChange={(e) => {
+                                                setSelectedType(e.target.value);
+                                            }}/>
                                 <span>Championship plan</span>
                             </div>
                         </div>
                     </div>
-                    <div className="__result">
-                        $104.99<span>/month</span>
-                    </div>
-                    <button className="__calculate_button"><span>Calculate!</span></button>
+                    {result > 0 && <div className="__result">
+                        ${parseFloat(result).toFixed(2)}<span>/month</span>
+                    </div>}
+                    
+                    <button className="__calculate_button" onClick={() => {
+                        calculateMonthlyFees();
+                    }}><span>Calculate!</span></button>
                 </div>
             }
         </div>
