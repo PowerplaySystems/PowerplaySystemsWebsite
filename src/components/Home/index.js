@@ -77,6 +77,16 @@ const Home =(props)=>{
     const isMobile1 = Boolean(viewportWidth <= MOBILE_BREAKPOINT1);
     return (
       <div className="__home-page-wrp">
+         <Helmet>
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-222300270-1">
+                </script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() &#123; dataLayer.push(arguments);&#125;
+                    gtag('js', new Date());
+                    gtag('config', 'UA-222300270-1');
+                </script>
+        </Helmet>
         <Helmet>
           <title>
             Power Play Systems | Innovative Gaming Management & Solutions
