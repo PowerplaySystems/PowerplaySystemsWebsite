@@ -65,7 +65,7 @@ const Pricing = (props) => {
         backgroundPosition: '0px 94px'
     };
     const calculateMonthlyFees = () => {
-        if(!selectedSeats) {
+        if(!selectedSeats || selectedSeats == 0) {
             alert("Please add no of seats to continue.");
             return;
         }
@@ -75,7 +75,7 @@ const Pricing = (props) => {
         }
         let dataRec = data.find(x => x.type === selectedType);
         if(selectedSeats <= 100) {
-            setResult(dataRec.values[0] * selectedSeats);
+            setResult(dataRec.values[0] * 100);
         }
         if(selectedSeats > 100 && selectedSeats <= 1000) {
             var a = dataRec.values[0] * 100;
