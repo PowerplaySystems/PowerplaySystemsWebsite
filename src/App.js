@@ -76,6 +76,7 @@ import reducer from './reducer'
 import client from "./utils/apolloClient";
 import { ApolloProvider } from "react-apollo";
 import { ApolloProvider as ApolloHooksProvider } from "@apollo/react-hooks";
+import { Helmet } from 'react-helmet';
 const App =()=> {
 
   // const errorLink=onError(({graphqlErrors,networkError})=>{
@@ -99,6 +100,16 @@ const App =()=> {
   const [state, dispatch] = useReducer(reducer, initialState);
     return (
       <ApolloProvider client={client}>
+         <Helmet>
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-222300270-1">
+                </script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() &#123; dataLayer.push(arguments);&#125;
+                    gtag('js', new Date());
+                    gtag('config', 'UA-222300270-1');
+                </script>
+        </Helmet>
         <ApolloHooksProvider client={client}>
         <AppStore.Provider value={{ state, dispatch }}>
           <Router>
