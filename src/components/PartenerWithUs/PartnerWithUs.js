@@ -17,6 +17,7 @@ import swal from 'sweetalert';
 import bg from '../../assets/images/partner/bg.png';
 import bgMobile from '../../assets/images/partner/bgMobile.png';
 import li_tick from '../../assets/images/partner/li_tick.png';
+import { getApi } from "../../config/environment";
 //Popup variables
 var popupText = "Error";
 var popupHader = "Sorry!";
@@ -69,8 +70,8 @@ const PartnerWithUs =(props)=>{
   const uploadData=async(e)=> {
     e.preventDefault();
     console.log(data1)
-    const res=await axios.post('https://strapi.powerplaysystems.com/contacts',data1)
-    // const res=await axios.post('http://localhost:1337/contacts',data1)
+    const res=await axios.post(`${getApi()}/api/v1/users/contacts`,data1)
+    // const res=await axios.post('https://strapi.powerplaysystems.com/contacts',data1)
 
     try{
       console.log(res.data)
