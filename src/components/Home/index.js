@@ -101,8 +101,8 @@ const Home =(props)=>{
                 {/* <img src={HomeBanner} alt=""/> */}
                 <div className="__container">
                     <img src={homePageTopLogo} className="topLogo"/>
-                    <h1>Power up your bar revenue</h1>
-                    <p>Our exclusive free-to-play live sports based games will generate <br/>unparalleled excitement for your bar patrons.</p>
+                    <h1>Power up your revenue</h1>
+                     <p>Our platform utilizes live game engagement, social media intigration, and<br/> targeted email marketing campaigns to increase revenue for your bar. Guaranteed.</p>
                     <Link to="/partner" className="__homepage-btn-wrp">Partner with us</Link>
                 </div>
             </div>
@@ -163,9 +163,8 @@ const Home =(props)=>{
                     <div className="__container">
                         <div className="powerfulRevenueWrp">
                             <h2 className="powerfulRevenue">Powerful Revenue</h2>
-                            <p>Our target is to increase your revenue. If we don’t achieve tangible results within 6 month, we will offer our services free until we meet your expectations.</p>
-                            <p>We can make this offer because we are super confident in our ability to suceed.</p>
-                            <p>When you consider increased bar sales, advertising revenue, ancillary revenue, and lead generation... it’s a slam dunk! or Homerun! or Touchdown!</p>
+                            <p>We use a variety of tools to Power up your revenue. Our proven revenue generating methodology includes social media intigration, targeted email marketing campaigns, and a large prize games to generate excitement and increase participation.</p>
+                            <p>When you consider all the revenue generating tools we deploy... it's a slam dunk! Pardon the pun.</p>
                             <Link to="/partner" className="__homepage-btn-wrp __powerfulRevenueButton">Learn more</Link>
                         </div>
                     </div>
