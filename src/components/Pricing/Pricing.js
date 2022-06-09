@@ -110,11 +110,11 @@ const Pricing = (props) => {
                     <div className="__container">
                         <div className="__top_heading">
                             <h1>Pick a plan to Power up your revenue</h1>
-                            <p>We guarantee you will see material benefits within 6 months</p>
+                            <p>All plans include social media integration and email marketing campaigns</p>
                         </div>
                         <div className="__price_panels">
                             <div className="__panel">
-                                <div className="__heading">Free</div>
+                            <div className="__heading">$25<span> /month</span></div>
                                 {!isMobile1 && <>
                                     <div className="__sub_heading">&nbsp;</div>
                                     <div className="__details_tab">&nbsp;</div>

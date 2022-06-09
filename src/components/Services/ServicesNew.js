@@ -90,11 +90,11 @@ const dataList = [
     },
     {
         title: 'Fantasy Sports Tournaments',
-        content: 'A sure fine winner, a select # of players compete in an elimination style tournament'
+        content: 'A sure fine winner, a select number of players compete in an elimination style tournament'
     },
     {
         title: 'Event Management',
-        content: 'We also offer event management services. Call to see'
+        content: 'We also offer event management services. Call to see how we can help manage your next big event.'
     }
 ];
   return (
