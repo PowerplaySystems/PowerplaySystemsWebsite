@@ -21,13 +21,13 @@ const Pricing = (props) => {
     const [result, setResult] = useState(0);
     const data = [{
         type: "minor",
-        values: [0.69, 0.40, 0.25, 0.10]
+        values: [1.99, 1.49, 1.29, 0.99]
     },{
         type: "major",
-        values: [0.99, 0.69, 0.40,0.25]
+        values: [2.99, 2.49, 2.29, 1.99]
     },{
         type: "championship",
-        values: [1.99, 1.49, 0.99, 0.69]
+        values: [4.99, 4.49, 4.29, 3.99]
     }];
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
@@ -114,7 +114,7 @@ const Pricing = (props) => {
                         </div>
                         <div className="__price_panels">
                             <div className="__panel">
-                            <div className="__heading">$25<span> /month</span></div>
+                            <div className="__heading">$99<span> /month</span></div>
                                 {!isMobile1 && <>
                                     <div className="__sub_heading">&nbsp;</div>
                                     <div className="__details_tab">&nbsp;</div>
@@ -127,11 +127,15 @@ const Pricing = (props) => {
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
+                                        <div className="__content">Email and Social Media Marketing</div>
+                                    </li>
+                                    <li>
+                                        <div className="__bullet"></div>
                                         <div className="__content">No insured prizes available</div>
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
-                                        <div className="__content">Players accumulate reward points</div>
+                                        <div className="__content">Players win weekly / monthly gift cards</div>
                                     </li>
                                 </ul>
                                 {isMobile1 &&
@@ -142,25 +146,25 @@ const Pricing = (props) => {
                             </div>
                             <div className="__panel">
                                 <img src={starOne} className="__star_icons" />
-                                <div className="__heading">$0.69<span> /seat</span></div>
+                                <div className="__heading">$1.99<span> /seat</span></div>
                                 {!isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
                                 {!isMobile1 && openDetails && <div className="__discount_details">
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
-                                            <div>$0.69 /seat</div>
+                                            <div>$1.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>101-1000 seats:</div>
-                                            <div>$0.40 /seat</div>
+                                            <div>$1.49 /seat</div>
                                         </li>
                                         <li>
                                             <div>1001-10000 seats:</div>
-                                            <div>$0.25 /seat</div>
+                                            <div>$1.29 /seat</div>
                                         </li>
                                         <li>
                                             <div>10000+ seats:</div>
-                                            <div>$0.10 /seat</div>
+                                            <div>$0.99 /seat</div>
                                         </li>
                                     </ul>
                                 </div>}
@@ -180,7 +184,11 @@ const Pricing = (props) => {
                                 <ul>
                                     <li>
                                         <div className="__bullet"></div>
-                                        <div className="__content">Choose two of NHL, NBA, or MLB</div>
+                                        <div className="__content">Choose one of NHL, NBA, or MLB</div>
+                                    </li>
+                                    <li>
+                                        <div className="__bullet"></div>
+                                        <div className="__content">Email and Social Media Marketing</div>
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
@@ -192,7 +200,7 @@ const Pricing = (props) => {
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
-                                        <div className="__content">Players accumulate reward points</div>
+                                        <div className="__content">Players win weekly / monthly / full season cash prize of $1000</div>
                                     </li>
                                 </ul>
                                 {isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
@@ -200,19 +208,19 @@ const Pricing = (props) => {
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
-                                            <div>$0.69 /seat</div>
+                                            <div>$1.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>101-1000 seats:</div>
-                                            <div>$0.40 /seat</div>
+                                            <div>$1.49 /seat</div>
                                         </li>
                                         <li>
                                             <div>1001-10000 seats:</div>
-                                            <div>$0.25 /seat</div>
+                                            <div>$1.29 /seat</div>
                                         </li>
                                         <li>
                                             <div>10000+ seats:</div>
-                                            <div>$0.10 /seat</div>
+                                            <div>$0.99 /seat</div>
                                         </li>
                                     </ul>
                                 </div>}
@@ -231,25 +239,25 @@ const Pricing = (props) => {
                             </div>
                             <div className="__panel">
                                 <img src={starTwo} className="__star_icons" />
-                                <div className="__heading">$0.99<span> /seat</span></div>
+                                <div className="__heading">$2.99<span> /seat</span></div>
                                 {!isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
                                 {!isMobile1 && openDetails1 && <div className="__discount_details">
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
-                                            <div>$0.99 /seat</div>
+                                            <div>$2.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>101-1000 seats:</div>
-                                            <div>$0.69 /seat</div>
+                                            <div>$2.49 /seat</div>
                                         </li>
                                         <li>
                                             <div>1001-10000 seats:</div>
-                                            <div>$0.40 /seat</div>
+                                            <div>$2.29 /seat</div>
                                         </li>
                                         <li>
                                             <div>10000+ seats:</div>
-                                            <div>$0.25 /seat</div>
+                                            <div>$1.99 /seat</div>
                                         </li>
                                     </ul>
                                 </div>}
@@ -269,7 +277,11 @@ const Pricing = (props) => {
                                 <ul>
                                     <li>
                                         <div className="__bullet"></div>
-                                        <div className="__content">Choose three of NFL, NHL, NBA, or MLB</div>
+                                        <div className="__content">Choose two of NFL, NHL, NBA, or MLB</div>
+                                    </li>
+                                    <li>
+                                        <div className="__bullet"></div>
+                                        <div className="__content">Email and Social Media Marketing</div>
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
@@ -285,7 +297,7 @@ const Pricing = (props) => {
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
-                                        <div className="__content">Players accumulate reward points</div>
+                                        <div className="__content">Players win weekly / monthly / full season cash prize of $2500</div>
                                     </li>
                                 </ul>
                                 {isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
@@ -293,19 +305,19 @@ const Pricing = (props) => {
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
-                                            <div>$0.99 /seat</div>
+                                            <div>$2.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>101-1000 seats:</div>
-                                            <div>$0.69 /seat</div>
+                                            <div>$2.49 /seat</div>
                                         </li>
                                         <li>
                                             <div>1001-10000 seats:</div>
-                                            <div>$0.40 /seat</div>
+                                            <div>$2.29 /seat</div>
                                         </li>
                                         <li>
                                             <div>10000+ seats:</div>
-                                            <div>$0.25 /seat</div>
+                                            <div>$1.99 /seat</div>
                                         </li>
                                     </ul>
                                 </div>}
@@ -324,25 +336,25 @@ const Pricing = (props) => {
                             </div>
                             <div className="__panel __last">
                                 <img src={starThree} className="__star_icons" />
-                                <div className="__heading">$1.99<span> /seat</span></div>
+                                <div className="__heading">$4.99<span> /seat</span></div>
                                 {!isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
                                 {!isMobile1 && openDetails2 && <div className="__discount_details">
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
-                                            <div>$1.99 /seat</div>
+                                            <div>$4.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>101-1000 seats:</div>
-                                            <div>$1.49 /seat</div>
+                                            <div>$4.49 /seat</div>
                                         </li>
                                         <li>
                                             <div>1001-10000 seats:</div>
-                                            <div>$0.99 /seat</div>
+                                            <div>$4.29 /seat</div>
                                         </li>
                                         <li>
                                             <div>10000+ seats:</div>
-                                            <div>$0.69 /seat</div>
+                                            <div>$3.99 /seat</div>
                                         </li>
                                     </ul>
                                 </div>}
@@ -366,6 +378,10 @@ const Pricing = (props) => {
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
+                                        <div className="__content">Email and Social Media Marketing</div>
+                                    </li>
+                                    <li>
+                                        <div className="__bullet"></div>
                                         <div className="__content">Max of two insured contests per week</div>
                                     </li>
                                     <li>
@@ -378,7 +394,7 @@ const Pricing = (props) => {
                                     </li>
                                     <li>
                                         <div className="__bullet"></div>
-                                        <div className="__content">Players accumulate reward points</div>
+                                        <div className="__content">Players win weekly / monthly / full season cash prize of $5,000</div>
                                     </li>
                                 </ul>
                                 {isMobile1 && <div className="__sub_heading">Get discount for more seats!</div>}
@@ -386,19 +402,19 @@ const Pricing = (props) => {
                                     <ul>
                                         <li>
                                             <div>first 100 seats:</div>
-                                            <div>$1.99 /seat</div>
+                                            <div>$4.99 /seat</div>
                                         </li>
                                         <li>
                                             <div>101-1000 seats:</div>
-                                            <div>$1.49 /seat</div>
+                                            <div>$4.49 /seat</div>
                                         </li>
                                         <li>
                                             <div>1001-10000 seats:</div>
-                                            <div>$0.99 /seat</div>
+                                            <div>$4.29 /seat</div>
                                         </li>
                                         <li>
                                             <div>10000+ seats:</div>
-                                            <div>$0.69 /seat</div>
+                                            <div>$3.99 /seat</div>
                                         </li>
                                     </ul>
                                 </div>}
