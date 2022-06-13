@@ -66,7 +66,7 @@ const mainPanelCSS = {
 const dataList = [
     {
         title: 'Contest insurance',
-        content: 'We provide large insured prizes to generate excitement and increase engagement'
+        content: 'We provide a national insured prize of $1,000,000 plus individual bar prize of $100,000'
     },
     {
         title: 'Marketing materials',
@@ -88,10 +88,10 @@ const dataList = [
         title: 'Lead Generation',
         content: 'We collect customers email and demographic information that is shared with bar owners'
     },
-    // {
-    //     title: 'Fantasy Sports Tournaments',
-    //     content: 'A sure fine winner, a select number of players compete in an elimination style tournament'
-    // },
+    {
+        title: 'Fantasy Sports Tournaments',
+        content: 'A sure fine winner, a select number of players compete in an elimination style tournament'
+    },
     {
         title: 'Event Management',
         content: 'We also offer event management services. Call to see how we can help manage your next big event.'
