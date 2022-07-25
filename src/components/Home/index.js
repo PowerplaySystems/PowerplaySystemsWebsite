@@ -102,7 +102,7 @@ const Home =(props)=>{
                 <div className="__container">
                     <img src={homePageTopLogo} className="topLogo"/>
                     <h1>Power up your revenue</h1>
-                     <p>Our platform utilizes live game engagement, social media intigration, and<br/> targeted email marketing campaigns to increase revenue for your bar. Guaranteed.</p>
+                     <p>Our Fantasy Sports Platform utilizes live game engagement, social media intigration, and<br/> targeted email marketing campaigns to increase revenue for your bar. Guaranteed.</p>
                     <Link to="/partner" className="__homepage-btn-wrp">Partner with us</Link>
                 </div>
             </div>
@@ -110,7 +110,7 @@ const Home =(props)=>{
                 <div className="__right-side-content">
                     <div className="__container">
                         <div className="barPowered">
-                            <p>Powered Bar Games provides exciting <strong>new bar game solutions</strong> that power customer engagement. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
+                            <p>Powered Bar Games provides exciting fantasy sports game that are only available to enter at participating bars. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
                             <p>We provide the app design and all marketing materials. We even provide up to a <strong>$100,000 fully insured prize!</strong></p>
                             <p>Do you think a $100,000 prize will draw customers to your bar?</p>
                             <h2>Is your bar Powered?</h2>
@@ -151,7 +151,7 @@ const Home =(props)=>{
                     </div>
                     <div className="numbers-cards">
                         <div className="cardNumber-Icon">
-                            <h2>4,400%</h2>
+                            <h2>400%</h2>
                             <img src={Homebgres09} alt=""/>
                         </div>
                         <p className="class-sub-text">average ROI of email marketing for our contests</p>
