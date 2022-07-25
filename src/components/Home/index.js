@@ -110,7 +110,7 @@ const Home =(props)=>{
                 <div className="__right-side-content">
                     <div className="__container">
                         <div className="barPowered">
-                            <p>Powered Bar Games provides exciting fantasy sports game that are only available to enter at participating bars. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
+                            <p>Powered Bar Games provides an exciting Fantasy Sports Game that is only available to enter at participating bars. With our exclusive customized in-bar experience, we provide a platform like no other to drive excitment/engement and therefore revenue for your bar.</p>
                             <p>We provide the app design and all marketing materials. We even provide up to a <strong>$100,000 fully insured prize!</strong></p>
                             <p>Do you think a $100,000 prize will draw customers to your bar?</p>
                             <h2>Is your bar Powered?</h2>
